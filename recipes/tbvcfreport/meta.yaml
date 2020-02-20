@@ -1,45 +1,37 @@
-{% set name = "tbvcfreport" %}
-{% set version = "0.1.7" %}
-{% set author = "COMBAT-TB" %}
-
-package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
-
-source:
-  url: "https://github.com/{{ author }}/{{ name }}/archive/{{ version }}.tar.gz"
-  sha256: 7a106d48c19dda4998c956ce358c9d90e82e80bb105757d1ab039808060c9673
-
+about:
+  doc_url: http://github.com/COMBAT-TB/tbvcfreport/blob/master/README.md
+  home: http://github.com/COMBAT-TB/tbvcfreport
+  license: GNU General Public v3 (GPLv3)
+  license_family: GPL3
+  license_file: LICENSE
+  summary: Parses SnpEff annotated M.tb VCF(s) and generates an interactive HTML-based
+    report.
 build:
-  noarch: python 
-  number: 0
   entry_points:
-    - tbvcfreport=tbvcfreport.tbvcfreport:cli
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
-
+  - tbvcfreport=tbvcfreport.tbvcfreport:cli
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+package:
+  name: tbvcfreport
+  version: 0.1.7
 requirements:
   host:
-    - pip
-    - python >=3.6
+  - pip
+  - python >=3.6
   run:
-    - click
-    - jinja2
-    - py2neo >=4.2.0
-    - python >=3.6
-    - pyvcf
-    - mtb-snp-it
-    - tqdm
-
+  - click
+  - jinja2
+  - py2neo >=4.2.0
+  - python >=3.6
+  - pyvcf
+  - mtb-snp-it
+  - tqdm
+source:
+  sha256: 7a106d48c19dda4998c956ce358c9d90e82e80bb105757d1ab039808060c9673
+  url: https://github.com/COMBAT-TB/tbvcfreport/archive/0.1.7.tar.gz
 test:
-  imports:
-    - tbvcfreport
   commands:
-    - tbvcfreport --help
-
-about:
-  home: "http://github.com/{{ author }}/{{ name }}"
-  license: "GNU General Public v3 (GPLv3)"
-  license_family: "GPL3"
-  license_file: LICENSE
-  summary: "Parses SnpEff annotated M.tb VCF(s) and generates an interactive HTML-based report."
-  doc_url: "http://github.com/{{ author }}/{{ name }}/blob/master/README.md"
+  - tbvcfreport --help
+  imports:
+  - tbvcfreport

@@ -1,50 +1,44 @@
-{% set version = "1.22.0" %}
-{% set name = "BiocCheck" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 97eda55125dd5dd7e30f3df2a2d531dd
+about:
+  description: Executes Bioconductor-specific package checks.
+  home: https://bioconductor.org/packages/3.10/bioc/html/BiocCheck.html
+  license: Artistic-2.0
+  summary: Bioconductor-specific package checks
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: RUnit, BiocGenerics, Biobase, RJSONIO, rmarkdown, devtools (>= 1.4.1), usethis, BiocStyle
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-bioccheck
+  version: 1.22.0
 requirements:
   host:
-    - 'bioconductor-biocviews >=1.54.0,<1.55.0'
-    - 'bioconductor-graph >=1.64.0,<1.65.0'
-    - r-base
-    - r-biocmanager
-    - r-codetools
-    - r-httr
-    - r-knitr
-    - r-optparse
-    - r-stringdist
+  - bioconductor-biocviews >=1.54.0,<1.55.0
+  - bioconductor-graph >=1.64.0,<1.65.0
+  - r-base
+  - r-biocmanager
+  - r-codetools
+  - r-httr
+  - r-knitr
+  - r-optparse
+  - r-stringdist
   run:
-    - 'bioconductor-biocviews >=1.54.0,<1.55.0'
-    - 'bioconductor-graph >=1.64.0,<1.65.0'
-    - r-base
-    - r-biocmanager
-    - r-codetools
-    - r-httr
-    - r-knitr
-    - r-optparse
-    - r-stringdist
+  - bioconductor-biocviews >=1.54.0,<1.55.0
+  - bioconductor-graph >=1.64.0,<1.65.0
+  - r-base
+  - r-biocmanager
+  - r-codetools
+  - r-httr
+  - r-knitr
+  - r-optparse
+  - r-stringdist
+source:
+  md5: 97eda55125dd5dd7e30f3df2a2d531dd
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/BiocCheck_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/BiocCheck_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-bioccheck/bioconductor-bioccheck_1.22.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Bioconductor-specific package checks'
-  description: 'Executes Bioconductor-specific package checks.'
-
+  - $R -e "library('BiocCheck')"

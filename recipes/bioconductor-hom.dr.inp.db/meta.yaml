@@ -1,36 +1,32 @@
-{% set version = "3.1.2" %}
-{% set name = "hom.Dr.inp.db" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: d3e588cb6116354605a024ed3e7f5c4e
+about:
+  description: Homology information for Danio rerio from Inparanoid assembled using
+    data from public repositories
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/hom.Dr.inp.db.html
+  license: Artistic-2.0
+  summary: Homology information for Danio rerio from Inparanoid
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-hom.dr.inp.db
+  version: 3.1.2
 requirements:
   host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
   run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
-    - curl
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
+  - curl
+source:
+  md5: d3e588cb6116354605a024ed3e7f5c4e
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/hom.Dr.inp.db_3.1.2.tar.gz
+  - https://bioarchive.galaxyproject.org/hom.Dr.inp.db_3.1.2.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hom.dr.inp.db/bioconductor-hom.dr.inp.db_3.1.2_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Homology information for Danio rerio from Inparanoid'
-  description: 'Homology information for Danio rerio from Inparanoid assembled using data from public repositories'
-
+  - $R -e "library('hom.Dr.inp.db')"

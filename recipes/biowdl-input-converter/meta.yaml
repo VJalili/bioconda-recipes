@@ -1,45 +1,36 @@
-{% set name = "biowdl-input-converter" %}
-{% set version = "0.2.1" %}
-
-package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
-
-source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: b59f919aed259ee8b3adf870812619d4fe3f488c3da35418e6e76f3c4780c8ba
-
+about:
+  dev_url: https://github.com/biowdl/biowdl-input-converter
+  doc_url: https://biowdl-input-converter.readthedocs.io
+  home: https://github.com/biowdl/biowdl-input-converter
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Converting various input formats into WDL structs for BioWDL pipelines.
 build:
+  entry_points:
+  - biowdl-input-converter = biowdl_input_converter:main
   noarch: python
   number: 0
-  entry_points:
-    - biowdl-input-converter = biowdl_input_converter:main
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
-
-requirements:
-  host:
-    - pip
-    - python>=3.7
-  run:
-    - python>=3.7
-    - pyyaml
-
-test:
-  imports:
-    - biowdl_input_converter
-  commands:
-    - biowdl-input-converter --help
-
-about:
-  home: "https://github.com/biowdl/biowdl-input-converter"
-  license: "MIT"
-  license_file: "LICENSE"
-  license_family: "MIT"
-  summary: "Converting various input formats into WDL structs for BioWDL pipelines."
-  doc_url: "https://biowdl-input-converter.readthedocs.io"
-  dev_url: "https://github.com/biowdl/biowdl-input-converter"
-
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
 extra:
   recipe-maintainers:
-    - rhpvorderman
-    - DavyCats
+  - rhpvorderman
+  - DavyCats
+package:
+  name: biowdl-input-converter
+  version: 0.2.1
+requirements:
+  host:
+  - pip
+  - python>=3.7
+  run:
+  - python>=3.7
+  - pyyaml
+source:
+  sha256: b59f919aed259ee8b3adf870812619d4fe3f488c3da35418e6e76f3c4780c8ba
+  url: https://pypi.io/packages/source/b/biowdl-input-converter/biowdl-input-converter-0.2.1.tar.gz
+test:
+  commands:
+  - biowdl-input-converter --help
+  imports:
+  - biowdl_input_converter

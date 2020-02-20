@@ -1,38 +1,30 @@
-{% set name = "pacbio_falcon" %}
-{% set version = "052016" %}
-
-package:
-  name: {{ name }}
-  version: {{ version }}
-
 about:
-  home: 'https://github.com/PacificBiosciences/FALCON'
-  license: "Standard PacBio Open Source License"
-  summary: "A set of tools for fast aligning long reads for consensus and assembly"
-
-source:
-  url: https://github.com/PacificBiosciences/FALCON/archive/funzip_052016.tar.gz
-  md5: be4a225262ee4bd9729b6b7e81a83615
-
+  home: https://github.com/PacificBiosciences/FALCON
+  license: Standard PacBio Open Source License
+  summary: A set of tools for fast aligning long reads for consensus and assembly
 build:
-  skip: True  # [py3k]
   number: 2
-
+  skip: true
+package:
+  name: pacbio_falcon
+  version: 21518
 requirements:
   build:
-    - {{ compiler('c') }}
+  - None
   host:
-    - python
-    - setuptools
-    - pypeflow
-    - networkx
+  - python
+  - setuptools
+  - pypeflow
+  - networkx
   run:
-    - python
-    - pypeflow
-    - rdflib
-    - rdfextras
-    - networkx
-
+  - python
+  - pypeflow
+  - rdflib
+  - rdfextras
+  - networkx
+source:
+  md5: be4a225262ee4bd9729b6b7e81a83615
+  url: https://github.com/PacificBiosciences/FALCON/archive/funzip_052016.tar.gz
 test:
   commands:
-    - fc_run.py 2>&1 | grep fc_run
+  - fc_run.py 2>&1 | grep fc_run

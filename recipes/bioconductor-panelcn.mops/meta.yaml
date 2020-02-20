@@ -1,47 +1,42 @@
-{% set version = "1.8.0" %}
-{% set name = "panelcn.mops" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 4ffdbf23392358963141a5ac2047dc0f
+about:
+  description: CNV detection tool for targeted NGS panel data. Extension of the cn.mops
+    package.
+  home: https://bioconductor.org/packages/3.10/bioc/html/panelcn.mops.html
+  license: LGPL (>= 2.0)
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: CNV detection tool for targeted NGS panel data
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: knitr, rmarkdown, RUnit, BiocGenerics
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-panelcn.mops
+  version: 1.8.0
 requirements:
   host:
-    - 'bioconductor-cn.mops >=1.32.0,<1.33.0'
-    - 'bioconductor-genomeinfodb >=1.22.0,<1.23.0'
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - 'bioconductor-rsamtools >=2.2.0,<2.3.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - r-base
+  - bioconductor-cn.mops >=1.32.0,<1.33.0
+  - bioconductor-genomeinfodb >=1.22.0,<1.23.0
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - bioconductor-rsamtools >=2.2.0,<2.3.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - r-base
   run:
-    - 'bioconductor-cn.mops >=1.32.0,<1.33.0'
-    - 'bioconductor-genomeinfodb >=1.22.0,<1.23.0'
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - 'bioconductor-rsamtools >=2.2.0,<2.3.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - r-base
+  - bioconductor-cn.mops >=1.32.0,<1.33.0
+  - bioconductor-genomeinfodb >=1.22.0,<1.23.0
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - bioconductor-rsamtools >=2.2.0,<2.3.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - r-base
+source:
+  md5: 4ffdbf23392358963141a5ac2047dc0f
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/panelcn.mops_1.8.0.tar.gz
+  - https://bioarchive.galaxyproject.org/panelcn.mops_1.8.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-panelcn.mops/bioconductor-panelcn.mops_1.8.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'LGPL (>= 2.0)'
-  summary: 'CNV detection tool for targeted NGS panel data'
-  description: 'CNV detection tool for targeted NGS panel data. Extension of the cn.mops package.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-3'
-
+  - $R -e "library('panelcn.mops')"

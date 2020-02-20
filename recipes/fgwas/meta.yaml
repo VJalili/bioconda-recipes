@@ -1,33 +1,27 @@
-{% set version = "0.3.6" %}
-
-package:
-  name: "fgwas"
-  version: {{ version }}
-
-source:
-  url: https://github.com/joepickrell/fgwas/archive/{{ version }}.tar.gz
-  sha256: 40340e7589a4965ad9f216f9f27d6b3ac72aadcc74e585652b1ea2993f580b61
-
+about:
+  dev_url: https://github.com/joepickrell/fgwas
+  home: https://github.com/joepickrell/fgwas
+  license: GPL2
+  license_file: LICENSE
+  summary: fgwas is a command line tool for integrating functional genomic information
+    into a genome-wide association study (GWAS).
 build:
   number: 0
-
+package:
+  name: fgwas
+  version: 0.3.6
 requirements:
   build:
-    - {{ compiler('cxx') }}
+  - None
   host:
-    - boost-cpp
-    - gsl
-    - libblas * *openblas
-    - openblas
-    - zlib
-
+  - boost-cpp
+  - gsl
+  - libblas * *openblas
+  - openblas
+  - zlib
+source:
+  sha256: 40340e7589a4965ad9f216f9f27d6b3ac72aadcc74e585652b1ea2993f580b61
+  url: https://github.com/joepickrell/fgwas/archive/0.3.6.tar.gz
 test:
   commands:
-    - fgwas -h | grep 'fgwas'
-
-about:
-  home: https://github.com/joepickrell/fgwas
-  license: GPL2 
-  license_file: LICENSE
-  summary: fgwas is a command line tool for integrating functional genomic information into a genome-wide association study (GWAS).
-  dev_url: https://github.com/joepickrell/fgwas
+  - fgwas -h | grep 'fgwas'

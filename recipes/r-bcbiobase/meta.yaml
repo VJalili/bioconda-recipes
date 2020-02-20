@@ -1,56 +1,41 @@
-{% set version = '0.6.12' %}
-{% set github = "https://github.com/hbc/bcbioBase" %}
-
-package:
-  name: r-bcbiobase
-  version: "{{ version }}"
-
-source:
-  url: "{{ github }}/archive/v{{ version }}.tar.gz"
-  sha256: 8c552ca3cefc44b6dd81c402138f350610c1be09b578401993afd34a1cbc0c66
-
+about:
+  dev_url: https://github.com/hbc/bcbioBase
+  home: http://bioinformatics.sph.harvard.edu/bcbioBase/
+  license: MIT
+  license_file: LICENSE
+  summary: Base functions and generics for bcbio R packages.
 build:
   noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-
-requirements:
-  host:
-      # Depends:
-    - r-base
-      # Imports:
-    - bioconductor-s4vectors >=0.24
-    - r-basejump >=0.12.0
-    - r-goalie >=0.4.1
-    - r-plyr >=1.8
-    - r-stringr >=1.4
-      # Suggests:
-    - r-rdrop2 >=0.8
-  run:
-      # Depends:
-    - r-base
-      # Imports:
-    - bioconductor-s4vectors >=0.24
-    - r-basejump >=0.12.0
-    - r-goalie >=0.4.1
-    - r-plyr >=1.8
-    - r-stringr >=1.4
-      # Suggests:
-    - r-rdrop2 >=0.8
-
-test:
-  commands:
-    - $R -e "library('bcbioBase')"
-
-about:
-  home: http://bioinformatics.sph.harvard.edu/bcbioBase/
-  dev_url: "{{ github }}"
-  license: MIT
-  license_file: LICENSE
-  summary: Base functions and generics for bcbio R packages.
-
+  - lib/R/lib/
+  - lib/
 extra:
   recipe-maintainers:
-    - mjsteinbaugh
+  - mjsteinbaugh
+package:
+  name: r-bcbiobase
+  version: 0.6.12
+requirements:
+  host:
+  - r-base
+  - bioconductor-s4vectors >=0.24
+  - r-basejump >=0.12.0
+  - r-goalie >=0.4.1
+  - r-plyr >=1.8
+  - r-stringr >=1.4
+  - r-rdrop2 >=0.8
+  run:
+  - r-base
+  - bioconductor-s4vectors >=0.24
+  - r-basejump >=0.12.0
+  - r-goalie >=0.4.1
+  - r-plyr >=1.8
+  - r-stringr >=1.4
+  - r-rdrop2 >=0.8
+source:
+  sha256: 8c552ca3cefc44b6dd81c402138f350610c1be09b578401993afd34a1cbc0c66
+  url: https://github.com/hbc/bcbioBase/archive/v0.6.12.tar.gz
+test:
+  commands:
+  - $R -e "library('bcbioBase')"

@@ -1,38 +1,30 @@
-{% set name = "pyranges" %}
-{% set version = "0.0.74" %}
-
-package:
-  name: '{{ name|lower }}'
-  version: '{{ version }}'
-
-source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 718e9714a49e10d927d6dbdd91b8df36df3731ac098f3fc2691d0570c8b9c946
-
-build:
-  number: 0
-  noarch: python
-  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv
-
-requirements:
-  host:
-    - python
-    - pip
-  run:
-    - python
-    - pandas
-    - ncls >=0.0.50
-    - tabulate
-    - sorted_nearest >=0.0.30
-    - pyrle
-    - natsort
-
-test:
-  imports:
-    - pyranges
-
 about:
   home: http://github.com/endrebak/pyranges
   license: MIT
-  summary: GenomicRanges for Python.
   license_file: LICENSE
+  summary: GenomicRanges for Python.
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --no-deps --ignore-installed -vv
+package:
+  name: pyranges
+  version: 0.0.74
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - pandas
+  - ncls >=0.0.50
+  - tabulate
+  - sorted_nearest >=0.0.30
+  - pyrle
+  - natsort
+source:
+  sha256: 718e9714a49e10d927d6dbdd91b8df36df3731ac098f3fc2691d0570c8b9c946
+  url: https://pypi.io/packages/source/p/pyranges/pyranges-0.0.74.tar.gz
+test:
+  imports:
+  - pyranges

@@ -1,37 +1,31 @@
-{% set version = "2.10.0" %}
-{% set name = "DiffLogo" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 01ed1adc8409333b7072fe3965670cf7
+about:
+  description: DiffLogo is an easy-to-use tool to visualize motif differences.
+  home: https://bioconductor.org/packages/3.10/bioc/html/DiffLogo.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: 'DiffLogo: A comparative visualisation of biooligomer motifs'
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: knitr, testthat, seqLogo, MotifDb
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-difflogo
+  version: 2.10.0
 requirements:
   host:
-    - r-base
-    - r-cba
+  - r-base
+  - r-cba
   run:
-    - r-base
-    - r-cba
+  - r-base
+  - r-cba
+source:
+  md5: 01ed1adc8409333b7072fe3965670cf7
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/DiffLogo_2.10.0.tar.gz
+  - https://bioarchive.galaxyproject.org/DiffLogo_2.10.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-difflogo/bioconductor-difflogo_2.10.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>= 2)'
-  summary: 'DiffLogo: A comparative visualisation of biooligomer motifs'
-  description: 'DiffLogo is an easy-to-use tool to visualize motif differences.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('DiffLogo')"

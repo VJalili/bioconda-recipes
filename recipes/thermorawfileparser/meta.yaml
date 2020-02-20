@@ -1,36 +1,28 @@
-{% set name = "ThermoRawFileParser" %}
-{% set version = "1.2.1" %}
-
-package:
-  name: {{ name|lower }}
-  version: {{ version }}
-
-build:
-  number: 0
-  noarch: generic
-  script:
-    - mkdir $PREFIX/bin
-    - cp * $PREFIX/bin
-    - cp $RECIPE_DIR/ThermoRawFileParser.sh $PREFIX/bin
-    - chmod +x $PREFIX/bin/ThermoRawFileParser.sh
-
-source:
-  # downloading pre-compiled packages, msbuild is a hell to compile unter Linux
-  url: https://github.com/compomics/ThermoRawFileParser/releases/download/v{{ version }}/ThermoRawFileParser.zip
-  sha256: 74b0a0be015c5e593487d1401be90e29703e6e0fe75a68ab03b8cc152d6b2129
-
-requirements:
-  run:
-    - mono >=5
-
-test:
-  commands:
-    - ThermoRawFileParser.sh 2>&1 | grep metadata
-
 about:
+  dev_url: https://github.com/compomics/ThermoRawFileParser
+  doc_url: https://github.com/compomics/ThermoRawFileParser/blob/master/README.md
   home: https://github.com/compomics/ThermoRawFileParser
   license: Other
   license_file: LICENSE
-  summary: Wrapper around the .net (C#) ThermoFisher ThermoRawFileReader library for running on Linux with mono
-  dev_url: https://github.com/compomics/ThermoRawFileParser
-  doc_url: https://github.com/compomics/ThermoRawFileParser/blob/master/README.md
+  summary: Wrapper around the .net (C#) ThermoFisher ThermoRawFileReader library for
+    running on Linux with mono
+build:
+  noarch: generic
+  number: 0
+  script:
+  - mkdir $PREFIX/bin
+  - cp * $PREFIX/bin
+  - cp $RECIPE_DIR/ThermoRawFileParser.sh $PREFIX/bin
+  - chmod +x $PREFIX/bin/ThermoRawFileParser.sh
+package:
+  name: thermorawfileparser
+  version: 1.2.1
+requirements:
+  run:
+  - mono >=5
+source:
+  sha256: 74b0a0be015c5e593487d1401be90e29703e6e0fe75a68ab03b8cc152d6b2129
+  url: https://github.com/compomics/ThermoRawFileParser/releases/download/v1.2.1/ThermoRawFileParser.zip
+test:
+  commands:
+  - ThermoRawFileParser.sh 2>&1 | grep metadata

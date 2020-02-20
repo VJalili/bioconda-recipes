@@ -1,50 +1,47 @@
-{% set version = "2.6.0" %}
-{% set name = "CancerInSilico" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 9f80e928cb1205f8eddeec2180f08126
+about:
+  description: The CancerInSilico package provides an R interface for running mathematical
+    models of tumor progresson and generating gene expression data from the results.
+    This package has the underlying models implemented in C++ and the output and analysis
+    features implemented in R.
+  home: https://bioconductor.org/packages/3.10/bioc/html/CancerInSilico.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: An R interface for computational modeling of tumor progression
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-# Suggests: testthat, knitr, rmarkdown, BiocStyle, Rtsne, viridis, rgl, gplots
-requirements:
-  host:
-    - r-base
-    - r-bh
-    - r-rcpp
-  run:
-    - r-base
-    - r-bh
-    - r-rcpp
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - make
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-2
-  summary: 'An R interface for computational modeling of tumor progression'
-  description: 'The CancerInSilico package provides an R interface for running mathematical models of tumor progresson and generating gene expression data from the results. This package has the underlying models implemented in C++ and the output and analysis features implemented in R.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:cancerinsilico
-    - doi:10.1038/nmeth.3252
+  - biotools:cancerinsilico
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-cancerinsilico
     path: recipes/bioconductor-cancerinsilico
     version: 2.2.0
-
+package:
+  name: bioconductor-cancerinsilico
+  version: 2.6.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  - r-bh
+  - r-rcpp
+  run:
+  - r-base
+  - r-bh
+  - r-rcpp
+source:
+  md5: 9f80e928cb1205f8eddeec2180f08126
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/CancerInSilico_2.6.0.tar.gz
+  - https://bioarchive.galaxyproject.org/CancerInSilico_2.6.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-cancerinsilico/bioconductor-cancerinsilico_2.6.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('CancerInSilico')"

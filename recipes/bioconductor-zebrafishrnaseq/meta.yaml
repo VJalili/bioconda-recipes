@@ -1,36 +1,31 @@
-{% set version = "1.6.0" %}
-{% set name = "zebrafishRNASeq" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: b596f49dfa03f1c7f09b912b0852a45f
+about:
+  description: Gene-level read counts from RNA-Seq for gallein-treated and control
+    zebrafish.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/zebrafishRNASeq.html
+  license: GPL
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Zebrafish RNA-Seq Experimental Data from Ferreira et al. (2014)
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: BiocStyle, knitr
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-zebrafishrnaseq
+  version: 1.6.0
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
-    - curl
+  - r-base
+  - curl
+source:
+  md5: b596f49dfa03f1c7f09b912b0852a45f
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/zebrafishRNASeq_1.6.0.tar.gz
+  - https://bioarchive.galaxyproject.org/zebrafishRNASeq_1.6.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-zebrafishrnaseq/bioconductor-zebrafishrnaseq_1.6.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: GPL
-  summary: 'Zebrafish RNA-Seq Experimental Data from Ferreira et al. (2014)'
-  description: 'Gene-level read counts from RNA-Seq for gallein-treated and control zebrafish.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('zebrafishRNASeq')"

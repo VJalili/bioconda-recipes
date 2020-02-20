@@ -1,38 +1,32 @@
-{% set version = "1.4.0" %}
-{% set name = "OMICsPCAdata" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 57b0910163817a6acb30253d29493326
+about:
+  description: Supporting data for package OMICsPCA
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/OMICsPCAdata.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Supporting data for package OMICsPCA
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: knitr, kableExtra, rmarkdown
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-omicspcadata
+  version: 1.4.0
 requirements:
   host:
-    - 'bioconductor-multiassayexperiment >=1.12.0,<1.13.0'
-    - r-base
+  - bioconductor-multiassayexperiment >=1.12.0,<1.13.0
+  - r-base
   run:
-    - 'bioconductor-multiassayexperiment >=1.12.0,<1.13.0'
-    - r-base
-    - curl
+  - bioconductor-multiassayexperiment >=1.12.0,<1.13.0
+  - r-base
+  - curl
+source:
+  md5: 57b0910163817a6acb30253d29493326
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/OMICsPCAdata_1.4.0.tar.gz
+  - https://bioarchive.galaxyproject.org/OMICsPCAdata_1.4.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-omicspcadata/bioconductor-omicspcadata_1.4.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: GPL-3
-  summary: 'Supporting data for package OMICsPCA'
-  description: 'Supporting data for package OMICsPCA'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('OMICsPCAdata')"

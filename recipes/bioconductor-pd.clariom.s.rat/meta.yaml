@@ -1,48 +1,43 @@
-{% set version = "3.14.1" %}
-{% set name = "pd.clariom.s.rat" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: be464b3eaea8eb8bdbcca6047fce4dea
+about:
+  description: Platform Design Info for Affymetrix Clariom_S_Rat
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/pd.clariom.s.rat.html
+  license: Artistic-2.0
+  summary: Platform Design Info for Affymetrix Clariom_S_Rat
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-pd.clariom.s.rat
+  version: 3.14.1
 requirements:
   host:
-    - 'bioconductor-biostrings >=2.54.0,<2.55.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - 'bioconductor-oligo >=1.50.0,<1.51.0'
-    - 'bioconductor-oligoclasses >=1.48.0,<1.49.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - r-base
-    - 'r-dbi >=0.3.1'
-    - 'r-rsqlite >=1.0.0'
+  - bioconductor-biostrings >=2.54.0,<2.55.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - bioconductor-oligo >=1.50.0,<1.51.0
+  - bioconductor-oligoclasses >=1.48.0,<1.49.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - r-base
+  - r-dbi >=0.3.1
+  - r-rsqlite >=1.0.0
   run:
-    - 'bioconductor-biostrings >=2.54.0,<2.55.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - 'bioconductor-oligo >=1.50.0,<1.51.0'
-    - 'bioconductor-oligoclasses >=1.48.0,<1.49.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - r-base
-    - 'r-dbi >=0.3.1'
-    - 'r-rsqlite >=1.0.0'
-    - curl
+  - bioconductor-biostrings >=2.54.0,<2.55.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - bioconductor-oligo >=1.50.0,<1.51.0
+  - bioconductor-oligoclasses >=1.48.0,<1.49.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - r-base
+  - r-dbi >=0.3.1
+  - r-rsqlite >=1.0.0
+  - curl
+source:
+  md5: be464b3eaea8eb8bdbcca6047fce4dea
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/pd.clariom.s.rat_3.14.1.tar.gz
+  - https://bioarchive.galaxyproject.org/pd.clariom.s.rat_3.14.1.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-pd.clariom.s.rat/bioconductor-pd.clariom.s.rat_3.14.1_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Platform Design Info for Affymetrix Clariom_S_Rat'
-  description: 'Platform Design Info for Affymetrix Clariom_S_Rat'
-
+  - $R -e "library('pd.clariom.s.rat')"

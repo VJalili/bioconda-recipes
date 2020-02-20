@@ -1,42 +1,32 @@
-{% set name = "sigmut" %}
-{% set version = "1.0" %}
-{% set sha256 = "cf938a2e70bc6dffba86c62fac3028b21e4e4e3bf0cfbd7a251f4f85e67b5f64" %}
-
-package:
-  name: {{ name|lower }}
-  version: {{ version }}
-
-source:
-  url: https://github.com/lgpdv/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-
-build:
-  number: 0
-  noarch: generic
-
-requirements:
-  run:
-    - python >=3.7
-    - matplotlib-base
-    - zlib
-    - pandas
-    - numpy >=1.17.5
-    - scipy
-    - statsmodels
-
-test:
-  commands:
-    - sigprofiler -h
-    - sigprofiler -ig GRCh38
-
 about:
+  dev_url: https://github.com/lgpdv/sigmut
   home: https://github.com/lgpdv/sigmut
   license: BSD 2-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: 'Wrapper of SigProfiler (Copyright(c) 2019, Erik Bergstrom [Alexandrov Lab])'
-  dev_url: https://github.com/lgpdv/sigmut
-
+  summary: Wrapper of SigProfiler (Copyright(c) 2019, Erik Bergstrom [Alexandrov Lab])
+build:
+  noarch: generic
+  number: 0
 extra:
   recipe-maintainers:
-    - lgpdv
+  - lgpdv
+package:
+  name: sigmut
+  version: 1.0
+requirements:
+  run:
+  - python >=3.7
+  - matplotlib-base
+  - zlib
+  - pandas
+  - numpy >=1.17.5
+  - scipy
+  - statsmodels
+source:
+  sha256: cf938a2e70bc6dffba86c62fac3028b21e4e4e3bf0cfbd7a251f4f85e67b5f64
+  url: https://github.com/lgpdv/sigmut/archive/1.0.tar.gz
+test:
+  commands:
+  - sigprofiler -h
+  - sigprofiler -ig GRCh38

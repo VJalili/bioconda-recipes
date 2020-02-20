@@ -1,40 +1,35 @@
-{% set version = "1.24.0" %}
-{% set name = "harbChIP" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: af8b667dfbc4aa3e6a72177101a32f47
-build:
-  number: 0
-  rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-requirements:
-  host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-biostrings >=2.54.0,<2.55.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - r-base
-  run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-biostrings >=2.54.0,<2.55.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - r-base
-    - curl
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
 about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
+  description: data from a yeast ChIP-chip experiment
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/harbChIP.html
   license: Artistic-2.0
   summary: 'Experimental Data Package: harbChIP'
-  description: 'data from a yeast ChIP-chip experiment'
-
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-harbchip
+  version: 1.24.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-biostrings >=2.54.0,<2.55.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - r-base
+  run:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-biostrings >=2.54.0,<2.55.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - r-base
+  - curl
+source:
+  md5: af8b667dfbc4aa3e6a72177101a32f47
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/harbChIP_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/harbChIP_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-harbchip/bioconductor-harbchip_1.24.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('harbChIP')"

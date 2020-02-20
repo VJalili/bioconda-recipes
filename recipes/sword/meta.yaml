@@ -1,28 +1,20 @@
-{% set name = "sword" %}
-{% set version = "1.0.3" %}
-
-package:
-  name: {{ name|lower }}
-  version: {{ version }}
-
-build:
-  number: 0
-
-source:
-  url: https://github.com/rvaser/sword/releases/download/{{ version }}/sword-v{{ version }}.tar.gz
-  sha256: fdccb14240d12391a4793fc12bd588e401368e8750af50d4d62b89e22e4d8394
-
-requirements:
-  build:
-    - {{ compiler('cxx') }}
-    - cmake
-
-test:
-  commands:
-    - sword --version
-
 about:
   home: https://github.com/rvaser/sword
   license: GPL3
   license_file: LICENSE
   summary: SWORD - a highly efficient protein database search
+build:
+  number: 0
+package:
+  name: sword
+  version: 1.0.3
+requirements:
+  build:
+  - None
+  - cmake
+source:
+  sha256: fdccb14240d12391a4793fc12bd588e401368e8750af50d4d62b89e22e4d8394
+  url: https://github.com/rvaser/sword/releases/download/1.0.3/sword-v1.0.3.tar.gz
+test:
+  commands:
+  - sword --version

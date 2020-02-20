@@ -1,47 +1,46 @@
-{% set version = "1.28.0" %}
-{% set name = "lmdme" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 97192fea6524631a5f7e4f507d59df90
+about:
+  description: 'linear ANOVA decomposition of Multivariate Designed Experiments implementation
+    based on limma lmFit. Features: i)Flexible formula type interface, ii) Fast limma
+    based implementation, iii) p-values for each estimated coefficient levels in each
+    factor, iv) F values for factor effects and v) plotting functions for PCA and
+    PLS.'
+  home: https://bioconductor.org/packages/3.10/bioc/html/lmdme.html
+  license: GPL (>=2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Linear Model decomposition for Designed Multivariate Experiments
 build:
+  noarch: generic
   number: 1
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-requirements:
-  host:
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - 'bioconductor-stemhypoxia >=1.22.0,<1.23.0'
-    - r-base
-    - r-pls
-  run:
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - 'bioconductor-stemhypoxia >=1.22.0,<1.23.0'
-    - r-base
-    - r-pls
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>=2)'
-  summary: 'Linear Model decomposition for Designed Multivariate Experiments'
-  description: 'linear ANOVA decomposition of Multivariate Designed Experiments implementation based on limma lmFit. Features: i)Flexible formula type interface, ii) Fast limma based implementation, iii) p-values for each estimated coefficient levels in each factor, iv) F values for factor effects and v) plotting functions for PCA and PLS.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:lmdme
+  - biotools:lmdme
   parent_recipe:
     name: bioconductor-lmdme
     path: recipes/bioconductor-lmdme
     version: 1.22.0
-
+package:
+  name: bioconductor-lmdme
+  version: 1.28.0
+requirements:
+  host:
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - bioconductor-stemhypoxia >=1.22.0,<1.23.0
+  - r-base
+  - r-pls
+  run:
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - bioconductor-stemhypoxia >=1.22.0,<1.23.0
+  - r-base
+  - r-pls
+source:
+  md5: 97192fea6524631a5f7e4f507d59df90
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/lmdme_1.28.0.tar.gz
+  - https://bioarchive.galaxyproject.org/lmdme_1.28.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-lmdme/bioconductor-lmdme_1.28.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('lmdme')"

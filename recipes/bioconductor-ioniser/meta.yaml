@@ -1,69 +1,67 @@
-{% set version = "2.10.0" %}
-{% set name = "IONiseR" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 9e170d6d6704abc53ee7614a25bc092f
+about:
+  description: IONiseR provides tools for the quality assessment of Oxford Nanopore
+    MinION data. It extracts summary statistics from a set of fast5 files and can
+    be used either before or after base calling.  In addition to standard summaries
+    of the read-types produced, it provides a number of plots for visualising metrics
+    relative to experiment run time or spatially over the surface of a flowcell.
+  home: https://bioconductor.org/packages/3.10/bioc/html/IONiseR.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Quality Assessment Tools for Oxford Nanopore MinION data
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: BiocStyle, knitr, rmarkdown, gridExtra, testthat, minionSummaryData
-requirements:
-  host:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-biocparallel >=1.20.0,<1.21.0'
-    - 'bioconductor-biostrings >=2.54.0,<2.55.0'
-    - 'bioconductor-rhdf5 >=2.30.0,<2.31.0'
-    - 'bioconductor-shortread >=1.44.0,<1.45.0'
-    - 'bioconductor-xvector >=0.26.0,<0.27.0'
-    - r-base
-    - r-bit64
-    - r-dplyr
-    - r-ggplot2
-    - r-magrittr
-    - r-stringr
-    - r-tibble
-    - r-tidyr
-  run:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-biocparallel >=1.20.0,<1.21.0'
-    - 'bioconductor-biostrings >=2.54.0,<2.55.0'
-    - 'bioconductor-rhdf5 >=2.30.0,<2.31.0'
-    - 'bioconductor-shortread >=1.44.0,<1.45.0'
-    - 'bioconductor-xvector >=0.26.0,<0.27.0'
-    - r-base
-    - r-bit64
-    - r-dplyr
-    - r-ggplot2
-    - r-magrittr
-    - r-stringr
-    - r-tibble
-    - r-tidyr
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'MIT + file LICENSE'
-  summary: 'Quality Assessment Tools for Oxford Nanopore MinION data'
-  description: 'IONiseR provides tools for the quality assessment of Oxford Nanopore MinION data. It extracts summary statistics from a set of fast5 files and can be used either before or after base calling.  In addition to standard summaries of the read-types produced, it provides a number of plots for visualising metrics relative to experiment run time or spatially over the surface of a flowcell.'
-  license_file: LICENSE
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:ioniser
-    - doi:10.1038/nmeth.3252
+  - biotools:ioniser
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-ioniser
     path: recipes/bioconductor-ioniser
     version: 2.4.0
-
+package:
+  name: bioconductor-ioniser
+  version: 2.10.0
+requirements:
+  host:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-biocparallel >=1.20.0,<1.21.0
+  - bioconductor-biostrings >=2.54.0,<2.55.0
+  - bioconductor-rhdf5 >=2.30.0,<2.31.0
+  - bioconductor-shortread >=1.44.0,<1.45.0
+  - bioconductor-xvector >=0.26.0,<0.27.0
+  - r-base
+  - r-bit64
+  - r-dplyr
+  - r-ggplot2
+  - r-magrittr
+  - r-stringr
+  - r-tibble
+  - r-tidyr
+  run:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-biocparallel >=1.20.0,<1.21.0
+  - bioconductor-biostrings >=2.54.0,<2.55.0
+  - bioconductor-rhdf5 >=2.30.0,<2.31.0
+  - bioconductor-shortread >=1.44.0,<1.45.0
+  - bioconductor-xvector >=0.26.0,<0.27.0
+  - r-base
+  - r-bit64
+  - r-dplyr
+  - r-ggplot2
+  - r-magrittr
+  - r-stringr
+  - r-tibble
+  - r-tidyr
+source:
+  md5: 9e170d6d6704abc53ee7614a25bc092f
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/IONiseR_2.10.0.tar.gz
+  - https://bioarchive.galaxyproject.org/IONiseR_2.10.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-ioniser/bioconductor-ioniser_2.10.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('IONiseR')"

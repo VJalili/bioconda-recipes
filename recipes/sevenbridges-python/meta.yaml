@@ -1,58 +1,50 @@
-{% set version = "0.28.1" %}
-{% set sha256 = "21c7a6431eaf613dc5e92585d3759b3a0fa0bf32696eabac1ef5821aa0a4c3d6" %}
-
-package:
-  name: sevenbridges-python
-  version: '{{ version }}'
-
-source:
-  url: https://pypi.io/packages/source/s/sevenbridges-python/sevenbridges-python-{{ version }}.tar.gz
-  sha256: '{{ sha256 }}'
-
-build:
-  noarch: python
-  number: 0
-  script: $PYTHON -m pip install --no-deps --ignore-installed --no-cache-dir .
-
-requirements:
-  host:
-    - python
-    - pip
-  run:
-    - python
-    - futures >=3.0.4  # [py2k]
-    - requests >=2.20.0
-    - six >=1.10.0
-
-test:
-  requires:
-    - pytest
-  imports:
-    - sevenbridges
-    - sevenbridges.http
-    - sevenbridges.meta
-    - sevenbridges.models
-    - sevenbridges.models.compound
-    - sevenbridges.models.compound.billing
-    - sevenbridges.models.compound.files
-    - sevenbridges.models.compound.jobs
-    - sevenbridges.models.compound.limits
-    - sevenbridges.models.compound.markers
-    - sevenbridges.models.compound.projects
-    - sevenbridges.models.compound.tasks
-    - sevenbridges.models.compound.volumes
-    - sevenbridges.transfer
-
 about:
+  description: sevenbridges-python is a Python library that provides an interface
+    for the Seven Bridges Platform the Cancer Genomics Cloud and Cavatica public APIs.
+    It works with Python versions 2.6+ and supports Python 3.
+  dev_url: https://github.com/sbg/sevenbridges-python
   home: https://github.com/sbg/sevenbridges-python
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE
   summary: SBG API python client bindings
-  description: sevenbridges-python is a Python library that provides an interface for the Seven Bridges Platform the Cancer
-    Genomics Cloud and Cavatica public APIs. It works with Python versions 2.6+ and supports Python 3.
-  dev_url: https://github.com/sbg/sevenbridges-python
-
+build:
+  noarch: python
+  number: 0
+  script: $PYTHON -m pip install --no-deps --ignore-installed --no-cache-dir .
 extra:
   recipe-maintainers:
-    - QuicksilverMachine
+  - QuicksilverMachine
+package:
+  name: sevenbridges-python
+  version: 0.28.1
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - futures >=3.0.4
+  - requests >=2.20.0
+  - six >=1.10.0
+source:
+  sha256: 21c7a6431eaf613dc5e92585d3759b3a0fa0bf32696eabac1ef5821aa0a4c3d6
+  url: https://pypi.io/packages/source/s/sevenbridges-python/sevenbridges-python-0.28.1.tar.gz
+test:
+  imports:
+  - sevenbridges
+  - sevenbridges.http
+  - sevenbridges.meta
+  - sevenbridges.models
+  - sevenbridges.models.compound
+  - sevenbridges.models.compound.billing
+  - sevenbridges.models.compound.files
+  - sevenbridges.models.compound.jobs
+  - sevenbridges.models.compound.limits
+  - sevenbridges.models.compound.markers
+  - sevenbridges.models.compound.projects
+  - sevenbridges.models.compound.tasks
+  - sevenbridges.models.compound.volumes
+  - sevenbridges.transfer
+  requires:
+  - pytest

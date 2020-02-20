@@ -1,43 +1,39 @@
-{% set version = "3.2.2" %}
-{% set name = "TxDb.Hsapiens.UCSC.hg18.knownGene" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: e8b32a672e87345c72bb30be73d1e2d6
+about:
+  description: Exposes an annotation databases generated from UCSC by exposing these
+    as TxDb objects
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/TxDb.Hsapiens.UCSC.hg18.knownGene.html
+  license: Artistic-2.0
+  summary: Annotation package for TxDb object(s)
 build:
+  noarch: generic
   number: 7
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-requirements:
-  host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - 'bioconductor-genomicfeatures >=1.38.0,<1.39.0'
-    - r-base
-  run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - 'bioconductor-genomicfeatures >=1.38.0,<1.39.0'
-    - r-base
-    - curl
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Annotation package for TxDb object(s)'
-  description: 'Exposes an annotation databases generated from UCSC by exposing these as TxDb objects'
+  - lib/R/lib/
+  - lib/
 extra:
   parent_recipe:
     name: bioconductor-txdb.hsapiens.ucsc.hg18.knowngene
     path: recipes/bioconductor-txdb.hsapiens.ucsc.hg18.knowngene
     version: 3.2.2
-
+package:
+  name: bioconductor-txdb.hsapiens.ucsc.hg18.knowngene
+  version: 3.2.2
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - bioconductor-genomicfeatures >=1.38.0,<1.39.0
+  - r-base
+  run:
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - bioconductor-genomicfeatures >=1.38.0,<1.39.0
+  - r-base
+  - curl
+source:
+  md5: e8b32a672e87345c72bb30be73d1e2d6
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/TxDb.Hsapiens.UCSC.hg18.knownGene_3.2.2.tar.gz
+  - https://bioarchive.galaxyproject.org/TxDb.Hsapiens.UCSC.hg18.knownGene_3.2.2.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-txdb.hsapiens.ucsc.hg18.knowngene/bioconductor-txdb.hsapiens.ucsc.hg18.knowngene_3.2.2_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('TxDb.Hsapiens.UCSC.hg18.knownGene')"

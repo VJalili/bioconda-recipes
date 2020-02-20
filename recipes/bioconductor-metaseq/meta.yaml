@@ -1,49 +1,45 @@
-{% set version = "1.26.0" %}
-{% set name = "metaSeq" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: f19235bd76be69998962118acfe1dfe5
+about:
+  description: The probabilities by one-sided NOISeq are combined by Fisher's method
+    or Stouffer's method
+  home: https://bioconductor.org/packages/3.10/bioc/html/metaSeq.html
+  license: Artistic-2.0
+  summary: Meta-analysis of RNA-Seq count data in multiple studies
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-requirements:
-  host:
-    - 'bioconductor-noiseq >=2.30.0,<2.31.0'
-    - r-base
-    - r-rcpp
-    - r-snow
-  run:
-    - 'bioconductor-noiseq >=2.30.0,<2.31.0'
-    - r-base
-    - r-rcpp
-    - r-snow
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Meta-analysis of RNA-Seq count data in multiple studies'
-  description: 'The probabilities by one-sided NOISeq are combined by Fisher''s method or Stouffer''s method'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:metaseq
-    - doi:10.1038/nmeth.3252
+  - biotools:metaseq
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-metaseq
     path: recipes/bioconductor-metaseq
     version: 1.20.0
-
+package:
+  name: bioconductor-metaseq
+  version: 1.26.0
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - bioconductor-noiseq >=2.30.0,<2.31.0
+  - r-base
+  - r-rcpp
+  - r-snow
+  run:
+  - bioconductor-noiseq >=2.30.0,<2.31.0
+  - r-base
+  - r-rcpp
+  - r-snow
+source:
+  md5: f19235bd76be69998962118acfe1dfe5
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/metaSeq_1.26.0.tar.gz
+  - https://bioarchive.galaxyproject.org/metaSeq_1.26.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-metaseq/bioconductor-metaseq_1.26.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('metaSeq')"

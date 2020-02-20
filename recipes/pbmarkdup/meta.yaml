@@ -1,33 +1,24 @@
-{% set name = "pbmarkdup" %}
-{% set version = "1.0.0" %}
-{% set sha256 = "96b1bcf0bcfede03541b0e253bed4d34912339a2fe48c149960834f7c73e5645" %}
-
-package:
-  name: {{ name }}
-  version: {{ version }}
-
-source:
-  url: https://github.com/PacificBiosciences/pbmarkdup/releases/download/v{{ version }}/pbmarkdup
-  sha256: {{ sha256 }}
-
 about:
   home: https://github.com/PacificBiosciences/pbbioconda
   license: BSD-3-Clause-Clear
-  summary: pbmarkdup - Mark duplicate reads from PacBio sequencing of an amplified library
-
-extra:
-  recipe-maintainers:
-    - armintoepfer
-    - pb-dseifert
-    - mhsieh
-  skip-lints:
-    #repackaged binary
-    - should_be_noarch_generic
-
+  summary: pbmarkdup - Mark duplicate reads from PacBio sequencing of an amplified
+    library
 build:
   number: 0
-  skip: True  # [osx]
-
+  skip: true
+extra:
+  recipe-maintainers:
+  - armintoepfer
+  - pb-dseifert
+  - mhsieh
+  skip-lints:
+  - should_be_noarch_generic
+package:
+  name: pbmarkdup
+  version: 1.0.0
+source:
+  sha256: 96b1bcf0bcfede03541b0e253bed4d34912339a2fe48c149960834f7c73e5645
+  url: https://github.com/PacificBiosciences/pbmarkdup/releases/download/v1.0.0/pbmarkdup
 test:
   commands:
-    - pbmarkdup -h
+  - pbmarkdup -h

@@ -1,34 +1,30 @@
-{% set version = "1.0.1" %}
-{% set name = "humanomniexpress12v1bCrlmm" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: abdb730fc230db669e588e024ee7624b
+about:
+  description: Package with metadata for genotyping Illumina Omni Express 12 arrays
+    using the 'crlmm' package.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/humanomniexpress12v1bCrlmm.html
+  license: Artistic-2.0
+  summary: Metadata for fast genotyping with the 'crlmm' package
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-humanomniexpress12v1bcrlmm
+  version: 1.0.1
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
-    - curl
+  - r-base
+  - curl
+source:
+  md5: abdb730fc230db669e588e024ee7624b
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/humanomniexpress12v1bCrlmm_1.0.1.tar.gz
+  - https://bioarchive.galaxyproject.org/humanomniexpress12v1bCrlmm_1.0.1.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-humanomniexpress12v1bcrlmm/bioconductor-humanomniexpress12v1bcrlmm_1.0.1_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Metadata for fast genotyping with the ''crlmm'' package'
-  description: 'Package with metadata for genotyping Illumina Omni Express 12 arrays using the ''crlmm'' package.'
-
+  - $R -e "library('humanomniexpress12v1bCrlmm')"

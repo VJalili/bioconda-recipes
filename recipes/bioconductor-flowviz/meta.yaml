@@ -1,60 +1,54 @@
-{% set version = "1.50.0" %}
-{% set name = "flowViz" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: ff8f498a72e1d6823ecf2a72e3cbc5f2
+about:
+  description: Provides visualization tools for flow cytometry data.
+  home: https://bioconductor.org/packages/3.10/bioc/html/flowViz.html
+  license: Artistic-2.0
+  summary: Visualization for flow cytometry
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: colorspace, flowStats, knitr, testthat
-requirements:
-  host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-flowcore >=1.52.0,<1.53.0'
-    - r-base
-    - r-hexbin
-    - r-idpmisc
-    - r-kernsmooth
-    - r-lattice
-    - r-latticeextra
-    - r-mass
-    - r-rcolorbrewer
-  run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-flowcore >=1.52.0,<1.53.0'
-    - r-base
-    - r-hexbin
-    - r-idpmisc
-    - r-kernsmooth
-    - r-lattice
-    - r-latticeextra
-    - r-mass
-    - r-rcolorbrewer
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Visualization for flow cytometry'
-  description: 'Provides visualization tools for flow cytometry data.'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:flowviz
-    - doi:10.1093/bioinformatics/btn021
+  - biotools:flowviz
+  - doi:10.1093/bioinformatics/btn021
   parent_recipe:
     name: bioconductor-flowviz
     path: recipes/bioconductor-flowviz
     version: 1.44.0
-
+package:
+  name: bioconductor-flowviz
+  version: 1.50.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-flowcore >=1.52.0,<1.53.0
+  - r-base
+  - r-hexbin
+  - r-idpmisc
+  - r-kernsmooth
+  - r-lattice
+  - r-latticeextra
+  - r-mass
+  - r-rcolorbrewer
+  run:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-flowcore >=1.52.0,<1.53.0
+  - r-base
+  - r-hexbin
+  - r-idpmisc
+  - r-kernsmooth
+  - r-lattice
+  - r-latticeextra
+  - r-mass
+  - r-rcolorbrewer
+source:
+  md5: ff8f498a72e1d6823ecf2a72e3cbc5f2
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/flowViz_1.50.0.tar.gz
+  - https://bioarchive.galaxyproject.org/flowViz_1.50.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-flowviz/bioconductor-flowviz_1.50.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('flowViz')"

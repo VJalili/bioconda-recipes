@@ -1,36 +1,32 @@
-{% set version = "3.10.0" %}
-{% set name = "ecoliK12.db0" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: d5a5ec8d92f48c61066e05d4af297278
+about:
+  description: Base annotation databases for E coli K12 Strain, intended ONLY to be
+    used by AnnotationDbi to produce regular annotation packages.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/ecoliK12.db0.html
+  license: Artistic-2.0
+  summary: Base Level Annotation databases for E coli K12 Strain
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-ecolik12.db0
+  version: 3.10.0
 requirements:
   host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
   run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
-    - curl
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
+  - curl
+source:
+  md5: d5a5ec8d92f48c61066e05d4af297278
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/ecoliK12.db0_3.10.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ecoliK12.db0_3.10.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-ecolik12.db0/bioconductor-ecolik12.db0_3.10.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Base Level Annotation databases for E coli K12 Strain'
-  description: 'Base annotation databases for E coli K12 Strain, intended ONLY to be used by AnnotationDbi to produce regular annotation packages.'
-
+  - $R -e "library('ecoliK12.db0')"

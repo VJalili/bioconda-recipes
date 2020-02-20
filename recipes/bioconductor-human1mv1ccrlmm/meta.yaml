@@ -1,34 +1,30 @@
-{% set version = "1.0.3" %}
-{% set name = "human1mv1cCrlmm" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: b9f638c7b0ede50cb070f1bae85eb4dc
+about:
+  description: Package with metadata fast genotyping Illumina 1M arrays using the
+    'crlmm' package.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/human1mv1cCrlmm.html
+  license: Artistic-2.0
+  summary: Metadata for fast genotyping with the 'crlmm' package
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-human1mv1ccrlmm
+  version: 1.0.3
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
-    - curl
+  - r-base
+  - curl
+source:
+  md5: b9f638c7b0ede50cb070f1bae85eb4dc
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/human1mv1cCrlmm_1.0.3.tar.gz
+  - https://bioarchive.galaxyproject.org/human1mv1cCrlmm_1.0.3.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-human1mv1ccrlmm/bioconductor-human1mv1ccrlmm_1.0.3_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Metadata for fast genotyping with the ''crlmm'' package'
-  description: 'Package with metadata fast genotyping Illumina 1M arrays using the ''crlmm'' package.'
-
+  - $R -e "library('human1mv1cCrlmm')"

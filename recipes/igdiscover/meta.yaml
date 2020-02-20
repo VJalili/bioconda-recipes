@@ -1,52 +1,44 @@
-{% set version = "0.12.2" %}
-
-package:
-  name: igdiscover
-  version: {{ version }}
-
-source:
-  url: https://pypi.io/packages/source/i/igdiscover/igdiscover-{{ version }}.tar.gz
-  sha256: 50d662446f79385d8e6dddba5304517d959146d1e185880d0a48c153942f525b
-
-build:
-  number: 0
-  noarch: python
-  script: python -m pip install --no-deps --ignore-installed .
-
-requirements:
-  host:
-    - python >=3.6
-    - setuptools_scm
-    - pip
-  run:
-    - python >=3.6
-    - pandas 0.25.*
-    - numpy >=1.17.5
-    - matplotlib-base 3.1.*
-    - snakemake-minimal 5.9.*
-    - cutadapt >=2.5
-    - xopen >=0.8.2
-    - dnaio >=0.4.1
-    - tinyalign >=0.2
-    - seaborn 0.9.*
-    - scipy >=1.4.1
-    - ruamel.yaml 0.16.*
-    - muscle 3.8.*
-    - pear 0.9.6.*
-    - flash 1.2.*
-    - igblast 1.10.*
-
-test:
-  commands:
-    - igdiscover --help > /dev/null
-
 about:
   home: https://igdiscover.se/
-  license: 'MIT'
+  license: MIT
   license_file: LICENSE
-  summary: 'Analyze antibody repertoires and discover new V genes'
-
+  summary: Analyze antibody repertoires and discover new V genes
+build:
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
 extra:
   identifiers:
-    - biotools:igdiscover
-    - doi:10.1038/ncomms13642
+  - biotools:igdiscover
+  - doi:10.1038/ncomms13642
+package:
+  name: igdiscover
+  version: 0.12.2
+requirements:
+  host:
+  - python >=3.6
+  - setuptools_scm
+  - pip
+  run:
+  - python >=3.6
+  - pandas 0.25.*
+  - numpy >=1.17.5
+  - matplotlib-base 3.1.*
+  - snakemake-minimal 5.9.*
+  - cutadapt >=2.5
+  - xopen >=0.8.2
+  - dnaio >=0.4.1
+  - tinyalign >=0.2
+  - seaborn 0.9.*
+  - scipy >=1.4.1
+  - ruamel.yaml 0.16.*
+  - muscle 3.8.*
+  - pear 0.9.6.*
+  - flash 1.2.*
+  - igblast 1.10.*
+source:
+  sha256: 50d662446f79385d8e6dddba5304517d959146d1e185880d0a48c153942f525b
+  url: https://pypi.io/packages/source/i/igdiscover/igdiscover-0.12.2.tar.gz
+test:
+  commands:
+  - igdiscover --help > /dev/null

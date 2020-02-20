@@ -1,86 +1,76 @@
-{% set version = "0.18.6" %}
-
-package:
-  name: python-bioext
-  version: {{ version }}
-
-source:
-  url: https://github.com/veg/BioExt/archive/{{ version }}.tar.gz
-  sha256: 5004de2a01f85db4e8bbfe04741eba1af6797deea850c097fea2874694603c31
-  patches:               # [osx]
-    - osx-freetype.patch # [osx]
-
-build:
-  number: 2
-  skip: True # [py27]
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-  host:
-    - freetype
-    - python
-    - setuptools
-    - biopython
-    - pysam <=0.13
-    - numpy >=1.14.0
-    - scipy
-    - six
-    - python-consensuscore
-
-  run:
-    - freetype
-    - python
-    - biopython
-    - pysam <=0.13
-    - numpy >=1.14.0
-    - scipy
-    - six
-    - python-consensuscore
-
-test:
-  imports:
-    - BioExt
-    - BioExt.align
-    - BioExt.args
-    - BioExt.collections
-    - BioExt.errorize
-    - BioExt.freetype
-    - BioExt.freetype.ft_enums
-    - BioExt.io
-    - BioExt.io.BamIO
-    - BioExt.io.LazyAlignIO
-    - BioExt.io.SamIO
-    - BioExt.joblib
-    - BioExt.joblib.test
-    - BioExt.merge
-    - BioExt.misc
-    - BioExt.ndarray
-    - BioExt.optimize
-    - BioExt.orflist
-    - BioExt.phylo
-    - BioExt.quiver
-    - BioExt.rateclass
-    - BioExt.references
-    - BioExt.scorematrices
-    - BioExt.stats
-    - BioExt.uds
-    - BioExt.untranslate
-
-  commands:
-    - bam2fna 2>&1 | grep 'usage' > /dev/null
-    - bam2msa 2>&1 | grep 'usage' > /dev/null
-    - bealign 2>&1 | grep 'usage' > /dev/null
-    - clipedge 2>&1 | grep 'usage' > /dev/null
-    - consensus 2>&1 | grep 'usage' > /dev/null
-    - msa2bam 2>&1 | grep 'usage' > /dev/null
-    - seqmerge 2>&1 | grep 'usage' > /dev/null
-
 about:
   home: https://github.com/veg/BioExt.git
   license: GPL-3
-  summary: 'A few handy bioinformatics tools not already in BioPython'
-
+  summary: A few handy bioinformatics tools not already in BioPython
+build:
+  number: 2
+  skip: true
 extra:
   skip-lints:
-    - should_not_be_noarch_source
+  - should_not_be_noarch_source
+package:
+  name: python-bioext
+  version: 0.18.6
+requirements:
+  build:
+  - None
+  host:
+  - freetype
+  - python
+  - setuptools
+  - biopython
+  - pysam <=0.13
+  - numpy >=1.14.0
+  - scipy
+  - six
+  - python-consensuscore
+  run:
+  - freetype
+  - python
+  - biopython
+  - pysam <=0.13
+  - numpy >=1.14.0
+  - scipy
+  - six
+  - python-consensuscore
+source:
+  patches:
+  - osx-freetype.patch
+  sha256: 5004de2a01f85db4e8bbfe04741eba1af6797deea850c097fea2874694603c31
+  url: https://github.com/veg/BioExt/archive/0.18.6.tar.gz
+test:
+  commands:
+  - bam2fna 2>&1 | grep 'usage' > /dev/null
+  - bam2msa 2>&1 | grep 'usage' > /dev/null
+  - bealign 2>&1 | grep 'usage' > /dev/null
+  - clipedge 2>&1 | grep 'usage' > /dev/null
+  - consensus 2>&1 | grep 'usage' > /dev/null
+  - msa2bam 2>&1 | grep 'usage' > /dev/null
+  - seqmerge 2>&1 | grep 'usage' > /dev/null
+  imports:
+  - BioExt
+  - BioExt.align
+  - BioExt.args
+  - BioExt.collections
+  - BioExt.errorize
+  - BioExt.freetype
+  - BioExt.freetype.ft_enums
+  - BioExt.io
+  - BioExt.io.BamIO
+  - BioExt.io.LazyAlignIO
+  - BioExt.io.SamIO
+  - BioExt.joblib
+  - BioExt.joblib.test
+  - BioExt.merge
+  - BioExt.misc
+  - BioExt.ndarray
+  - BioExt.optimize
+  - BioExt.orflist
+  - BioExt.phylo
+  - BioExt.quiver
+  - BioExt.rateclass
+  - BioExt.references
+  - BioExt.scorematrices
+  - BioExt.stats
+  - BioExt.uds
+  - BioExt.untranslate

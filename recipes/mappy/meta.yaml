@@ -1,32 +1,25 @@
-{% set version = "2.17" %}
-
-package:
-  name: mappy
-  version: {{ version }}
-
-source:
-  url: https://pypi.io/packages/source/m/mappy/mappy-{{ version }}.tar.gz
-  sha256: ed1460efc9c6785df28065b7e93e93c92227f623a181f1a852dca6e6acb1a15f
-
-build:
-  number: 0
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-  host:
-    - python
-    - setuptools
-    - zlib
-  run:
-    - python
-    - zlib
-
-test:
-  imports:
-    - mappy
-
 about:
   home: https://github.com/lh3/minimap2
   license: MIT
-  summary: 'Minimap2 Python binding'
+  summary: Minimap2 Python binding
+build:
+  number: 0
+package:
+  name: mappy
+  version: 2.17
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - setuptools
+  - zlib
+  run:
+  - python
+  - zlib
+source:
+  sha256: ed1460efc9c6785df28065b7e93e93c92227f623a181f1a852dca6e6acb1a15f
+  url: https://pypi.io/packages/source/m/mappy/mappy-2.17.tar.gz
+test:
+  imports:
+  - mappy

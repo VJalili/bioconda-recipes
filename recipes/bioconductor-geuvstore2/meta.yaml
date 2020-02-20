@@ -1,41 +1,36 @@
-{% set version = "1.16.0" %}
-{% set name = "geuvStore2" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 0195181e4dff11ad4b27ce4ae5bfce22
+about:
+  description: demonstrate storage discipline for eQTL enumerations and analyses based
+    on a selection of GEUVADIS results
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/geuvStore2.html
+  license: Artistic-2.0
+  summary: demonstrate storage discipline for eQTL enumerations, revised
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: Homo.sapiens, knitr (>= 1.7), rmarkdown
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-geuvstore2
+  version: 1.16.0
 requirements:
   host:
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - 'bioconductor-gqtlbase >=1.18.0,<1.19.0'
-    - r-base
-    - r-batchjobs
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - bioconductor-gqtlbase >=1.18.0,<1.19.0
+  - r-base
+  - r-batchjobs
   run:
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - 'bioconductor-gqtlbase >=1.18.0,<1.19.0'
-    - r-base
-    - r-batchjobs
-    - curl
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - bioconductor-gqtlbase >=1.18.0,<1.19.0
+  - r-base
+  - r-batchjobs
+  - curl
+source:
+  md5: 0195181e4dff11ad4b27ce4ae5bfce22
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/geuvStore2_1.16.0.tar.gz
+  - https://bioarchive.galaxyproject.org/geuvStore2_1.16.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-geuvstore2/bioconductor-geuvstore2_1.16.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'demonstrate storage discipline for eQTL enumerations, revised'
-  description: 'demonstrate storage discipline for eQTL enumerations and analyses based on a selection of GEUVADIS results'
-
+  - $R -e "library('geuvStore2')"

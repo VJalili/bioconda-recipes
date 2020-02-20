@@ -1,23 +1,19 @@
-{% set name = "lace" %}
-{% set version = "1.00" %}
-
-package:
-  name: {{ name|lower }}
-  version: {{ version }}
-
+about:
+  home: https://github.com/Oshlack/Lace
+  license: Unknown
+  summary: 'Building SuperTranscripts: A linear representation of transcriptome data'
 build:
   number: 1
-
-source:
-  url: https://github.com/Oshlack/Lace/archive/v{{ version }}.tar.gz
-  md5: e5d93919b0b4eb3e3eebd7246b1cad3a
-  patches:
-    - lace.patch
-
+extra:
+  container:
+    extended-base: true
+  notes: 'Prefix with ''Lace_'' for the script name that is rather generic: ''Checker.py''.'
+package:
+  name: lace
+  version: 1.0
 requirements:
   build:
-  - {{ compiler('c') }}
-
+  - None
   run:
   - python
   - pandas
@@ -25,22 +21,15 @@ requirements:
   - numpy
   - matplotlib
   - blat
-
+source:
+  md5: e5d93919b0b4eb3e3eebd7246b1cad3a
+  patches:
+  - lace.patch
+  url: https://github.com/Oshlack/Lace/archive/v1.00.tar.gz
 test:
   commands:
-    - Lace.py -h
-    - Lace_Checker.py -h
-    - Mobius.py -h
-    - STViewer.py -h
-    - BuildSuperTranscript.py
-
-about:
-  home: https://github.com/Oshlack/Lace
-  license: Unknown
-  summary: 'Building SuperTranscripts: A linear representation of transcriptome data'
-
-extra:
-  notes: "Prefix with 'Lace_' for the script name that is rather generic: 'Checker.py'."
-  container:
-    # needs libGL.so.1
-    extended-base: true
+  - Lace.py -h
+  - Lace_Checker.py -h
+  - Mobius.py -h
+  - STViewer.py -h
+  - BuildSuperTranscript.py

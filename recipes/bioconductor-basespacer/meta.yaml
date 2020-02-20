@@ -1,46 +1,41 @@
-{% set version = "1.30.0" %}
-{% set name = "BaseSpaceR" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 4d01ddd54d8e812a62df73af6bb2c2d2
+about:
+  description: A rich R interface to Illumina's BaseSpace cloud computing environment,
+    enabling the fast development of data analysis and visualisation tools.
+  home: https://bioconductor.org/packages/3.10/bioc/html/BaseSpaceR.html
+  license: Apache License 2.0
+  summary: R SDK for BaseSpace RESTful API
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: RUnit, IRanges, Rsamtools
-requirements:
-  host:
-    - r-base
-    - r-rcurl
-    - r-rjsonio
-  run:
-    - r-base
-    - r-rcurl
-    - r-rjsonio
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'Apache License 2.0'
-  summary: 'R SDK for BaseSpace RESTful API'
-  description: 'A rich R interface to Illumina''s BaseSpace cloud computing environment, enabling the fast development of data analysis and visualisation tools.'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:basespacer
-    - doi:10.1038/nmeth.3252
+  - biotools:basespacer
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-basespacer
     path: recipes/bioconductor-basespacer
     version: 1.24.0
-
+package:
+  name: bioconductor-basespacer
+  version: 1.30.0
+requirements:
+  host:
+  - r-base
+  - r-rcurl
+  - r-rjsonio
+  run:
+  - r-base
+  - r-rcurl
+  - r-rjsonio
+source:
+  md5: 4d01ddd54d8e812a62df73af6bb2c2d2
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/BaseSpaceR_1.30.0.tar.gz
+  - https://bioarchive.galaxyproject.org/BaseSpaceR_1.30.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-basespacer/bioconductor-basespacer_1.30.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('BaseSpaceR')"

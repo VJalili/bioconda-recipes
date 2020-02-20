@@ -1,39 +1,30 @@
-{% set version = "2.6.0" %}
-
-package:
-  name: nanofilt
-  version: {{ version }}
-
-source:
-  url: https://pypi.io/packages/source/n/nanofilt/NanoFilt-{{ version }}.tar.gz
-  sha256: 0f833be4fbbbad20c1cb85dacc28ae6009ab1edc68f3dcf61ae7e74e33b5f653
-
-build:
-  entry_points:
-    - NanoFilt=nanofilt.NanoFilt:main
-  number: 0
-  noarch: python
-  
-requirements:
-  host:
-    - python >=3
-    - setuptools
-
-  run:
-    - python >=3
-    - biopython
-    - nanomath >=0.13.3
-    - nanoget >=0.15.0
-
-test:
-  imports:
-    - nanofilt
-
-  commands:
-    - NanoFilt --help
-
 about:
   home: https://github.com/wdecoster/nanofilt
   license: MIT License
-  summary: 'Filtering and trimming of Oxford Nanopore Sequencing data'
   license_family: MIT
+  summary: Filtering and trimming of Oxford Nanopore Sequencing data
+build:
+  entry_points:
+  - NanoFilt=nanofilt.NanoFilt:main
+  noarch: python
+  number: 0
+package:
+  name: nanofilt
+  version: 2.6.0
+requirements:
+  host:
+  - python >=3
+  - setuptools
+  run:
+  - python >=3
+  - biopython
+  - nanomath >=0.13.3
+  - nanoget >=0.15.0
+source:
+  sha256: 0f833be4fbbbad20c1cb85dacc28ae6009ab1edc68f3dcf61ae7e74e33b5f653
+  url: https://pypi.io/packages/source/n/nanofilt/NanoFilt-2.6.0.tar.gz
+test:
+  commands:
+  - NanoFilt --help
+  imports:
+  - nanofilt

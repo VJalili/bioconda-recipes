@@ -1,41 +1,37 @@
-{% set version = "1.6.0" %}
-{% set name = "BEARscc" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: f9b9cefbd313181ba352698a172c7aad
+about:
+  description: BEARscc is a noise estimation and injection tool that is designed to
+    assess putative single-cell RNA-seq clusters in the context of experimental noise
+    estimated by ERCC spike-in controls.
+  home: https://bioconductor.org/packages/3.10/bioc/html/BEARscc.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: BEARscc (Bayesian ERCC Assesstment of Robustness of Single Cell Clusters)
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: testthat, cowplot, knitr, rmarkdown, BiocStyle, NMF
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-bearscc
+  version: 1.6.0
 requirements:
   host:
-    - 'bioconductor-singlecellexperiment >=1.8.0,<1.9.0'
-    - r-base
-    - r-data.table
-    - r-ggplot2
+  - bioconductor-singlecellexperiment >=1.8.0,<1.9.0
+  - r-base
+  - r-data.table
+  - r-ggplot2
   run:
-    - 'bioconductor-singlecellexperiment >=1.8.0,<1.9.0'
-    - r-base
-    - r-data.table
-    - r-ggplot2
+  - bioconductor-singlecellexperiment >=1.8.0,<1.9.0
+  - r-base
+  - r-data.table
+  - r-ggplot2
+source:
+  md5: f9b9cefbd313181ba352698a172c7aad
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/BEARscc_1.6.0.tar.gz
+  - https://bioarchive.galaxyproject.org/BEARscc_1.6.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-bearscc/bioconductor-bearscc_1.6.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-3
-  summary: 'BEARscc (Bayesian ERCC Assesstment of Robustness of Single Cell Clusters)'
-  description: 'BEARscc is a noise estimation and injection tool that is designed to assess putative single-cell RNA-seq clusters in the context of experimental noise estimated by ERCC spike-in controls.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('BEARscc')"

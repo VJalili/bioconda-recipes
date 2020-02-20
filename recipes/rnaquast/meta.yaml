@@ -1,44 +1,36 @@
-{% set name = "rnaQUAST" %}
-{% set version = "2.0.0" %}
-{% set sha256 = "38f18a7371b6d28099f1d3254532b6093c83945d466e4fb362d46f8400a36b10" %}
-
-package:
-  name: {{ name | lower }}
-  version: {{ version }}
-
-source:
-  url: http://cab.spbu.ru/files/{{ name | lower }}/release{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-
-build:
-  number: 0
-  skip: True  # [osx]
-
-requirements:
-  run:
-    - python
-    - blast
-    - blat
-    - busco >=2
-    - emboss
-    - gmap
-    - gffutils
-    - joblib
-    - matplotlib-base
-    - ucsc-pslsort
-    - star
-    - tophat
-    - samtools
-
-test:
-  commands:
-    - rnaQUAST.py --test
-
 about:
-  summary: rnaQUAST is a tool for evaluating RNA-Seq assemblies using reference genome and gene database. In addition, rnaQUAST is also capable of estimating gene database coverage by raw reads and de novo quality assessment using third-party software.
   home: http://cab.spbu.ru/software/rnaquast/
   license: GPLv2
-
+  summary: rnaQUAST is a tool for evaluating RNA-Seq assemblies using reference genome
+    and gene database. In addition, rnaQUAST is also capable of estimating gene database
+    coverage by raw reads and de novo quality assessment using third-party software.
+build:
+  number: 0
+  skip: true
 extra:
   skip-lints:
-    - should_be_noarch_generic
+  - should_be_noarch_generic
+package:
+  name: rnaquast
+  version: 2.0.0
+requirements:
+  run:
+  - python
+  - blast
+  - blat
+  - busco >=2
+  - emboss
+  - gmap
+  - gffutils
+  - joblib
+  - matplotlib-base
+  - ucsc-pslsort
+  - star
+  - tophat
+  - samtools
+source:
+  sha256: 38f18a7371b6d28099f1d3254532b6093c83945d466e4fb362d46f8400a36b10
+  url: http://cab.spbu.ru/files/rnaquast/release2.0.0/rnaQUAST-2.0.0.tar.gz
+test:
+  commands:
+  - rnaQUAST.py --test

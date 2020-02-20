@@ -1,37 +1,31 @@
-{% set version = "1.13.0" %}
-{% set name = "MeSH.Rno.eg.db" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: a9743504e75944f9e45041c51d3342b9
+about:
+  description: Entrez Gene ID to MeSH ID table.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/MeSH.Rno.eg.db.html
+  license: Artistic-2.0
+  summary: Mapping table for Rattus norvegicus Gene ID to MeSH
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: RUnit, BiocGenerics
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-mesh.rno.eg.db
+  version: 1.13.0
 requirements:
   host:
-    - 'bioconductor-meshdbi >=1.22.0,<1.23.0'
-    - r-base
+  - bioconductor-meshdbi >=1.22.0,<1.23.0
+  - r-base
   run:
-    - 'bioconductor-meshdbi >=1.22.0,<1.23.0'
-    - r-base
-    - curl
+  - bioconductor-meshdbi >=1.22.0,<1.23.0
+  - r-base
+  - curl
+source:
+  md5: a9743504e75944f9e45041c51d3342b9
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/MeSH.Rno.eg.db_1.13.0.tar.gz
+  - https://bioarchive.galaxyproject.org/MeSH.Rno.eg.db_1.13.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mesh.rno.eg.db/bioconductor-mesh.rno.eg.db_1.13.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Mapping table for Rattus norvegicus Gene ID to MeSH'
-  description: 'Entrez Gene ID to MeSH ID table.'
-
+  - $R -e "library('MeSH.Rno.eg.db')"

@@ -1,36 +1,35 @@
-{% set version = "1.24.0" %}
-{% set name = "DonaPLLP2013" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 5db2018c596f3c59087c71708e5e1f2d
+about:
+  description: An experiment data package associated with the publication Dona et
+    al. (2013). Package contains runnable vignettes showing an example image segmentation
+    for one posterior lateral line primordium, and also the data table and code used
+    to analyze tissue-scale lifetime-ratio statistics.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/DonaPLLP2013.html
+  license: Artistic-2.0
+  summary: Supplementary data package for Dona et al. (2013) containing example images
+    and tables
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-donapllp2013
+  version: 1.24.0
 requirements:
   host:
-    - 'bioconductor-ebimage >=4.28.0,<4.29.0'
-    - r-base
+  - bioconductor-ebimage >=4.28.0,<4.29.0
+  - r-base
   run:
-    - 'bioconductor-ebimage >=4.28.0,<4.29.0'
-    - r-base
-    - curl
+  - bioconductor-ebimage >=4.28.0,<4.29.0
+  - r-base
+  - curl
+source:
+  md5: 5db2018c596f3c59087c71708e5e1f2d
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/DonaPLLP2013_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/DonaPLLP2013_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-donapllp2013/bioconductor-donapllp2013_1.24.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Supplementary data package for Dona et al. (2013) containing example images and tables'
-  description: 'An experiment data package associated with the publication Dona et al. (2013). Package contains runnable vignettes showing an example image segmentation for one posterior lateral line primordium, and also the data table and code used to analyze tissue-scale lifetime-ratio statistics.'
-
+  - $R -e "library('DonaPLLP2013')"

@@ -1,57 +1,46 @@
-{% set name = "pyprophet" %}
-{% set version = "2.1.4" %}
-{% set hash_type = "sha256" %}
-{% set hash_value = "04bfb3e05d9ba3a2bd17bb0a5aa8bc109e849a3ee8a9ed957a18979a8d010013" %}
-
-package:
-  name: '{{ name|lower }}'
-  version: '{{ version }}'
-
-source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  '{{ hash_type }}': '{{ hash_value }}'
-
-build:
-  number: 0
-  skip: True  # [py27]
-  entry_points:
-    - pyprophet=pyprophet.main:cli
-  script: python -m pip install --no-deps --ignore-installed .
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-  host:
-    - python
-    - pip
-    - cython
-    - numpy >=1.9
-  run:
-    - python
-    - {{ pin_compatible("numpy") }}
-    - scipy
-    - pandas >=0.17
-    - numexpr >=2.1
-    - scikit-learn >=0.17
-    - matplotlib
-    - seaborn
-    - xgboost
-    - hyperopt
-    - statsmodels >=0.8.0
-    - click
-
-test:
-  imports:
-    - pyprophet
-  commands:
-    - pyprophet --help
-
 about:
   home: http://github.com/uweschmitt/pyprophet
   license: BSD License
   license_family: BSD
   summary: Python reimplementation of mProphet peak scoring
+build:
+  entry_points:
+  - pyprophet=pyprophet.main:cli
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
+  skip: true
 extra:
   container:
-    # Click requires the extended container
     extended-base: true
+package:
+  name: pyprophet
+  version: 2.1.4
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  - cython
+  - numpy >=1.9
+  run:
+  - python
+  - None
+  - scipy
+  - pandas >=0.17
+  - numexpr >=2.1
+  - scikit-learn >=0.17
+  - matplotlib
+  - seaborn
+  - xgboost
+  - hyperopt
+  - statsmodels >=0.8.0
+  - click
+source:
+  sha256: 04bfb3e05d9ba3a2bd17bb0a5aa8bc109e849a3ee8a9ed957a18979a8d010013
+  url: https://pypi.io/packages/source/p/pyprophet/pyprophet-2.1.4.tar.gz
+test:
+  commands:
+  - pyprophet --help
+  imports:
+  - pyprophet

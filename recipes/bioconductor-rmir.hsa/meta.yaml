@@ -1,37 +1,31 @@
-{% set version = "1.0.5" %}
-{% set name = "RmiR.hsa" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: f22a18d1a34d12f8fc4ba3daaf1379fd
+about:
+  description: Various databases of microRNA Targets
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/RmiR.hsa.html
+  license: The Artistic License, Version 2.0
+  summary: Various databases of microRNA Targets
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: methods, hgug4112a.db
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-rmir.hsa
+  version: 1.0.5
 requirements:
   host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
   run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
-    - curl
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
+  - curl
+source:
+  md5: f22a18d1a34d12f8fc4ba3daaf1379fd
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/RmiR.hsa_1.0.5.tar.gz
+  - https://bioarchive.galaxyproject.org/RmiR.hsa_1.0.5.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rmir.hsa/bioconductor-rmir.hsa_1.0.5_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: 'The Artistic License, Version 2.0'
-  summary: 'Various databases of microRNA Targets'
-  description: 'Various databases of microRNA Targets'
-
+  - $R -e "library('RmiR.hsa')"

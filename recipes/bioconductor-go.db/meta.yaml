@@ -1,42 +1,37 @@
-{% set version = "3.10.0" %}
-{% set name = "GO.db" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: cf5a09ce40972d42b010bd4725dee937
+about:
+  description: A set of annotation maps describing the entire Gene Ontology assembled
+    using data from GO
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/GO.db.html
+  license: Artistic-2.0
+  summary: A set of annotation maps describing the entire Gene Ontology
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: DBI
-requirements:
-  host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
-  run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
-    - curl
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'A set of annotation maps describing the entire Gene Ontology'
-  description: 'A set of annotation maps describing the entire Gene Ontology assembled using data from GO'
+  - lib/R/lib/
+  - lib/
 extra:
   parent_recipe:
     name: bioconductor-go.db
     path: recipes/bioconductor-go.db
     version: 3.6.0
-
+package:
+  name: bioconductor-go.db
+  version: 3.10.0
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
+  run:
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
+  - curl
+source:
+  md5: cf5a09ce40972d42b010bd4725dee937
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/GO.db_3.10.0.tar.gz
+  - https://bioarchive.galaxyproject.org/GO.db_3.10.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-go.db/bioconductor-go.db_3.10.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('GO.db')"

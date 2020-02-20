@@ -1,37 +1,33 @@
-{% set version = "1.6.0" %}
-{% set name = "RRBSdata" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 1017b0f807cacfc6a04c242c4c82d219
+about:
+  description: RRBS data set comprising 12 samples with simulated differentially methylated
+    regions (DMRs).
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/RRBSdata.html
+  license: LGPL-3
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: An RRBS data set with 12 samples and 10,000 simulated DMRs
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-rrbsdata
+  version: 1.6.0
 requirements:
   host:
-    - 'bioconductor-biseq >=1.26.0,<1.27.0'
-    - r-base
+  - bioconductor-biseq >=1.26.0,<1.27.0
+  - r-base
   run:
-    - 'bioconductor-biseq >=1.26.0,<1.27.0'
-    - r-base
-    - curl
+  - bioconductor-biseq >=1.26.0,<1.27.0
+  - r-base
+  - curl
+source:
+  md5: 1017b0f807cacfc6a04c242c4c82d219
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/RRBSdata_1.6.0.tar.gz
+  - https://bioarchive.galaxyproject.org/RRBSdata_1.6.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rrbsdata/bioconductor-rrbsdata_1.6.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: LGPL-3
-  summary: 'An RRBS data set with 12 samples and 10,000 simulated DMRs'
-  description: 'RRBS data set comprising 12 samples with simulated differentially methylated regions (DMRs).'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-3'
-
+  - $R -e "library('RRBSdata')"

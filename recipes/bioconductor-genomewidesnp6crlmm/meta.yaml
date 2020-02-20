@@ -1,34 +1,30 @@
-{% set version = "1.0.7" %}
-{% set name = "genomewidesnp6Crlmm" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 13dd5aef3d814524896f2f3013beb78b
+about:
+  description: Package with metadata for fast genotyping Affymetrix GenomeWideSnp_6
+    arrays using the 'crlmm' package.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/genomewidesnp6Crlmm.html
+  license: Artistic-2.0
+  summary: Metadata for fast genotyping with the 'crlmm' package
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-genomewidesnp6crlmm
+  version: 1.0.7
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
-    - curl
+  - r-base
+  - curl
+source:
+  md5: 13dd5aef3d814524896f2f3013beb78b
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/genomewidesnp6Crlmm_1.0.7.tar.gz
+  - https://bioarchive.galaxyproject.org/genomewidesnp6Crlmm_1.0.7.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-genomewidesnp6crlmm/bioconductor-genomewidesnp6crlmm_1.0.7_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Metadata for fast genotyping with the ''crlmm'' package'
-  description: 'Package with metadata for fast genotyping Affymetrix GenomeWideSnp_6 arrays using the ''crlmm'' package.'
-
+  - $R -e "library('genomewidesnp6Crlmm')"

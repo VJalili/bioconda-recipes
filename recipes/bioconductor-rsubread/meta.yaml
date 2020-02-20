@@ -1,44 +1,42 @@
-{% set version = "2.0.0" %}
-{% set name = "Rsubread" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 3e386a603c29e6ac1595cfc008ed30a2
+about:
+  description: Alignment, quantification and analysis of second and third generation
+    sequencing data. Includes functionality for read mapping, read counting, SNP calling,
+    structural variant detection and gene fusion discovery. Can be applied to all
+    major sequencing techologies and to both short and long sequence reads.
+  home: https://bioconductor.org/packages/3.10/bioc/html/Rsubread.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Subread Sequence Alignment and Counting for R
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-requirements:
-  host:
-    - r-base
-  run:
-    - r-base
-  build:
-    - {{ compiler('c') }}
-    - automake
-    - make
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-3
-  summary: 'Subread Sequence Alignment and Counting for R'
-  description: 'Alignment, quantification and analysis of second and third generation sequencing data. Includes functionality for read mapping, read counting, SNP calling, structural variant detection and gene fusion discovery. Can be applied to all major sequencing techologies and to both short and long sequence reads.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:rsubread
+  - biotools:rsubread
   parent_recipe:
     name: bioconductor-rsubread
     path: recipes/bioconductor-rsubread
     version: 1.30.9
-
+package:
+  name: bioconductor-rsubread
+  version: 2.0.0
+requirements:
+  build:
+  - None
+  - automake
+  - make
+  host:
+  - r-base
+  run:
+  - r-base
+source:
+  md5: 3e386a603c29e6ac1595cfc008ed30a2
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/Rsubread_2.0.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Rsubread_2.0.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rsubread/bioconductor-rsubread_2.0.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('Rsubread')"

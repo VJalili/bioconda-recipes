@@ -1,36 +1,32 @@
-{% set version = "1.22.0" %}
-{% set name = "HiCDataLymphoblast" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 4d7c639ebaccfac6ee8e5edf53e06526
+about:
+  description: The HiC data from human lymphoblastoid cell line (HindIII restriction)
+    was retrieved from the sequence read archive and two ends of the paired reads
+    were aligned separately with bowtie.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/HiCDataLymphoblast.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Human lymphoblastoid HiC data from Lieberman-Aiden et al. 2009
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: ShortRead
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-hicdatalymphoblast
+  version: 1.22.0
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
-    - curl
+  - r-base
+  - curl
+source:
+  md5: 4d7c639ebaccfac6ee8e5edf53e06526
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/HiCDataLymphoblast_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/HiCDataLymphoblast_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hicdatalymphoblast/bioconductor-hicdatalymphoblast_1.22.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: GPL-3
-  summary: 'Human lymphoblastoid HiC data from Lieberman-Aiden et al. 2009'
-  description: 'The HiC data from human lymphoblastoid cell line (HindIII restriction) was retrieved from the sequence read archive and two ends of the paired reads were aligned separately with bowtie.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('HiCDataLymphoblast')"

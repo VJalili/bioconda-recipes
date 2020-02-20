@@ -1,65 +1,56 @@
-{% set version = "4.1.4.1" %}
-{% set sha256 = "21ae694cfc8b7447381ad5ce62ed4af22e53a228b12495bdcca7df0c73b09cea" %}
-
-package:
-  name: gatk4
-  version: '{{ version }}'
-
-source:
-  url: https://github.com/broadinstitute/gatk/releases/download/{{ version }}/gatk-{{ version }}.zip
-  sha256: '{{ sha256 }}'
-
-build:
-  noarch: generic
-  number: 1
-
-requirements:
-  host:
-  run:
-    - openjdk >=8,<9
-    - python
-    - r-base
-    - r-gplots
-    - r-ggplot2
-    - r-gsalib
-    - r-reshape
-
-test:
-  commands:
-    - gatk -h
-    - gatk --list
-    - gatk HaplotypeCaller --help
-
-outputs:
-  - name: gatk4
-    script: build_main.sh
-    requirements:
-      run:
-        - openjdk >=8,<9
-        - python
-    test:
-      commands:
-        - gatk -h
-        - gatk --list
-        - gatk HaplotypeCaller --help
-  - name: gatk4-spark
-    script: build_spark.sh
-    build:
-            noarch: generic
-    requirements:
-      run:
-        - openjdk >=8,<9
-        - python
-        - {{ pin_subpackage("gatk4", exact=True) }}
-    test:
-      commands:
-        - gatk -h
-        - gatk --list
-        - gatk MarkDuplicatesSpark --help
-
 about:
+  dev_url: https://github.com/broadinstitute/gatk
   home: https://www.broadinstitute.org/gatk/
   license: BSD-3-Clause
   license_family: BSD
   summary: Genome Analysis Toolkit (GATK4)
-  dev_url: https://github.com/broadinstitute/gatk
+build:
+  noarch: generic
+  number: 1
+outputs:
+- name: gatk4
+  requirements:
+    run:
+    - openjdk >=8,<9
+    - python
+  script: build_main.sh
+  test:
+    commands:
+    - gatk -h
+    - gatk --list
+    - gatk HaplotypeCaller --help
+- build:
+    noarch: generic
+  name: gatk4-spark
+  requirements:
+    run:
+    - openjdk >=8,<9
+    - python
+    - None
+  script: build_spark.sh
+  test:
+    commands:
+    - gatk -h
+    - gatk --list
+    - gatk MarkDuplicatesSpark --help
+package:
+  name: gatk4
+  version: 4.1.4.1
+requirements:
+  host: null
+  run:
+  - openjdk >=8,<9
+  - python
+  - r-base
+  - r-gplots
+  - r-ggplot2
+  - r-gsalib
+  - r-reshape
+source:
+  sha256: 21ae694cfc8b7447381ad5ce62ed4af22e53a228b12495bdcca7df0c73b09cea
+  url: https://github.com/broadinstitute/gatk/releases/download/4.1.4.1/gatk-4.1.4.1.zip
+test:
+  commands:
+  - gatk -h
+  - gatk --list
+  - gatk HaplotypeCaller --help

@@ -1,36 +1,27 @@
-{% set name = "ray" %}
-{% set version = "2.3.1" %}
-
-package:
-  name: {{ name }}
-  version: {{ version }}
-
-source:
-  url: https://downloads.sourceforge.net/project/denovoassembler/Ray-{{ version }}.tar.bz2
-  md5: 82f693c4db60af4328263c9279701009
-
+about:
+  home: http://denovoassembler.sourceforge.net/index.html
+  license: GPL3
+  summary: Parallel genome assemblies for parallel DNA sequencing
 build:
   number: 1
-  skip: False
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-    - openmpi >=2.0.2
-    - cmake
-
-  run:
-    - openmpi >=2.0.2
-
-test:
-  commands:
-    - which Ray # Ray -help requires ssh
-
-about:
-  home: 'http://denovoassembler.sourceforge.net/index.html'
-  license: GPL3
-  summary: "Parallel genome assemblies for parallel DNA sequencing"
+  skip: false
 extra:
   identifiers:
-    - biotools:ray
-    - doi:10.1186/gb-2012-13-12-r122
+  - biotools:ray
+  - doi:10.1186/gb-2012-13-12-r122
+package:
+  name: ray
+  version: 2.3.1
+requirements:
+  build:
+  - None
+  - openmpi >=2.0.2
+  - cmake
+  run:
+  - openmpi >=2.0.2
+source:
+  md5: 82f693c4db60af4328263c9279701009
+  url: https://downloads.sourceforge.net/project/denovoassembler/Ray-2.3.1.tar.bz2
+test:
+  commands:
+  - which Ray

@@ -1,57 +1,53 @@
-{% set version = "1.64.0" %}
-{% set name = "affy" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: edf0f0d94650dd988e8d795ded9982f7
+about:
+  description: The package contains functions for exploratory oligonucleotide array
+    analysis. The dependence on tkWidgets only concerns few convenience functions.
+    'affy' is fully functional without it.
+  home: https://bioconductor.org/packages/3.10/bioc/html/affy.html
+  license: LGPL (>= 2.0)
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: Methods for Affymetrix Oligonucleotide Arrays
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-# Suggests: tkWidgets (>= 1.19.0), affydata, widgetTools
-requirements:
-  host:
-    - 'bioconductor-affyio >=1.56.0,<1.57.0'
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-preprocesscore >=1.48.0,<1.49.0'
-    - 'bioconductor-zlibbioc >=1.32.0,<1.33.0'
-    - r-base
-    - r-biocmanager
-  run:
-    - 'bioconductor-affyio >=1.56.0,<1.57.0'
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-preprocesscore >=1.48.0,<1.49.0'
-    - 'bioconductor-zlibbioc >=1.32.0,<1.33.0'
-    - r-base
-    - r-biocmanager
-  build:
-    - {{ compiler('c') }}
-    - automake
-    - make
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'LGPL (>= 2.0)'
-  summary: 'Methods for Affymetrix Oligonucleotide Arrays'
-  description: 'The package contains functions for exploratory oligonucleotide array analysis. The dependence on tkWidgets only concerns few convenience functions. ''affy'' is fully functional without it.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:affy
+  - biotools:affy
   parent_recipe:
     name: bioconductor-affy
     path: recipes/bioconductor-affy
     version: 1.58.0
-
+package:
+  name: bioconductor-affy
+  version: 1.64.0
+requirements:
+  build:
+  - None
+  - automake
+  - make
+  host:
+  - bioconductor-affyio >=1.56.0,<1.57.0
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-preprocesscore >=1.48.0,<1.49.0
+  - bioconductor-zlibbioc >=1.32.0,<1.33.0
+  - r-base
+  - r-biocmanager
+  run:
+  - bioconductor-affyio >=1.56.0,<1.57.0
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-preprocesscore >=1.48.0,<1.49.0
+  - bioconductor-zlibbioc >=1.32.0,<1.33.0
+  - r-base
+  - r-biocmanager
+source:
+  md5: edf0f0d94650dd988e8d795ded9982f7
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/affy_1.64.0.tar.gz
+  - https://bioarchive.galaxyproject.org/affy_1.64.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-affy/bioconductor-affy_1.64.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('affy')"

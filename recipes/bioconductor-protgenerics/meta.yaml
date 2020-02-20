@@ -1,41 +1,36 @@
-{% set version = "1.18.0" %}
-{% set name = "ProtGenerics" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: d02c7a57034ac815d4e806bfb11e778f
+about:
+  description: S4 generic functions needed by Bioconductor proteomics packages.
+  home: https://bioconductor.org/packages/3.10/bioc/html/ProtGenerics.html
+  license: Artistic-2.0
+  summary: S4 generic functions for Bioconductor proteomics infrastructure
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-requirements:
-  host:
-    - r-base
-  run:
-    - r-base
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'S4 generic functions for Bioconductor proteomics infrastructure'
-  description: 'S4 generic functions needed by Bioconductor proteomics packages.'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:protgenerics
-    - doi:10.1038/nmeth.3252
+  - biotools:protgenerics
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-protgenerics
     path: recipes/bioconductor-protgenerics
     version: 1.12.0
-
+package:
+  name: bioconductor-protgenerics
+  version: 1.18.0
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+source:
+  md5: d02c7a57034ac815d4e806bfb11e778f
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/ProtGenerics_1.18.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ProtGenerics_1.18.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-protgenerics/bioconductor-protgenerics_1.18.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('ProtGenerics')"

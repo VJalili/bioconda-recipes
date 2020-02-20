@@ -1,49 +1,44 @@
-package:
-  name: freebayes
-  version: '1.3.2'
-
-source:
-  git_url: https://github.com/ekg/freebayes.git
-  git_tag: 54bf40915ae7e46798503471ac57f593efdb5493
-  patches:
-    - qcfail.diff
-
-build:
-  number: 0
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-  host:
-    - zlib
-    - bzip2
-    - python
-    - xz
-  run:
-    - zlib
-    - bzip2
-    - python
-    - htslib
-    - parallel
-    - xz
-test:
-  commands:
-    - freebayes --version
-    - vcfstreamsort -h
-    - bamleftalign -h
-
 about:
   home: https://github.com/ekg/freebayes
   license: MIT
-  license_file: LICENSE
   license_family: MIT
-  summary: Bayesian haplotype-based polymorphism discovery and genotyping
+  license_file: LICENSE
   maintainers: jpuritz
-
+  summary: Bayesian haplotype-based polymorphism discovery and genotyping
+build:
+  number: 0
 extra:
-  skip-lints:
-    - missing_hash
-    - uses_vcs_url
   identifiers:
-    - biotools:freebayes
+  - biotools:freebayes
+  skip-lints:
+  - missing_hash
+  - uses_vcs_url
+package:
+  name: freebayes
+  version: 1.3.2
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - zlib
+  - bzip2
+  - python
+  - xz
+  run:
+  - zlib
+  - bzip2
+  - python
+  - htslib
+  - parallel
+  - xz
+source:
+  git_tag: 54bf40915ae7e46798503471ac57f593efdb5493
+  git_url: https://github.com/ekg/freebayes.git
+  patches:
+  - qcfail.diff
+test:
+  commands:
+  - freebayes --version
+  - vcfstreamsort -h
+  - bamleftalign -h

@@ -1,63 +1,58 @@
-{% set version = "1.14.0" %}
-{% set name = "EGAD" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 356b2bcbe7549b1eaf1d30d77216d804
+about:
+  description: The package implements a series of highly efficient tools to calculate
+    functional properties of networks based on guilt by association methods.
+  home: https://bioconductor.org/packages/3.10/bioc/html/EGAD.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Extending guilt by association by degree
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: knitr, rmarkdown, testthat
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-egad
+  version: 1.14.0
 requirements:
   host:
-    - 'bioconductor-affy >=1.64.0,<1.65.0'
-    - 'bioconductor-arrayqualitymetrics >=3.42.0,<3.43.0'
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-geoquery >=2.54.0,<2.55.0'
-    - 'bioconductor-impute >=1.60.0,<1.61.0'
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - r-base
-    - r-gplots
-    - r-igraph
-    - r-mass
-    - r-matrix
-    - r-plyr
-    - r-rcolorbrewer
-    - r-rcurl
-    - r-zoo
+  - bioconductor-affy >=1.64.0,<1.65.0
+  - bioconductor-arrayqualitymetrics >=3.42.0,<3.43.0
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-geoquery >=2.54.0,<2.55.0
+  - bioconductor-impute >=1.60.0,<1.61.0
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - r-base
+  - r-gplots
+  - r-igraph
+  - r-mass
+  - r-matrix
+  - r-plyr
+  - r-rcolorbrewer
+  - r-rcurl
+  - r-zoo
   run:
-    - 'bioconductor-affy >=1.64.0,<1.65.0'
-    - 'bioconductor-arrayqualitymetrics >=3.42.0,<3.43.0'
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-geoquery >=2.54.0,<2.55.0'
-    - 'bioconductor-impute >=1.60.0,<1.61.0'
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - r-base
-    - r-gplots
-    - r-igraph
-    - r-mass
-    - r-matrix
-    - r-plyr
-    - r-rcolorbrewer
-    - r-rcurl
-    - r-zoo
+  - bioconductor-affy >=1.64.0,<1.65.0
+  - bioconductor-arrayqualitymetrics >=3.42.0,<3.43.0
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-geoquery >=2.54.0,<2.55.0
+  - bioconductor-impute >=1.60.0,<1.61.0
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - r-base
+  - r-gplots
+  - r-igraph
+  - r-mass
+  - r-matrix
+  - r-plyr
+  - r-rcolorbrewer
+  - r-rcurl
+  - r-zoo
+source:
+  md5: 356b2bcbe7549b1eaf1d30d77216d804
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/EGAD_1.14.0.tar.gz
+  - https://bioarchive.galaxyproject.org/EGAD_1.14.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-egad/bioconductor-egad_1.14.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-2
-  summary: 'Extending guilt by association by degree'
-  description: 'The package implements a series of highly efficient tools to calculate functional properties of networks based on guilt by association methods.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
-
+  - $R -e "library('EGAD')"

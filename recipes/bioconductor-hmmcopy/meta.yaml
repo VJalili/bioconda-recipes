@@ -1,46 +1,45 @@
-{% set version = "1.28.0" %}
-{% set name = "HMMcopy" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: ed9ee7a3b007bd4c272702448eb94af2
+about:
+  description: Corrects GC and mappability biases for readcounts (i.e. coverage) in
+    non-overlapping windows of fixed length for single whole genome samples, yielding
+    a rough estimate of copy number for furthur analysis.  Designed for rapid correction
+    of high coverage whole genome tumour and normal samples.
+  home: https://bioconductor.org/packages/3.10/bioc/html/HMMcopy.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Copy number prediction with correction for GC and mappability bias for
+    HTS data
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-requirements:
-  host:
-    - r-base
-    - 'r-data.table >=1.11.8'
-  run:
-    - r-base
-    - 'r-data.table >=1.11.8'
-  build:
-    - {{ compiler('c') }}
-    - make
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-3
-  summary: 'Copy number prediction with correction for GC and mappability bias for HTS data'
-  description: 'Corrects GC and mappability biases for readcounts (i.e. coverage) in non-overlapping windows of fixed length for single whole genome samples, yielding a rough estimate of copy number for furthur analysis.  Designed for rapid correction of high coverage whole genome tumour and normal samples.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:hmmcopy
-    - doi:10.1038/nmeth.3252
+  - biotools:hmmcopy
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-hmmcopy
     path: recipes/bioconductor-hmmcopy
     version: 1.22.0
-
+package:
+  name: bioconductor-hmmcopy
+  version: 1.28.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - r-base
+  - r-data.table >=1.11.8
+  run:
+  - r-base
+  - r-data.table >=1.11.8
+source:
+  md5: ed9ee7a3b007bd4c272702448eb94af2
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/HMMcopy_1.28.0.tar.gz
+  - https://bioarchive.galaxyproject.org/HMMcopy_1.28.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hmmcopy/bioconductor-hmmcopy_1.28.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('HMMcopy')"

@@ -1,46 +1,45 @@
-{% set version = "1.20.0" %}
-{% set name = "rain" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: ee3c46c701640e4990ba4b5b2ee57012
+about:
+  description: 'This package uses non-parametric methods to detect rhythms in time
+    series. It deals with outliers, missing values and is optimized for time series
+    comprising 10-100 measurements. As it does not assume expect any distinct waveform
+    it is optimal or detecting oscillating behavior (e.g. circadian or cell cycle)
+    in e.g. genome- or proteome-wide biological measurements such as: micro arrays,
+    proteome mass spectrometry, or metabolome measurements.'
+  home: https://bioconductor.org/packages/3.10/bioc/html/rain.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Rhythmicity Analysis Incorporating Non-parametric Methods
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: lattice, BiocStyle
-requirements:
-  host:
-    - 'bioconductor-multtest >=2.42.0,<2.43.0'
-    - r-base
-    - r-gmp
-  run:
-    - 'bioconductor-multtest >=2.42.0,<2.43.0'
-    - r-base
-    - r-gmp
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-2
-  summary: 'Rhythmicity Analysis Incorporating Non-parametric Methods'
-  description: 'This package uses non-parametric methods to detect rhythms in time series. It deals with outliers, missing values and is optimized for time series comprising 10-100 measurements. As it does not assume expect any distinct waveform it is optimal or detecting oscillating behavior (e.g. circadian or cell cycle) in e.g. genome- or proteome-wide biological measurements such as: micro arrays, proteome mass spectrometry, or metabolome measurements.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:rain
+  - biotools:rain
   parent_recipe:
     name: bioconductor-rain
     path: recipes/bioconductor-rain
     version: 1.14.0
-
+package:
+  name: bioconductor-rain
+  version: 1.20.0
+requirements:
+  host:
+  - bioconductor-multtest >=2.42.0,<2.43.0
+  - r-base
+  - r-gmp
+  run:
+  - bioconductor-multtest >=2.42.0,<2.43.0
+  - r-base
+  - r-gmp
+source:
+  md5: ee3c46c701640e4990ba4b5b2ee57012
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/rain_1.20.0.tar.gz
+  - https://bioarchive.galaxyproject.org/rain_1.20.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rain/bioconductor-rain_1.20.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('rain')"

@@ -1,48 +1,45 @@
-{% set version = "2.2.0" %}
-{% set name = "maftools" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 2d9c26a0fbc3a05b6db29444bc458897
+about:
+  description: Analyze and visualize Mutation Annotation Format (MAF) files from large
+    scale sequencing studies. This package provides various functions to perform most
+    commonly used analyses in cancer genomics and to create feature rich customizable
+    visualzations with minimal effort.
+  home: https://bioconductor.org/packages/3.10/bioc/html/maftools.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Summarize, Analyze and Visualize MAF Files
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: knitr, rmarkdown, BSgenome, Biostrings, NMF, mclust
-requirements:
-  host:
-    - r-base
-    - r-data.table
-    - r-rcolorbrewer
-    - r-survival
-    - r-wordcloud
-  run:
-    - r-base
-    - r-data.table
-    - r-rcolorbrewer
-    - r-survival
-    - r-wordcloud
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'MIT + file LICENSE'
-  summary: 'Summarize, Analyze and Visualize MAF Files'
-  description: 'Analyze and visualize Mutation Annotation Format (MAF) files from large scale sequencing studies. This package provides various functions to perform most commonly used analyses in cancer genomics and to create feature rich customizable visualzations with minimal effort.'
-  license_file: LICENSE
+  - lib/R/lib/
+  - lib/
 extra:
   parent_recipe:
     name: bioconductor-maftools
     path: recipes/bioconductor-maftools
     version: 1.6.15
-
+package:
+  name: bioconductor-maftools
+  version: 2.2.0
+requirements:
+  host:
+  - r-base
+  - r-data.table
+  - r-rcolorbrewer
+  - r-survival
+  - r-wordcloud
+  run:
+  - r-base
+  - r-data.table
+  - r-rcolorbrewer
+  - r-survival
+  - r-wordcloud
+source:
+  md5: 2d9c26a0fbc3a05b6db29444bc458897
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/maftools_2.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/maftools_2.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-maftools/bioconductor-maftools_2.2.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('maftools')"

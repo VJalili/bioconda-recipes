@@ -1,37 +1,28 @@
-{% set name = "HowDeSBT" %}
-{% set version = "2.00.02" %}
-{% set sha256 = "887fc312dd18ebf7748f90b68b0d7b7eeca68f3d98eabb2fcc03b523e2433bfb" %}
-
-package:
-  name: {{ name|lower }}
-  version: {{ version }}
-
-source:
-  url: https://github.com/medvedevgroup/HowDeSBT/archive/{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-
-build:
-  number: 0
-
-requirements:
-  build:
-    - {{ compiler('cxx') }}
-  host:
-    - kmer-jellyfish >=2.2
-    - sdsl-lite
-    - croaring
-  run:
-    - kmer-jellyfish >=2.2
-    - sdsl-lite
-    - croaring
-
-test:
-  commands:
-    - howdesbt version
-
 about:
   home: https://github.com/medvedevgroup/HowDeSBT
   license: MIT
   license_family: MIT
   license_file: LICENSE
   summary: Sequence Bloom Tree, supporting determined/how split filters
+build:
+  number: 0
+package:
+  name: howdesbt
+  version: 2.00.02
+requirements:
+  build:
+  - None
+  host:
+  - kmer-jellyfish >=2.2
+  - sdsl-lite
+  - croaring
+  run:
+  - kmer-jellyfish >=2.2
+  - sdsl-lite
+  - croaring
+source:
+  sha256: 887fc312dd18ebf7748f90b68b0d7b7eeca68f3d98eabb2fcc03b523e2433bfb
+  url: https://github.com/medvedevgroup/HowDeSBT/archive/2.00.02.tar.gz
+test:
+  commands:
+  - howdesbt version

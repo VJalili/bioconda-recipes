@@ -1,43 +1,37 @@
-package:
-  name: snp-pipeline
-  version: "2.1.1"
-
-source:
-  url: https://files.pythonhosted.org/packages/d5/09/dfbfdd6d7e7237ca3fcd0ef2a446c2a83c86b3885e9e2a3c03a1b4b18e5d/snp-pipeline-2.1.1.tar.gz
-  sha256: 67abdc3446096b7f4a457e681aa765db14d5a785449dbf33c7d8eb687e07973d
-
-build:
-  number: 0
-  noarch: python
-  entry_points:
-    - cfsan_snp_pipeline = snppipeline.cfsan_snp_pipeline:main
-    - qarrayrun = snppipeline.qarrayrun:main
-
-requirements:
-  host:
-    - python
-    - setuptools
-  run:
-    - python
-    - pyvcf >=0.6.7
-    - setuptools
-    - psutil
-    - biopython
-    - jobrunner
-
-test:
-  imports:
-    - snppipeline
-  requires:
-    - testfixtures
-  commands:
-    - cfsan_snp_pipeline --version
-
-extra:
-  skip-lints:
-    - uses_setuptools  # uses pkg_resources
-
 about:
   home: https://github.com/CFSAN-Biostatistics/snp-pipeline
   license: BSD License
-  summary: 'Script and functions for SNP matrix construction'
+  summary: Script and functions for SNP matrix construction
+build:
+  entry_points:
+  - cfsan_snp_pipeline = snppipeline.cfsan_snp_pipeline:main
+  - qarrayrun = snppipeline.qarrayrun:main
+  noarch: python
+  number: 0
+extra:
+  skip-lints:
+  - uses_setuptools
+package:
+  name: snp-pipeline
+  version: 2.1.1
+requirements:
+  host:
+  - python
+  - setuptools
+  run:
+  - python
+  - pyvcf >=0.6.7
+  - setuptools
+  - psutil
+  - biopython
+  - jobrunner
+source:
+  sha256: 67abdc3446096b7f4a457e681aa765db14d5a785449dbf33c7d8eb687e07973d
+  url: https://files.pythonhosted.org/packages/d5/09/dfbfdd6d7e7237ca3fcd0ef2a446c2a83c86b3885e9e2a3c03a1b4b18e5d/snp-pipeline-2.1.1.tar.gz
+test:
+  commands:
+  - cfsan_snp_pipeline --version
+  imports:
+  - snppipeline
+  requires:
+  - testfixtures

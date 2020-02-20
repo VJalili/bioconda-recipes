@@ -1,36 +1,31 @@
-{% set version = "2.99.0" %}
-{% set name = "EnsDb.Mmusculus.v79" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 28bbab743b0d2d550dbfa0bcd3274fad
+about:
+  description: Exposes an annotation databases generated from Ensembl.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/EnsDb.Mmusculus.v79.html
+  license: Artistic-2.0
+  summary: Ensembl based annotation package
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-ensdb.mmusculus.v79
+  version: 2.99.0
 requirements:
   host:
-    - 'bioconductor-ensembldb >=2.10.0,<2.11.0'
-    - r-base
+  - bioconductor-ensembldb >=2.10.0,<2.11.0
+  - r-base
   run:
-    - 'bioconductor-ensembldb >=2.10.0,<2.11.0'
-    - r-base
-    - curl
+  - bioconductor-ensembldb >=2.10.0,<2.11.0
+  - r-base
+  - curl
+source:
+  md5: 28bbab743b0d2d550dbfa0bcd3274fad
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/EnsDb.Mmusculus.v79_2.99.0.tar.gz
+  - https://bioarchive.galaxyproject.org/EnsDb.Mmusculus.v79_2.99.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-ensdb.mmusculus.v79/bioconductor-ensdb.mmusculus.v79_2.99.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Ensembl based annotation package'
-  description: 'Exposes an annotation databases generated from Ensembl.'
-
+  - $R -e "library('EnsDb.Mmusculus.v79')"

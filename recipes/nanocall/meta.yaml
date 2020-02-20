@@ -1,37 +1,31 @@
-package:
-  name: nanocall
-  version: "v0.7.4"
-
-build:
-  number: 1
-  skip: True # [osx]
-
-source:
-  git_url: https://github.com/mateidavid/nanocall.git
-  git_rev: v0.7.4
-
-requirements:
-  build:
-    - {{ compiler('cxx') }}
-  host:
-    - cmake
-    - hdf5
-    - zlib
-  run:
-    - hdf5
-    - zlib
-
-test:
-  commands:
-    - nanocall --version
-
 about:
   home: https://github.com/mateidavid/nanocall
   license: MIT
   license_file: LICENSE
   summary: An Oxford Nanopore Basecaller
-
+build:
+  number: 1
+  skip: true
 extra:
   skip-lints:
-    - uses_vcs_url
-    - missing_hash
+  - uses_vcs_url
+  - missing_hash
+package:
+  name: nanocall
+  version: v0.7.4
+requirements:
+  build:
+  - None
+  host:
+  - cmake
+  - hdf5
+  - zlib
+  run:
+  - hdf5
+  - zlib
+source:
+  git_rev: v0.7.4
+  git_url: https://github.com/mateidavid/nanocall.git
+test:
+  commands:
+  - nanocall --version

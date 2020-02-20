@@ -1,54 +1,44 @@
-{% set version = "3.1.2" %}
-
-package:
-  name: variant_tools
-  version: {{ version }}
-
-source:
-  url: https://pypi.python.org/packages/source/v/variant_tools/variant_tools-{{ version }}.tar.gz
-  sha256: 3f9eb9f6169bc11e03e2abcf81075cce66f9f6e8219878ca07cfa0bf9cfea95d  
-
-build:
-  number: 0
-  skip: True  # [py2k]
-  script: {{ PYTHON }} -m pip install . --ignore-installed --no-deps -vv
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-  host:
-    - python
-    - pip
-    - cython
-    - numpy
-    - boost-cpp
-    - gsl
-    - zlib
-    - hdf5
-    - blosc
-  run:
-    - python
-    - numpy
-    - scipy
-    - pyzmq
-    - pytables
-    - pycurl
-    - gsl
-    - boost-cpp
-    - zlib
-
-test:
-  # Python imports
-  imports:
-    - variant_tools
-
-  commands:
-    - vtools -h
-    - vtools_report -h
-
-
 about:
   home: https://github.com/vatlab/varianttools
   license: GNU General Public License (GPL)
-  summary: 'Integrated annotation and analysis of next gen sequencing data'
+  summary: Integrated annotation and analysis of next gen sequencing data
+build:
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
+  skip: true
+package:
+  name: variant_tools
+  version: 3.1.2
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - python
+  - pip
+  - cython
+  - numpy
+  - boost-cpp
+  - gsl
+  - zlib
+  - hdf5
+  - blosc
+  run:
+  - python
+  - numpy
+  - scipy
+  - pyzmq
+  - pytables
+  - pycurl
+  - gsl
+  - boost-cpp
+  - zlib
+source:
+  sha256: 3f9eb9f6169bc11e03e2abcf81075cce66f9f6e8219878ca07cfa0bf9cfea95d
+  url: https://pypi.python.org/packages/source/v/variant_tools/variant_tools-3.1.2.tar.gz
+test:
+  commands:
+  - vtools -h
+  - vtools_report -h
+  imports:
+  - variant_tools

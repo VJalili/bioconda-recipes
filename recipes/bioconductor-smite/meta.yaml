@@ -1,71 +1,69 @@
-{% set version = "1.14.0" %}
-{% set name = "SMITE" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 0237f548050507b5ff7375ec68f48aa2
+about:
+  description: This package builds on the Epimods framework which facilitates finding
+    weighted subnetworks ("modules") on Illumina Infinium 27k arrays using the SpinGlass
+    algorithm, as implemented in the iGraph package. We have created a class of gene
+    centric annotations associated with p-values and effect sizes and scores from
+    any researchers prior statistical results to find functional modules.
+  home: https://bioconductor.org/packages/3.10/bioc/html/SMITE.html
+  license: GPL (>=2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Significance-based Modules Integrating the Transcriptome and Epigenome
 build:
+  noarch: generic
   number: 1
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: knitr
-requirements:
-  host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-bionet >=1.46.0,<1.47.0'
-    - 'bioconductor-genelendatabase >=1.22.0,<1.23.0'
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - 'bioconductor-goseq >=1.38.0,<1.39.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - 'bioconductor-kegg.db >=3.2.0,<3.3.0'
-    - 'bioconductor-org.hs.eg.db >=3.10.0,<3.11.0'
-    - 'bioconductor-reactome.db >=1.70.0,<1.71.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - r-base
-    - r-ggplot2
-    - r-hmisc
-    - r-igraph
-    - r-plyr
-    - r-scales
-  run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-bionet >=1.46.0,<1.47.0'
-    - 'bioconductor-genelendatabase >=1.22.0,<1.23.0'
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - 'bioconductor-goseq >=1.38.0,<1.39.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - 'bioconductor-kegg.db >=3.2.0,<3.3.0'
-    - 'bioconductor-org.hs.eg.db >=3.10.0,<3.11.0'
-    - 'bioconductor-reactome.db >=1.70.0,<1.71.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - r-base
-    - r-ggplot2
-    - r-hmisc
-    - r-igraph
-    - r-plyr
-    - r-scales
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>=2)'
-  summary: 'Significance-based Modules Integrating the Transcriptome and Epigenome'
-  description: 'This package builds on the Epimods framework which facilitates finding weighted subnetworks ("modules") on Illumina Infinium 27k arrays using the SpinGlass algorithm, as implemented in the iGraph package. We have created a class of gene centric annotations associated with p-values and effect sizes and scores from any researchers prior statistical results to find functional modules.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:smite
-    - doi:10.1186/s12859-017-1477-3
-
+  - biotools:smite
+  - doi:10.1186/s12859-017-1477-3
+package:
+  name: bioconductor-smite
+  version: 1.14.0
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-bionet >=1.46.0,<1.47.0
+  - bioconductor-genelendatabase >=1.22.0,<1.23.0
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - bioconductor-goseq >=1.38.0,<1.39.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - bioconductor-kegg.db >=3.2.0,<3.3.0
+  - bioconductor-org.hs.eg.db >=3.10.0,<3.11.0
+  - bioconductor-reactome.db >=1.70.0,<1.71.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - r-base
+  - r-ggplot2
+  - r-hmisc
+  - r-igraph
+  - r-plyr
+  - r-scales
+  run:
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-bionet >=1.46.0,<1.47.0
+  - bioconductor-genelendatabase >=1.22.0,<1.23.0
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - bioconductor-goseq >=1.38.0,<1.39.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - bioconductor-kegg.db >=3.2.0,<3.3.0
+  - bioconductor-org.hs.eg.db >=3.10.0,<3.11.0
+  - bioconductor-reactome.db >=1.70.0,<1.71.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - r-base
+  - r-ggplot2
+  - r-hmisc
+  - r-igraph
+  - r-plyr
+  - r-scales
+source:
+  md5: 0237f548050507b5ff7375ec68f48aa2
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/SMITE_1.14.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SMITE_1.14.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-smite/bioconductor-smite_1.14.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SMITE')"

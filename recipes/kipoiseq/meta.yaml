@@ -1,51 +1,42 @@
-{% set name = "kipoiseq" %}
-{% set version = "0.3.2" %}
-
-package:
-  name: '{{ name|lower }}'
-  version: '{{ version }}'
-
-source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: "a07a55e6f32bef42ae939fe77381dbb53d63933fabe1db0b2195ff4481d8912c"
-
-build:
-  number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv"
-  noarch: python
-
-requirements:
-  host:
-    - python
-    - pip
-  run:
-    - python
-    - kipoi >=0.5.5
-    - kipoi-conda
-    - pybedtools
-    - pyfaidx
-    - genomelake 0.1.4
-    - numpy
-    - pandas
-    - tqdm
-    - gffutils
-
-test:
-  imports:
-    - kipoiseq
-    - kipoiseq.dataloaders
-    - kipoiseq.transforms
- 
 about:
+  description: 'kipoiseq: sequence-based data-laoders for Kipoi'
+  dev_url: https://github.com/kipoi/kipoiseq
+  doc_url: https://kipoi.org/kipoiseq/
   home: https://github.com/kipoi/kipoiseq
   license: MIT
   license_family: MIT
   license_file: LICENSE
   summary: 'kipoiseq: sequence-based data-laoders for Kipoi'
-  description: 'kipoiseq: sequence-based data-laoders for Kipoi'
-  doc_url: https://kipoi.org/kipoiseq/
-  dev_url: https://github.com/kipoi/kipoiseq
-
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv'
 extra:
   recipe-maintainers:
-    - Avsecz
+  - Avsecz
+package:
+  name: kipoiseq
+  version: 0.3.2
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - kipoi >=0.5.5
+  - kipoi-conda
+  - pybedtools
+  - pyfaidx
+  - genomelake 0.1.4
+  - numpy
+  - pandas
+  - tqdm
+  - gffutils
+source:
+  sha256: a07a55e6f32bef42ae939fe77381dbb53d63933fabe1db0b2195ff4481d8912c
+  url: https://pypi.io/packages/source/k/kipoiseq/kipoiseq-0.3.2.tar.gz
+test:
+  imports:
+  - kipoiseq
+  - kipoiseq.dataloaders
+  - kipoiseq.transforms

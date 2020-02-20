@@ -1,37 +1,33 @@
-{% set version = "1.24.0" %}
-{% set name = "synapterdata" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 875029ffe6318ad6b876105c0d834116
+about:
+  description: Data independant acquisition of UPS1 protein mix in an E. coli background
+    obtained on a Waters Synapt G2 instrument.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/synapterdata.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Data accompanying the synapter package
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-synapterdata
+  version: 1.24.0
 requirements:
   host:
-    - 'bioconductor-synapter >=2.10.0,<2.11.0'
-    - r-base
+  - bioconductor-synapter >=2.10.0,<2.11.0
+  - r-base
   run:
-    - 'bioconductor-synapter >=2.10.0,<2.11.0'
-    - r-base
-    - curl
+  - bioconductor-synapter >=2.10.0,<2.11.0
+  - r-base
+  - curl
+source:
+  md5: 875029ffe6318ad6b876105c0d834116
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/synapterdata_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/synapterdata_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-synapterdata/bioconductor-synapterdata_1.24.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: GPL-2
-  summary: 'Data accompanying the synapter package'
-  description: 'Data independant acquisition of UPS1 protein mix in an E. coli background obtained on a Waters Synapt G2 instrument.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
-
+  - $R -e "library('synapterdata')"

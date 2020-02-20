@@ -1,36 +1,32 @@
-{% set version = "3.10.0" %}
-{% set name = "arabidopsis.db0" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: b81dec258644f0dbbe77add3f3780dfb
+about:
+  description: Base annotation databases for arabidopsis, intended ONLY to be used
+    by AnnotationDbi to produce regular annotation packages.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/arabidopsis.db0.html
+  license: Artistic-2.0
+  summary: Base Level Annotation databases for arabidopsis
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-arabidopsis.db0
+  version: 3.10.0
 requirements:
   host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
   run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
-    - curl
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
+  - curl
+source:
+  md5: b81dec258644f0dbbe77add3f3780dfb
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/arabidopsis.db0_3.10.0.tar.gz
+  - https://bioarchive.galaxyproject.org/arabidopsis.db0_3.10.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-arabidopsis.db0/bioconductor-arabidopsis.db0_3.10.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Base Level Annotation databases for arabidopsis'
-  description: 'Base annotation databases for arabidopsis, intended ONLY to be used by AnnotationDbi to produce regular annotation packages.'
-
+  - $R -e "library('arabidopsis.db0')"

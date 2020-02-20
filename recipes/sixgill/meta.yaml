@@ -1,37 +1,30 @@
-package:
-  name: sixgill
-  version: "0.2.4"
-
-source:
-  url: https://pypi.python.org/packages/84/95/7ce89b21cce62349507433b50faeae068aae6da53e8b6a6078725c4a225d/sixgill-0.2.4.tar.gz
-  md5: 4578548e681c5e2a3e127db84cb4bb83
-
+about:
+  license: Apache Software License
+  license_family: Apache
+  summary: six-frame genome-inferred libraries for LC-MS/MS
 build:
   noarch: python
   number: 2
-  script: {{ PYTHON }} -m pip install . --ignore-installed --no-deps -vv
-
-requirements:
-  host:
-    - python
-    - pip
-  run:
-    - python
-    - biopython
-    - pysam >=0.9.0
-
-test:
-  imports:
-    - sixgill
-
-  commands:
-    - sixgill_build --version
-
-about:
-  license: Apache Software License
-  summary: 'six-frame genome-inferred libraries for LC-MS/MS'
-  license_family: Apache
-
+  script: -m pip install . --ignore-installed --no-deps -vv
 extra:
   skip-lints:
-    - missing_home
+  - missing_home
+package:
+  name: sixgill
+  version: 0.2.4
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - biopython
+  - pysam >=0.9.0
+source:
+  md5: 4578548e681c5e2a3e127db84cb4bb83
+  url: https://pypi.python.org/packages/84/95/7ce89b21cce62349507433b50faeae068aae6da53e8b6a6078725c4a225d/sixgill-0.2.4.tar.gz
+test:
+  commands:
+  - sixgill_build --version
+  imports:
+  - sixgill

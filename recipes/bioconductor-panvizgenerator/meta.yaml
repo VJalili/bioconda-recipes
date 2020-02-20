@@ -1,45 +1,43 @@
-{% set version = "1.14.0" %}
-{% set name = "PanVizGenerator" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: e88ad7d2bcce62ac6e5febcd267deb33
+about:
+  description: PanViz is a JavaScript based visualisation tool for functionaly annotated
+    pangenomes. PanVizGenerator is a companion for PanViz that facilitates the necessary
+    data preprocessing step necessary to create a working PanViz visualization. The
+    output is fully self-contained so the recipient of the visualization does not
+    need R or PanVizGenerator installed.
+  home: https://bioconductor.org/packages/3.10/bioc/html/PanVizGenerator.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Generate PanViz visualisations from your pangenome
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: BiocStyle, knitr, rmarkdown, testthat, digest
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-panvizgenerator
+  version: 1.14.0
 requirements:
   host:
-    - 'bioconductor-findmyfriends >=1.16.0,<1.17.0'
-    - 'bioconductor-pcamethods >=1.78.0,<1.79.0'
-    - r-base
-    - r-igraph
-    - r-jsonlite
-    - r-shiny
+  - bioconductor-findmyfriends >=1.16.0,<1.17.0
+  - bioconductor-pcamethods >=1.78.0,<1.79.0
+  - r-base
+  - r-igraph
+  - r-jsonlite
+  - r-shiny
   run:
-    - 'bioconductor-findmyfriends >=1.16.0,<1.17.0'
-    - 'bioconductor-pcamethods >=1.78.0,<1.79.0'
-    - r-base
-    - r-igraph
-    - r-jsonlite
-    - r-shiny
+  - bioconductor-findmyfriends >=1.16.0,<1.17.0
+  - bioconductor-pcamethods >=1.78.0,<1.79.0
+  - r-base
+  - r-igraph
+  - r-jsonlite
+  - r-shiny
+source:
+  md5: e88ad7d2bcce62ac6e5febcd267deb33
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/PanVizGenerator_1.14.0.tar.gz
+  - https://bioarchive.galaxyproject.org/PanVizGenerator_1.14.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-panvizgenerator/bioconductor-panvizgenerator_1.14.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>= 2)'
-  summary: 'Generate PanViz visualisations from your pangenome'
-  description: 'PanViz is a JavaScript based visualisation tool for functionaly annotated pangenomes. PanVizGenerator is a companion for PanViz that facilitates the necessary data preprocessing step necessary to create a working PanViz visualization. The output is fully self-contained so the recipient of the visualization does not need R or PanVizGenerator installed.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('PanVizGenerator')"

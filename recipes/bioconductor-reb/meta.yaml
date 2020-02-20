@@ -1,40 +1,35 @@
-{% set version = "1.64.0" %}
-{% set name = "reb" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 1cad7c7e52592f5ae1f48f3d16fb57ae
+about:
+  description: A set of functions to dentify regional expression biases
+  home: https://bioconductor.org/packages/3.10/bioc/html/reb.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Regional Expression Biases
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-reb
+  version: 1.64.0
 requirements:
-  host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-idiogram >=1.62.0,<1.63.0'
-    - r-base
-  run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-idiogram >=1.62.0,<1.63.0'
-    - r-base
   build:
-    - {{ compiler('c') }}
-    - make
+  - None
+  - make
+  host:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-idiogram >=1.62.0,<1.63.0
+  - r-base
+  run:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-idiogram >=1.62.0,<1.63.0
+  - r-base
+source:
+  md5: 1cad7c7e52592f5ae1f48f3d16fb57ae
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/reb_1.64.0.tar.gz
+  - https://bioarchive.galaxyproject.org/reb_1.64.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-reb/bioconductor-reb_1.64.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-2
-  summary: 'Regional Expression Biases'
-  description: 'A set of functions to dentify regional expression biases'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
-
+  - $R -e "library('reb')"

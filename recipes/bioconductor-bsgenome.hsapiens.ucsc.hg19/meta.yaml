@@ -1,42 +1,37 @@
-{% set version = "1.4.0" %}
-{% set name = "BSgenome.Hsapiens.UCSC.hg19" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 672a988b28d8602afb2bd5595db7303b
+about:
+  description: Full genome sequences for Homo sapiens (Human) as provided by UCSC
+    (hg19, Feb. 2009) and stored in Biostrings objects.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/BSgenome.Hsapiens.UCSC.hg19.html
+  license: Artistic-2.0
+  summary: Full genome sequences for Homo sapiens (UCSC version hg19)
 build:
+  noarch: generic
   number: 8
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: TxDb.Hsapiens.UCSC.hg19.knownGene
-requirements:
-  host:
-    - 'bioconductor-bsgenome >=1.54.0,<1.55.0'
-    - r-base
-  run:
-    - 'bioconductor-bsgenome >=1.54.0,<1.55.0'
-    - r-base
-    - curl
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Full genome sequences for Homo sapiens (UCSC version hg19)'
-  description: 'Full genome sequences for Homo sapiens (Human) as provided by UCSC (hg19, Feb. 2009) and stored in Biostrings objects.'
+  - lib/R/lib/
+  - lib/
 extra:
   parent_recipe:
     name: bioconductor-bsgenome.hsapiens.ucsc.hg19
     path: recipes/bioconductor-bsgenome.hsapiens.ucsc.hg19
     version: 1.4.0
-
+package:
+  name: bioconductor-bsgenome.hsapiens.ucsc.hg19
+  version: 1.4.0
+requirements:
+  host:
+  - bioconductor-bsgenome >=1.54.0,<1.55.0
+  - r-base
+  run:
+  - bioconductor-bsgenome >=1.54.0,<1.55.0
+  - r-base
+  - curl
+source:
+  md5: 672a988b28d8602afb2bd5595db7303b
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/BSgenome.Hsapiens.UCSC.hg19_1.4.0.tar.gz
+  - https://bioarchive.galaxyproject.org/BSgenome.Hsapiens.UCSC.hg19_1.4.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-bsgenome.hsapiens.ucsc.hg19/bioconductor-bsgenome.hsapiens.ucsc.hg19_1.4.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('BSgenome.Hsapiens.UCSC.hg19')"

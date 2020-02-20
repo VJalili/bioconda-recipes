@@ -1,40 +1,36 @@
-{% set version = "1.24.0" %}
-{% set name = "pRolocdata" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: f01a04efb9dcc37413d8535a980d9171
+about:
+  description: Mass-spectrometry based spatial proteomics data sets and protein complex
+    separation data. Also contains the time course expression experiment from Mulvey
+    et al. 2015.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/pRolocdata.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Data accompanying the pRoloc package
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: pRoloc (>= 1.13.8), testthat
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-prolocdata
+  version: 1.24.0
 requirements:
   host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-msnbase >=2.12.0,<2.13.0'
-    - r-base
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-msnbase >=2.12.0,<2.13.0
+  - r-base
   run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-msnbase >=2.12.0,<2.13.0'
-    - r-base
-    - curl
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-msnbase >=2.12.0,<2.13.0
+  - r-base
+  - curl
+source:
+  md5: f01a04efb9dcc37413d8535a980d9171
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/pRolocdata_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/pRolocdata_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-prolocdata/bioconductor-prolocdata_1.24.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: GPL-2
-  summary: 'Data accompanying the pRoloc package'
-  description: 'Mass-spectrometry based spatial proteomics data sets and protein complex separation data. Also contains the time course expression experiment from Mulvey et al. 2015.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
-
+  - $R -e "library('pRolocdata')"

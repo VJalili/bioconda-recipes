@@ -1,35 +1,27 @@
-{% set name = "Ripser" %}
-{% set version = "1.0.1" %}
-{% set sha256 = "d9b39fe0c42668a14107060af850d327958519f9f33be534c819c14d1d17427c" %}
-
-package:
-  name: {{ name|lower }}
-  version: {{ version }}
-
-source:
-  url: https://github.com/{{ name }}/{{ name|lower}}/archive/v{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-  patches:
-    - makefile.patch
-
-build:
-  number: 0
-
-requirements:
-  build:
-    - {{ compiler('cxx') }}
-    - make
-
-test:
-  commands:
-    - ripser --help
-    - ripser-debug --help
-    - ripser-coeff --help
-
 about:
+  dev_url: https://github.com/Ripser/ripser
   home: http://ripser.org/
-  summary: "Ripser: efficient computation of Vietoris–Rips persistence barcodes."
   license: MIT
   license_family: MIT
   license_file: COPYING.txt
-  dev_url: https://github.com/Ripser/ripser
+  summary: "Ripser: efficient computation of Vietoris\xE2\u20AC\u201CRips persistence\
+    \ barcodes."
+build:
+  number: 0
+package:
+  name: ripser
+  version: 1.0.1
+requirements:
+  build:
+  - None
+  - make
+source:
+  patches:
+  - makefile.patch
+  sha256: d9b39fe0c42668a14107060af850d327958519f9f33be534c819c14d1d17427c
+  url: https://github.com/Ripser/ripser/archive/v1.0.1.tar.gz
+test:
+  commands:
+  - ripser --help
+  - ripser-debug --help
+  - ripser-coeff --help

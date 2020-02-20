@@ -1,35 +1,28 @@
-{% set version="0.13.0" %}
-
-package:
-  name: gencore
-  version: {{ version }}
-
-source:
-  url: https://github.com/OpenGene/gencore/archive/v{{ version }}.tar.gz
-  sha256: f00f6e5c2822a2cf9f9c4c2addd163372c4216fb80b0cc703986db140dfa40c2
-  patches:
-    - patch
-
-build:
-  number: 0
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-  host:
-    - zlib
-    - htslib
-  run:
-    - zlib
-    - htslib
-
-test:
-  commands:
-    - gencore --help
-
 about:
   home: https://github.com/OpenGene/gencore
   license: MIT
   license_file: LICENSE
   summary: Generate consensus reads to reduce sequencing noises and remove duplications
+build:
+  number: 0
+package:
+  name: gencore
+  version: 0.13.0
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - zlib
+  - htslib
+  run:
+  - zlib
+  - htslib
+source:
+  patches:
+  - patch
+  sha256: f00f6e5c2822a2cf9f9c4c2addd163372c4216fb80b0cc703986db140dfa40c2
+  url: https://github.com/OpenGene/gencore/archive/v0.13.0.tar.gz
+test:
+  commands:
+  - gencore --help

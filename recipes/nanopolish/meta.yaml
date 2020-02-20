@@ -1,55 +1,46 @@
-{% set name = "nanopolish" %}
-{% set version = "0.11.3" %}
-
-package:
-  name: {{ name|lower }}
-  version: {{ version }}
-
-build:
-  number: 0
-
-source:
-  url: https://github.com/jts/nanopolish/archive/v{{ version }}.tar.gz
-  sha256: 3f86e2b0fc24e00987ed18e34f3425aef6fb938873b6ea4e46fba69d170e5dd4
-  patches:
-    - nanopolish.patch
-
-requirements:
-  build:
-    - {{ compiler('cxx') }}  # [linux64]
-    - gcc                    # [osx]
-  host:
-    - fast5 0.6.5
-    - htslib
-    - hdf5
-    - eigen
-    - ncurses
-    - bzip2
-    - openmp
-    - libcurl
-  run:
-    - python
-    - hdf5
-    - biopython
-    - bwa
-    - eigen
-    - ncurses
-    - libdeflate
-    - openmp
-    - libgcc                # [osx]
-    - libcurl
-
-test:
-  commands:
-    - nanopolish --help
-    - nanopolish --version
-
 about:
   home: https://github.com/jts/nanopolish
   license: MIT
   license_file: LICENSE
-  summary: 'Signal-level algorithms for MinION data.'
-
+  summary: Signal-level algorithms for MinION data.
+build:
+  number: 0
 extra:
   skip-lints:
-    - should_use_compilers
+  - should_use_compilers
+package:
+  name: nanopolish
+  version: 0.11.3
+requirements:
+  build:
+  - None
+  - gcc
+  host:
+  - fast5 0.6.5
+  - htslib
+  - hdf5
+  - eigen
+  - ncurses
+  - bzip2
+  - openmp
+  - libcurl
+  run:
+  - python
+  - hdf5
+  - biopython
+  - bwa
+  - eigen
+  - ncurses
+  - libdeflate
+  - openmp
+  - libgcc
+  - libcurl
+source:
+  patches:
+  - nanopolish.patch
+  sha256: 3f86e2b0fc24e00987ed18e34f3425aef6fb938873b6ea4e46fba69d170e5dd4
+  url: https://github.com/jts/nanopolish/archive/v0.11.3.tar.gz
+test:
+  commands:
+  - nanopolish --help
+  - nanopolish --version

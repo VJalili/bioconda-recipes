@@ -1,34 +1,29 @@
-{% set version = "1.24.0" %}
-{% set name = "SomatiCAData" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 36d94260214d55e94aefd773318555a7
+about:
+  description: An example cancer whole genome sequencing data for the SomatiCA package
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/SomatiCAData.html
+  license: Artistic-2.0
+  summary: An example cancer whole genome sequencing data for the SomatiCA package
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-somaticadata
+  version: 1.24.0
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
-    - curl
+  - r-base
+  - curl
+source:
+  md5: 36d94260214d55e94aefd773318555a7
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/SomatiCAData_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SomatiCAData_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-somaticadata/bioconductor-somaticadata_1.24.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'An example cancer whole genome sequencing data for the SomatiCA package'
-  description: 'An example cancer whole genome sequencing data for the SomatiCA package'
-
+  - $R -e "library('SomatiCAData')"

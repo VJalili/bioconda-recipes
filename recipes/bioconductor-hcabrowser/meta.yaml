@@ -1,62 +1,58 @@
-{% set version = "1.2.0" %}
-{% set name = "HCABrowser" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 9b388c068b5952c3bf74231b10325e22
+about:
+  description: Search, browse, reference, and download resources from the Human Cell
+    Atlas data portal. Development of this package is supported through funds from
+    the Chan / Zuckerberg initiative.
+  home: https://bioconductor.org/packages/3.10/bioc/html/HCABrowser.html
+  license: Artistic-2.0
+  summary: Browse the Human Cell Atlas data portal
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: BiocStyle, knitr, rmarkdown, testthat
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-hcabrowser
+  version: 1.2.0
 requirements:
   host:
-    - 'bioconductor-biocfilecache >=1.10.0,<1.11.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - r-base
-    - r-curl
-    - r-dplyr
-    - r-googleauthr
-    - r-httr
-    - r-jsonlite
-    - r-plyr
-    - r-readr
-    - r-rlang
-    - r-stringr
-    - r-tibble
-    - r-tidygraph
-    - r-tidyr
+  - bioconductor-biocfilecache >=1.10.0,<1.11.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - r-base
+  - r-curl
+  - r-dplyr
+  - r-googleauthr
+  - r-httr
+  - r-jsonlite
+  - r-plyr
+  - r-readr
+  - r-rlang
+  - r-stringr
+  - r-tibble
+  - r-tidygraph
+  - r-tidyr
   run:
-    - 'bioconductor-biocfilecache >=1.10.0,<1.11.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - r-base
-    - r-curl
-    - r-dplyr
-    - r-googleauthr
-    - r-httr
-    - r-jsonlite
-    - r-plyr
-    - r-readr
-    - r-rlang
-    - r-stringr
-    - r-tibble
-    - r-tidygraph
-    - r-tidyr
+  - bioconductor-biocfilecache >=1.10.0,<1.11.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - r-base
+  - r-curl
+  - r-dplyr
+  - r-googleauthr
+  - r-httr
+  - r-jsonlite
+  - r-plyr
+  - r-readr
+  - r-rlang
+  - r-stringr
+  - r-tibble
+  - r-tidygraph
+  - r-tidyr
+source:
+  md5: 9b388c068b5952c3bf74231b10325e22
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/HCABrowser_1.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/HCABrowser_1.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hcabrowser/bioconductor-hcabrowser_1.2.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Browse the Human Cell Atlas data portal'
-  description: 'Search, browse, reference, and download resources from the Human Cell Atlas data portal. Development of this package is supported through funds from the Chan / Zuckerberg initiative.'
-
+  - $R -e "library('HCABrowser')"

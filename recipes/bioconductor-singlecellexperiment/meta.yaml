@@ -1,46 +1,43 @@
-{% set version = "1.8.0" %}
-{% set name = "SingleCellExperiment" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: e60a4c8a92e1ab7ab75aa9cd3dd7b473
+about:
+  description: Defines a S4 class for storing data from single-cell experiments. This
+    includes specialized methods to store and retrieve spike-in information, dimensionality
+    reduction coordinates and size factors for each cell, along with the usual metadata
+    for genes and libraries.
+  home: https://bioconductor.org/packages/3.10/bioc/html/SingleCellExperiment.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: S4 Classes for Single Cell Data
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: testthat, BiocStyle, knitr, rmarkdown, scRNAseq, Rtsne, Matrix
-requirements:
-  host:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - 'bioconductor-summarizedexperiment >=1.16.0,<1.17.0'
-    - r-base
-  run:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - 'bioconductor-summarizedexperiment >=1.16.0,<1.17.0'
-    - r-base
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-3
-  summary: 'S4 Classes for Single Cell Data'
-  description: 'Defines a S4 class for storing data from single-cell experiments. This includes specialized methods to store and retrieve spike-in information, dimensionality reduction coordinates and size factors for each cell, along with the usual metadata for genes and libraries.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   parent_recipe:
     name: bioconductor-singlecellexperiment
     path: recipes/bioconductor-singlecellexperiment
     version: 1.2.0
-
+package:
+  name: bioconductor-singlecellexperiment
+  version: 1.8.0
+requirements:
+  host:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - bioconductor-summarizedexperiment >=1.16.0,<1.17.0
+  - r-base
+  run:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - bioconductor-summarizedexperiment >=1.16.0,<1.17.0
+  - r-base
+source:
+  md5: e60a4c8a92e1ab7ab75aa9cd3dd7b473
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/SingleCellExperiment_1.8.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SingleCellExperiment_1.8.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-singlecellexperiment/bioconductor-singlecellexperiment_1.8.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SingleCellExperiment')"

@@ -1,53 +1,49 @@
-{% set version = "1.50.0" %}
-{% set name = "maigesPack" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 04fd7209ca07fc6f0161f69416aa4bf2
+about:
+  description: This package uses functions of various other packages together with
+    other functions in a coordinated way to handle and analyse cDNA microarray data
+  home: https://bioconductor.org/packages/3.10/bioc/html/maigesPack.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Functions to handle cDNA microarray data, including several methods of
+    data analysis
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-# Suggests: amap, annotate, class, e1071, MASS, multtest, OLIN, R2HTML, rgl, som
-requirements:
-  host:
-    - 'bioconductor-convert >=1.62.0,<1.63.0'
-    - 'bioconductor-graph >=1.64.0,<1.65.0'
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - 'bioconductor-marray >=1.64.0,<1.65.0'
-    - r-base
-  run:
-    - 'bioconductor-convert >=1.62.0,<1.63.0'
-    - 'bioconductor-graph >=1.64.0,<1.65.0'
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - 'bioconductor-marray >=1.64.0,<1.65.0'
-    - r-base
-  build:
-    - {{ compiler('c') }}
-    - make
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>= 2)'
-  summary: 'Functions to handle cDNA microarray data, including several methods of data analysis'
-  description: 'This package uses functions of various other packages together with other functions in a coordinated way to handle and analyse cDNA microarray data'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:maigespack
-    - doi:10.1038/nmeth.3252
+  - biotools:maigespack
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-maigespack
     path: recipes/bioconductor-maigespack
     version: 1.44.0
-
+package:
+  name: bioconductor-maigespack
+  version: 1.50.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-convert >=1.62.0,<1.63.0
+  - bioconductor-graph >=1.64.0,<1.65.0
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - bioconductor-marray >=1.64.0,<1.65.0
+  - r-base
+  run:
+  - bioconductor-convert >=1.62.0,<1.63.0
+  - bioconductor-graph >=1.64.0,<1.65.0
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - bioconductor-marray >=1.64.0,<1.65.0
+  - r-base
+source:
+  md5: 04fd7209ca07fc6f0161f69416aa4bf2
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/maigesPack_1.50.0.tar.gz
+  - https://bioarchive.galaxyproject.org/maigesPack_1.50.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-maigespack/bioconductor-maigespack_1.50.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('maigesPack')"

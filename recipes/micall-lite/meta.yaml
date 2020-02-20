@@ -1,39 +1,30 @@
-{% set name = "MiCall-Lite" %}
-{% set version = "0.1rc3" %}
-{% set sha256 = "36a77b82e7f3e61d5554487e0aa1ee2f3e2ac701d368bb6e21ad1efc05b80959" %}
+about:
+  home: https://github.com/PoonLab/MiCall-Lite
+  license: GNU Affero General Public License v3.0
+  license_file: LICENSE.txt
+  summary: 'A bioinformatic pipeline for mapping FASTQ data to a set of reference
 
-package:
-  name: {{ name|lower }}
-  version: {{ version }}
-
-source:
-  url: https://github.com/PoonLab/{{ name }}/archive/Lite-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-
+    sequences to generate consensus sequences, variant calls and coverage maps.'
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv
-  skip: True  # [py2k]
-
+  script: -m pip install . --no-deps --ignore-installed -vv
+  skip: true
+package:
+  name: micall-lite
+  version: 0.1rc3
 requirements:
   build:
-    - {{ compiler('c') }}
+  - None
   host:
-    - python
-    - pip
+  - python
+  - pip
   run:
-    - python
-    - python-levenshtein
-    - bowtie2
-
+  - python
+  - python-levenshtein
+  - bowtie2
+source:
+  sha256: 36a77b82e7f3e61d5554487e0aa1ee2f3e2ac701d368bb6e21ad1efc05b80959
+  url: https://github.com/PoonLab/MiCall-Lite/archive/Lite-0.1rc3.tar.gz
 test:
   commands:
-    - micall -h
-
-about:
-    home: https://github.com/PoonLab/MiCall-Lite
-    license: GNU Affero General Public License v3.0
-    license_file: LICENSE.txt
-    summary: |
-      A bioinformatic pipeline for mapping FASTQ data to a set of reference
-      sequences to generate consensus sequences, variant calls and coverage maps.
+  - micall -h

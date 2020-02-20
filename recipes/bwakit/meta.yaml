@@ -1,27 +1,22 @@
-{% set version = "0.7.15" %}
-package:
-  name: bwakit
-  version: {{ version }}
-
-source:
-  url: http://downloads.sourceforge.net/project/bio-bwa/bwakit/bwakit-{{ version }}_x64-linux.tar.bz2
-  sha256: 0a7b11971bc7916b68e9df35a364afe77cb3000df02ffb3a6fbd1aff9be5878c
-
-build:
-  number: 1
-  skip: True # [osx]
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-  run:
-    - perl
-
-test:
-  commands:
-    - 'run-bwamem 2>&1 | grep "Usage:   run-bwamem"'
-
 about:
   home: https://github.com/lh3/bwa/tree/master/bwakit
   license: GPLv3
-  summary: A self-consistent installation-free package of scripts and precompiled binaries, providing an end-to-end solution to read mapping
+  summary: A self-consistent installation-free package of scripts and precompiled
+    binaries, providing an end-to-end solution to read mapping
+build:
+  number: 1
+  skip: true
+package:
+  name: bwakit
+  version: 0.7.15
+requirements:
+  build:
+  - None
+  run:
+  - perl
+source:
+  sha256: 0a7b11971bc7916b68e9df35a364afe77cb3000df02ffb3a6fbd1aff9be5878c
+  url: http://downloads.sourceforge.net/project/bio-bwa/bwakit/bwakit-0.7.15_x64-linux.tar.bz2
+test:
+  commands:
+  - 'run-bwamem 2>&1 | grep "Usage:   run-bwamem"'

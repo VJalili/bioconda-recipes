@@ -1,35 +1,29 @@
-package:
-  name: tssar
-  version: "1.0.1"
-
-source:
-  url: http://nibiru.tbi.univie.ac.at/TSSAR/download/TSSAR_1.0.1.zip
-  md5: 22f3c1fe591a566b0c31877fff6c31b9
-
-build:
-  number: 1
-  skip: True  # [osx]
-
-  rpaths:
-    - lib/R/lib/
-    - lib/
-
-requirements:
-  build:
-    - r-base
-    - {{ compiler('c') }}
-
-  run:
-    - r-base
-    - r-vgam
-    - r-skellam
-    - perl
-
-test:
-  commands:
-    - TSSAR --help | grep "help"
-
 about:
   home: http://rna.tbi.univie.ac.at/TSSAR
   license: GNU General Public License v2.0
-  summary: TSSAR is a Web Service for predicting bacterial Transcription Start Sites from dRNA-seq data.
+  summary: TSSAR is a Web Service for predicting bacterial Transcription Start Sites
+    from dRNA-seq data.
+build:
+  number: 1
+  rpaths:
+  - lib/R/lib/
+  - lib/
+  skip: true
+package:
+  name: tssar
+  version: 1.0.1
+requirements:
+  build:
+  - r-base
+  - None
+  run:
+  - r-base
+  - r-vgam
+  - r-skellam
+  - perl
+source:
+  md5: 22f3c1fe591a566b0c31877fff6c31b9
+  url: http://nibiru.tbi.univie.ac.at/TSSAR/download/TSSAR_1.0.1.zip
+test:
+  commands:
+  - TSSAR --help | grep "help"

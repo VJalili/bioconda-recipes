@@ -1,39 +1,35 @@
-{% set version = "1.0.1" %}
-{% set sha256 = "62faa1786cc3e35b6ae21dbda00087933528735786d2d154229068aabde997e9" %}
-
-package:
-  name: mirfix
-  version: '{{version}}'
-
-source:
-  url: https://github.com/Bierinformatik/MIRfix/archive/v{{ version }}.tar.gz
-  sha256: '{{sha256}}'
-
-build:
-  noarch: python
-  number: 0
-
-requirements:
-  host:
-    - python <3
-  run:
-    - python <3
-    - biopython
-    - tk
-    - numpy
-    - matplotlib
-    - viennarna
-    - dialign2
-    - clustalw
-
-test:
-  imports:
-    - RNA
-  commands:
-    - MIRfix.py --help
-
 about:
   home: https://github.com/Bierinformatik/MIRfix
   license: GPL-3.0
   license_family: GPL
-  summary: MIRfix automatically curates miRNA datasets by improving alignments of their precursors, the consistency of the annotation of mature miR and miR* sequence, and the phylogenetic coverage. MIRfix produces alignments that are comparable across families and sets the stage for improved homology search as well as quantitative analyses.
+  summary: MIRfix automatically curates miRNA datasets by improving alignments of
+    their precursors, the consistency of the annotation of mature miR and miR* sequence,
+    and the phylogenetic coverage. MIRfix produces alignments that are comparable
+    across families and sets the stage for improved homology search as well as quantitative
+    analyses.
+build:
+  noarch: python
+  number: 0
+package:
+  name: mirfix
+  version: 1.0.1
+requirements:
+  host:
+  - python <3
+  run:
+  - python <3
+  - biopython
+  - tk
+  - numpy
+  - matplotlib
+  - viennarna
+  - dialign2
+  - clustalw
+source:
+  sha256: 62faa1786cc3e35b6ae21dbda00087933528735786d2d154229068aabde997e9
+  url: https://github.com/Bierinformatik/MIRfix/archive/v1.0.1.tar.gz
+test:
+  commands:
+  - MIRfix.py --help
+  imports:
+  - RNA

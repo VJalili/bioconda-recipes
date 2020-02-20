@@ -1,37 +1,28 @@
-{% set name = "nanoplexer" %}
-{% set version = "0.1" %}
-
-package:
-  name: {{ name }}
-  version: {{ version }}
-
-build:
-  number: 0
-  skip: True # [osx]
-
-source:
-  url: https://github.com/hanyue36/nanoplexer/archive/v{{ version }}.tar.gz
-  sha256: dffb16a884b0118ac186a8364dbf59e513c8c0eed134ce42304c423d5c522911
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-    - make
-  host:
-    - zlib
-  run:
-    - zlib
-
-test:
-  commands:
-    - nanoplexer -h
-
 about:
   home: https://github.com/hanyue36/nanoplexer
   license: MIT
   license_file: LICENSE.txt
-  summary: 'Tool for demultiplexing Nanopore barcode sequence data'
-
+  summary: Tool for demultiplexing Nanopore barcode sequence data
+build:
+  number: 0
+  skip: true
 extra:
   recipe-maintainers:
-    - thanhleviet
+  - thanhleviet
+package:
+  name: nanoplexer
+  version: 0.1
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - zlib
+  run:
+  - zlib
+source:
+  sha256: dffb16a884b0118ac186a8364dbf59e513c8c0eed134ce42304c423d5c522911
+  url: https://github.com/hanyue36/nanoplexer/archive/v0.1.tar.gz
+test:
+  commands:
+  - nanoplexer -h

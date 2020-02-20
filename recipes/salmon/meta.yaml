@@ -1,47 +1,40 @@
-{% set version="1.1.0" %}
-
-package:
-  name: salmon
-  version: {{ version }}
-
-build:
-  number: 0
-
-source:
-  url: https://github.com/COMBINE-lab/salmon/archive/v{{ version }}.tar.gz
-  sha256: 550bbdc18970b015f467d418385a5779cd0d6f642cb710766c66761c12c9bc50
-
-requirements:
-  build:
-    - autoconf
-    - cmake
-    - {{ compiler('cxx') }}
-    - {{ compiler('c') }}
-  host:
-    - boost-cpp
-    - icu 
-    - zlib
-    - bzip2
-    - unzip
-    - jemalloc >=5.1.0
-    - tbb-devel
-  run:
-    - tbb
-
-test:
-  commands:
-    - salmon --help
-
 about:
   home: https://github.com/COMBINE-lab/salmon
   license: GPLv3
   license_file: LICENSE
-  summary: Highly-accurate & wicked fast transcript-level quantification from RNA-seq reads using lightweight alignments
-
+  summary: Highly-accurate & wicked fast transcript-level quantification from RNA-seq
+    reads using lightweight alignments
+build:
+  number: 0
 extra:
-  recipe-maintainers:
-    - rob-p
-    - k3yavi
   identifiers:
-    - biotools:salmon
-    - doi:10.1038/nmeth.4197
+  - biotools:salmon
+  - doi:10.1038/nmeth.4197
+  recipe-maintainers:
+  - rob-p
+  - k3yavi
+package:
+  name: salmon
+  version: 1.1.0
+requirements:
+  build:
+  - autoconf
+  - cmake
+  - None
+  - None
+  host:
+  - boost-cpp
+  - icu
+  - zlib
+  - bzip2
+  - unzip
+  - jemalloc >=5.1.0
+  - tbb-devel
+  run:
+  - tbb
+source:
+  sha256: 550bbdc18970b015f467d418385a5779cd0d6f642cb710766c66761c12c9bc50
+  url: https://github.com/COMBINE-lab/salmon/archive/v1.1.0.tar.gz
+test:
+  commands:
+  - salmon --help

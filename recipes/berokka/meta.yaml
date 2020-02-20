@@ -1,32 +1,24 @@
-{% set version = "0.2.3" %}
-{% set sha256 = "460f4272768e205008aa8aa885d1df5bab9af2c5b404c261e00573c6a30a641f" %}
-
-package:
-  name: berokka
-  version: '{{version}}'
-
-source:
-  url: https://github.com/tseemann/berokka/archive/v{{version}}.tar.gz
-  sha256: '{{sha256}}'
-
-build:
-  noarch: generic
-  number: 0
-
-requirements:
-  build:
-  run:
-    - perl
-    - perl-bioperl >=1.7
-    - blast >=2.3
-
-test:
-  commands:
-    - berokka -h | grep 'canu'
-
 about:
   home: https://github.com/tseemann/berokka
   license: GPL-3.0
   license_family: GPL
   license_file: LICENSE
   summary: Trim, circularise and orient long read bacterial genome assemblies.
+build:
+  noarch: generic
+  number: 0
+package:
+  name: berokka
+  version: 0.2.3
+requirements:
+  build: null
+  run:
+  - perl
+  - perl-bioperl >=1.7
+  - blast >=2.3
+source:
+  sha256: 460f4272768e205008aa8aa885d1df5bab9af2c5b404c261e00573c6a30a641f
+  url: https://github.com/tseemann/berokka/archive/v0.2.3.tar.gz
+test:
+  commands:
+  - berokka -h | grep 'canu'

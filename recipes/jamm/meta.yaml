@@ -1,34 +1,28 @@
-{% set version = "1.0.7.6" %}
-
-package:
-  name: jamm
-  version: {{ version }}
-
-source:
-  url: https://github.com/mahmoudibrahim/JAMM/archive/JAMMv{{ version }}.tar.gz
-  sha256: 22d12ce225f47e4eca8252394a52cf97eb7d453e26068a482977eaf74eaf432e
-  patches:
-    - setpath.patch
-    - shebang.patch
-
-build:
-  noarch: generic
-  number: 0
-
-requirements:
-  run:
-    - gawk
-    - perl
-    - r-mclust >=5.3 # force use of r-mclust from conda-forge
-    - r-signal
-
-test:
-  commands:
-    - JAMM.sh | grep JAMM > /dev/null
-    - SignalGenerator.sh | grep JAMM > /dev/null
-
 about:
   home: https://github.com/mahmoudibrahim/JAMM
   license: GPL
   license_file: LICENSE
-  summary: JAMM is a peak finder for NGS datasets (ChIP-Seq, ATAC-Seq, DNase-Seq..etc.) that can integrate replicates and assign peak boundaries accurately.
+  summary: JAMM is a peak finder for NGS datasets (ChIP-Seq, ATAC-Seq, DNase-Seq..etc.)
+    that can integrate replicates and assign peak boundaries accurately.
+build:
+  noarch: generic
+  number: 0
+package:
+  name: jamm
+  version: 1.0.7.6
+requirements:
+  run:
+  - gawk
+  - perl
+  - r-mclust >=5.3
+  - r-signal
+source:
+  patches:
+  - setpath.patch
+  - shebang.patch
+  sha256: 22d12ce225f47e4eca8252394a52cf97eb7d453e26068a482977eaf74eaf432e
+  url: https://github.com/mahmoudibrahim/JAMM/archive/JAMMv1.0.7.6.tar.gz
+test:
+  commands:
+  - JAMM.sh | grep JAMM > /dev/null
+  - SignalGenerator.sh | grep JAMM > /dev/null

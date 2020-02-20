@@ -1,33 +1,25 @@
-{% set name = "tbl2asn-forever" %}
-{% set version = "25.7.1f" %}
-{% set sha256 = "dfc5466d37582bff700974f805081c72ff916269c0d2c56fce965d28463b9845" %}
-package:
-  name: {{ name|lower }}
-  version: {{ version }}
-
-source:
-  url: https://github.com/rpetit3/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-
-build:
-  number: 0
-
-requirements:
-  run:
-    - libfaketime
-    - libidn11
-    - zlib
-
-test:
-  commands:
-    - tbl2asn --help | grep arguments
-
 about:
   home: https://www.ncbi.nlm.nih.gov/genbank/tbl2asn2
   license: Public Domain
-  summary: 'tbl2asn is a program that automates the creation of sequence records for submission to GenBank'
-
+  summary: tbl2asn is a program that automates the creation of sequence records for
+    submission to GenBank
+build:
+  number: 0
 extra:
   skip-lints:
-    - should_be_noarch_generic
-    - should_not_be_noarch_source
+  - should_be_noarch_generic
+  - should_not_be_noarch_source
+package:
+  name: tbl2asn-forever
+  version: 25.7.1f
+requirements:
+  run:
+  - libfaketime
+  - libidn11
+  - zlib
+source:
+  sha256: dfc5466d37582bff700974f805081c72ff916269c0d2c56fce965d28463b9845
+  url: https://github.com/rpetit3/tbl2asn-forever/archive/v25.7.1f.tar.gz
+test:
+  commands:
+  - tbl2asn --help | grep arguments

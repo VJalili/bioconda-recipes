@@ -1,58 +1,54 @@
-{% set version = "1.16.0" %}
-{% set name = "SummarizedExperiment" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 1533c302a80690abcd24d162c79c935d
+about:
+  description: The SummarizedExperiment container contains one or more assays, each
+    represented by a matrix-like object of numeric or other mode. The rows typically
+    represent genomic ranges of interest and the columns represent samples.
+  home: https://bioconductor.org/packages/3.10/bioc/html/SummarizedExperiment.html
+  license: Artistic-2.0
+  summary: SummarizedExperiment container
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: annotate, AnnotationDbi, hgu95av2.db, GenomicFeatures, TxDb.Hsapiens.UCSC.hg19.knownGene, BiocStyle, knitr, rmarkdown, digest, jsonlite, rhdf5, HDF5Array (>= 1.7.5), airway, RUnit, testthat
-requirements:
-  host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-delayedarray >=0.12.0,<0.13.0'
-    - 'bioconductor-genomeinfodb >=1.22.0,<1.23.0'
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - r-base
-    - r-matrix
-  run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-delayedarray >=0.12.0,<0.13.0'
-    - 'bioconductor-genomeinfodb >=1.22.0,<1.23.0'
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - r-base
-    - r-matrix
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'SummarizedExperiment container'
-  description: 'The SummarizedExperiment container contains one or more assays, each represented by a matrix-like object of numeric or other mode. The rows typically represent genomic ranges of interest and the columns represent samples.'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:summarizedexperiment
-    - doi:10.1038/nmeth.3252
+  - biotools:summarizedexperiment
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-summarizedexperiment
     path: recipes/bioconductor-summarizedexperiment
     version: 1.10.1
-
+package:
+  name: bioconductor-summarizedexperiment
+  version: 1.16.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-delayedarray >=0.12.0,<0.13.0
+  - bioconductor-genomeinfodb >=1.22.0,<1.23.0
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - r-base
+  - r-matrix
+  run:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-delayedarray >=0.12.0,<0.13.0
+  - bioconductor-genomeinfodb >=1.22.0,<1.23.0
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - r-base
+  - r-matrix
+source:
+  md5: 1533c302a80690abcd24d162c79c935d
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/SummarizedExperiment_1.16.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SummarizedExperiment_1.16.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-summarizedexperiment/bioconductor-summarizedexperiment_1.16.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SummarizedExperiment')"

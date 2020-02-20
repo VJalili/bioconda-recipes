@@ -1,59 +1,54 @@
-{% set version = "1.16.0" %}
-{% set name = "subSeq" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: a12b662d9aa1715f6aa83c22fd62a688
+about:
+  description: Subsampling of high throughput sequencing count data for use in experiment
+    design and analysis.
+  home: https://bioconductor.org/packages/3.10/bioc/html/subSeq.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Subsampling of high-throughput sequencing count data
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: limma, edgeR, DESeq2, DEXSeq (>= 1.9.7), testthat, knitr
-requirements:
-  host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-qvalue >=2.18.0,<2.19.0'
-    - r-base
-    - r-data.table
-    - r-digest
-    - r-dplyr
-    - r-ggplot2
-    - r-magrittr
-    - r-tidyr
-  run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-qvalue >=2.18.0,<2.19.0'
-    - r-base
-    - r-data.table
-    - r-digest
-    - r-dplyr
-    - r-ggplot2
-    - r-magrittr
-    - r-tidyr
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'MIT + file LICENSE'
-  summary: 'Subsampling of high-throughput sequencing count data'
-  description: 'Subsampling of high throughput sequencing count data for use in experiment design and analysis.'
-  license_file: LICENSE
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:subseq
-    - doi:10.1093/bioinformatics/btu552
+  - biotools:subseq
+  - doi:10.1093/bioinformatics/btu552
   parent_recipe:
     name: bioconductor-subseq
     path: recipes/bioconductor-subseq
     version: 1.10.0
-
+package:
+  name: bioconductor-subseq
+  version: 1.16.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-qvalue >=2.18.0,<2.19.0
+  - r-base
+  - r-data.table
+  - r-digest
+  - r-dplyr
+  - r-ggplot2
+  - r-magrittr
+  - r-tidyr
+  run:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-qvalue >=2.18.0,<2.19.0
+  - r-base
+  - r-data.table
+  - r-digest
+  - r-dplyr
+  - r-ggplot2
+  - r-magrittr
+  - r-tidyr
+source:
+  md5: a12b662d9aa1715f6aa83c22fd62a688
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/subSeq_1.16.0.tar.gz
+  - https://bioarchive.galaxyproject.org/subSeq_1.16.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-subseq/bioconductor-subseq_1.16.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('subSeq')"

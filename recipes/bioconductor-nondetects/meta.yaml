@@ -1,52 +1,46 @@
-{% set version = "2.16.0" %}
-{% set name = "nondetects" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: b344491cb7eb3939b58de492e073912e
+about:
+  description: Methods to model and impute non-detects in the results of qPCR experiments.
+  home: https://bioconductor.org/packages/3.10/bioc/html/nondetects.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Non-detects in qPCR data
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: knitr, rmarkdown, BiocStyle (>= 1.0.0), RUnit, BiocGenerics (>= 0.8.0)
-requirements:
-  host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-htqpcr >=1.40.0,<1.41.0'
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - r-arm
-    - r-base
-    - r-mvtnorm
-  run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-htqpcr >=1.40.0,<1.41.0'
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - r-arm
-    - r-base
-    - r-mvtnorm
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-3
-  summary: 'Non-detects in qPCR data'
-  description: 'Methods to model and impute non-detects in the results of qPCR experiments.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:nondetects
+  - biotools:nondetects
   parent_recipe:
     name: bioconductor-nondetects
     path: recipes/bioconductor-nondetects
     version: 2.10.0
-
+package:
+  name: bioconductor-nondetects
+  version: 2.16.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-htqpcr >=1.40.0,<1.41.0
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - r-arm
+  - r-base
+  - r-mvtnorm
+  run:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-htqpcr >=1.40.0,<1.41.0
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - r-arm
+  - r-base
+  - r-mvtnorm
+source:
+  md5: b344491cb7eb3939b58de492e073912e
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/nondetects_2.16.0.tar.gz
+  - https://bioarchive.galaxyproject.org/nondetects_2.16.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-nondetects/bioconductor-nondetects_2.16.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('nondetects')"

@@ -1,36 +1,33 @@
-{% set version = "2.0.0" %}
-{% set name = "greengenes13.5MgDb" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: c06d8d5b702636bb5fb3e6229869578c
+about:
+  description: Metagenome annotation package with for the Greengenes 16S rRNA Database
+    version 13.5. Contains a MgDb-class object, defined in the metagenomeFeatures
+    package.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/greengenes13.5MgDb.html
+  license: Artistic-2.0
+  summary: Greengenes 13.5 16S rRNA Database Annotation Data
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-greengenes13.5mgdb
+  version: 2.0.0
 requirements:
   host:
-    - 'bioconductor-metagenomefeatures >=2.6.0,<2.7.0'
-    - r-base
+  - bioconductor-metagenomefeatures >=2.6.0,<2.7.0
+  - r-base
   run:
-    - 'bioconductor-metagenomefeatures >=2.6.0,<2.7.0'
-    - r-base
-    - curl
+  - bioconductor-metagenomefeatures >=2.6.0,<2.7.0
+  - r-base
+  - curl
+source:
+  md5: c06d8d5b702636bb5fb3e6229869578c
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/greengenes13.5MgDb_2.0.0.tar.gz
+  - https://bioarchive.galaxyproject.org/greengenes13.5MgDb_2.0.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-greengenes13.5mgdb/bioconductor-greengenes13.5mgdb_2.0.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Greengenes 13.5 16S rRNA Database Annotation Data'
-  description: 'Metagenome annotation package with for the Greengenes 16S rRNA Database version 13.5. Contains a MgDb-class object, defined in the metagenomeFeatures package.'
-
+  - $R -e "library('greengenes13.5MgDb')"

@@ -1,56 +1,51 @@
-{% set version = "1.22.0" %}
-{% set name = "Mirsynergy" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 66c78f6daca2d3d12eeefc2fb60eca34
+about:
+  description: Detect synergistic miRNA regulatory modules by overlapping neighbourhood
+    expansion.
+  home: https://bioconductor.org/packages/3.10/bioc/html/Mirsynergy.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Mirsynergy
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: glmnet, RUnit, BiocGenerics, knitr
-requirements:
-  host:
-    - r-base
-    - r-ggplot2
-    - r-gridextra
-    - r-igraph
-    - r-matrix
-    - r-rcolorbrewer
-    - r-reshape
-    - r-scales
-  run:
-    - r-base
-    - r-ggplot2
-    - r-gridextra
-    - r-igraph
-    - r-matrix
-    - r-rcolorbrewer
-    - r-reshape
-    - r-scales
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-2
-  summary: Mirsynergy
-  description: 'Detect synergistic miRNA regulatory modules by overlapping neighbourhood expansion.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:mirsynergy
+  - biotools:mirsynergy
   parent_recipe:
     name: bioconductor-mirsynergy
     path: recipes/bioconductor-mirsynergy
     version: 1.16.0
-
+package:
+  name: bioconductor-mirsynergy
+  version: 1.22.0
+requirements:
+  host:
+  - r-base
+  - r-ggplot2
+  - r-gridextra
+  - r-igraph
+  - r-matrix
+  - r-rcolorbrewer
+  - r-reshape
+  - r-scales
+  run:
+  - r-base
+  - r-ggplot2
+  - r-gridextra
+  - r-igraph
+  - r-matrix
+  - r-rcolorbrewer
+  - r-reshape
+  - r-scales
+source:
+  md5: 66c78f6daca2d3d12eeefc2fb60eca34
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/Mirsynergy_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Mirsynergy_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mirsynergy/bioconductor-mirsynergy_1.22.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('Mirsynergy')"

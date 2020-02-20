@@ -1,40 +1,36 @@
-package:
-  name: epa-ng
-  version: "0.3.6"
-
-build:
-  number: 0
-
-source:
-  url: https://github.com/Pbdas/epa-ng/archive/v0.3.6.tar.gz
-  sha256: 964675e75f192dd680678edb087b2552a1d2f1e3c6b78cb0a1e5c9f5bd80a146
-
-requirements:
-  build:
-    - {{ compiler('cxx') }}
-    - libtool
-    - flex
-    - bison
-    - m4
-    - cmake
-    - automake
-    - autoconf
-    - llvm-openmp # [osx]
-  host:
-    - zlib
-    - llvm-openmp # [osx]
-  run:
-    - zlib
-    - llvm-openmp # [osx]
-test:
-  commands:
-    - epa-ng -h | grep "Number of threads to use" > /dev/null
 about:
   home: https://github.com/Pbdas/epa-ng
   license: GNU Affero General Public License v3.0
   license_file: LICENSE
   summary: Massively parallel phylogenetic placement of genetic sequences
-
+build:
+  number: 0
 extra:
   identifiers:
-    - doi:10.1093/sysbio/syy054
+  - doi:10.1093/sysbio/syy054
+package:
+  name: epa-ng
+  version: 0.3.6
+requirements:
+  build:
+  - None
+  - libtool
+  - flex
+  - bison
+  - m4
+  - cmake
+  - automake
+  - autoconf
+  - llvm-openmp
+  host:
+  - zlib
+  - llvm-openmp
+  run:
+  - zlib
+  - llvm-openmp
+source:
+  sha256: 964675e75f192dd680678edb087b2552a1d2f1e3c6b78cb0a1e5c9f5bd80a146
+  url: https://github.com/Pbdas/epa-ng/archive/v0.3.6.tar.gz
+test:
+  commands:
+  - epa-ng -h | grep "Number of threads to use" > /dev/null

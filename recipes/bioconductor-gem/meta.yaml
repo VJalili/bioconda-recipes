@@ -1,36 +1,31 @@
-{% set version = "1.12.0" %}
-{% set name = "GEM" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 610d496c0d3a5262756fdf2a03dc2c80
+about:
+  description: Tools for analyzing EWAS, methQTL and GxE genome widely.
+  home: https://bioconductor.org/packages/3.10/bioc/html/GEM.html
+  license: Artistic-2.0
+  summary: 'GEM: fast association study for the interplay of Gene, Environment and
+    Methylation'
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: knitr, RUnit, testthat, BiocGenerics
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-gem
+  version: 1.12.0
 requirements:
   host:
-    - r-base
-    - r-ggplot2
+  - r-base
+  - r-ggplot2
   run:
-    - r-base
-    - r-ggplot2
+  - r-base
+  - r-ggplot2
+source:
+  md5: 610d496c0d3a5262756fdf2a03dc2c80
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/GEM_1.12.0.tar.gz
+  - https://bioarchive.galaxyproject.org/GEM_1.12.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-gem/bioconductor-gem_1.12.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'GEM: fast association study for the interplay of Gene, Environment and Methylation'
-  description: 'Tools for analyzing EWAS, methQTL and GxE genome widely.'
-
+  - $R -e "library('GEM')"

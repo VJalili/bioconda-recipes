@@ -1,34 +1,27 @@
-{% set version = "2.10.2" %}
-{% set sha256 = "613be73b31474b7e3d616ad3d7fea3a6a598a9b3695309a1b1e0bc4224248447" %}
-
-package:
-  name: ncbi-ngs-sdk
-  version: {{ version }}
-
-build:
-  number: 0
-
-source:
-  url: https://github.com/ncbi/ngs/archive/{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-  patches:
-    - patch
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-  host:
-    - perl
-    - libiconv
-    - libxml2
-
-test:
-  commands:
-    - test -e ${PREFIX}/lib64/libngs-sdk.so # [not osx]
-    - test -e ${PREFIX}/lib64/libngs-sdk.dylib # [osx]
-
 about:
   home: https://github.com/ncbi/ngs
   license: Public Domain
-  summary: NGS is a new, domain-specific API for accessing reads, alignments and pileups produced from Next Generation Sequencing.
+  summary: NGS is a new, domain-specific API for accessing reads, alignments and pileups
+    produced from Next Generation Sequencing.
+build:
+  number: 0
+package:
+  name: ncbi-ngs-sdk
+  version: 2.10.2
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - perl
+  - libiconv
+  - libxml2
+source:
+  patches:
+  - patch
+  sha256: 613be73b31474b7e3d616ad3d7fea3a6a598a9b3695309a1b1e0bc4224248447
+  url: https://github.com/ncbi/ngs/archive/2.10.2.tar.gz
+test:
+  commands:
+  - test -e ${PREFIX}/lib64/libngs-sdk.so
+  - test -e ${PREFIX}/lib64/libngs-sdk.dylib

@@ -1,56 +1,52 @@
-{% set version = "1.6.0" %}
-{% set name = "PowerExplorer" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 853baea64376beb8558ef4721a7e0048
+about:
+  description: Estimate and predict power among groups and multiple sample sizes with
+    simulated data, the simulations are operated based on distribution parameters
+    estimated from the provided input dataset.
+  home: https://bioconductor.org/packages/3.10/bioc/html/PowerExplorer.html
+  license: Artistic-2.0
+  summary: Power Estimation Tool for RNA-Seq and proteomics data
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: knitr, rmarkdown
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-powerexplorer
+  version: 1.6.0
 requirements:
   host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-biocparallel >=1.20.0,<1.21.0'
-    - 'bioconductor-deseq2 >=1.26.0,<1.27.0'
-    - 'bioconductor-rots >=1.14.0,<1.15.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - 'bioconductor-summarizedexperiment >=1.16.0,<1.17.0'
-    - 'bioconductor-vsn >=3.54.0,<3.55.0'
-    - r-base
-    - r-data.table
-    - r-ggplot2
-    - r-gridextra
-    - r-mass
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-biocparallel >=1.20.0,<1.21.0
+  - bioconductor-deseq2 >=1.26.0,<1.27.0
+  - bioconductor-rots >=1.14.0,<1.15.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - bioconductor-summarizedexperiment >=1.16.0,<1.17.0
+  - bioconductor-vsn >=3.54.0,<3.55.0
+  - r-base
+  - r-data.table
+  - r-ggplot2
+  - r-gridextra
+  - r-mass
   run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-biocparallel >=1.20.0,<1.21.0'
-    - 'bioconductor-deseq2 >=1.26.0,<1.27.0'
-    - 'bioconductor-rots >=1.14.0,<1.15.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - 'bioconductor-summarizedexperiment >=1.16.0,<1.17.0'
-    - 'bioconductor-vsn >=3.54.0,<3.55.0'
-    - r-base
-    - r-data.table
-    - r-ggplot2
-    - r-gridextra
-    - r-mass
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-biocparallel >=1.20.0,<1.21.0
+  - bioconductor-deseq2 >=1.26.0,<1.27.0
+  - bioconductor-rots >=1.14.0,<1.15.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - bioconductor-summarizedexperiment >=1.16.0,<1.17.0
+  - bioconductor-vsn >=3.54.0,<3.55.0
+  - r-base
+  - r-data.table
+  - r-ggplot2
+  - r-gridextra
+  - r-mass
+source:
+  md5: 853baea64376beb8558ef4721a7e0048
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/PowerExplorer_1.6.0.tar.gz
+  - https://bioarchive.galaxyproject.org/PowerExplorer_1.6.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-powerexplorer/bioconductor-powerexplorer_1.6.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Power Estimation Tool for RNA-Seq and proteomics data'
-  description: 'Estimate and predict power among groups and multiple sample sizes with simulated data, the simulations are operated based on distribution parameters estimated from the provided input dataset.'
-
+  - $R -e "library('PowerExplorer')"

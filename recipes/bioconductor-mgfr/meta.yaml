@@ -1,46 +1,41 @@
-{% set version = "1.12.0" %}
-{% set name = "MGFR" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 48d589c78f372ae17213fe20344c0e70
+about:
+  description: The package is designed to detect marker genes from RNA-seq data.
+  home: https://bioconductor.org/packages/3.10/bioc/html/MGFR.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Marker Gene Finder in RNA-seq data
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-requirements:
-  host:
-    - 'bioconductor-annotate >=1.64.0,<1.65.0'
-    - 'bioconductor-biomart >=2.42.0,<2.43.0'
-    - r-base
-  run:
-    - 'bioconductor-annotate >=1.64.0,<1.65.0'
-    - 'bioconductor-biomart >=2.42.0,<2.43.0'
-    - r-base
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-3
-  summary: 'Marker Gene Finder in RNA-seq data'
-  description: 'The package is designed to detect marker genes from RNA-seq data.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:mgfr
-    - doi:10.1186/s12864-015-1785-9
+  - biotools:mgfr
+  - doi:10.1186/s12864-015-1785-9
   parent_recipe:
     name: bioconductor-mgfr
     path: recipes/bioconductor-mgfr
     version: 1.6.0
-
+package:
+  name: bioconductor-mgfr
+  version: 1.12.0
+requirements:
+  host:
+  - bioconductor-annotate >=1.64.0,<1.65.0
+  - bioconductor-biomart >=2.42.0,<2.43.0
+  - r-base
+  run:
+  - bioconductor-annotate >=1.64.0,<1.65.0
+  - bioconductor-biomart >=2.42.0,<2.43.0
+  - r-base
+source:
+  md5: 48d589c78f372ae17213fe20344c0e70
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/MGFR_1.12.0.tar.gz
+  - https://bioarchive.galaxyproject.org/MGFR_1.12.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mgfr/bioconductor-mgfr_1.12.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('MGFR')"

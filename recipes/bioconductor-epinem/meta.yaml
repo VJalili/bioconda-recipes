@@ -1,57 +1,53 @@
-{% set version = "1.10.0" %}
-{% set name = "epiNEM" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 32ea3aa3a7af034ee1668bab6256a68f
+about:
+  description: epiNEM is an extension of the original Nested Effects Models (NEM).
+    EpiNEM is able to take into account double knockouts and infer more complex network
+    signalling pathways.
+  home: https://bioconductor.org/packages/3.10/bioc/html/epiNEM.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: epiNEM
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: knitr, RUnit, BiocGenerics, STRINGdb, devtools, rmarkdown, GOSemSim, AnnotationHub, org.Sc.sgd.db
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-epinem
+  version: 1.10.0
 requirements:
   host:
-    - 'bioconductor-graph >=1.64.0,<1.65.0'
-    - 'bioconductor-minet >=3.44.0,<3.45.0'
-    - 'bioconductor-nem >=2.60.0,<2.61.0'
-    - r-base
-    - r-boolnet
-    - r-e1071
-    - r-gtools
-    - r-igraph
-    - r-lattice
-    - r-latticeextra
-    - r-pcalg
-    - r-rcolorbrewer
+  - bioconductor-graph >=1.64.0,<1.65.0
+  - bioconductor-minet >=3.44.0,<3.45.0
+  - bioconductor-nem >=2.60.0,<2.61.0
+  - r-base
+  - r-boolnet
+  - r-e1071
+  - r-gtools
+  - r-igraph
+  - r-lattice
+  - r-latticeextra
+  - r-pcalg
+  - r-rcolorbrewer
   run:
-    - 'bioconductor-graph >=1.64.0,<1.65.0'
-    - 'bioconductor-minet >=3.44.0,<3.45.0'
-    - 'bioconductor-nem >=2.60.0,<2.61.0'
-    - r-base
-    - r-boolnet
-    - r-e1071
-    - r-gtools
-    - r-igraph
-    - r-lattice
-    - r-latticeextra
-    - r-pcalg
-    - r-rcolorbrewer
+  - bioconductor-graph >=1.64.0,<1.65.0
+  - bioconductor-minet >=3.44.0,<3.45.0
+  - bioconductor-nem >=2.60.0,<2.61.0
+  - r-base
+  - r-boolnet
+  - r-e1071
+  - r-gtools
+  - r-igraph
+  - r-lattice
+  - r-latticeextra
+  - r-pcalg
+  - r-rcolorbrewer
+source:
+  md5: 32ea3aa3a7af034ee1668bab6256a68f
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/epiNEM_1.10.0.tar.gz
+  - https://bioarchive.galaxyproject.org/epiNEM_1.10.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-epinem/bioconductor-epinem_1.10.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-3
-  summary: epiNEM
-  description: 'epiNEM is an extension of the original Nested Effects Models (NEM). EpiNEM is able to take into account double knockouts and infer more complex network signalling pathways.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('epiNEM')"

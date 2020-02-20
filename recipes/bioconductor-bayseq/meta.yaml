@@ -1,49 +1,47 @@
-{% set version = "2.20.0" %}
-{% set name = "baySeq" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: d5d6c5815fdd0eb88a5cece36eceb3b6
+about:
+  description: This package identifies differential expression in high-throughput
+    'count' data, such as that derived from next-generation sequencing machines, calculating
+    estimated posterior likelihoods of differential expression (or more complex hypotheses)
+    via empirical Bayesian methods.
+  home: https://bioconductor.org/packages/3.10/bioc/html/baySeq.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Empirical Bayesian analysis of patterns of differential expression in count
+    data
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: BiocStyle, BiocGenerics
-requirements:
-  host:
-    - 'bioconductor-edger >=3.28.0,<3.29.0'
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - r-abind
-    - r-base
-  run:
-    - 'bioconductor-edger >=3.28.0,<3.29.0'
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - r-abind
-    - r-base
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-3
-  summary: 'Empirical Bayesian analysis of patterns of differential expression in count data'
-  description: 'This package identifies differential expression in high-throughput ''count'' data, such as that derived from next-generation sequencing machines, calculating estimated posterior likelihoods of differential expression (or more complex hypotheses) via empirical Bayesian methods.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:bayseq
-    - doi:10.1186/1471-2105-11-422
+  - biotools:bayseq
+  - doi:10.1186/1471-2105-11-422
   parent_recipe:
     name: bioconductor-bayseq
     path: recipes/bioconductor-bayseq
     version: 2.14.0
-
+package:
+  name: bioconductor-bayseq
+  version: 2.20.0
+requirements:
+  host:
+  - bioconductor-edger >=3.28.0,<3.29.0
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - r-abind
+  - r-base
+  run:
+  - bioconductor-edger >=3.28.0,<3.29.0
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - r-abind
+  - r-base
+source:
+  md5: d5d6c5815fdd0eb88a5cece36eceb3b6
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/baySeq_2.20.0.tar.gz
+  - https://bioarchive.galaxyproject.org/baySeq_2.20.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-bayseq/bioconductor-bayseq_2.20.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('baySeq')"

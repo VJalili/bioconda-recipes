@@ -1,39 +1,36 @@
-{% set version = "1.12.0" %}
-{% set name = "CellMapperData" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 68b8eaa8644c74deaefa32aff8968630
+about:
+  description: Experiment data package. Contains microarray data from several large
+    expression compendia that have been pre-processed for use with the CellMapper
+    package. This pre-processed data is recommended for routine searches using the
+    CellMapper package.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/CellMapperData.html
+  license: Artistic-2.0
+  summary: Pre-processed data for use with the CellMapper package
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: BiocStyle
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-cellmapperdata
+  version: 1.12.0
 requirements:
   host:
-    - 'bioconductor-cellmapper >=1.12.0,<1.13.0'
-    - 'bioconductor-experimenthub >=1.12.0,<1.13.0'
-    - r-base
+  - bioconductor-cellmapper >=1.12.0,<1.13.0
+  - bioconductor-experimenthub >=1.12.0,<1.13.0
+  - r-base
   run:
-    - 'bioconductor-cellmapper >=1.12.0,<1.13.0'
-    - 'bioconductor-experimenthub >=1.12.0,<1.13.0'
-    - r-base
-    - curl
+  - bioconductor-cellmapper >=1.12.0,<1.13.0
+  - bioconductor-experimenthub >=1.12.0,<1.13.0
+  - r-base
+  - curl
+source:
+  md5: 68b8eaa8644c74deaefa32aff8968630
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/CellMapperData_1.12.0.tar.gz
+  - https://bioarchive.galaxyproject.org/CellMapperData_1.12.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-cellmapperdata/bioconductor-cellmapperdata_1.12.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Pre-processed data for use with the CellMapper package'
-  description: 'Experiment data package. Contains microarray data from several large expression compendia that have been pre-processed for use with the CellMapper package. This pre-processed data is recommended for routine searches using the CellMapper package.'
-
+  - $R -e "library('CellMapperData')"

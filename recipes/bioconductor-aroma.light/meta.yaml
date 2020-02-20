@@ -1,50 +1,47 @@
-{% set version = "3.16.0" %}
-{% set name = "aroma.light" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 9cd884ea8694f15d655f352d48236aec
+about:
+  description: Methods for microarray analysis that take basic data types such as
+    matrices and lists of vectors.  These methods can be used standalone, be utilized
+    in other packages, or be wrapped up in higher-level classes.
+  home: https://bioconductor.org/packages/3.10/bioc/html/aroma.light.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Light-Weight Methods for Normalization and Visualization of Microarray
+    Data using Only Basic R Data Types
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: princurve (>= 2.1.4)
-requirements:
-  host:
-    - r-base
-    - 'r-matrixstats >=0.54.0'
-    - 'r-r.methodss3 >=1.7.1'
-    - 'r-r.oo >=1.22.0'
-    - 'r-r.utils >=2.9.0'
-  run:
-    - r-base
-    - 'r-matrixstats >=0.54.0'
-    - 'r-r.methodss3 >=1.7.1'
-    - 'r-r.oo >=1.22.0'
-    - 'r-r.utils >=2.9.0'
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>= 2)'
-  summary: 'Light-Weight Methods for Normalization and Visualization of Microarray Data using Only Basic R Data Types'
-  description: 'Methods for microarray analysis that take basic data types such as matrices and lists of vectors.  These methods can be used standalone, be utilized in other packages, or be wrapped up in higher-level classes.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:aroma.light
+  - biotools:aroma.light
   parent_recipe:
     name: bioconductor-aroma.light
     path: recipes/bioconductor-aroma.light
     version: 3.10.0
-
+package:
+  name: bioconductor-aroma.light
+  version: 3.16.0
+requirements:
+  host:
+  - r-base
+  - r-matrixstats >=0.54.0
+  - r-r.methodss3 >=1.7.1
+  - r-r.oo >=1.22.0
+  - r-r.utils >=2.9.0
+  run:
+  - r-base
+  - r-matrixstats >=0.54.0
+  - r-r.methodss3 >=1.7.1
+  - r-r.oo >=1.22.0
+  - r-r.utils >=2.9.0
+source:
+  md5: 9cd884ea8694f15d655f352d48236aec
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/aroma.light_3.16.0.tar.gz
+  - https://bioarchive.galaxyproject.org/aroma.light_3.16.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-aroma.light/bioconductor-aroma.light_3.16.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('aroma.light')"

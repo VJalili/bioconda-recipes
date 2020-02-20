@@ -1,47 +1,38 @@
-{% set version = "0.4.0" %}
-{% set sha256 = "f4784e0c8863c266c2b826078bfe46fca4943fcde5799337891c333c9e0d29b4" %}
-
-package:
-  name: dashing
-  version: {{ version }}
-
-build:
-  number: 0
-
-source:
-  git_url: https://github.com/dnbaker/dashing
-  git_rev: v{{ version }}
-  sha256: {{sha256}}
-
-requirements:
-  build:
-    - {{ compiler('cxx') }}
-    - {{ compiler('c') }}
-    - llvm-openmp  # [osx]
-    - zstd
-    - make
-  host:
-    - zlib
-    - llvm-openmp  # [osx]
-  run:
-    - zlib
-    - llvm-openmp  # [osx]
-
 about:
   home: https://github.com/dnbaker/dashing
   license: GPL-3
-  summary: Fast and accurate genomic distances using HyperLogLog
   license_file: LICENSE
-
-test:
-  commands:
-    - dashing --help 2>&1 | grep {{ version }}
-
+  summary: Fast and accurate genomic distances using HyperLogLog
+build:
+  number: 0
 extra:
   identifiers:
-    - doi:10.1101/501726
+  - doi:10.1101/501726
   recipe-maintainers:
-    - silask
-    - dnbaker
+  - silask
+  - dnbaker
   skip-lints:
-    - uses_vcs_url
+  - uses_vcs_url
+package:
+  name: dashing
+  version: 0.4.0
+requirements:
+  build:
+  - None
+  - None
+  - llvm-openmp
+  - zstd
+  - make
+  host:
+  - zlib
+  - llvm-openmp
+  run:
+  - zlib
+  - llvm-openmp
+source:
+  git_rev: v0.4.0
+  git_url: https://github.com/dnbaker/dashing
+  sha256: f4784e0c8863c266c2b826078bfe46fca4943fcde5799337891c333c9e0d29b4
+test:
+  commands:
+  - dashing --help 2>&1 | grep 0.4.0

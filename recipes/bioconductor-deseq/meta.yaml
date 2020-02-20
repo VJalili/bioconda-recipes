@@ -1,60 +1,56 @@
-{% set version = "1.38.0" %}
-{% set name = "DESeq" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 4f10b5dc49240d374cfb855aa61f0a89
+about:
+  description: Estimate variance-mean dependence in count data from high-throughput
+    sequencing assays and test for differential expression based on a model using
+    the negative binomial distribution
+  home: https://bioconductor.org/packages/3.10/bioc/html/DESeq.html
+  license: GPL (>= 3)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Differential gene expression analysis based on the negative binomial distribution
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-# Suggests: pasilla (>= 0.2.10), vsn, gplots
-requirements:
-  host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-genefilter >=1.68.0,<1.69.0'
-    - 'bioconductor-geneplotter >=1.64.0,<1.65.0'
-    - r-base
-    - r-lattice
-    - r-locfit
-    - r-mass
-    - r-rcolorbrewer
-  run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-genefilter >=1.68.0,<1.69.0'
-    - 'bioconductor-geneplotter >=1.64.0,<1.65.0'
-    - r-base
-    - r-lattice
-    - r-locfit
-    - r-mass
-    - r-rcolorbrewer
-  build:
-    - {{ compiler('c') }}
-    - make
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>= 3)'
-  summary: 'Differential gene expression analysis based on the negative binomial distribution'
-  description: 'Estimate variance-mean dependence in count data from high-throughput sequencing assays and test for differential expression based on a model using the negative binomial distribution'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:deseq
+  - biotools:deseq
   parent_recipe:
     name: bioconductor-deseq
     path: recipes/bioconductor-deseq
     version: 1.32.0
-
+package:
+  name: bioconductor-deseq
+  version: 1.38.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-genefilter >=1.68.0,<1.69.0
+  - bioconductor-geneplotter >=1.64.0,<1.65.0
+  - r-base
+  - r-lattice
+  - r-locfit
+  - r-mass
+  - r-rcolorbrewer
+  run:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-genefilter >=1.68.0,<1.69.0
+  - bioconductor-geneplotter >=1.64.0,<1.65.0
+  - r-base
+  - r-lattice
+  - r-locfit
+  - r-mass
+  - r-rcolorbrewer
+source:
+  md5: 4f10b5dc49240d374cfb855aa61f0a89
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/DESeq_1.38.0.tar.gz
+  - https://bioarchive.galaxyproject.org/DESeq_1.38.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-deseq/bioconductor-deseq_1.38.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('DESeq')"

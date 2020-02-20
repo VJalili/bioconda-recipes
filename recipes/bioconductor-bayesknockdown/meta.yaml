@@ -1,36 +1,36 @@
-{% set version = "1.12.0" %}
-{% set name = "BayesKnockdown" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 1e560e7a929e4ffe2f180f28ac3cb310
+about:
+  description: A simple, fast Bayesian method for computing posterior probabilities
+    for relationships between a single predictor variable and multiple potential outcome
+    variables, incorporating prior probabilities of relationships. In the context
+    of knockdown experiments, the predictor variable is the knocked-down gene, while
+    the other genes are potential targets. Can also be used for differential expression/2-class
+    data.
+  home: https://bioconductor.org/packages/3.10/bioc/html/BayesKnockdown.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: 'BayesKnockdown: Posterior Probabilities for Edges from Knockdown Data'
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-bayesknockdown
+  version: 1.12.0
 requirements:
   host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - r-base
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - r-base
   run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - r-base
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - r-base
+source:
+  md5: 1e560e7a929e4ffe2f180f28ac3cb310
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/BayesKnockdown_1.12.0.tar.gz
+  - https://bioarchive.galaxyproject.org/BayesKnockdown_1.12.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-bayesknockdown/bioconductor-bayesknockdown_1.12.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-3
-  summary: 'BayesKnockdown: Posterior Probabilities for Edges from Knockdown Data'
-  description: 'A simple, fast Bayesian method for computing posterior probabilities for relationships between a single predictor variable and multiple potential outcome variables, incorporating prior probabilities of relationships. In the context of knockdown experiments, the predictor variable is the knocked-down gene, while the other genes are potential targets. Can also be used for differential expression/2-class data.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('BayesKnockdown')"

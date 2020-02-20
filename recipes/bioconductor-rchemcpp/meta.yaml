@@ -1,50 +1,45 @@
-{% set version = "2.21.1" %}
-{% set name = "Rchemcpp" %}
-{% set bioc = "3.9" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 7baa3710ac856f7b70b580e127f0aa0e
-  patches:
-    - patch
+about:
+  home: https://bioconductor.org/packages/3.9/bioc/html/Rchemcpp.html
+  license: GPL (>= 2.1)
+  summary: The Rchemcpp package implements the marginalized graph kernel and extensions,
+    Tanimoto kernels, graph kernels, pharmacophore and 3D kernels suggested for measuring
+    the similarity of molecules.
 build:
   number: 1
   rpaths:
-    - lib/R/lib/
-    - lib/
-# Suggests: apcluster, kernlab
-# SystemRequirements: GNU make
-requirements:
-  host:
-    - 'bioconductor-chemminer >=3.36.0,<3.37.0'
-    - r-base
-    - 'r-rcpp >=0.11.1'
-  run:
-    - 'bioconductor-chemminer >=3.36.0,<3.37.0'
-    - r-base
-    - 'r-rcpp >=0.11.1'
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - make
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>= 2.1)'
-  summary: 'The Rchemcpp package implements the marginalized graph kernel and extensions, Tanimoto kernels, graph kernels, pharmacophore and 3D kernels suggested for measuring the similarity of molecules.'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:rchemcpp
+  - biotools:rchemcpp
   parent_recipe:
     name: bioconductor-rchemcpp
     path: recipes/bioconductor-rchemcpp
     version: 2.18.0
-
+package:
+  name: bioconductor-rchemcpp
+  version: 2.21.1
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-chemminer >=3.36.0,<3.37.0
+  - r-base
+  - r-rcpp >=0.11.1
+  run:
+  - bioconductor-chemminer >=3.36.0,<3.37.0
+  - r-base
+  - r-rcpp >=0.11.1
+source:
+  md5: 7baa3710ac856f7b70b580e127f0aa0e
+  patches:
+  - patch
+  url:
+  - https://bioconductor.org/packages/3.9/bioc/src/contrib/Rchemcpp_2.21.1.tar.gz
+  - https://bioarchive.galaxyproject.org/Rchemcpp_2.21.1.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rchemcpp/bioconductor-rchemcpp_2.21.1_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('Rchemcpp')"

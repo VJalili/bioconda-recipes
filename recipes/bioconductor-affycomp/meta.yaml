@@ -1,45 +1,40 @@
-{% set version = "1.62.0" %}
-{% set name = "affycomp" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: e9616ae3db640d2811a1fef48476a350
+about:
+  description: The package contains functions that can be used to compare expression
+    measures for Affymetrix Oligonucleotide Arrays.
+  home: https://bioconductor.org/packages/3.10/bioc/html/affycomp.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Graphics Toolbox for Assessment of Affymetrix Expression Measures
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: splines, affycompData
-requirements:
-  host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - r-base
-  run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - r-base
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>= 2)'
-  summary: 'Graphics Toolbox for Assessment of Affymetrix Expression Measures'
-  description: 'The package contains functions that can be used to compare expression measures for Affymetrix Oligonucleotide Arrays.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:affycomp
-    - doi:10.1093/bioinformatics/btg410
+  - biotools:affycomp
+  - doi:10.1093/bioinformatics/btg410
   parent_recipe:
     name: bioconductor-affycomp
     path: recipes/bioconductor-affycomp
     version: 1.56.0
-
+package:
+  name: bioconductor-affycomp
+  version: 1.62.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - r-base
+  run:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - r-base
+source:
+  md5: e9616ae3db640d2811a1fef48476a350
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/affycomp_1.62.0.tar.gz
+  - https://bioarchive.galaxyproject.org/affycomp_1.62.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-affycomp/bioconductor-affycomp_1.62.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('affycomp')"

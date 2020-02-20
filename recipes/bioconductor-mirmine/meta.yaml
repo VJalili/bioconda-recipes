@@ -1,37 +1,33 @@
-{% set version = "1.8.0" %}
-{% set name = "miRmine" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 14e79fff145df5025246db3ecfd25fc3
+about:
+  description: 'miRmine database is a collection of expression profiles from different
+    publicly available miRNA-seq datasets, Panwar et al (2017) miRmine: A Database
+    of Human miRNA Expression, prepared with this data package as RangedSummarizedExperiment.'
+  home: https://bioconductor.org/packages/3.10/bioc/html/miRmine.html
+  license: GPL (>= 3)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Data package with miRNA-seq datasets from miRmine database as RangedSummarizedExperiment
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: BiocStyle, knitr, rmarkdown, DESeq2
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-mirmine
+  version: 1.8.0
 requirements:
   host:
-    - 'bioconductor-summarizedexperiment >=1.16.0,<1.17.0'
-    - r-base
+  - bioconductor-summarizedexperiment >=1.16.0,<1.17.0
+  - r-base
   run:
-    - 'bioconductor-summarizedexperiment >=1.16.0,<1.17.0'
-    - r-base
+  - bioconductor-summarizedexperiment >=1.16.0,<1.17.0
+  - r-base
+source:
+  md5: 14e79fff145df5025246db3ecfd25fc3
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/miRmine_1.8.0.tar.gz
+  - https://bioarchive.galaxyproject.org/miRmine_1.8.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mirmine/bioconductor-mirmine_1.8.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>= 3)'
-  summary: 'Data package with miRNA-seq datasets from miRmine database as RangedSummarizedExperiment'
-  description: 'miRmine database is a collection of expression profiles from different publicly available miRNA-seq datasets, Panwar et al (2017) miRmine: A Database of Human miRNA Expression, prepared with this data package as RangedSummarizedExperiment.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('miRmine')"

@@ -1,39 +1,35 @@
-{% set version = "2.26.0" %}
-{% set name = "BAGS" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: c247de54501c19bd47e06986387f34ac
+about:
+  description: R package providing functions to perform geneset significance analysis
+    over simple cross-sectional data between 2 and 5 phenotypes of interest.
+  home: https://bioconductor.org/packages/3.10/bioc/html/BAGS.html
+  license: Artistic-2.0
+  summary: A Bayesian Approach for Geneset Selection
 build:
   number: 1
   rpaths:
-    - lib/R/lib/
-    - lib/
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-bags
+  version: 2.26.0
 requirements:
-  host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-breastcancervdx >=1.24.0,<1.25.0'
-    - r-base
-  run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-breastcancervdx >=1.24.0,<1.25.0'
-    - r-base
   build:
-    - {{ compiler('c') }}
-    - make
+  - None
+  - make
+  host:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-breastcancervdx >=1.24.0,<1.25.0
+  - r-base
+  run:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-breastcancervdx >=1.24.0,<1.25.0
+  - r-base
+source:
+  md5: c247de54501c19bd47e06986387f34ac
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/BAGS_2.26.0.tar.gz
+  - https://bioarchive.galaxyproject.org/BAGS_2.26.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-bags/bioconductor-bags_2.26.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'A Bayesian Approach for Geneset Selection'
-  description: 'R package providing functions to perform geneset significance analysis over simple cross-sectional data between 2 and 5 phenotypes of interest.'
-
+  - $R -e "library('BAGS')"

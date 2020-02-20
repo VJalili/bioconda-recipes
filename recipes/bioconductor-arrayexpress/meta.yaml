@@ -1,47 +1,43 @@
-{% set version = "1.46.0" %}
-{% set name = "ArrayExpress" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 32b86ec5c3368f60fdf4b886786e7ae0
+about:
+  description: 'Access the ArrayExpress Repository at EBI and build Bioconductor data
+    structures: ExpressionSet, AffyBatch, NChannelSet'
+  home: https://bioconductor.org/packages/3.10/bioc/html/ArrayExpress.html
+  license: Artistic-2.0
+  summary: 'Access the ArrayExpress Microarray Database at EBI and build Bioconductor
+    data structures: ExpressionSet, AffyBatch, NChannelSet'
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: affy
-requirements:
-  host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - 'bioconductor-oligo >=1.50.0,<1.51.0'
-    - r-base
-    - r-xml
-  run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - 'bioconductor-oligo >=1.50.0,<1.51.0'
-    - r-base
-    - r-xml
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Access the ArrayExpress Microarray Database at EBI and build Bioconductor data structures: ExpressionSet, AffyBatch, NChannelSet'
-  description: 'Access the ArrayExpress Repository at EBI and build Bioconductor data structures: ExpressionSet, AffyBatch, NChannelSet'
+  - lib/R/lib/
+  - lib/
 extra:
   parent_recipe:
     name: bioconductor-arrayexpress
     path: recipes/bioconductor-arrayexpress
     version: 1.40.0
-
+package:
+  name: bioconductor-arrayexpress
+  version: 1.46.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - bioconductor-oligo >=1.50.0,<1.51.0
+  - r-base
+  - r-xml
+  run:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - bioconductor-oligo >=1.50.0,<1.51.0
+  - r-base
+  - r-xml
+source:
+  md5: 32b86ec5c3368f60fdf4b886786e7ae0
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/ArrayExpress_1.46.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ArrayExpress_1.46.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-arrayexpress/bioconductor-arrayexpress_1.46.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('ArrayExpress')"

@@ -1,35 +1,28 @@
-{% set version = "2.0.9" %}
-{% set name = "illumiprocessor" %}
-
-package:
-  name: {{ name }}
-  version: {{ version }}
-
-source:
-  url: https://github.com/faircloth-lab/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 81a70360e43622d7ec73068d5d0fe79f7c82d7a8c50099b07e703431f220b1fd
-
-build:
-  number: 2
-  noarch: python
-  script: {{ PYTHON }} -m pip install . --ignore-installed --no-deps -vv
-
-requirements:
-  build:
-    - python <3
-    - pip
-  run:
-    - python <3
-    - trimmomatic
-
-test:
-  imports:
-    - illumiprocessor
-  commands:
-    - illumiprocessor --help
-
 about:
   home: https://github.com/faircloth-lab/illumiprocessor
-  summary: illumiprocessor is a tool to batch process illumina sequencing reads using the excellent trimmomatic package.
   license: BSD
   license_file: LICENSE.txt
+  summary: illumiprocessor is a tool to batch process illumina sequencing reads using
+    the excellent trimmomatic package.
+build:
+  noarch: python
+  number: 2
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: illumiprocessor
+  version: 2.0.9
+requirements:
+  build:
+  - python <3
+  - pip
+  run:
+  - python <3
+  - trimmomatic
+source:
+  sha256: 81a70360e43622d7ec73068d5d0fe79f7c82d7a8c50099b07e703431f220b1fd
+  url: https://github.com/faircloth-lab/illumiprocessor/archive/v2.0.9.tar.gz
+test:
+  commands:
+  - illumiprocessor --help
+  imports:
+  - illumiprocessor

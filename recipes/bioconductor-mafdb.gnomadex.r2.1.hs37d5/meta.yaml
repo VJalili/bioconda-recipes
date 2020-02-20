@@ -1,47 +1,42 @@
-{% set version = "3.10.0" %}
-{% set name = "MafDb.gnomADex.r2.1.hs37d5" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 6ca4d742571687a13906d99cea2dbf1f
+about:
+  description: Store minor allele frequency data from the Genome Aggregation Database
+    (gnomAD exomes release 2.1) for the human genome version hs37d5.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/MafDb.gnomADex.r2.1.hs37d5.html
+  license: Artistic-2.0
+  summary: Minor allele frequency data from gnomAD exomes release 2.1 for hs37d5
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: SNPlocs.Hsapiens.dbSNP144.GRCh37
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-mafdb.gnomadex.r2.1.hs37d5
+  version: 3.10.0
 requirements:
   host:
-    - 'bioconductor-bsgenome >=1.54.0,<1.55.0'
-    - 'bioconductor-genomeinfodb >=1.22.0,<1.23.0'
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - 'bioconductor-genomicscores >=1.10.0,<1.11.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - r-base
+  - bioconductor-bsgenome >=1.54.0,<1.55.0
+  - bioconductor-genomeinfodb >=1.22.0,<1.23.0
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - bioconductor-genomicscores >=1.10.0,<1.11.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - r-base
   run:
-    - 'bioconductor-bsgenome >=1.54.0,<1.55.0'
-    - 'bioconductor-genomeinfodb >=1.22.0,<1.23.0'
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - 'bioconductor-genomicscores >=1.10.0,<1.11.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - r-base
-    - curl
+  - bioconductor-bsgenome >=1.54.0,<1.55.0
+  - bioconductor-genomeinfodb >=1.22.0,<1.23.0
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - bioconductor-genomicscores >=1.10.0,<1.11.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - r-base
+  - curl
+source:
+  md5: 6ca4d742571687a13906d99cea2dbf1f
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/MafDb.gnomADex.r2.1.hs37d5_3.10.0.tar.gz
+  - https://bioarchive.galaxyproject.org/MafDb.gnomADex.r2.1.hs37d5_3.10.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mafdb.gnomadex.r2.1.hs37d5/bioconductor-mafdb.gnomadex.r2.1.hs37d5_3.10.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Minor allele frequency data from gnomAD exomes release 2.1 for hs37d5'
-  description: 'Store minor allele frequency data from the Genome Aggregation Database (gnomAD exomes release 2.1) for the human genome version hs37d5.'
-
+  - $R -e "library('MafDb.gnomADex.r2.1.hs37d5')"

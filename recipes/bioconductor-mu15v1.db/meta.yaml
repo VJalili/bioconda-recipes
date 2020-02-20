@@ -1,39 +1,34 @@
-{% set version = "3.2.3" %}
-{% set name = "Mu15v1.db" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: e9297b5fe223b046bc65dc6ea0b4376d
+about:
+  description: FHCRC Genomics Shared Resource Mu15v1 Annotation Data (Mu15v1) assembled
+    using data from public repositories
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/Mu15v1.db.html
+  license: Artistic-2.0
+  summary: FHCRC Genomics Shared Resource Mu15v1 Annotation Data (Mu15v1)
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: DBI, annotate, RUnit
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-mu15v1.db
+  version: 3.2.3
 requirements:
   host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - 'bioconductor-org.mm.eg.db >=3.10.0,<3.11.0'
-    - r-base
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - bioconductor-org.mm.eg.db >=3.10.0,<3.11.0
+  - r-base
   run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - 'bioconductor-org.mm.eg.db >=3.10.0,<3.11.0'
-    - r-base
-    - curl
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - bioconductor-org.mm.eg.db >=3.10.0,<3.11.0
+  - r-base
+  - curl
+source:
+  md5: e9297b5fe223b046bc65dc6ea0b4376d
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/Mu15v1.db_3.2.3.tar.gz
+  - https://bioarchive.galaxyproject.org/Mu15v1.db_3.2.3.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mu15v1.db/bioconductor-mu15v1.db_3.2.3_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'FHCRC Genomics Shared Resource Mu15v1 Annotation Data (Mu15v1)'
-  description: 'FHCRC Genomics Shared Resource Mu15v1 Annotation Data (Mu15v1) assembled using data from public repositories'
-
+  - $R -e "library('Mu15v1.db')"

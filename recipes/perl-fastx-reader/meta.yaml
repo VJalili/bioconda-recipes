@@ -1,36 +1,26 @@
-{% set name = "perl-fastx-reader" %}
-{% set version = "0.61" %}
-{% set sha256 = "cbce5efccce6e96ff144e36ca7e01efb653b5ef7fa53b8d5ad283c96698b00ec" %}
-
-package:
-  name: {{ name }}
-  version: {{ version }}
-
-source:
-  url: https://cpan.metacpan.org/authors/id/P/PR/PROCH/FASTX-Reader-0.61.tar.gz
-  sha256: {{ sha256 }}
-
-build:
-  number: 0
-  noarch: generic
-
-requirements:
-  host:
-    - perl
-    - perl-test-warnings >=0.005
-    - perl-cpan-meta-check
-    - perl-cpan-meta-requirements
-    - perl-extutils-makemaker
-
-  run:
-    - perl
-    - perl-carp
-
-test:
-  imports:
-    - FASTX::Reader
-
 about:
   home: https://github.com/telatin/FASTQ-Parser
   license: gpl_3
-  summary: 'FASTX::Reader, Perl module to parse FASTA and FASTQ files'
+  summary: FASTX::Reader, Perl module to parse FASTA and FASTQ files
+build:
+  noarch: generic
+  number: 0
+package:
+  name: perl-fastx-reader
+  version: 0.61
+requirements:
+  host:
+  - perl
+  - perl-test-warnings >=0.005
+  - perl-cpan-meta-check
+  - perl-cpan-meta-requirements
+  - perl-extutils-makemaker
+  run:
+  - perl
+  - perl-carp
+source:
+  sha256: cbce5efccce6e96ff144e36ca7e01efb653b5ef7fa53b8d5ad283c96698b00ec
+  url: https://cpan.metacpan.org/authors/id/P/PR/PROCH/FASTX-Reader-0.61.tar.gz
+test:
+  imports:
+  - FASTX::Reader

@@ -1,43 +1,35 @@
-{% set version = "0.1.19" %}
-{% set sha256 = "071a2733f16572693bde4ba19d027b34398ee75890bfac966b6ed6a1bddf0e6f" %}
-
-package:
-  name: alfred
-  version: '{{ version }}'
-
-source:
-  url: https://github.com/tobiasrausch/alfred/archive/v{{ version }}.tar.gz
-  sha256: '{{ sha256 }}'
-
-build:
-  number: 0
-  skip: True # [osx]
-
-requirements:
-  build:
-    - {{ compiler('cxx') }}
-  host:
-    - zlib
-    - bzip2
-    - boost
-    - htslib
-    - sdsl-lite
-    - nlohmann_json
-  run:
-    - zlib
-    - bzip2
-    - boost
-    - htslib
-    - sdsl-lite
-    - nlohmann_json
-
-test:
-  commands:
-    - alfred --help
-
 about:
   home: https://github.com/tobiasrausch/alfred
   license: BSD License
   license_family: BSD
   license_file: LICENSE
   summary: BAM alignment statistics, feature counting and feature annotation
+build:
+  number: 0
+  skip: true
+package:
+  name: alfred
+  version: 0.1.19
+requirements:
+  build:
+  - None
+  host:
+  - zlib
+  - bzip2
+  - boost
+  - htslib
+  - sdsl-lite
+  - nlohmann_json
+  run:
+  - zlib
+  - bzip2
+  - boost
+  - htslib
+  - sdsl-lite
+  - nlohmann_json
+source:
+  sha256: 071a2733f16572693bde4ba19d027b34398ee75890bfac966b6ed6a1bddf0e6f
+  url: https://github.com/tobiasrausch/alfred/archive/v0.1.19.tar.gz
+test:
+  commands:
+  - alfred --help

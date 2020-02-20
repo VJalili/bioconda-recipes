@@ -1,39 +1,33 @@
-{% set name = "imctools" %}
-{% set version = "1.0.6" %}
-{% set sha256  = "5c25a31f1a5b9ec956c3a23be199bf50bd8802a42f7c291a0d2a97fc938694b0" %}
-
-package:
-  name: {{ name|lower }}
-  version: {{ version }}
-
-build:
-  number: 0
-  script: $PYTHON setup.py install --single-version-externally-managed --record=record.txt
-  noarch: python
-
-source:
-  url: https://github.com/BodenmillerGroup/imctools/archive/v{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-
-requirements:
-  host:
-    - python
-  run:
-    - python
-    - numpy
-    - tifffile >=0.13.5
-    - scikit-image
-    - scipy
-    - pandas
-
-test:
-  imports:
-    - imctools
-
 about:
+  dev_url: https://github.com/BodenmillerGroup/imctools
+  doc_url: https://github.com/BodenmillerGroup/imctools/blob/master/README.md
   home: https://github.com/BodenmillerGroup/imctools
   license: MIT
   license_file: LICENSE
-  summary: An Image Mass Cytometry (IMC) file conversion tool that aims to convert IMC rawfiles (.mcd, .txt) into an intermediary ome.tiff, containing all the relevant metadata. Further it contains tools to generate simpler tiff files that can be directly be used as input files for e.g. CellProfiller, Ilastik, Fiji etc
-  dev_url: https://github.com/BodenmillerGroup/imctools
-  doc_url: https://github.com/BodenmillerGroup/imctools/blob/master/README.md
+  summary: An Image Mass Cytometry (IMC) file conversion tool that aims to convert
+    IMC rawfiles (.mcd, .txt) into an intermediary ome.tiff, containing all the relevant
+    metadata. Further it contains tools to generate simpler tiff files that can be
+    directly be used as input files for e.g. CellProfiller, Ilastik, Fiji etc
+build:
+  noarch: python
+  number: 0
+  script: $PYTHON setup.py install --single-version-externally-managed --record=record.txt
+package:
+  name: imctools
+  version: 1.0.6
+requirements:
+  host:
+  - python
+  run:
+  - python
+  - numpy
+  - tifffile >=0.13.5
+  - scikit-image
+  - scipy
+  - pandas
+source:
+  sha256: 5c25a31f1a5b9ec956c3a23be199bf50bd8802a42f7c291a0d2a97fc938694b0
+  url: https://github.com/BodenmillerGroup/imctools/archive/v1.0.6.tar.gz
+test:
+  imports:
+  - imctools

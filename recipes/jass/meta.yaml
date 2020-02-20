@@ -1,55 +1,45 @@
-{% set name = "jass" %}
-{% set version = "2.0" %}
-{% set owner = "statistical-genetics" %}
-{% set sha256 = "b128bdc2d2386755143b038e2b5d4be96165bc22a307d6ce3243eb1f6e101d20" %}
-
-package:
-  name: {{ name }}
-  version: {{ version }}
-
-source:
-  url: https://gitlab.pasteur.fr/{{ owner }}/{{ name }}/-/archive/{{ version  }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-
-build:
-  noarch: python
-  entry_points:
-    - jass=jass.__main__:main
-  number: 0
-  script: {{ PYTHON }} -m pip install --no-deps --ignore-installed -vv .
-
-requirements:
-  host:
-    - python >=3
-    - setuptools
-    - connexion
-    - python-dateutil
-    - numpy
-    - pandas
-    - pytables
-    - scipy
-    - matplotlib
-    - celery
-    - flask-testing
-    - pytest
-    - pytest-runner
-  run:
-    - python >=3
-    - connexion
-    - python-dateutil
-    - numpy
-    - pandas
-    - pytables
-    - scipy
-    - matplotlib
-    - celery
-
-test:
-  commands:
-    - jass --help
-
 about:
   home: http://statistical-genetics.pages.pasteur.fr/jass/
   license: MIT
-  summary: 'Computation of joint statistics over sets of GWAS results'
   license_family: MIT
+  summary: Computation of joint statistics over sets of GWAS results
+build:
+  entry_points:
+  - jass=jass.__main__:main
+  noarch: python
+  number: 0
+  script: -m pip install --no-deps --ignore-installed -vv .
+package:
+  name: jass
+  version: 2.0
+requirements:
+  host:
+  - python >=3
+  - setuptools
+  - connexion
+  - python-dateutil
+  - numpy
+  - pandas
+  - pytables
+  - scipy
+  - matplotlib
+  - celery
+  - flask-testing
+  - pytest
+  - pytest-runner
+  run:
+  - python >=3
+  - connexion
+  - python-dateutil
+  - numpy
+  - pandas
+  - pytables
+  - scipy
+  - matplotlib
+  - celery
+source:
+  sha256: b128bdc2d2386755143b038e2b5d4be96165bc22a307d6ce3243eb1f6e101d20
+  url: https://gitlab.pasteur.fr/statistical-genetics/jass/-/archive/2.0/jass-2.0.tar.gz
+test:
+  commands:
+  - jass --help

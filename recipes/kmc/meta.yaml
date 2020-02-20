@@ -1,50 +1,44 @@
-{% set version = "3.1.2" %}
-{% set rc = "rc1" %}
-{% set printed_version = "3.1.1" %}
-
-package:
-  name: kmc
-  version: {{ version }}{{ rc }}
-
-source:
-  url: https://github.com/refresh-bio/KMC/archive/v{{ version }}{{ rc }}.tar.gz
-  sha256: a1958c4f3c6fd7c7ebb8b478c00fce1fd0f328c634042f723c5917a9d030a3fe
-  patches:
-    - shared_library.patch
-
-build:
-  number: 0
-  skip: True  # [osx]
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-  host:
-    - zlib
-    - bzip2
-  run:
-    - zlib
-    - bzip2
-
-test:
-  commands:
-    - (kmc 2>&1; true) | grep -q "K-Mer Counter (KMC) ver. {{ printed_version }}"
-    - (kmc_dump 2>&1; true) | grep -q "KMC dump ver. {{ printed_version }}"
-    - (kmc_tools 2>&1; true) | grep -q "kmc_tools ver. {{ printed_version }}"
-
 about:
+  description: 'K-mer Counter is a utility designed for counting k-mers (sequences
+
+    of consecutive k symbols) in a set of reads from genome sequencing
+
+    projects.
+
+    '
   home: http://sun.aei.polsl.pl/kmc/
   license: GPL3
   license_family: GPL3
-  license_file: '{{ environ["RECIPE_DIR"] }}/gpl-3.0.txt'
-  summary: Tools for efficient k-mer counting and filtering of reads based on k-mer content
-  description: |
-    K-mer Counter is a utility designed for counting k-mers (sequences
-    of consecutive k symbols) in a set of reads from genome sequencing
-    projects.
-
+  license_file: /gpl-3.0.txt
+  summary: Tools for efficient k-mer counting and filtering of reads based on k-mer
+    content
+build:
+  number: 0
+  skip: true
 extra:
   identifiers:
-    - biotools:KMC
-    - doi:10.1093/bioinformatics/btx304
+  - biotools:KMC
+  - doi:10.1093/bioinformatics/btx304
+package:
+  name: kmc
+  version: 3.1.2rc1
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - zlib
+  - bzip2
+  run:
+  - zlib
+  - bzip2
+source:
+  patches:
+  - shared_library.patch
+  sha256: a1958c4f3c6fd7c7ebb8b478c00fce1fd0f328c634042f723c5917a9d030a3fe
+  url: https://github.com/refresh-bio/KMC/archive/v3.1.2rc1.tar.gz
+test:
+  commands:
+  - (kmc 2>&1; true) | grep -q "K-Mer Counter (KMC) ver. 3.1.1"
+  - (kmc_dump 2>&1; true) | grep -q "KMC dump ver. 3.1.1"
+  - (kmc_tools 2>&1; true) | grep -q "kmc_tools ver. 3.1.1"

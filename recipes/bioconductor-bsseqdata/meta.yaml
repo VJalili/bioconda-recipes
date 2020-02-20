@@ -1,36 +1,31 @@
-{% set version = "0.24.0" %}
-{% set name = "bsseqData" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 884e67fbbbe3deccaa5a712b53a88fa0
+about:
+  description: Example whole genome bisulfite data for the bsseq package
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/bsseqData.html
+  license: Artistic-2.0
+  summary: Example whole genome bisulfite data for the bsseq package
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-bsseqdata
+  version: 0.24.0
 requirements:
   host:
-    - 'bioconductor-bsseq >=1.22.0,<1.23.0'
-    - r-base
+  - bioconductor-bsseq >=1.22.0,<1.23.0
+  - r-base
   run:
-    - 'bioconductor-bsseq >=1.22.0,<1.23.0'
-    - r-base
-    - curl
+  - bioconductor-bsseq >=1.22.0,<1.23.0
+  - r-base
+  - curl
+source:
+  md5: 884e67fbbbe3deccaa5a712b53a88fa0
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/bsseqData_0.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/bsseqData_0.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-bsseqdata/bioconductor-bsseqdata_0.24.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Example whole genome bisulfite data for the bsseq package'
-  description: 'Example whole genome bisulfite data for the bsseq package'
-
+  - $R -e "library('bsseqData')"

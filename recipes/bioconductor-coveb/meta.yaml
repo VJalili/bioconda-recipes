@@ -1,47 +1,44 @@
-{% set version = "1.12.0" %}
-{% set name = "covEB" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: a0c34dde83a5d993e0e37b489724395d
+about:
+  description: Using bayesian methods to estimate correlation matrices assuming that
+    they can be written and estimated as block diagonal matrices. These block diagonal
+    matrices are determined using shrinkage parameters that values below this parameter
+    to zero.
+  home: https://bioconductor.org/packages/3.10/bioc/html/covEB.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Empirical Bayes estimate of block diagonal covariance matrices
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: curatedBladderData
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-coveb
+  version: 1.12.0
 requirements:
   host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - r-base
-    - r-gsl
-    - r-igraph
-    - r-laplacesdemon
-    - r-matrix
-    - r-mvtnorm
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - r-base
+  - r-gsl
+  - r-igraph
+  - r-laplacesdemon
+  - r-matrix
+  - r-mvtnorm
   run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - r-base
-    - r-gsl
-    - r-igraph
-    - r-laplacesdemon
-    - r-matrix
-    - r-mvtnorm
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - r-base
+  - r-gsl
+  - r-igraph
+  - r-laplacesdemon
+  - r-matrix
+  - r-mvtnorm
+source:
+  md5: a0c34dde83a5d993e0e37b489724395d
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/covEB_1.12.0.tar.gz
+  - https://bioarchive.galaxyproject.org/covEB_1.12.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-coveb/bioconductor-coveb_1.12.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-3
-  summary: 'Empirical Bayes estimate of block diagonal covariance matrices'
-  description: 'Using bayesian methods to estimate correlation matrices assuming that they can be written and estimated as block diagonal matrices. These block diagonal matrices are determined using shrinkage parameters that values below this parameter to zero.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('covEB')"

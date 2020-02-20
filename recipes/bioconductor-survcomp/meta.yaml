@@ -1,60 +1,55 @@
-{% set version = "1.36.0" %}
-{% set name = "survcomp" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 85bb9507807cffa0d4b70ef0ff06bd81
+about:
+  description: Assessment and Comparison for Performance of Risk Prediction (Survival)
+    Models.
+  home: https://bioconductor.org/packages/3.10/bioc/html/survcomp.html
+  license: Artistic-2.0
+  summary: Performance Assessment and Comparison for Survival Analysis
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-# Suggests: Hmisc, CPE, clinfun, xtable, Biobase, BiocManager
-requirements:
-  host:
-    - r-base
-    - r-bootstrap
-    - r-ipred
-    - r-kernsmooth
-    - r-prodlim
-    - r-rmeta
-    - r-suppdists
-    - r-survival
-    - r-survivalroc
-  run:
-    - r-base
-    - r-bootstrap
-    - r-ipred
-    - r-kernsmooth
-    - r-prodlim
-    - r-rmeta
-    - r-suppdists
-    - r-survival
-    - r-survivalroc
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - make
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Performance Assessment and Comparison for Survival Analysis'
-  description: 'Assessment and Comparison for Performance of Risk Prediction (Survival) Models.'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:survcomp
+  - biotools:survcomp
   parent_recipe:
     name: bioconductor-survcomp
     path: recipes/bioconductor-survcomp
     version: 1.30.0
-
+package:
+  name: bioconductor-survcomp
+  version: 1.36.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  - r-bootstrap
+  - r-ipred
+  - r-kernsmooth
+  - r-prodlim
+  - r-rmeta
+  - r-suppdists
+  - r-survival
+  - r-survivalroc
+  run:
+  - r-base
+  - r-bootstrap
+  - r-ipred
+  - r-kernsmooth
+  - r-prodlim
+  - r-rmeta
+  - r-suppdists
+  - r-survival
+  - r-survivalroc
+source:
+  md5: 85bb9507807cffa0d4b70ef0ff06bd81
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/survcomp_1.36.0.tar.gz
+  - https://bioarchive.galaxyproject.org/survcomp_1.36.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-survcomp/bioconductor-survcomp_1.36.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('survcomp')"

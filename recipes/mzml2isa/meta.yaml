@@ -1,40 +1,34 @@
-package:
-  name: mzml2isa
-  version: "1.0.2"
-
-source:
-  url: https://files.pythonhosted.org/packages/2a/84/4cbb682f0d13f2d74e04f905ff41194c911063acb52e42ed95d3eba0d2da/mzml2isa-1.0.2.zip
-  sha256: 9e68d51a9498bf79caedd1221ed5c2cb73a392059877c6d5e6bd67a1e4ca49e3
-
-build:
-  noarch: python
-  number: 1
-  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv
-  entry_points:
-    - mzml2isa = mzml2isa.parsing:main
-
-requirements:
-  host:
-    - python
-    - pip
-  run:
-    - python
-    - cached-property
-    - fs
-    - six
-    - pronto >=0.10.0,<1
-    - openpyxl
-    - lxml
-
-test:
-  imports:
-    - mzml2isa
-
-  commands:
-    - mzml2isa --help
-
 about:
   home: https://github.com/ISA-tools/mzml2isa
   license: GNU General Public License v3 (GPLv3)
-  summary: 'mzml2isa - mzML to ISA-tab parsing tool'
   license_family: GPL3
+  summary: mzml2isa - mzML to ISA-tab parsing tool
+build:
+  entry_points:
+  - mzml2isa = mzml2isa.parsing:main
+  noarch: python
+  number: 1
+  script: -m pip install . --no-deps --ignore-installed -vv
+package:
+  name: mzml2isa
+  version: 1.0.2
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - cached-property
+  - fs
+  - six
+  - pronto >=0.10.0,<1
+  - openpyxl
+  - lxml
+source:
+  sha256: 9e68d51a9498bf79caedd1221ed5c2cb73a392059877c6d5e6bd67a1e4ca49e3
+  url: https://files.pythonhosted.org/packages/2a/84/4cbb682f0d13f2d74e04f905ff41194c911063acb52e42ed95d3eba0d2da/mzml2isa-1.0.2.zip
+test:
+  commands:
+  - mzml2isa --help
+  imports:
+  - mzml2isa

@@ -1,32 +1,24 @@
-{% set version = "0.2.10" %}
-
-package:
-  name: gotree
-  version: {{ version }}
-
-build:
-  number: 1
-  binary_relocation: false
-
-source:
-  - url: https://github.com/fredericlemoine/gotree/releases/download/v{{ version }}/gotree_amd64_linux  # [linux]
-    md5: 05e09402f1605a665faa7c95043fb318  # [linux]
-  - url: https://github.com/fredericlemoine/gotree/releases/download/v{{ version }}/gotree_amd64_darwin  # [osx]
-    md5: cf0159284cc90e5fbd836b065961de69  # [osx]
-
-requirements:
-  run:
-
-test:
-  commands:
-    - gotree -h
-
 about:
   home: https://github.com/fredericlemoine/gotree
   license: GPL-2.0
   summary: GoTree is a set of command line tools to manipulate phylogenetic trees.
-
+build:
+  binary_relocation: false
+  number: 1
 extra:
   skip-lints:
-    - should_be_noarch_generic
-    - should_not_be_noarch_source
+  - should_be_noarch_generic
+  - should_not_be_noarch_source
+package:
+  name: gotree
+  version: 0.2.10
+requirements:
+  run: null
+source:
+- md5: 05e09402f1605a665faa7c95043fb318
+  url: https://github.com/fredericlemoine/gotree/releases/download/v0.2.10/gotree_amd64_linux
+- md5: cf0159284cc90e5fbd836b065961de69
+  url: https://github.com/fredericlemoine/gotree/releases/download/v0.2.10/gotree_amd64_darwin
+test:
+  commands:
+  - gotree -h

@@ -1,46 +1,41 @@
-{% set version = "1.46.0" %}
-{% set name = "multiscan" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 3ab2e55b5268b6914152988362b3c9fa
+about:
+  description: Estimates gene expressions from several laser scans of the same microarray
+  home: https://bioconductor.org/packages/3.10/bioc/html/multiscan.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: R package for combining multiple scans
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-requirements:
-  host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - r-base
-  run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - r-base
-  build:
-    - {{ compiler('c') }}
-    - make
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>= 2)'
-  summary: 'R package for combining multiple scans'
-  description: 'Estimates gene expressions from several laser scans of the same microarray'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:multiscan
-    - doi:10.1038/nmeth.3252
+  - biotools:multiscan
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-multiscan
     path: recipes/bioconductor-multiscan
     version: 1.40.0
-
+package:
+  name: bioconductor-multiscan
+  version: 1.46.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - r-base
+  run:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - r-base
+source:
+  md5: 3ab2e55b5268b6914152988362b3c9fa
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/multiscan_1.46.0.tar.gz
+  - https://bioarchive.galaxyproject.org/multiscan_1.46.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-multiscan/bioconductor-multiscan_1.46.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('multiscan')"

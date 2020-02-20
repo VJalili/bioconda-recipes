@@ -1,38 +1,34 @@
-{% set version = "1.0.1" %}
-{% set name = "FDb.UCSC.tRNAs" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 77bfdadd4d9f995a72b001e4e41792fa
+about:
+  description: Exposes an annotation databases generated from UCSC by exposing these
+    as FeatureDb objects
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/FDb.UCSC.tRNAs.html
+  license: Artistic-2.0
+  summary: Annotation package for FeatureDb object(s)
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-fdb.ucsc.trnas
+  version: 1.0.1
 requirements:
   host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - 'bioconductor-genomicfeatures >=1.38.0,<1.39.0'
-    - r-base
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - bioconductor-genomicfeatures >=1.38.0,<1.39.0
+  - r-base
   run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - 'bioconductor-genomicfeatures >=1.38.0,<1.39.0'
-    - r-base
-    - curl
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - bioconductor-genomicfeatures >=1.38.0,<1.39.0
+  - r-base
+  - curl
+source:
+  md5: 77bfdadd4d9f995a72b001e4e41792fa
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/FDb.UCSC.tRNAs_1.0.1.tar.gz
+  - https://bioarchive.galaxyproject.org/FDb.UCSC.tRNAs_1.0.1.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-fdb.ucsc.trnas/bioconductor-fdb.ucsc.trnas_1.0.1_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Annotation package for FeatureDb object(s)'
-  description: 'Exposes an annotation databases generated from UCSC by exposing these as FeatureDb objects'
-
+  - $R -e "library('FDb.UCSC.tRNAs')"

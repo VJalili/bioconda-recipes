@@ -1,36 +1,32 @@
-{% set version = "1.4.2" %}
-{% set name = "BSgenome.Ggallus.UCSC.galGal5" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 93b42354404edd848b21ea6781ca135c
+about:
+  description: Full genome sequences for Gallus gallus (Chicken) as provided by UCSC
+    (galGal5, Dec. 2015) and stored in Biostrings objects.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/BSgenome.Ggallus.UCSC.galGal5.html
+  license: Artistic-2.0
+  summary: Full genome sequences for Gallus gallus (UCSC version galGal5)
 build:
+  noarch: generic
   number: 4
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-bsgenome.ggallus.ucsc.galgal5
+  version: 1.4.2
 requirements:
   host:
-    - 'bioconductor-bsgenome >=1.54.0,<1.55.0'
-    - r-base
+  - bioconductor-bsgenome >=1.54.0,<1.55.0
+  - r-base
   run:
-    - 'bioconductor-bsgenome >=1.54.0,<1.55.0'
-    - r-base
-    - curl
+  - bioconductor-bsgenome >=1.54.0,<1.55.0
+  - r-base
+  - curl
+source:
+  md5: 93b42354404edd848b21ea6781ca135c
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/BSgenome.Ggallus.UCSC.galGal5_1.4.2.tar.gz
+  - https://bioarchive.galaxyproject.org/BSgenome.Ggallus.UCSC.galGal5_1.4.2.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-bsgenome.ggallus.ucsc.galgal5/bioconductor-bsgenome.ggallus.ucsc.galgal5_1.4.2_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Full genome sequences for Gallus gallus (UCSC version galGal5)'
-  description: 'Full genome sequences for Gallus gallus (Chicken) as provided by UCSC (galGal5, Dec. 2015) and stored in Biostrings objects.'
-
+  - $R -e "library('BSgenome.Ggallus.UCSC.galGal5')"

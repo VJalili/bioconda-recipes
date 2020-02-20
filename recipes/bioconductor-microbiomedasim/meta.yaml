@@ -1,47 +1,45 @@
-{% set version = "1.0.0" %}
-{% set name = "microbiomeDASim" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: a946db90bbc40630bbd5d0a044088717
+about:
+  description: A toolkit for simulating differential microbiome data designed for
+    longitudinal analyses. Several functional forms may be specified for the mean
+    trend. Observations are drawn from a multivariate normal model. The objective
+    of this package is to be able to simulate data in order to accurately compare
+    different longitudinal methods for differential abundance.
+  home: https://bioconductor.org/packages/3.10/bioc/html/microbiomeDASim.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Microbiome Differential Abundance Simulation
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: testthat (>= 2.1.0), knitr, devtools
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-microbiomedasim
+  version: 1.0.0
 requirements:
   host:
-    - r-base
-    - r-ggplot2
-    - r-mass
-    - r-matrix
-    - r-mvtnorm
-    - r-pbapply
-    - r-tmvtnorm
+  - r-base
+  - r-ggplot2
+  - r-mass
+  - r-matrix
+  - r-mvtnorm
+  - r-pbapply
+  - r-tmvtnorm
   run:
-    - r-base
-    - r-ggplot2
-    - r-mass
-    - r-matrix
-    - r-mvtnorm
-    - r-pbapply
-    - r-tmvtnorm
+  - r-base
+  - r-ggplot2
+  - r-mass
+  - r-matrix
+  - r-mvtnorm
+  - r-pbapply
+  - r-tmvtnorm
+source:
+  md5: a946db90bbc40630bbd5d0a044088717
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/microbiomeDASim_1.0.0.tar.gz
+  - https://bioarchive.galaxyproject.org/microbiomeDASim_1.0.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-microbiomedasim/bioconductor-microbiomedasim_1.0.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'MIT + file LICENSE'
-  summary: 'Microbiome Differential Abundance Simulation'
-  description: 'A toolkit for simulating differential microbiome data designed for longitudinal analyses. Several functional forms may be specified for the mean trend. Observations are drawn from a multivariate normal model. The objective of this package is to be able to simulate data in order to accurately compare different longitudinal methods for differential abundance.'
-  license_file: LICENSE
-
+  - $R -e "library('microbiomeDASim')"

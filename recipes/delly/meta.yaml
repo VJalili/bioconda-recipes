@@ -1,38 +1,30 @@
-{% set version = "0.8.2" %}
-{% set sha256 = "d2531239a74016ec158cb45bc7db2a8ea9359658f662b7c8b31541382e48e5be" %}
-
-package:
-  name: delly
-  version: '{{ version }}'
-
-source:
-  url: https://github.com/dellytools/delly/archive/v{{ version }}.tar.gz
-  sha256: '{{ sha256 }}'
-
-build:
-  number: 1
-
-requirements:
-  build:
-    - {{ compiler('cxx') }}
-  host:
-    - zlib
-    - bzip2
-    - boost-cpp
-    - htslib
-  run:
-    - zlib
-    - bzip2
-    - boost-cpp
-    - htslib
-
-test:
-  commands:
-    - delly --help
-
 about:
   home: https://github.com/dellytools/delly
   license: BSD License
   license_family: BSD
   license_file: LICENSE
   summary: Structural variant discovery by integrated paired-end and split-read analysis
+build:
+  number: 1
+package:
+  name: delly
+  version: 0.8.2
+requirements:
+  build:
+  - None
+  host:
+  - zlib
+  - bzip2
+  - boost-cpp
+  - htslib
+  run:
+  - zlib
+  - bzip2
+  - boost-cpp
+  - htslib
+source:
+  sha256: d2531239a74016ec158cb45bc7db2a8ea9359658f662b7c8b31541382e48e5be
+  url: https://github.com/dellytools/delly/archive/v0.8.2.tar.gz
+test:
+  commands:
+  - delly --help

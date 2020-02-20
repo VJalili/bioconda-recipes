@@ -1,69 +1,64 @@
-{% set version = "1.6.0" %}
-{% set name = "DEScan2" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: c808381ccdc5f2571c5fd4f64834b79d
+about:
+  description: Integrated peak and differential caller, specifically designed for
+    broad epigenomic signals.
+  home: https://bioconductor.org/packages/3.10/bioc/html/DEScan2.html
+  license: Artistic-2.0
+  summary: Differential Enrichment Scan 2
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-# Suggests: BiocStyle, knitr, rmarkdown, testthat, edgeR, limma, EDASeq, RUVSeq, RColorBrewer, statmod
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-descan2
+  version: 1.6.0
 requirements:
-  host:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-biocparallel >=1.20.0,<1.21.0'
-    - 'bioconductor-chippeakanno >=3.20.0,<3.21.0'
-    - 'bioconductor-delayedarray >=0.12.0,<0.13.0'
-    - 'bioconductor-genomeinfodb >=1.22.0,<1.23.0'
-    - 'bioconductor-genomicalignments >=1.22.0,<1.23.0'
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - 'bioconductor-rtracklayer >=1.46.0,<1.47.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - 'bioconductor-summarizedexperiment >=1.16.0,<1.17.0'
-    - r-base
-    - r-data.table
-    - r-glue
-    - r-plyr
-    - 'r-rcpp >=0.12.13'
-    - r-rcpparmadillo
-  run:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-biocparallel >=1.20.0,<1.21.0'
-    - 'bioconductor-chippeakanno >=3.20.0,<3.21.0'
-    - 'bioconductor-delayedarray >=0.12.0,<0.13.0'
-    - 'bioconductor-genomeinfodb >=1.22.0,<1.23.0'
-    - 'bioconductor-genomicalignments >=1.22.0,<1.23.0'
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - 'bioconductor-rtracklayer >=1.46.0,<1.47.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - 'bioconductor-summarizedexperiment >=1.16.0,<1.17.0'
-    - r-base
-    - r-data.table
-    - r-glue
-    - r-plyr
-    - 'r-rcpp >=0.12.13'
-    - r-rcpparmadillo
   build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - make
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-biocparallel >=1.20.0,<1.21.0
+  - bioconductor-chippeakanno >=3.20.0,<3.21.0
+  - bioconductor-delayedarray >=0.12.0,<0.13.0
+  - bioconductor-genomeinfodb >=1.22.0,<1.23.0
+  - bioconductor-genomicalignments >=1.22.0,<1.23.0
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - bioconductor-rtracklayer >=1.46.0,<1.47.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - bioconductor-summarizedexperiment >=1.16.0,<1.17.0
+  - r-base
+  - r-data.table
+  - r-glue
+  - r-plyr
+  - r-rcpp >=0.12.13
+  - r-rcpparmadillo
+  run:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-biocparallel >=1.20.0,<1.21.0
+  - bioconductor-chippeakanno >=3.20.0,<3.21.0
+  - bioconductor-delayedarray >=0.12.0,<0.13.0
+  - bioconductor-genomeinfodb >=1.22.0,<1.23.0
+  - bioconductor-genomicalignments >=1.22.0,<1.23.0
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - bioconductor-rtracklayer >=1.46.0,<1.47.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - bioconductor-summarizedexperiment >=1.16.0,<1.17.0
+  - r-base
+  - r-data.table
+  - r-glue
+  - r-plyr
+  - r-rcpp >=0.12.13
+  - r-rcpparmadillo
+source:
+  md5: c808381ccdc5f2571c5fd4f64834b79d
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/DEScan2_1.6.0.tar.gz
+  - https://bioarchive.galaxyproject.org/DEScan2_1.6.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-descan2/bioconductor-descan2_1.6.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Differential Enrichment Scan 2'
-  description: 'Integrated peak and differential caller, specifically designed for broad epigenomic signals.'
-
+  - $R -e "library('DEScan2')"

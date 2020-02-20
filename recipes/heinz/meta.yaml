@@ -1,31 +1,23 @@
-{% set version = "2.0" %}
-
-
-package:
-  name: heinz
-  version: {{ version }}
-
-source:
-  url: https://gitlab.com/ibivu/galaxy/conda-heinz/-/archive/v2.0/conda-heinz-v2.0.tar.gz
-  sha256: b3f94a703552387c18bbf6d42096ac858046b56b23b5792763d7cc98f27eeeb1
-
-build:
-  number: 1
-  skip: True # [osx]
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-    - cmake
-    - ogdf
-    - lemon
-  run:
-
-test:
-  commands:
-    - heinz -version
-  
 about:
   home: https://github.com/ls-cwi/heinz
   license: MIT
   summary: The algorithm for identification of the optimal scoring subnetwork.
+build:
+  number: 1
+  skip: true
+package:
+  name: heinz
+  version: 2.0
+requirements:
+  build:
+  - None
+  - cmake
+  - ogdf
+  - lemon
+  run: null
+source:
+  sha256: b3f94a703552387c18bbf6d42096ac858046b56b23b5792763d7cc98f27eeeb1
+  url: https://gitlab.com/ibivu/galaxy/conda-heinz/-/archive/v2.0/conda-heinz-v2.0.tar.gz
+test:
+  commands:
+  - heinz -version

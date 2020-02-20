@@ -1,41 +1,35 @@
-{% set version = "2.30.0" %}
-{% set name = "Rgraphviz" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: de619ba8e1c382d060c9ab2ebde50d04
+about:
+  description: Interfaces R with the AT and T graphviz library for plotting R graph
+    objects from the graph package.
+  home: https://bioconductor.org/packages/3.10/bioc/html/Rgraphviz.html
+  license: EPL
+  summary: Provides plotting capabilities for R graph objects
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-# Suggests: RUnit, BiocGenerics, XML
-# SystemRequirements: optionally Graphviz (>= 2.16)
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-rgraphviz
+  version: 2.30.0
 requirements:
-  host:
-    - 'bioconductor-graph >=1.64.0,<1.65.0'
-    - r-base
-  run:
-    - 'bioconductor-graph >=1.64.0,<1.65.0'
-    - r-base
   build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - automake
-    - make
+  - None
+  - None
+  - automake
+  - make
+  host:
+  - bioconductor-graph >=1.64.0,<1.65.0
+  - r-base
+  run:
+  - bioconductor-graph >=1.64.0,<1.65.0
+  - r-base
+source:
+  md5: de619ba8e1c382d060c9ab2ebde50d04
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/Rgraphviz_2.30.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Rgraphviz_2.30.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rgraphviz/bioconductor-rgraphviz_2.30.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: EPL
-  summary: 'Provides plotting capabilities for R graph objects'
-  description: 'Interfaces R with the AT and T graphviz library for plotting R graph objects from the graph package.'
-
+  - $R -e "library('Rgraphviz')"

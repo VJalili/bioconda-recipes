@@ -1,48 +1,40 @@
-{% set name = "percolator" %}
-{% set version = "3.4" %}
-
-package:
-  name: {{ name|lower }}
-  version: {{ version }}
-
-source:
-  url: https://github.com/percolator/percolator/archive/rel-3-04.tar.gz
-  sha256: ee094039b60aa2e2e15ec8228da087328ca523fa73b89cd69721621eb219cf4d
-
-build:
-  number: 0
-  skip: True # [osx]
-
-requirements:
-  build:
-    - {{ compiler('cxx') }}
-    - cmake
-  host:
-    - zlib
-    - boost
-    - sqlite
-    - bzip2
-    - xerces-c
-    - xsd
-  run:
-    - sqlite
-    - xerces-c
-    - xsd
-
-test:
-  commands:
-    - sqt2pin -o test.txt $PREFIX/testdata/target.sqt $PREFIX/testdata/target.sqt
-    - percolator -X test.xml $PREFIX/testdata/percolatorTab
-
 about:
   home: https://github.com/percolator/percolator
   license: Apache 2.0
   license_file: license.txt
-  summary: Semi-supervised learning for peptide identification from shotgun proteomics datasets
-
+  summary: Semi-supervised learning for peptide identification from shotgun proteomics
+    datasets
+build:
+  number: 0
+  skip: true
 extra:
   container:
-    extended-base: true  # Add UTF-8 for percolator converters
+    extended-base: true
   identifiers:
-    - biotools:Percolator
-    - doi:10.1007/s13361-016-1460-7
+  - biotools:Percolator
+  - doi:10.1007/s13361-016-1460-7
+package:
+  name: percolator
+  version: 3.4
+requirements:
+  build:
+  - None
+  - cmake
+  host:
+  - zlib
+  - boost
+  - sqlite
+  - bzip2
+  - xerces-c
+  - xsd
+  run:
+  - sqlite
+  - xerces-c
+  - xsd
+source:
+  sha256: ee094039b60aa2e2e15ec8228da087328ca523fa73b89cd69721621eb219cf4d
+  url: https://github.com/percolator/percolator/archive/rel-3-04.tar.gz
+test:
+  commands:
+  - sqt2pin -o test.txt $PREFIX/testdata/target.sqt $PREFIX/testdata/target.sqt
+  - percolator -X test.xml $PREFIX/testdata/percolatorTab

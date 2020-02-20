@@ -1,42 +1,34 @@
-{% set name = "cwltest" %}
-{% set version = "1.0.20190906212748" %}
-
-package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
-
-source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: "7f8f7a6890ce9e43fc3e564bc7793f146145d518e07f0d9a82064e8d6fb7b4b5"
-
+about:
+  home: https://github.com/common-workflow-language/cwltest
+  license: Apache 2.0
+  license_family: APACHE
+  summary: Common workflow language testing framework
 build:
-  number: 0
-  noarch: python
   entry_points:
-    - cwltest=cwltest:main
-    - mock-cwl-runner=cwltest.tests.mock_cwl_runner:main
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
-
+  - cwltest=cwltest:main
+  - mock-cwl-runner=cwltest.tests.mock_cwl_runner:main
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+package:
+  name: cwltest
+  version: 1.0.20190906212748
 requirements:
   host:
-    - pip
-    - python
+  - pip
+  - python
   run:
-    - junit-xml >=1.8
-    - python
-    - schema-salad >=1.14
-    - six >=1.10.0
-
+  - junit-xml >=1.8
+  - python
+  - schema-salad >=1.14
+  - six >=1.10.0
+source:
+  sha256: 7f8f7a6890ce9e43fc3e564bc7793f146145d518e07f0d9a82064e8d6fb7b4b5
+  url: https://pypi.io/packages/source/c/cwltest/cwltest-1.0.20190906212748.tar.gz
 test:
-  imports:
-    - cwltest
-    - cwltest.tests
   commands:
-    - cwltest --help
-    - mock-cwl-runner --help
-
-about:
-  home: "https://github.com/common-workflow-language/cwltest"
-  license: "Apache 2.0"
-  license_family: "APACHE"
-  summary: "Common workflow language testing framework"
+  - cwltest --help
+  - mock-cwl-runner --help
+  imports:
+  - cwltest
+  - cwltest.tests

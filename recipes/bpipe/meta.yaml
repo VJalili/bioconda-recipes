@@ -1,35 +1,26 @@
-{% set name = "bpipe" %}
-{% set version = "0.9.9.8" %}
-
-package:
-  name: {{ name }}
-  version: {{ version }}
-
-source:
-  url: https://github.com/ssadedin/bpipe/releases/download/{{ version }}/bpipe-{{ version }}.tar.gz
-  sha256: '0036c50007d7a878dbaf19dfd737dc8ccee01c20c49dc14f913e78e05048f9dd'
-
-build:
-  number: 0
-  noarch: generic
-
-requirements:
-  run:
-    - openjdk
-    - coreutils
-
-test:
-  commands:
-    - bpipe -v --help
-    - rm -rf .bpipe
-
 about:
-  home: 'http://docs.bpipe.org/'
+  home: http://docs.bpipe.org/
   license: BSD-3-clause
   license_file: LICENSE
   summary: Bpipe - a tool for running and managing bioinformatics pipelines
-
+build:
+  noarch: generic
+  number: 0
 extra:
   identifiers:
-    - doi:10.1093/bioinformatics/bts167
-    - biotools:bpipe
+  - doi:10.1093/bioinformatics/bts167
+  - biotools:bpipe
+package:
+  name: bpipe
+  version: 0.9.9.8
+requirements:
+  run:
+  - openjdk
+  - coreutils
+source:
+  sha256: 0036c50007d7a878dbaf19dfd737dc8ccee01c20c49dc14f913e78e05048f9dd
+  url: https://github.com/ssadedin/bpipe/releases/download/0.9.9.8/bpipe-0.9.9.8.tar.gz
+test:
+  commands:
+  - bpipe -v --help
+  - rm -rf .bpipe

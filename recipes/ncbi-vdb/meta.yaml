@@ -1,43 +1,34 @@
-{% set version = "2.10.3" %}
-{% set sha256 = "85aded6e513ec2d2aac06d398063ca6293243acadc501d47c68d9689c782150d" %}
-
-package:
-  name: ncbi-vdb
-  version: {{ version }}
-
-build:
-  number: 0
-
-source:
-  url: https://github.com/ncbi/ncbi-vdb/archive/{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-  patches:
-    - gcc.patch
-    - ar.patch
-    - exe.patch
-    - konfigure.patch
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-  host:
-    - perl
-    - ncbi-ngs-sdk
-      #- bison
-      #  run:
-      #- ncbi-ngs-sdk
-
 about:
+  description: 'VDB is the database engine that all SRA tools use. It is a columnar
+    database
+
+    system with a number of unique features. All SRA objects are stored in VDB.
+
+    '
   home: https://github.com/ncbi/ncbi-vdb
   license: Public Domain
   summary: SRA tools database engine
-  description: |
-    VDB is the database engine that all SRA tools use. It is a columnar database
-    system with a number of unique features. All SRA objects are stored in VDB.
-
+build:
+  number: 0
+package:
+  name: ncbi-vdb
+  version: 2.10.3
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - perl
+  - ncbi-ngs-sdk
+source:
+  patches:
+  - gcc.patch
+  - ar.patch
+  - exe.patch
+  - konfigure.patch
+  sha256: 85aded6e513ec2d2aac06d398063ca6293243acadc501d47c68d9689c782150d
+  url: https://github.com/ncbi/ncbi-vdb/archive/2.10.3.tar.gz
 test:
   commands:
-    - test -e ${PREFIX}/lib64/libncbi-vdb.so # [not osx]
-    - test -e ${PREFIX}/lib64/libncbi-vdb.dylib # [osx]
-
+  - test -e ${PREFIX}/lib64/libncbi-vdb.so
+  - test -e ${PREFIX}/lib64/libncbi-vdb.dylib

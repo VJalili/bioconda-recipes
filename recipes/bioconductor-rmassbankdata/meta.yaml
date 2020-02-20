@@ -1,35 +1,31 @@
-{% set version = "1.24.0" %}
-{% set name = "RMassBankData" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 6efff23497b9dbf7ed09b3020691e26f
+about:
+  description: Example spectra, example compound list(s) and an example annotation
+    list for a narcotics dataset; required to test RMassBank. The package is described
+    in the man page for RMassBankData. Includes new XCMS test data.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/RMassBankData.html
+  license: Artistic-2.0
+  summary: Test dataset for RMassBank
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: RMassBank
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-rmassbankdata
+  version: 1.24.0
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
-    - curl
+  - r-base
+  - curl
+source:
+  md5: 6efff23497b9dbf7ed09b3020691e26f
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/RMassBankData_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/RMassBankData_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rmassbankdata/bioconductor-rmassbankdata_1.24.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Test dataset for RMassBank'
-  description: 'Example spectra, example compound list(s) and an example annotation list for a narcotics dataset; required to test RMassBank. The package is described in the man page for RMassBankData. Includes new XCMS test data.'
-
+  - $R -e "library('RMassBankData')"

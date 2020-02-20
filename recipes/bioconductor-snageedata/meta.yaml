@@ -1,40 +1,34 @@
-{% set version = "1.22.0" %}
-{% set name = "SNAGEEdata" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: fead14d1be8c906d7352d0939ce96d9f
+about:
+  description: SNAGEE data - gene list and correlation matrix
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/SNAGEEdata.html
+  license: Artistic-2.0
+  summary: SNAGEE data
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: ALL, hgu95av2.db, SNAGEE
-requirements:
-  host:
-    - r-base
-  run:
-    - r-base
-    - curl
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'SNAGEE data'
-  description: 'SNAGEE data - gene list and correlation matrix'
+  - lib/R/lib/
+  - lib/
 extra:
   parent_recipe:
     name: bioconductor-snageedata
     path: recipes/bioconductor-snageedata
     version: 1.16.0
-
+package:
+  name: bioconductor-snageedata
+  version: 1.22.0
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+  - curl
+source:
+  md5: fead14d1be8c906d7352d0939ce96d9f
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/SNAGEEdata_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SNAGEEdata_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-snageedata/bioconductor-snageedata_1.22.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SNAGEEdata')"

@@ -1,44 +1,35 @@
-{% set name = "pyslim" %}
-{% set version = "0.314" %}
-
-package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
-
-source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: 90fa4b9b15f5a009f9b9571b9d3fde85a184858ada631c242c4d379505dce39f
-
-build:
-  number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv"
-  noarch: python
-
-requirements:
-  host:
-    - pip
-    - python
-  run:
-    - attrs
-    - kastore
-    - msprime >=0.7.0
-    - numpy
-    - python
-    - tskit
-
-test:
-  imports:
-    - pyslim
-
 about:
-  home: "https://github.com/tskit-dev/pyslim"
+  dev_url: https://pyslim.readthedocs.io/en/latest/development.html
+  doc_url: https://pyslim.readthedocs.io/en/latest/
+  home: https://github.com/tskit-dev/pyslim
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: "Manipulate tree sequences produced by SLiM."
-  doc_url: https://pyslim.readthedocs.io/en/latest/
-  dev_url: https://pyslim.readthedocs.io/en/latest/development.html
-
+  summary: Manipulate tree sequences produced by SLiM.
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv'
 extra:
   recipe-maintainers:
-    - winni2k
+  - winni2k
+package:
+  name: pyslim
+  version: '0.314'
+requirements:
+  host:
+  - pip
+  - python
+  run:
+  - attrs
+  - kastore
+  - msprime >=0.7.0
+  - numpy
+  - python
+  - tskit
+source:
+  sha256: 90fa4b9b15f5a009f9b9571b9d3fde85a184858ada631c242c4d379505dce39f
+  url: https://pypi.io/packages/source/p/pyslim/pyslim-0.314.tar.gz
+test:
+  imports:
+  - pyslim

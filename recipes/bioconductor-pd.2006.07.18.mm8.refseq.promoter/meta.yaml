@@ -1,46 +1,41 @@
-{% set version = "0.99.3" %}
-{% set name = "pd.2006.07.18.mm8.refseq.promoter" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 084b0a6759fd96d1bc775dd4c66c42b0
+about:
+  description: Platform Design Info for NimbleGen 2006-07-18_mm8_refseq_promoter
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/pd.2006.07.18.mm8.refseq.promoter.html
+  license: Artistic-2.0
+  summary: Platform Design Info for NimbleGen 2006-07-18_mm8_refseq_promoter
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-pd.2006.07.18.mm8.refseq.promoter
+  version: 0.99.3
 requirements:
   host:
-    - 'bioconductor-biostrings >=2.54.0,<2.55.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - 'bioconductor-oligo >=1.50.0,<1.51.0'
-    - 'bioconductor-oligoclasses >=1.48.0,<1.49.0'
-    - r-base
-    - r-dbi
-    - 'r-rsqlite >=0.7-1'
+  - bioconductor-biostrings >=2.54.0,<2.55.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - bioconductor-oligo >=1.50.0,<1.51.0
+  - bioconductor-oligoclasses >=1.48.0,<1.49.0
+  - r-base
+  - r-dbi
+  - r-rsqlite >=0.7-1
   run:
-    - 'bioconductor-biostrings >=2.54.0,<2.55.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - 'bioconductor-oligo >=1.50.0,<1.51.0'
-    - 'bioconductor-oligoclasses >=1.48.0,<1.49.0'
-    - r-base
-    - r-dbi
-    - 'r-rsqlite >=0.7-1'
-    - curl
+  - bioconductor-biostrings >=2.54.0,<2.55.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - bioconductor-oligo >=1.50.0,<1.51.0
+  - bioconductor-oligoclasses >=1.48.0,<1.49.0
+  - r-base
+  - r-dbi
+  - r-rsqlite >=0.7-1
+  - curl
+source:
+  md5: 084b0a6759fd96d1bc775dd4c66c42b0
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/pd.2006.07.18.mm8.refseq.promoter_0.99.3.tar.gz
+  - https://bioarchive.galaxyproject.org/pd.2006.07.18.mm8.refseq.promoter_0.99.3.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-pd.2006.07.18.mm8.refseq.promoter/bioconductor-pd.2006.07.18.mm8.refseq.promoter_0.99.3_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Platform Design Info for NimbleGen 2006-07-18_mm8_refseq_promoter'
-  description: 'Platform Design Info for NimbleGen 2006-07-18_mm8_refseq_promoter'
-
+  - $R -e "library('pd.2006.07.18.mm8.refseq.promoter')"

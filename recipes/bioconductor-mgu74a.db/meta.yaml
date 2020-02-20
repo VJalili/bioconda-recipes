@@ -1,39 +1,34 @@
-{% set version = "3.2.3" %}
-{% set name = "mgu74a.db" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: b746929f272a811061cf03040ec5ea3b
+about:
+  description: Affymetrix Murine Genome U74v2 annotation data (chip mgu74a) assembled
+    using data from public repositories
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/mgu74a.db.html
+  license: Artistic-2.0
+  summary: Affymetrix Murine Genome U74v2 annotation data (chip mgu74a)
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: DBI, annotate, RUnit
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-mgu74a.db
+  version: 3.2.3
 requirements:
   host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - 'bioconductor-org.mm.eg.db >=3.10.0,<3.11.0'
-    - r-base
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - bioconductor-org.mm.eg.db >=3.10.0,<3.11.0
+  - r-base
   run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - 'bioconductor-org.mm.eg.db >=3.10.0,<3.11.0'
-    - r-base
-    - curl
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - bioconductor-org.mm.eg.db >=3.10.0,<3.11.0
+  - r-base
+  - curl
+source:
+  md5: b746929f272a811061cf03040ec5ea3b
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/mgu74a.db_3.2.3.tar.gz
+  - https://bioarchive.galaxyproject.org/mgu74a.db_3.2.3.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mgu74a.db/bioconductor-mgu74a.db_3.2.3_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Affymetrix Murine Genome U74v2 annotation data (chip mgu74a)'
-  description: 'Affymetrix Murine Genome U74v2 annotation data (chip mgu74a) assembled using data from public repositories'
-
+  - $R -e "library('mgu74a.db')"

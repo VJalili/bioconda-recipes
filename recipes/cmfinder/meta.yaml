@@ -1,30 +1,25 @@
-package:
-  name: cmfinder
-  version: "0.4.1.9"
-
+about:
+  home: https://sourceforge.net/projects/weinberg-cmfinder/
+  license: GPL3
+  summary: CMfinder - A Covariance Model Based RNA Motif Finding Algorithm
 build:
   number: 2
-
-source:
-  url: https://sourceforge.net/projects/weinberg-cmfinder/files/cmfinder-0.4.1.9.tgz
-  sha256: 83a8609a15f7f08772384f5f308fd944a1f88c9cc47346e2effc05b2771855b1
-  patches:
-    - patches/cmfinder.pl.patch
-    - patches/cmfinder04.pl.patch
-
+package:
+  name: cmfinder
+  version: 0.4.1.9
 requirements:
   build:
-    - {{ compiler('c') }}
+  - None
   run:
-    - blast
-    - perl
-
+  - blast
+  - perl
+source:
+  patches:
+  - patches/cmfinder.pl.patch
+  - patches/cmfinder04.pl.patch
+  sha256: 83a8609a15f7f08772384f5f308fd944a1f88c9cc47346e2effc05b2771855b1
+  url: https://sourceforge.net/projects/weinberg-cmfinder/files/cmfinder-0.4.1.9.tgz
 test:
   commands:
-    - cmfinder.pl -h
-    - cmfinder04.pl -h
-
-about:
-  home: "https://sourceforge.net/projects/weinberg-cmfinder/"
-  license: "GPL3"
-  summary: "CMfinder - A Covariance Model Based RNA Motif Finding Algorithm"
+  - cmfinder.pl -h
+  - cmfinder04.pl -h

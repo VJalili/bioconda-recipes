@@ -1,41 +1,37 @@
-{% set version = "0.24.0" %}
-{% set name = "ceu1kg" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 802081a48c2cdd4bff7db3dc88c3a458
+about:
+  description: CEU genotypes from 1000 genomes "low coverage" pilot phase I (approx
+    8 million SNP calls released July 2010); includes Wellcome trust GENEVAR expression
+    for 43 indiv
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/ceu1kg.html
+  license: Artistic-2.0
+  summary: CEU (N=60) genotypes from 1000 genomes pilot phase I
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: SNPlocs.Hsapiens.dbSNP.20101109
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-ceu1kg
+  version: 0.24.0
 requirements:
   host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-ggbase >=3.48.0,<3.49.0'
-    - 'bioconductor-ggtools >=5.22.0,<5.23.0'
-    - r-base
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-ggbase >=3.48.0,<3.49.0
+  - bioconductor-ggtools >=5.22.0,<5.23.0
+  - r-base
   run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-ggbase >=3.48.0,<3.49.0'
-    - 'bioconductor-ggtools >=5.22.0,<5.23.0'
-    - r-base
-    - curl
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-ggbase >=3.48.0,<3.49.0
+  - bioconductor-ggtools >=5.22.0,<5.23.0
+  - r-base
+  - curl
+source:
+  md5: 802081a48c2cdd4bff7db3dc88c3a458
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/ceu1kg_0.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ceu1kg_0.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-ceu1kg/bioconductor-ceu1kg_0.24.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'CEU (N=60) genotypes from 1000 genomes pilot phase I'
-  description: 'CEU genotypes from 1000 genomes "low coverage" pilot phase I (approx 8 million SNP calls released July 2010); includes Wellcome trust GENEVAR expression for 43 indiv'
-
+  - $R -e "library('ceu1kg')"

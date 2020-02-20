@@ -1,45 +1,41 @@
-{% set version = "1.2.0" %}
-{% set name = "evaluomeR" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 225db6070b6d7ba2652213a6fc11be49
+about:
+  description: Evaluating the reliability of your own metrics and the measurements
+    done on your own datasets by analysing the stability and goodness of the classifications
+    of such metrics.
+  home: https://bioconductor.org/packages/3.10/bioc/html/evaluomeR.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Evaluation of Bioinformatics Metrics
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: BiocStyle, knitr, rmarkdown, kableExtra, magrittr
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-evaluomer
+  version: 1.2.0
 requirements:
   host:
-    - 'bioconductor-multiassayexperiment >=1.12.0,<1.13.0'
-    - 'bioconductor-summarizedexperiment >=1.16.0,<1.17.0'
-    - r-base
-    - 'r-cluster >=2.0.7-1'
-    - 'r-corrplot >=0.84'
-    - r-rdpack
+  - bioconductor-multiassayexperiment >=1.12.0,<1.13.0
+  - bioconductor-summarizedexperiment >=1.16.0,<1.17.0
+  - r-base
+  - r-cluster >=2.0.7-1
+  - r-corrplot >=0.84
+  - r-rdpack
   run:
-    - 'bioconductor-multiassayexperiment >=1.12.0,<1.13.0'
-    - 'bioconductor-summarizedexperiment >=1.16.0,<1.17.0'
-    - r-base
-    - 'r-cluster >=2.0.7-1'
-    - 'r-corrplot >=0.84'
-    - r-rdpack
+  - bioconductor-multiassayexperiment >=1.12.0,<1.13.0
+  - bioconductor-summarizedexperiment >=1.16.0,<1.17.0
+  - r-base
+  - r-cluster >=2.0.7-1
+  - r-corrplot >=0.84
+  - r-rdpack
+source:
+  md5: 225db6070b6d7ba2652213a6fc11be49
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/evaluomeR_1.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/evaluomeR_1.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-evaluomer/bioconductor-evaluomer_1.2.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-3
-  summary: 'Evaluation of Bioinformatics Metrics'
-  description: 'Evaluating the reliability of your own metrics and the measurements done on your own datasets by analysing the stability and goodness of the classifications of such metrics.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('evaluomeR')"

@@ -1,33 +1,29 @@
-{% set version = "3.10.1" %}
-{% set name = "BiocVersion" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 475ac89c1f90e254af4a58ac6bbcbf79
+about:
+  description: This package provides repository information for the appropriate version
+    of Bioconductor.
+  home: https://bioconductor.org/packages/3.10/bioc/html/BiocVersion.html
+  license: Artistic-2.0
+  summary: Set the appropriate version of Bioconductor packages
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-biocversion
+  version: 3.10.1
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
+  - r-base
+source:
+  md5: 475ac89c1f90e254af4a58ac6bbcbf79
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/BiocVersion_3.10.1.tar.gz
+  - https://bioarchive.galaxyproject.org/BiocVersion_3.10.1.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-biocversion/bioconductor-biocversion_3.10.1_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Set the appropriate version of Bioconductor packages'
-  description: 'This package provides repository information for the appropriate version of Bioconductor.'
-
+  - $R -e "library('BiocVersion')"

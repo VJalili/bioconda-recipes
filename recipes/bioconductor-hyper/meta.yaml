@@ -1,67 +1,61 @@
-{% set version = "1.2.0" %}
-{% set name = "hypeR" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 54ad00d8e433c068f53ce7fa11f6cebe
+about:
+  description: An R Package for Geneset Enrichment Workflows.
+  home: https://bioconductor.org/packages/3.10/bioc/html/hypeR.html
+  license: GPL-3 + file LICENSE
+  license_file: LICENSE
+  summary: Hyper Enrichment
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: devtools, testthat, knitr, httr
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-hyper
+  version: 1.2.0
 requirements:
   host:
-    - r-base
-    - r-dplyr
-    - r-dt
-    - r-ggforce
-    - r-ggplot2
-    - r-gh
-    - r-igraph
-    - r-kableextra
-    - r-magrittr
-    - r-msigdbr
-    - r-openxlsx
-    - r-purrr
-    - r-r6
-    - r-rlang
-    - r-rmarkdown
-    - r-scales
-    - r-visnetwork
+  - r-base
+  - r-dplyr
+  - r-dt
+  - r-ggforce
+  - r-ggplot2
+  - r-gh
+  - r-igraph
+  - r-kableextra
+  - r-magrittr
+  - r-msigdbr
+  - r-openxlsx
+  - r-purrr
+  - r-r6
+  - r-rlang
+  - r-rmarkdown
+  - r-scales
+  - r-visnetwork
   run:
-    - r-base
-    - r-dplyr
-    - r-dt
-    - r-ggforce
-    - r-ggplot2
-    - r-gh
-    - r-igraph
-    - r-kableextra
-    - r-magrittr
-    - r-msigdbr
-    - r-openxlsx
-    - r-purrr
-    - r-r6
-    - r-rlang
-    - r-rmarkdown
-    - r-scales
-    - r-visnetwork
+  - r-base
+  - r-dplyr
+  - r-dt
+  - r-ggforce
+  - r-ggplot2
+  - r-gh
+  - r-igraph
+  - r-kableextra
+  - r-magrittr
+  - r-msigdbr
+  - r-openxlsx
+  - r-purrr
+  - r-r6
+  - r-rlang
+  - r-rmarkdown
+  - r-scales
+  - r-visnetwork
+source:
+  md5: 54ad00d8e433c068f53ce7fa11f6cebe
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/hypeR_1.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/hypeR_1.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hyper/bioconductor-hyper_1.2.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL-3 + file LICENSE'
-  summary: 'Hyper Enrichment'
-  description: 'An R Package for Geneset Enrichment Workflows.'
-  license_file: LICENSE
-
+  - $R -e "library('hypeR')"

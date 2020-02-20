@@ -1,36 +1,31 @@
-{% set version = "1.28.0" %}
-{% set name = "Iyer517" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: aacadc642511015c6a8080043105c924
+about:
+  description: representation of public Iyer data from http://genome-www.stanford.edu/serum/clusters.html
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/Iyer517.html
+  license: Artistic-2.0
+  summary: exprSets for Iyer, Eisen et all 1999 Science paper
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-iyer517
+  version: 1.28.0
 requirements:
   host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - r-base
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - r-base
   run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - r-base
-    - curl
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - r-base
+  - curl
+source:
+  md5: aacadc642511015c6a8080043105c924
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/Iyer517_1.28.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Iyer517_1.28.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-iyer517/bioconductor-iyer517_1.28.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'exprSets for Iyer, Eisen et all 1999 Science paper'
-  description: 'representation of public Iyer data from http://genome-www.stanford.edu/serum/clusters.html'
-
+  - $R -e "library('Iyer517')"

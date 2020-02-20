@@ -1,68 +1,53 @@
-{% set name = "busco" %}
-{% set version = "4.0.2" %}
-{% set sha256 = "4aee3b8b50d78341562651f83dbc4a9175250260f4ce2278b87634962840bcce" %}
-{% set repo = "busco" %}
-
-package:
-  name: {{ name|lower }}
-  version: {{ version }}
-
-build:
-  number: 0
-  noarch: python
-
-
-
-source:
-  url: https://gitlab.com/ezlab/{{ repo }}/-/archive/{{ version }}/busco-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-
-requirements:
-  host:
-    - python >=3.3
-    - pip
-    - findutils
-    - blast >=2.2,<2.4
-    - hmmer >=3.1b2 # sepp needs this version
-    - augustus
-    - biopython
-    - r-base
-    - r-ggplot2 >=2.2.1
-    - prodigal
-    - sepp >=4.3.10
-  run:
-    - python >=3.3
-    - findutils
-    - blast >=2.2,<2.4
-    - hmmer >=3.1b2 # sepp needs this version
-    - augustus
-    - biopython
-    - r-base
-    - r-ggplot2 >=2.2.1
-    - prodigal
-    - sepp >=4.3.10
-
-test:
-  requires:
-    - wget
-  commands:
-    - busco -h
-    - generate_plot.py -h
-
-
 about:
   home: http://busco.ezlab.org/
   license: GPL
-  summary: BUSCO provides measures for quantitative assessment of genome
-           assembly, gene set, and transcriptome completeness based on
-           evolutionarily informed expectations of gene content from
-           near-universal single-copy orthologs selected from OrthoDB.
-
+  summary: BUSCO provides measures for quantitative assessment of genome assembly,
+    gene set, and transcriptome completeness based on evolutionarily informed expectations
+    of gene content from near-universal single-copy orthologs selected from OrthoDB.
+build:
+  noarch: python
+  number: 0
 extra:
   identifiers:
-    - biotools:busco
-    - doi:10.1093/bioinformatics/btv351
+  - biotools:busco
+  - doi:10.1093/bioinformatics/btv351
   recipe-maintainers:
-    - silask
-    - matsepp
-    - berkelem
+  - silask
+  - matsepp
+  - berkelem
+package:
+  name: busco
+  version: 4.0.2
+requirements:
+  host:
+  - python >=3.3
+  - pip
+  - findutils
+  - blast >=2.2,<2.4
+  - hmmer >=3.1b2
+  - augustus
+  - biopython
+  - r-base
+  - r-ggplot2 >=2.2.1
+  - prodigal
+  - sepp >=4.3.10
+  run:
+  - python >=3.3
+  - findutils
+  - blast >=2.2,<2.4
+  - hmmer >=3.1b2
+  - augustus
+  - biopython
+  - r-base
+  - r-ggplot2 >=2.2.1
+  - prodigal
+  - sepp >=4.3.10
+source:
+  sha256: 4aee3b8b50d78341562651f83dbc4a9175250260f4ce2278b87634962840bcce
+  url: https://gitlab.com/ezlab/busco/-/archive/4.0.2/busco-4.0.2.tar.gz
+test:
+  commands:
+  - busco -h
+  - generate_plot.py -h
+  requires:
+  - wget

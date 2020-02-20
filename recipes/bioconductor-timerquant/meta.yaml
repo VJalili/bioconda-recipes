@@ -1,47 +1,42 @@
-{% set version = "1.16.0" %}
-{% set name = "TimerQuant" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: ef4ca4d199e45327ae2cd6a44be9fb20
+about:
+  description: Supplementary Data package for tandem timer methods paper by Barry
+    et al. (2015) including TimerQuant shiny applications.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/TimerQuant.html
+  license: Artistic-2.0
+  summary: Timer Quantification
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: BiocStyle, reshape2, knitr, shinyBS
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-timerquant
+  version: 1.16.0
 requirements:
   host:
-    - r-base
-    - r-desolve
-    - r-dplyr
-    - r-ggplot2
-    - r-gridextra
-    - r-locfit
-    - r-shiny
+  - r-base
+  - r-desolve
+  - r-dplyr
+  - r-ggplot2
+  - r-gridextra
+  - r-locfit
+  - r-shiny
   run:
-    - r-base
-    - r-desolve
-    - r-dplyr
-    - r-ggplot2
-    - r-gridextra
-    - r-locfit
-    - r-shiny
-    - curl
+  - r-base
+  - r-desolve
+  - r-dplyr
+  - r-ggplot2
+  - r-gridextra
+  - r-locfit
+  - r-shiny
+  - curl
+source:
+  md5: ef4ca4d199e45327ae2cd6a44be9fb20
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/TimerQuant_1.16.0.tar.gz
+  - https://bioarchive.galaxyproject.org/TimerQuant_1.16.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-timerquant/bioconductor-timerquant_1.16.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Timer Quantification'
-  description: 'Supplementary Data package for tandem timer methods paper by Barry et al. (2015) including TimerQuant shiny applications.'
-
+  - $R -e "library('TimerQuant')"

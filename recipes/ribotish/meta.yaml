@@ -1,37 +1,29 @@
-{% set name = "ribotish" %}
-{% set version = "0.2.4" %}
-{% set sha256 = "0687cd31c84996858a911443a000f95895b3b40b7211e7e395ac90eec2838784" %}
-
-package:
-  name: {{ name|lower }}
-  version: {{ version }}
-
-source:
-  url: https://github.com/zhpn1024/ribotish/archive/v{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-
-build:
-  script: python -m pip install --no-deps --ignore-installed .
-  number: 0
-  noarch: python
-
-requirements:
-  host:
-    - python
-    - pip
-  run:
-    - python
-    - numpy
-    - scipy
-    - pysam
-    - matplotlib
-
-test:
-  commands:
-    - ribotish -h
-
 about:
   home: https://github.com/zhpn1024/ribotish
   license: GPL-3
   license_file: LICENSE
-  summary: Ribo TIS Hunter (Ribo-TISH) identifies translation activities using ribosome profiling data.
+  summary: Ribo TIS Hunter (Ribo-TISH) identifies translation activities using ribosome
+    profiling data.
+build:
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps --ignore-installed .
+package:
+  name: ribotish
+  version: 0.2.4
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - numpy
+  - scipy
+  - pysam
+  - matplotlib
+source:
+  sha256: 0687cd31c84996858a911443a000f95895b3b40b7211e7e395ac90eec2838784
+  url: https://github.com/zhpn1024/ribotish/archive/v0.2.4.tar.gz
+test:
+  commands:
+  - ribotish -h

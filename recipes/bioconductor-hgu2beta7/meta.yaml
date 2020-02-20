@@ -1,34 +1,30 @@
-{% set version = "1.26.0" %}
-{% set name = "hgu2beta7" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: c39bb845ee0ce3b368fe2478ee76cd2e
+about:
+  description: Annotation data file for hgu2beta7 assembled using data from public
+    data repositories
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/hgu2beta7.html
+  license: Artistic-2.0
+  summary: A data package containing annotation data for hgu2beta7
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-hgu2beta7
+  version: 1.26.0
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
-    - curl
+  - r-base
+  - curl
+source:
+  md5: c39bb845ee0ce3b368fe2478ee76cd2e
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/hgu2beta7_1.26.0.tar.gz
+  - https://bioarchive.galaxyproject.org/hgu2beta7_1.26.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hgu2beta7/bioconductor-hgu2beta7_1.26.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'A data package containing annotation data for hgu2beta7'
-  description: 'Annotation data file for hgu2beta7 assembled using data from public data repositories'
-
+  - $R -e "library('hgu2beta7')"

@@ -1,44 +1,40 @@
-{% set version = "1.6.0" %}
-{% set name = "GateFinder" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: ba0c5250f2b86b940509038029017fdd
+about:
+  description: Given a vector of cluster memberships for a cell population, identifies
+    a sequence of gates (polygon filters on 2D scatter plots) for isolation of that
+    cell type.
+  home: https://bioconductor.org/packages/3.10/bioc/html/GateFinder.html
+  license: Artistic-2.0
+  summary: Projection-based Gating Strategy Optimization for Flow and Mass Cytometry
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: RUnit, BiocGenerics
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-gatefinder
+  version: 1.6.0
 requirements:
   host:
-    - 'bioconductor-flowcore >=1.52.0,<1.53.0'
-    - 'bioconductor-flowfp >=1.44.0,<1.45.0'
-    - r-base
-    - r-diptest
-    - r-mvoutlier
-    - r-splancs
+  - bioconductor-flowcore >=1.52.0,<1.53.0
+  - bioconductor-flowfp >=1.44.0,<1.45.0
+  - r-base
+  - r-diptest
+  - r-mvoutlier
+  - r-splancs
   run:
-    - 'bioconductor-flowcore >=1.52.0,<1.53.0'
-    - 'bioconductor-flowfp >=1.44.0,<1.45.0'
-    - r-base
-    - r-diptest
-    - r-mvoutlier
-    - r-splancs
+  - bioconductor-flowcore >=1.52.0,<1.53.0
+  - bioconductor-flowfp >=1.44.0,<1.45.0
+  - r-base
+  - r-diptest
+  - r-mvoutlier
+  - r-splancs
+source:
+  md5: ba0c5250f2b86b940509038029017fdd
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/GateFinder_1.6.0.tar.gz
+  - https://bioarchive.galaxyproject.org/GateFinder_1.6.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-gatefinder/bioconductor-gatefinder_1.6.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Projection-based Gating Strategy Optimization for Flow and Mass Cytometry'
-  description: 'Given a vector of cluster memberships for a cell population, identifies a sequence of gates (polygon filters on 2D scatter plots) for isolation of that cell type.'
-
+  - $R -e "library('GateFinder')"

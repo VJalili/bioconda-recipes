@@ -1,42 +1,36 @@
-{% set version = "2.5.0.3" %}
-{% set sha256 = "4f630aa5f5e2781d2563c135a650d3fbeb09c3063c471db387badb4ea2dd79e5" %}
-
-package:
-  name: pycoqc
-  version: '{{ version }}'
-
-source:
-  url: https://github.com/a-slide/pycoQC/archive/v{{ version }}.tar.gz
-  sha256: '{{ sha256 }}'
-
-build:
-  noarch: python
-  number: 0
-  script: '{{ PYTHON }} -m pip install --no-deps --ignore-installed --no-cache-dir .'
-
-requirements:
-  host:
-    - python  >=3
-    - pip
-  run:
-    - python  >=3
-    - numpy >=1.13
-    - scipy >=1.1
-    - pandas >=0.23
-    - notebook >=4.0.0
-    - jupyterthemes
-    - jupyter_contrib_nbextensions
-    - h5py >=2.8.0
-    - tqdm >=4.23
-    - plotly >=3.4 
-    - jinja2 >=2.10
-test:
-  imports:
-    - pycoQC
-
 about:
   home: https://github.com/a-slide/pycoQC
   license: GPL-3.0
-  license_file: LICENSE
   license_family: GPL
-  summary: Python 3 package for Jupyter Notebook, computing metrics and generating plots from Oxford Nanopore Albacore report
+  license_file: LICENSE
+  summary: Python 3 package for Jupyter Notebook, computing metrics and generating
+    plots from Oxford Nanopore Albacore report
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install --no-deps --ignore-installed --no-cache-dir .'
+package:
+  name: pycoqc
+  version: 2.5.0.3
+requirements:
+  host:
+  - python  >=3
+  - pip
+  run:
+  - python  >=3
+  - numpy >=1.13
+  - scipy >=1.1
+  - pandas >=0.23
+  - notebook >=4.0.0
+  - jupyterthemes
+  - jupyter_contrib_nbextensions
+  - h5py >=2.8.0
+  - tqdm >=4.23
+  - plotly >=3.4
+  - jinja2 >=2.10
+source:
+  sha256: 4f630aa5f5e2781d2563c135a650d3fbeb09c3063c471db387badb4ea2dd79e5
+  url: https://github.com/a-slide/pycoQC/archive/v2.5.0.3.tar.gz
+test:
+  imports:
+  - pycoQC

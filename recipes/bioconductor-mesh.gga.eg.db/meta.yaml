@@ -1,37 +1,31 @@
-{% set version = "1.13.0" %}
-{% set name = "MeSH.Gga.eg.db" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: f9709c70e613d2ab63794ad978a1e277
+about:
+  description: Entrez Gene ID to MeSH ID table.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/MeSH.Gga.eg.db.html
+  license: Artistic-2.0
+  summary: Mapping table for Gallus gallus Gene ID to MeSH
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: RUnit, BiocGenerics
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-mesh.gga.eg.db
+  version: 1.13.0
 requirements:
   host:
-    - 'bioconductor-meshdbi >=1.22.0,<1.23.0'
-    - r-base
+  - bioconductor-meshdbi >=1.22.0,<1.23.0
+  - r-base
   run:
-    - 'bioconductor-meshdbi >=1.22.0,<1.23.0'
-    - r-base
-    - curl
+  - bioconductor-meshdbi >=1.22.0,<1.23.0
+  - r-base
+  - curl
+source:
+  md5: f9709c70e613d2ab63794ad978a1e277
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/MeSH.Gga.eg.db_1.13.0.tar.gz
+  - https://bioarchive.galaxyproject.org/MeSH.Gga.eg.db_1.13.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mesh.gga.eg.db/bioconductor-mesh.gga.eg.db_1.13.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Mapping table for Gallus gallus Gene ID to MeSH'
-  description: 'Entrez Gene ID to MeSH ID table.'
-
+  - $R -e "library('MeSH.Gga.eg.db')"

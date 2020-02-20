@@ -1,35 +1,30 @@
-{% set version = "1.24.0" %}
-{% set name = "breastCancerUNT" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: da0c8c0075dee5da90610ebbc5dbad8d
+about:
+  description: Gene expression data from a breast cancer study published by Sotiriou
+    et al. in 2007, provided as an eSet.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/breastCancerUNT.html
+  license: Artistic-2.0
+  summary: Gene expression dataset published by Sotiriou et al. [2007] (UNT).
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: survcomp, genefu, Biobase
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-breastcancerunt
+  version: 1.24.0
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
-    - curl
+  - r-base
+  - curl
+source:
+  md5: da0c8c0075dee5da90610ebbc5dbad8d
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/breastCancerUNT_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/breastCancerUNT_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-breastcancerunt/bioconductor-breastcancerunt_1.24.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Gene expression dataset published by Sotiriou et al. [2007] (UNT).'
-  description: 'Gene expression data from a breast cancer study published by Sotiriou et al. in 2007, provided as an eSet.'
-
+  - $R -e "library('breastCancerUNT')"

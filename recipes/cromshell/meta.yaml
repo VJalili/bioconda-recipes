@@ -1,35 +1,25 @@
-{% set name = "cromshell" %}
-{% set version = "0.4.0" %}
-{% set sha256 = "23747803dd21850bc879427f7a17fec29c42f8baf69fcbae51357b3030b2bf47" %}
-
-package:
-  name: {{ name }}
-  version: {{ version }}
-
+about:
+  home: https://github.com/broadinstitute/cromshell
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: Command-line interface to the Cromwell workflow manager
 build:
   noarch: generic
   number: 0
-
-source:
-  url: https://github.com/broadinstitute/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-
-requirements:
-  run:
-    - womtool
-    - jq
-
-test:
-  commands:
-    - {{ name }} --help
-
-about:
-  home: https://github.com/broadinstitute/{{ name }}
-  license_family: "BSD"
-  license: "BSD-3-Clause"
-  license_file: LICENSE
-  summary: "Command-line interface to the Cromwell workflow manager"
-
 extra:
   recipe-maintainers:
-    - notestaff
+  - notestaff
+package:
+  name: cromshell
+  version: 0.4.0
+requirements:
+  run:
+  - womtool
+  - jq
+source:
+  sha256: 23747803dd21850bc879427f7a17fec29c42f8baf69fcbae51357b3030b2bf47
+  url: https://github.com/broadinstitute/cromshell/archive/0.4.0.tar.gz
+test:
+  commands:
+  - cromshell --help

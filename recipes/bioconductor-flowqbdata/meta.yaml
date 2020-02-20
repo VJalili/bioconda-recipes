@@ -1,35 +1,30 @@
-{% set version = "1.9.0" %}
-{% set name = "flowQBData" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 54a6ae2ea9e910bf63c37b264b4b47d8
+about:
+  description: The flowQBData package provides data files used as examples and for
+    testing of the software provided in the flowQB package.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/flowQBData.html
+  license: Artistic License 2.0
+  summary: flowQB test and example data files
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: flowQB
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-flowqbdata
+  version: 1.9.0
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
-    - curl
+  - r-base
+  - curl
+source:
+  md5: 54a6ae2ea9e910bf63c37b264b4b47d8
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/flowQBData_1.9.0.tar.gz
+  - https://bioarchive.galaxyproject.org/flowQBData_1.9.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-flowqbdata/bioconductor-flowqbdata_1.9.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: 'Artistic License 2.0'
-  summary: 'flowQB test and example data files'
-  description: 'The flowQBData package provides data files used as examples and for testing of the software provided in the flowQB package.'
-
+  - $R -e "library('flowQBData')"

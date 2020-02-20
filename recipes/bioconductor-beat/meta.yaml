@@ -1,50 +1,45 @@
-{% set version = "1.24.0" %}
-{% set name = "BEAT" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 8fb651fdc384d34af0dad0a0b83c914b
+about:
+  description: Model-based analysis of single-cell methylation data
+  home: https://bioconductor.org/packages/3.10/bioc/html/BEAT.html
+  license: LGPL (>= 3.0)
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: BEAT - BS-Seq Epimutation Analysis Toolkit
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-requirements:
-  host:
-    - 'bioconductor-biostrings >=2.54.0,<2.55.0'
-    - 'bioconductor-bsgenome >=1.54.0,<1.55.0'
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - 'bioconductor-shortread >=1.44.0,<1.45.0'
-    - r-base
-  run:
-    - 'bioconductor-biostrings >=2.54.0,<2.55.0'
-    - 'bioconductor-bsgenome >=1.54.0,<1.55.0'
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - 'bioconductor-shortread >=1.44.0,<1.45.0'
-    - r-base
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'LGPL (>= 3.0)'
-  summary: 'BEAT - BS-Seq Epimutation Analysis Toolkit'
-  description: 'Model-based analysis of single-cell methylation data'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:beat
-    - doi:10.1038/nmeth.3252
+  - biotools:beat
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-beat
     path: recipes/bioconductor-beat
     version: 1.18.0
-
+package:
+  name: bioconductor-beat
+  version: 1.24.0
+requirements:
+  host:
+  - bioconductor-biostrings >=2.54.0,<2.55.0
+  - bioconductor-bsgenome >=1.54.0,<1.55.0
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - bioconductor-shortread >=1.44.0,<1.45.0
+  - r-base
+  run:
+  - bioconductor-biostrings >=2.54.0,<2.55.0
+  - bioconductor-bsgenome >=1.54.0,<1.55.0
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - bioconductor-shortread >=1.44.0,<1.45.0
+  - r-base
+source:
+  md5: 8fb651fdc384d34af0dad0a0b83c914b
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/BEAT_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/BEAT_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-beat/bioconductor-beat_1.24.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('BEAT')"

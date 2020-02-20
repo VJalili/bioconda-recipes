@@ -1,38 +1,34 @@
-{% set version = "1.40.0" %}
-{% set name = "MBCB" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 814fdc343c0ec00241c1ccef8f1e43bc
+about:
+  description: This package provides a model-based background correction method, which
+    incorporates the negative control beads to pre-process Illumina BeadArray data.
+  home: https://bioconductor.org/packages/3.10/bioc/html/MBCB.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: MBCB (Model-based Background Correction for Beadarray)
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-mbcb
+  version: 1.40.0
 requirements:
   host:
-    - 'bioconductor-preprocesscore >=1.48.0,<1.49.0'
-    - r-base
-    - r-tcltk2
+  - bioconductor-preprocesscore >=1.48.0,<1.49.0
+  - r-base
+  - r-tcltk2
   run:
-    - 'bioconductor-preprocesscore >=1.48.0,<1.49.0'
-    - r-base
-    - r-tcltk2
+  - bioconductor-preprocesscore >=1.48.0,<1.49.0
+  - r-base
+  - r-tcltk2
+source:
+  md5: 814fdc343c0ec00241c1ccef8f1e43bc
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/MBCB_1.40.0.tar.gz
+  - https://bioarchive.galaxyproject.org/MBCB_1.40.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mbcb/bioconductor-mbcb_1.40.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>= 2)'
-  summary: 'MBCB (Model-based Background Correction for Beadarray)'
-  description: 'This package provides a model-based background correction method, which incorporates the negative control beads to pre-process Illumina BeadArray data.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('MBCB')"

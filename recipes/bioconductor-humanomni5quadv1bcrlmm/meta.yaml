@@ -1,34 +1,30 @@
-{% set version = "1.0.0" %}
-{% set name = "humanomni5quadv1bCrlmm" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 3ac4d6867c3d5590a6308d6edff0912b
+about:
+  description: Package with metadata for genotyping Illumina Omni5 Quad arrays using
+    the 'crlmm' package.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/humanomni5quadv1bCrlmm.html
+  license: Artistic-2.0
+  summary: Metadata for fast genotyping with the 'crlmm' package
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-humanomni5quadv1bcrlmm
+  version: 1.0.0
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
-    - curl
+  - r-base
+  - curl
+source:
+  md5: 3ac4d6867c3d5590a6308d6edff0912b
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/humanomni5quadv1bCrlmm_1.0.0.tar.gz
+  - https://bioarchive.galaxyproject.org/humanomni5quadv1bCrlmm_1.0.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-humanomni5quadv1bcrlmm/bioconductor-humanomni5quadv1bcrlmm_1.0.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Metadata for fast genotyping with the ''crlmm'' package'
-  description: 'Package with metadata for genotyping Illumina Omni5 Quad arrays using the ''crlmm'' package.'
-
+  - $R -e "library('humanomni5quadv1bCrlmm')"

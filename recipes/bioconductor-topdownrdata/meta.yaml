@@ -1,37 +1,33 @@
-{% set version = "1.8.0" %}
-{% set name = "topdownrdata" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 08f790e073020a817f100b0f5bb1d9a6
+about:
+  description: Example data for the topdownr package generated on a Thermo Orbitrap
+    Fusion Lumos MS device.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/topdownrdata.html
+  license: GPL (>= 3)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Example Files for the topdownr R Package
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-topdownrdata
+  version: 1.8.0
 requirements:
   host:
-    - 'bioconductor-topdownr >=1.8.0,<1.9.0'
-    - r-base
+  - bioconductor-topdownr >=1.8.0,<1.9.0
+  - r-base
   run:
-    - 'bioconductor-topdownr >=1.8.0,<1.9.0'
-    - r-base
-    - curl
+  - bioconductor-topdownr >=1.8.0,<1.9.0
+  - r-base
+  - curl
+source:
+  md5: 08f790e073020a817f100b0f5bb1d9a6
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/topdownrdata_1.8.0.tar.gz
+  - https://bioarchive.galaxyproject.org/topdownrdata_1.8.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-topdownrdata/bioconductor-topdownrdata_1.8.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: 'GPL (>= 3)'
-  summary: 'Example Files for the topdownr R Package'
-  description: 'Example data for the topdownr package generated on a Thermo Orbitrap Fusion Lumos MS device.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('topdownrdata')"

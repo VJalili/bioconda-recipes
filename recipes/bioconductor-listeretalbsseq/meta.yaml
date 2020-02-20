@@ -1,37 +1,31 @@
-{% set version = "1.18.0" %}
-{% set name = "ListerEtAlBSseq" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 39982d147e6e0e84931892e740121762
+about:
+  description: Base resolution bisulfite sequencing data of Human DNA methylomes
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/ListerEtAlBSseq.html
+  license: Artistic 2.0
+  summary: BS-seq data of H1 and IMR90 cell line excerpted from Lister et al. 2009
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: BSgenome.Hsapiens.UCSC.hg18
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-listeretalbsseq
+  version: 1.18.0
 requirements:
   host:
-    - 'bioconductor-methylpipe >=1.20.0,<1.21.0'
-    - r-base
+  - bioconductor-methylpipe >=1.20.0,<1.21.0
+  - r-base
   run:
-    - 'bioconductor-methylpipe >=1.20.0,<1.21.0'
-    - r-base
-    - curl
+  - bioconductor-methylpipe >=1.20.0,<1.21.0
+  - r-base
+  - curl
+source:
+  md5: 39982d147e6e0e84931892e740121762
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/ListerEtAlBSseq_1.18.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ListerEtAlBSseq_1.18.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-listeretalbsseq/bioconductor-listeretalbsseq_1.18.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: 'Artistic 2.0'
-  summary: 'BS-seq data of H1 and IMR90 cell line excerpted from Lister et al. 2009'
-  description: 'Base resolution bisulfite sequencing data of Human DNA methylomes'
-
+  - $R -e "library('ListerEtAlBSseq')"

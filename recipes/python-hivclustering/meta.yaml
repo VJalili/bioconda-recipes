@@ -1,33 +1,25 @@
-{% set version = "1.4.0" %}
-{% set name = "hivclustering" %}
-
-package:
-  name: python-{{ name | lower }}
-  version: {{ version }}
-
-source:
-  url: https://github.com/veg/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: 52ac2022dc57ab71a7e7ccc4a9467814957db4189d228257dd0185b7f82c5acb
-
-build:
-  noarch: python
-  number: 0
-
-requirements:
-  host:
-    - python >=3
-    - setuptools
-  run:
-    - python >=3
-    - python-bioext >=0.18.0
-    - python-hyphy-python >=0.1.6
-    - python-hppy >=0.9.6
-
-test:
-  imports:
-    - hivclustering
-
 about:
   home: https://github.com/veg/hivclustering
   license: MIT
-  summary: 'A Python 3 library that makes inferences on HIV-1 transmission networks.'
+  summary: A Python 3 library that makes inferences on HIV-1 transmission networks.
+build:
+  noarch: python
+  number: 0
+package:
+  name: python-hivclustering
+  version: 1.4.0
+requirements:
+  host:
+  - python >=3
+  - setuptools
+  run:
+  - python >=3
+  - python-bioext >=0.18.0
+  - python-hyphy-python >=0.1.6
+  - python-hppy >=0.9.6
+source:
+  sha256: 52ac2022dc57ab71a7e7ccc4a9467814957db4189d228257dd0185b7f82c5acb
+  url: https://github.com/veg/hivclustering/archive/1.4.0.tar.gz
+test:
+  imports:
+  - hivclustering

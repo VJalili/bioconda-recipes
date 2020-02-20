@@ -1,37 +1,29 @@
-{% set version = "1.6.17" %}
-{% set sha256 = "c69c9c8a0b1a141a88d1f6facefc92013d0a740c63e1c1ae66037022dd00cb80" %}
-
-package:
-  name: vcf2maf
-  version: '{{version}}'
-
-build:
-  noarch: generic
-  number: 1
-
-source:
-  url: https://github.com/mskcc/vcf2maf/archive/v{{ version }}.tar.gz
-  sha256: aad8b14fbf73ebb3f63c4ce9b9457ae1deda113fefa67c26b9516c1395cea121
-
-requirements:
-  run:
-    - perl
-    - variant-effect-predictor
-    - samtools
-    - htslib
-
-test:
-  commands:
-    - vcf2maf.pl --help
-
 about:
   home: https://github.com/mskcc/vcf2maf
   license: Apache-2.0
+  license_family: Apache
   summary: Convert a VCF into a MAF where each variant is annotated to only one of
     all possible gene isoforms
-
-  license_family: Apache
+build:
+  noarch: generic
+  number: 1
 extra:
-  notes: |-
-    This package installs only vcf2maf and does not integrate with the variant-effect-predictor (VEP). To
-    do so, please follow the instructions at https://github.com/mskcc/vcf2maf/blob/master/README.md.
+  notes: 'This package installs only vcf2maf and does not integrate with the variant-effect-predictor
+    (VEP). To
+
+    do so, please follow the instructions at https://github.com/mskcc/vcf2maf/blob/master/README.md.'
+package:
+  name: vcf2maf
+  version: 1.6.17
+requirements:
+  run:
+  - perl
+  - variant-effect-predictor
+  - samtools
+  - htslib
+source:
+  sha256: aad8b14fbf73ebb3f63c4ce9b9457ae1deda113fefa67c26b9516c1395cea121
+  url: https://github.com/mskcc/vcf2maf/archive/v1.6.17.tar.gz
+test:
+  commands:
+  - vcf2maf.pl --help

@@ -1,37 +1,33 @@
-{% set version = "3.4.0" %}
-{% set name = "nugohs1a520180probe" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 6acf20ac4a799eaae97d0a64426d6ac3
+about:
+  description: This package was automatically created by package AnnotationForge version
+    1.11.20. The probe sequence data was obtained from http://www.affymetrix.com.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/nugohs1a520180probe.html
+  license: LGPL
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: Probe sequence data for microarrays of type nugohs1a520180
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-nugohs1a520180probe
+  version: 3.4.0
 requirements:
   host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
   run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
-    - curl
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
+  - curl
+source:
+  md5: 6acf20ac4a799eaae97d0a64426d6ac3
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/nugohs1a520180probe_3.4.0.tar.gz
+  - https://bioarchive.galaxyproject.org/nugohs1a520180probe_3.4.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-nugohs1a520180probe/bioconductor-nugohs1a520180probe_3.4.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: LGPL
-  summary: 'Probe sequence data for microarrays of type nugohs1a520180'
-  description: 'This package was automatically created by package AnnotationForge version 1.11.20. The probe sequence data was obtained from http://www.affymetrix.com.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-3'
-
+  - $R -e "library('nugohs1a520180probe')"

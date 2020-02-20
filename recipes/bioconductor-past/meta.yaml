@@ -1,51 +1,49 @@
-{% set version = "1.2.0" %}
-{% set name = "PAST" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: afd9da1aadb4cd2eedc5259cbb69eebc
+about:
+  description: PAST takes GWAS output and assigns SNPs to genes, uses those genes
+    to find pathways associated with the genes, and plots pathways based on significance.
+    Implements methods for reading GWAS input data, finding genes associated with
+    SNPs, calculating enrichment score and significance of pathways, and plotting
+    pathways.
+  home: https://bioconductor.org/packages/3.10/bioc/html/PAST.html
+  license: GPL (>=3)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Pathway Association Study Tool (PAST)
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: knitr, rmarkdown
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-past
+  version: 1.2.0
 requirements:
   host:
-    - 'bioconductor-qvalue >=2.18.0,<2.19.0'
-    - 'bioconductor-rtracklayer >=1.46.0,<1.47.0'
-    - r-base
-    - r-doparallel
-    - r-dplyr
-    - r-foreach
-    - r-ggplot2
-    - r-iterators
-    - r-rlang
+  - bioconductor-qvalue >=2.18.0,<2.19.0
+  - bioconductor-rtracklayer >=1.46.0,<1.47.0
+  - r-base
+  - r-doparallel
+  - r-dplyr
+  - r-foreach
+  - r-ggplot2
+  - r-iterators
+  - r-rlang
   run:
-    - 'bioconductor-qvalue >=2.18.0,<2.19.0'
-    - 'bioconductor-rtracklayer >=1.46.0,<1.47.0'
-    - r-base
-    - r-doparallel
-    - r-dplyr
-    - r-foreach
-    - r-ggplot2
-    - r-iterators
-    - r-rlang
+  - bioconductor-qvalue >=2.18.0,<2.19.0
+  - bioconductor-rtracklayer >=1.46.0,<1.47.0
+  - r-base
+  - r-doparallel
+  - r-dplyr
+  - r-foreach
+  - r-ggplot2
+  - r-iterators
+  - r-rlang
+source:
+  md5: afd9da1aadb4cd2eedc5259cbb69eebc
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/PAST_1.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/PAST_1.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-past/bioconductor-past_1.2.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>=3)'
-  summary: 'Pathway Association Study Tool (PAST)'
-  description: 'PAST takes GWAS output and assigns SNPs to genes, uses those genes to find pathways associated with the genes, and plots pathways based on significance. Implements methods for reading GWAS input data, finding genes associated with SNPs, calculating enrichment score and significance of pathways, and plotting pathways.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('PAST')"

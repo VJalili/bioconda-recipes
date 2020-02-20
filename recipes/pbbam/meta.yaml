@@ -1,47 +1,37 @@
-{% set name = "pbbam" %}
-{% set version = "1.0.7" %}
-{% set sha256 = "e4e9e9207486f757c538bbd75032f9d033500540c495ce48a8dacb6f2ca3b536" %}
-
-package:
-  name: {{ name }}
-  version: {{ version }}
-
-source:
-  url: https://github.com/PacificBiosciences/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-
-build:
-  number: 0
-
-requirements:
-  build:
-    - {{ compiler('cxx') }}
-    - meson >=0.48.1
-    - ninja
-    - pkg-config
-  host:
-    - boost-cpp
-    - zlib
-    - htslib
-    - pbcopper 1.4.0*
-  run:
-    - htslib
-
-test:
-  commands:
-    - bam2sam -h
-    - pbbamify -h
-    - pbindex -h
-    - pbindexdump -h
-    - pbmerge -h
-
 about:
   home: https://github.com/PacificBiosciences/pbbam
   license: BSD-3-Clause-Clear
   summary: PacBio BAM C++ library
-
+build:
+  number: 0
 extra:
   recipe-maintainers:
-    - pb-dseifert
-    - mhsieh
-    - pezmaster31
+  - pb-dseifert
+  - mhsieh
+  - pezmaster31
+package:
+  name: pbbam
+  version: 1.0.7
+requirements:
+  build:
+  - None
+  - meson >=0.48.1
+  - ninja
+  - pkg-config
+  host:
+  - boost-cpp
+  - zlib
+  - htslib
+  - pbcopper 1.4.0*
+  run:
+  - htslib
+source:
+  sha256: e4e9e9207486f757c538bbd75032f9d033500540c495ce48a8dacb6f2ca3b536
+  url: https://github.com/PacificBiosciences/pbbam/archive/v1.0.7.tar.gz
+test:
+  commands:
+  - bam2sam -h
+  - pbbamify -h
+  - pbindex -h
+  - pbindexdump -h
+  - pbmerge -h

@@ -1,35 +1,26 @@
-{% set version = "0.1.5" %}
-{% set github = "https://github.com/acidgenomics/acidbase" %}
-
-package:
-  name: r-acidbase
-  version: "{{ version }}"
-
-source:
-  url: "{{ github }}/archive/v{{ version }}.tar.gz"
-  sha256: 314b06c5a1c1cecb0ac2e8b89442335e8c6126bd69a0a4f4a86777ea9199943b
-  
-build:
-  number: 0
-  noarch: generic
-
-requirements:
-  host:
-    - r-base
-  run:
-    - r-base
-
-test:
-  commands:
-    - $R -e "library('acidbase')"
-
 about:
+  dev_url: https://github.com/acidgenomics/acidbase
   home: https://acidbase.acidgenomics.com/
-  dev_url: "{{ github }}"
   license: MIT
   license_file: LICENSE
   summary: Low-level base functions imported by Acid Genomics packages.
-
+build:
+  noarch: generic
+  number: 0
 extra:
   recipe-maintainers:
-    - mjsteinbaugh
+  - mjsteinbaugh
+package:
+  name: r-acidbase
+  version: 0.1.5
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+source:
+  sha256: 314b06c5a1c1cecb0ac2e8b89442335e8c6126bd69a0a4f4a86777ea9199943b
+  url: https://github.com/acidgenomics/acidbase/archive/v0.1.5.tar.gz
+test:
+  commands:
+  - $R -e "library('acidbase')"

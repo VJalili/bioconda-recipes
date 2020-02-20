@@ -1,37 +1,32 @@
-{% set version = "2.18.0" %}
-{% set name = "u133x3pcdf" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: ee4e62041bc8c63813e8cf8400ece2f3
+about:
+  description: A package containing an environment representing the U133_X3P.cdf file.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/u133x3pcdf.html
+  license: LGPL
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: u133x3pcdf
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-u133x3pcdf
+  version: 2.18.0
 requirements:
   host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
   run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
-    - curl
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
+  - curl
+source:
+  md5: ee4e62041bc8c63813e8cf8400ece2f3
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/u133x3pcdf_2.18.0.tar.gz
+  - https://bioarchive.galaxyproject.org/u133x3pcdf_2.18.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-u133x3pcdf/bioconductor-u133x3pcdf_2.18.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: LGPL
-  summary: u133x3pcdf
-  description: 'A package containing an environment representing the U133_X3P.cdf file.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-3'
-
+  - $R -e "library('u133x3pcdf')"

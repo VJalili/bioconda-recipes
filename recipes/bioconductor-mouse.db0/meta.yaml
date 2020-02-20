@@ -1,36 +1,32 @@
-{% set version = "3.10.0" %}
-{% set name = "mouse.db0" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 26f5ad2c314862aac268b96dd1a12bb1
+about:
+  description: Base annotation databases for mouse, intended ONLY to be used by AnnotationDbi
+    to produce regular annotation packages.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/mouse.db0.html
+  license: Artistic-2.0
+  summary: Base Level Annotation databases for mouse
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-mouse.db0
+  version: 3.10.0
 requirements:
   host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
   run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
-    - curl
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
+  - curl
+source:
+  md5: 26f5ad2c314862aac268b96dd1a12bb1
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/mouse.db0_3.10.0.tar.gz
+  - https://bioarchive.galaxyproject.org/mouse.db0_3.10.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mouse.db0/bioconductor-mouse.db0_3.10.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Base Level Annotation databases for mouse'
-  description: 'Base annotation databases for mouse, intended ONLY to be used by AnnotationDbi to produce regular annotation packages.'
-
+  - $R -e "library('mouse.db0')"

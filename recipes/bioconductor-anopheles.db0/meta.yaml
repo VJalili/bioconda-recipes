@@ -1,36 +1,32 @@
-{% set version = "3.10.0" %}
-{% set name = "anopheles.db0" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 725fa97bda6f3be68f2df4a4ba621b4d
+about:
+  description: Base annotation databases for anopheles, intended ONLY to be used by
+    AnnotationDbi to produce regular annotation packages.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/anopheles.db0.html
+  license: Artistic-2.0
+  summary: Base Level Annotation databases for anopheles
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-anopheles.db0
+  version: 3.10.0
 requirements:
   host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
   run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
-    - curl
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
+  - curl
+source:
+  md5: 725fa97bda6f3be68f2df4a4ba621b4d
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/anopheles.db0_3.10.0.tar.gz
+  - https://bioarchive.galaxyproject.org/anopheles.db0_3.10.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-anopheles.db0/bioconductor-anopheles.db0_3.10.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Base Level Annotation databases for anopheles'
-  description: 'Base annotation databases for anopheles, intended ONLY to be used by AnnotationDbi to produce regular annotation packages.'
-
+  - $R -e "library('anopheles.db0')"

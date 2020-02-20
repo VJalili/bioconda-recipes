@@ -1,46 +1,41 @@
-{% set version = "1.46.0" %}
-{% set name = "RBioinf" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 2df96dc6b04aee3557e7e5e2fcecbc27
+about:
+  description: Functions and datasets and examples to accompany the monograph R For
+    Bioinformatics.
+  home: https://bioconductor.org/packages/3.10/bioc/html/RBioinf.html
+  license: Artistic-2.0
+  summary: RBioinf
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-# Suggests: Rgraphviz
-requirements:
-  host:
-    - 'bioconductor-graph >=1.64.0,<1.65.0'
-    - r-base
-  run:
-    - 'bioconductor-graph >=1.64.0,<1.65.0'
-    - r-base
-  build:
-    - {{ compiler('c') }}
-    - make
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: RBioinf
-  description: 'Functions and datasets and examples to accompany the monograph R For Bioinformatics.'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:rbioinf
-    - doi:10.1038/nmeth.3252
+  - biotools:rbioinf
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-rbioinf
     path: recipes/bioconductor-rbioinf
     version: 1.40.0
-
+package:
+  name: bioconductor-rbioinf
+  version: 1.46.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-graph >=1.64.0,<1.65.0
+  - r-base
+  run:
+  - bioconductor-graph >=1.64.0,<1.65.0
+  - r-base
+source:
+  md5: 2df96dc6b04aee3557e7e5e2fcecbc27
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/RBioinf_1.46.0.tar.gz
+  - https://bioarchive.galaxyproject.org/RBioinf_1.46.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rbioinf/bioconductor-rbioinf_1.46.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('RBioinf')"

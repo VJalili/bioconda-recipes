@@ -1,39 +1,34 @@
-package:
-  name: manorm
-  version: 1.1.4
-
-source:
-  url: https://files.pythonhosted.org/packages/25/ba/83cc20feb4cae2e9838c17841e00cb128cfc90de73102bfbea185be15329/MAnorm-1.1.4.tar.gz
-  sha256: 17504e57cff9d913ba0e3a0f57f1741d72aef5167055d46c83ad78e09ed7f638
-
-build:
-  number: 1
-  noarch: python
-  script: {{ PYTHON }} -m pip install . --ignore-installed --no-deps -vv
-  entry_points:
-    - manorm=manorm.cmdline:main
-
-requirements:
-  host:
-    - python <3
-    - pip
-  run:
-    - python <3
-    - numpy
-    - scipy
-    - matplotlib
-    - statsmodels
-
-test:
-  imports:
-    - manorm
-    - manorm.lib
-  commands:
-    - manorm --help > /dev/null
-
 about:
   home: https://github.com/shao-lab/MAnorm
   license: BSD License
   license_family: BSD
   license_file: LICENSE
   summary: A robust model for quantitative comparison of ChIP-Seq data sets.
+build:
+  entry_points:
+  - manorm=manorm.cmdline:main
+  noarch: python
+  number: 1
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: manorm
+  version: 1.1.4
+requirements:
+  host:
+  - python <3
+  - pip
+  run:
+  - python <3
+  - numpy
+  - scipy
+  - matplotlib
+  - statsmodels
+source:
+  sha256: 17504e57cff9d913ba0e3a0f57f1741d72aef5167055d46c83ad78e09ed7f638
+  url: https://files.pythonhosted.org/packages/25/ba/83cc20feb4cae2e9838c17841e00cb128cfc90de73102bfbea185be15329/MAnorm-1.1.4.tar.gz
+test:
+  commands:
+  - manorm --help > /dev/null
+  imports:
+  - manorm
+  - manorm.lib

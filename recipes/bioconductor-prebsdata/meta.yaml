@@ -1,34 +1,32 @@
-{% set version = "1.22.0" %}
-{% set name = "prebsdata" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: e21d6d76a97e2634e3d8d8cdcc3e167a
+about:
+  description: 'This package contains data required to run examples in ''prebs'' package.
+    The data files include: 1) Small sample bam files for demonstration purposes 2)
+    Probe sequence mappings for Custom CDF (taken from http://brainarray.mbni.med.umich.edu/brainarray/Database/CustomCDF/genomic_curated_CDF.asp)
+    3) Probe sequence mappings for manufacturer''s CDF (manually created using bowtie)'
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/prebsdata.html
+  license: Artistic-2.0
+  summary: Data for 'prebs' package
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-prebsdata
+  version: 1.22.0
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
-    - curl
+  - r-base
+  - curl
+source:
+  md5: e21d6d76a97e2634e3d8d8cdcc3e167a
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/prebsdata_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/prebsdata_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-prebsdata/bioconductor-prebsdata_1.22.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Data for ''prebs'' package'
-  description: 'This package contains data required to run examples in ''prebs'' package. The data files include: 1) Small sample bam files for demonstration purposes 2) Probe sequence mappings for Custom CDF (taken from http://brainarray.mbni.med.umich.edu/brainarray/Database/CustomCDF/genomic_curated_CDF.asp) 3) Probe sequence mappings for manufacturer''s CDF (manually created using bowtie)'
-
+  - $R -e "library('prebsdata')"

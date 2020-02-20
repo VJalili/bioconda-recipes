@@ -1,54 +1,44 @@
-        {% set version = "0.7.1" %}
-
-package:
-  name: genomepy
-  version: {{ version }}
-
-source:
-  url: https://github.com/vanheeringen-lab/genomepy/releases/download/{{ version }}/genomepy-{{ version }}.tar.gz
-  sha256: 41a6f297fc45efcd0542d1781f1259cc9f03c41e7facbb9854d86f3014a4d04b
-
-build:
-  number: 0
-  noarch: python
-  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv
-  
-requirements:
-  host:
-    - python >3
-    - pip
-  run:
-    - python >3
-    - click
-    - pyfaidx >=0.5.1
-    - norns >=0.1.5
-    - xmltodict
-    - bucketcache >=0.12.1
-    - requests
-    - biopython >=1.73
-    - psutil
-    - appdirs
-    - ucsc-bedtogenepred
-    - ucsc-gtftogenepred
-    - ucsc-genepredtobed
-    - ucsc-genepredtogtf
-    - ucsc-gff3togenepred
-
-test:
-  imports:
-    - genomepy
-  commands:
-    - genomepy -h
-
-extra:
-  container:
-    # click requires a unicode locale when used with Python 3
-    # extended-base generates en_US.UTF-8 locale and sets LC_ALL, LANG properly
-    extended-base: true  # [py3k]
-
 about:
   home: https://github.com/vanheeringen-lab/genomepy
   license: MIT License
-  license_file: LICENSE
-  summary: 'Download genomes the easy way.'
   license_family: MIT
+  license_file: LICENSE
+  summary: Download genomes the easy way.
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --no-deps --ignore-installed -vv
+extra:
+  container:
+    extended-base: true
+package:
+  name: genomepy
+  version: 0.7.1
+requirements:
+  host:
+  - python >3
+  - pip
+  run:
+  - python >3
+  - click
+  - pyfaidx >=0.5.1
+  - norns >=0.1.5
+  - xmltodict
+  - bucketcache >=0.12.1
+  - requests
+  - biopython >=1.73
+  - psutil
+  - appdirs
+  - ucsc-bedtogenepred
+  - ucsc-gtftogenepred
+  - ucsc-genepredtobed
+  - ucsc-genepredtogtf
+  - ucsc-gff3togenepred
+source:
+  sha256: 41a6f297fc45efcd0542d1781f1259cc9f03c41e7facbb9854d86f3014a4d04b
+  url: https://github.com/vanheeringen-lab/genomepy/releases/download/0.7.1/genomepy-0.7.1.tar.gz
+test:
+  commands:
+  - genomepy -h
+  imports:
+  - genomepy

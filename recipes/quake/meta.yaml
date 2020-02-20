@@ -1,39 +1,32 @@
-{% set name = "quake" %}
-{% set version = "0.3.5" %}
-
-package:
-  name: {{ name }}
-  version: {{ version }}
-
 about:
-  home: 'http://www.cbcb.umd.edu/software/quake/'
-  summary: "Quake is a package to correct substitution sequencing errors in experiments with deep coverage (e.g. >15X), specifically intended for Illumina sequencing reads"
+  home: http://www.cbcb.umd.edu/software/quake/
   license: Artistic License 2.0
-
-source:
-  url: http://www.cbcb.umd.edu/software/quake/downloads/{{ name }}-{{ version }}.tar.gz
-  md5: f8e26c0c29d22fc0d49fcfb5dc8945d3
-
+  summary: Quake is a package to correct substitution sequencing errors in experiments
+    with deep coverage (e.g. >15X), specifically intended for Illumina sequencing
+    reads
 build:
   number: 2
-  skip: True # [py3k]
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-  host:
-    - boost
-  run:
-    - boost
-    - kmer-jellyfish
-    - r-base
-    - r-vgam
-    - python
-
-test:
-  commands:
-    - quake.py --help
-
+  skip: true
 extra:
   identifiers:
-    - biotools:quake
+  - biotools:quake
+package:
+  name: quake
+  version: 0.3.5
+requirements:
+  build:
+  - None
+  host:
+  - boost
+  run:
+  - boost
+  - kmer-jellyfish
+  - r-base
+  - r-vgam
+  - python
+source:
+  md5: f8e26c0c29d22fc0d49fcfb5dc8945d3
+  url: http://www.cbcb.umd.edu/software/quake/downloads/quake-0.3.5.tar.gz
+test:
+  commands:
+  - quake.py --help

@@ -1,44 +1,42 @@
-{% set version = "1.14.0" %}
-{% set name = "ISoLDE" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 1400f2b5966982e09329bf9be503e487
+about:
+  description: This package provides ISoLDE a new method for identifying imprinted
+    genes. This method is dedicated to data arising from RNA sequencing technologies.
+    The ISoLDE package implements original statistical methodology described in the
+    publication below.
+  home: https://bioconductor.org/packages/3.10/bioc/html/ISoLDE.html
+  license: GPL (>= 2.0)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Integrative Statistics of alleLe Dependent Expression
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-requirements:
-  host:
-    - r-base
-  run:
-    - r-base
-  build:
-    - {{ compiler('c') }}
-    - make
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>= 2.0)'
-  summary: 'Integrative Statistics of alleLe Dependent Expression'
-  description: 'This package provides ISoLDE a new method for identifying imprinted genes. This method is dedicated to data arising from RNA sequencing technologies. The ISoLDE package implements original statistical methodology described in the publication below.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:isolde
-    - doi:10.1038/nmeth.3252
+  - biotools:isolde
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-isolde
     path: recipes/bioconductor-isolde
     version: 1.10.0
-
+package:
+  name: bioconductor-isolde
+  version: 1.14.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - r-base
+  run:
+  - r-base
+source:
+  md5: 1400f2b5966982e09329bf9be503e487
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/ISoLDE_1.14.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ISoLDE_1.14.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-isolde/bioconductor-isolde_1.14.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('ISoLDE')"

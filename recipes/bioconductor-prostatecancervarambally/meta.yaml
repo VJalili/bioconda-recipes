@@ -1,37 +1,31 @@
-{% set version = "1.14.0" %}
-{% set name = "prostateCancerVarambally" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: adf3ee41d9ec70f259573e17357efbd7
+about:
+  description: A Bioconductor data package for the Varambally dataset
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/prostateCancerVarambally.html
+  license: Artistic-2.0
+  summary: Prostate Cancer Data
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: GEOquery
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-prostatecancervarambally
+  version: 1.14.0
 requirements:
   host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - r-base
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - r-base
   run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - r-base
-    - curl
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - r-base
+  - curl
+source:
+  md5: adf3ee41d9ec70f259573e17357efbd7
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/prostateCancerVarambally_1.14.0.tar.gz
+  - https://bioarchive.galaxyproject.org/prostateCancerVarambally_1.14.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-prostatecancervarambally/bioconductor-prostatecancervarambally_1.14.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Prostate Cancer Data'
-  description: 'A Bioconductor data package for the Varambally dataset'
-
+  - $R -e "library('prostateCancerVarambally')"

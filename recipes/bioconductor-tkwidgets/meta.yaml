@@ -1,38 +1,33 @@
-{% set version = "1.64.0" %}
-{% set name = "tkWidgets" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 23961a0eabf254457cf450cf2713a7d7
+about:
+  description: Widgets to provide user interfaces. tcltk should have been installed
+    for the widgets to run.
+  home: https://bioconductor.org/packages/3.10/bioc/html/tkWidgets.html
+  license: Artistic-2.0
+  summary: R based tk widgets
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: Biobase, hgu95av2
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-tkwidgets
+  version: 1.64.0
 requirements:
   host:
-    - 'bioconductor-dyndoc >=1.64.0,<1.65.0'
-    - 'bioconductor-widgettools >=1.64.0,<1.65.0'
-    - r-base
+  - bioconductor-dyndoc >=1.64.0,<1.65.0
+  - bioconductor-widgettools >=1.64.0,<1.65.0
+  - r-base
   run:
-    - 'bioconductor-dyndoc >=1.64.0,<1.65.0'
-    - 'bioconductor-widgettools >=1.64.0,<1.65.0'
-    - r-base
+  - bioconductor-dyndoc >=1.64.0,<1.65.0
+  - bioconductor-widgettools >=1.64.0,<1.65.0
+  - r-base
+source:
+  md5: 23961a0eabf254457cf450cf2713a7d7
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/tkWidgets_1.64.0.tar.gz
+  - https://bioarchive.galaxyproject.org/tkWidgets_1.64.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-tkwidgets/bioconductor-tkwidgets_1.64.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'R based tk widgets'
-  description: 'Widgets to provide user interfaces. tcltk should have been installed for the widgets to run.'
-
+  - $R -e "library('tkWidgets')"

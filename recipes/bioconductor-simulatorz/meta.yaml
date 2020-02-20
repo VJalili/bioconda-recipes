@@ -1,53 +1,50 @@
-{% set version = "1.20.0" %}
-{% set name = "simulatorZ" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: a269400a0e96953611de70bf10af9679
+about:
+  description: simulatorZ is a package intended primarily to simulate collections
+    of independent genomic data sets, as well as performing training and validation
+    with predicting algorithms. It supports ExpressionSet and RangedSummarizedExperiment
+    objects.
+  home: https://bioconductor.org/packages/3.10/bioc/html/simulatorZ.html
+  license: Artistic-2.0
+  summary: Simulator for Collections of Independent Genomic Data Sets
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-# Suggests: RUnit, BiocStyle, curatedOvarianData, parathyroidSE, superpc
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-simulatorz
+  version: 1.20.0
 requirements:
-  host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - 'bioconductor-summarizedexperiment >=1.16.0,<1.17.0'
-    - r-base
-    - r-coxboost
-    - r-gbm
-    - r-hmisc
-    - r-survival
-  run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - 'bioconductor-summarizedexperiment >=1.16.0,<1.17.0'
-    - r-base
-    - r-coxboost
-    - r-gbm
-    - r-hmisc
-    - r-survival
   build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - make
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - bioconductor-summarizedexperiment >=1.16.0,<1.17.0
+  - r-base
+  - r-coxboost
+  - r-gbm
+  - r-hmisc
+  - r-survival
+  run:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - bioconductor-summarizedexperiment >=1.16.0,<1.17.0
+  - r-base
+  - r-coxboost
+  - r-gbm
+  - r-hmisc
+  - r-survival
+source:
+  md5: a269400a0e96953611de70bf10af9679
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/simulatorZ_1.20.0.tar.gz
+  - https://bioarchive.galaxyproject.org/simulatorZ_1.20.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-simulatorz/bioconductor-simulatorz_1.20.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Simulator for Collections of Independent Genomic Data Sets'
-  description: 'simulatorZ is a package intended primarily to simulate collections of independent genomic data sets, as well as performing training and validation with predicting algorithms. It supports ExpressionSet and RangedSummarizedExperiment objects.'
-
+  - $R -e "library('simulatorZ')"

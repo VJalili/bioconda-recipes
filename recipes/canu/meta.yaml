@@ -1,40 +1,31 @@
-{% set version = "1.9" %}
-{% set sha256 = "6b086ab6086c050752166500378bc4b3b3543d4c617863e894d296171cee3385" %}
-
-package:
-  name: canu
-  version: '{{version}}'
-
-source:
-  url: https://github.com/marbl/canu/archive/v{{version}}.tar.gz
-  sha256: '{{sha256}}'
-
-build:
-  number: 0
-  # This should actually work, but it explicitly checks for gcc
-  skip: True  # [osx]
-
-requirements:
-  build:
-    - '{{ compiler("c") }}'
-    - '{{ compiler("cxx") }}'
-  host:
-    - gnuplot >=5.0.5
-  run:
-    - perl
-    - perl-filesys-df
-    - openjdk
-    - gnuplot >=5.0.5
-
-test:
-  commands:
-    - canu --version
-
 about:
+  dev_url: https://github.com/marbl/canu
   home: http://canu.readthedocs.org/
   license: GPLv2 and others
-  license_file: README.licenses
   license_family: GPL
+  license_file: README.licenses
   summary: Canu is a fork of the Celera Assembler designed for high-noise single-molecule
     sequencing.
-  dev_url: https://github.com/marbl/canu
+build:
+  number: 0
+  skip: true
+package:
+  name: canu
+  version: '1.9'
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - gnuplot >=5.0.5
+  run:
+  - perl
+  - perl-filesys-df
+  - openjdk
+  - gnuplot >=5.0.5
+source:
+  sha256: 6b086ab6086c050752166500378bc4b3b3543d4c617863e894d296171cee3385
+  url: https://github.com/marbl/canu/archive/v1.9.tar.gz
+test:
+  commands:
+  - canu --version

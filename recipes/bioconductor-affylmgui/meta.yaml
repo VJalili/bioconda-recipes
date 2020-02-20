@@ -1,54 +1,50 @@
-{% set version = "1.60.0" %}
-{% set name = "affylmGUI" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 6f27922f83a5ce9c7dda37cdd9fc78dc
+about:
+  description: A Graphical User Interface (GUI) for analysis of Affymetrix microarray
+    gene expression data using the affy and limma packages.
+  home: https://bioconductor.org/packages/3.10/bioc/html/affylmGUI.html
+  license: GPL (>=2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: GUI for limma Package with Affymetrix Microarrays
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-affylmgui
+  version: 1.60.0
 requirements:
   host:
-    - 'bioconductor-affy >=1.64.0,<1.65.0'
-    - 'bioconductor-affyio >=1.56.0,<1.57.0'
-    - 'bioconductor-affyplm >=1.62.0,<1.63.0'
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-gcrma >=2.58.0,<2.59.0'
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - r-base
-    - r-biocmanager
-    - r-r2html
-    - r-tkrplot
-    - r-xtable
+  - bioconductor-affy >=1.64.0,<1.65.0
+  - bioconductor-affyio >=1.56.0,<1.57.0
+  - bioconductor-affyplm >=1.62.0,<1.63.0
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-gcrma >=2.58.0,<2.59.0
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - r-base
+  - r-biocmanager
+  - r-r2html
+  - r-tkrplot
+  - r-xtable
   run:
-    - 'bioconductor-affy >=1.64.0,<1.65.0'
-    - 'bioconductor-affyio >=1.56.0,<1.57.0'
-    - 'bioconductor-affyplm >=1.62.0,<1.63.0'
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-gcrma >=2.58.0,<2.59.0'
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - r-base
-    - r-biocmanager
-    - r-r2html
-    - r-tkrplot
-    - r-xtable
+  - bioconductor-affy >=1.64.0,<1.65.0
+  - bioconductor-affyio >=1.56.0,<1.57.0
+  - bioconductor-affyplm >=1.62.0,<1.63.0
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-gcrma >=2.58.0,<2.59.0
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - r-base
+  - r-biocmanager
+  - r-r2html
+  - r-tkrplot
+  - r-xtable
+source:
+  md5: 6f27922f83a5ce9c7dda37cdd9fc78dc
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/affylmGUI_1.60.0.tar.gz
+  - https://bioarchive.galaxyproject.org/affylmGUI_1.60.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-affylmgui/bioconductor-affylmgui_1.60.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>=2)'
-  summary: 'GUI for limma Package with Affymetrix Microarrays'
-  description: 'A Graphical User Interface (GUI) for analysis of Affymetrix microarray gene expression data using the affy and limma packages.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('affylmGUI')"

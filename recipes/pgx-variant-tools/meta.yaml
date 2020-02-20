@@ -1,48 +1,39 @@
-{% set name = "pgx-variant-tools" %}
-{% set version = "0.0.3" %}
-
-package:
-  name: '{{ name|lower }}'
-  version: '{{ version }}'
-
-source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 3564c08529520d4b0a683a4f998a94b3d5cd2bfc609b260bed3db1dce550f202
-
-build:
-  number: 0
-  entry_points:
-    - vcf2sequence = variant_tools.cli:vcf2sequence
-  script: {{ PYTHON }} -m pip install . --ignore-installed --no-deps -vv
-  noarch: python
-
-requirements:
-  host:
-    - python >=3.6
-    - pip
-  run:
-    - python >=3.6
-    - numpy
-    - biopython
-    - python-edlib
-    - pyinterval
-    - requests
-    - click
-    - cyvcf2
-
-test:
-  imports:
-    - variant_tools
-  commands:
-    - vcf2sequence --help
-
 about:
   home: https://github.com/LUMC/pgx-variant-tools
   license: MIT
   license_family: MIT
-  summary: This library contains various methods and utilities for the calling and manipulation of normalized variants.
-
+  summary: This library contains various methods and utilities for the calling and
+    manipulation of normalized variants.
+build:
+  entry_points:
+  - vcf2sequence = variant_tools.cli:vcf2sequence
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
 extra:
   container:
-    # vcf2sequence needs /etc/resolv.conf : https://github.com/bioconda/bioconda-recipes/issues/11583
     extended-base: true
+package:
+  name: pgx-variant-tools
+  version: 0.0.3
+requirements:
+  host:
+  - python >=3.6
+  - pip
+  run:
+  - python >=3.6
+  - numpy
+  - biopython
+  - python-edlib
+  - pyinterval
+  - requests
+  - click
+  - cyvcf2
+source:
+  sha256: 3564c08529520d4b0a683a4f998a94b3d5cd2bfc609b260bed3db1dce550f202
+  url: https://pypi.io/packages/source/p/pgx-variant-tools/pgx-variant-tools-0.0.3.tar.gz
+test:
+  commands:
+  - vcf2sequence --help
+  imports:
+  - variant_tools

@@ -1,63 +1,59 @@
-{% set version = "3.14.0" %}
-{% set name = "clusterProfiler" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 8aff5553915fe72de092f09036a3cd12
+about:
+  description: This package implements methods to analyze and visualize functional
+    profiles (GO and KEGG) of gene and gene clusters.
+  home: https://bioconductor.org/packages/3.10/bioc/html/clusterProfiler.html
+  license: Artistic-2.0
+  summary: statistical analysis and visualization of functional profiles for genes
+    and gene clusters
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: AnnotationHub, dplyr, KEGG.db, knitr, org.Hs.eg.db, prettydoc, ReactomePA, testthat
-requirements:
-  host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - 'bioconductor-dose >=3.12.0,<3.13.0'
-    - 'bioconductor-enrichplot >=1.6.0,<1.7.0'
-    - 'bioconductor-go.db >=3.10.0,<3.11.0'
-    - 'bioconductor-gosemsim >=2.12.0,<2.13.0'
-    - 'bioconductor-qvalue >=2.18.0,<2.19.0'
-    - r-base
-    - r-ggplot2
-    - r-magrittr
-    - r-plyr
-    - r-rvcheck
-    - r-tidyr
-  run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - 'bioconductor-dose >=3.12.0,<3.13.0'
-    - 'bioconductor-enrichplot >=1.6.0,<1.7.0'
-    - 'bioconductor-go.db >=3.10.0,<3.11.0'
-    - 'bioconductor-gosemsim >=2.12.0,<2.13.0'
-    - 'bioconductor-qvalue >=2.18.0,<2.19.0'
-    - r-base
-    - r-ggplot2
-    - r-magrittr
-    - r-plyr
-    - r-rvcheck
-    - r-tidyr
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'statistical analysis and visualization of functional profiles for genes and gene clusters'
-  description: 'This package implements methods to analyze and visualize functional profiles (GO and KEGG) of gene and gene clusters.'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:clusterprofiler
+  - biotools:clusterprofiler
   parent_recipe:
     name: bioconductor-clusterprofiler
     path: recipes/bioconductor-clusterprofiler
     version: 3.8.1
-
+package:
+  name: bioconductor-clusterprofiler
+  version: 3.14.0
+requirements:
+  host:
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - bioconductor-dose >=3.12.0,<3.13.0
+  - bioconductor-enrichplot >=1.6.0,<1.7.0
+  - bioconductor-go.db >=3.10.0,<3.11.0
+  - bioconductor-gosemsim >=2.12.0,<2.13.0
+  - bioconductor-qvalue >=2.18.0,<2.19.0
+  - r-base
+  - r-ggplot2
+  - r-magrittr
+  - r-plyr
+  - r-rvcheck
+  - r-tidyr
+  run:
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - bioconductor-dose >=3.12.0,<3.13.0
+  - bioconductor-enrichplot >=1.6.0,<1.7.0
+  - bioconductor-go.db >=3.10.0,<3.11.0
+  - bioconductor-gosemsim >=2.12.0,<2.13.0
+  - bioconductor-qvalue >=2.18.0,<2.19.0
+  - r-base
+  - r-ggplot2
+  - r-magrittr
+  - r-plyr
+  - r-rvcheck
+  - r-tidyr
+source:
+  md5: 8aff5553915fe72de092f09036a3cd12
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/clusterProfiler_3.14.0.tar.gz
+  - https://bioarchive.galaxyproject.org/clusterProfiler_3.14.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-clusterprofiler/bioconductor-clusterprofiler_3.14.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('clusterProfiler')"

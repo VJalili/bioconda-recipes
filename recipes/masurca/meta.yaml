@@ -1,49 +1,43 @@
-{% set name = "masurca" %}
-{% set version = "3.3.7" %}
-
-package:
-  name: {{ name }}
-  version: {{ version }}
-
-source:
-  url: https://github.com/alekseyzimin/masurca/releases/download/v{{ version }}/MaSuRCA-{{ version }}.tar.gz
-  sha256: 52e1b60387d704544151e81bfa3c5ad16f2bd6997f55156aaa6047414b5b14ce
-
-build:
-  number: 0
-  skip: True  # [osx]
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - yaggo
-  host:
-    - zlib
-    - bzip2
-    - boost-cpp
-    - perl 
-  run:
-    - zlib
-    - boost-cpp
-    - perl
-    - grep
-
-test:
-  commands:
-    - masurca --help
-
 about:
   home: http://masurca.blogspot.co.uk/
   license: GPLv3
   license_family: GPL
   license_file: LICENSE.txt
-  summary: |
-    MaSuRCA (Maryland Super-Read Celera Assembler) genome assembly software.
+  summary: 'MaSuRCA (Maryland Super-Read Celera Assembler) genome assembly software.
+
     MaSuRCA requires Illumina data, and supports third-generation PacBio/Nanopore
+
     MinION reads for hybrid assembly.
 
+    '
+build:
+  number: 0
+  skip: true
 extra:
   identifiers:
-    - biotools:masurca
-    - doi:10.1093/bioinformatics/btt476
+  - biotools:masurca
+  - doi:10.1093/bioinformatics/btt476
+package:
+  name: masurca
+  version: 3.3.7
+requirements:
+  build:
+  - None
+  - None
+  - yaggo
+  host:
+  - zlib
+  - bzip2
+  - boost-cpp
+  - perl
+  run:
+  - zlib
+  - boost-cpp
+  - perl
+  - grep
+source:
+  sha256: 52e1b60387d704544151e81bfa3c5ad16f2bd6997f55156aaa6047414b5b14ce
+  url: https://github.com/alekseyzimin/masurca/releases/download/v3.3.7/MaSuRCA-3.3.7.tar.gz
+test:
+  commands:
+  - masurca --help

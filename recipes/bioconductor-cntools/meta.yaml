@@ -1,46 +1,44 @@
-{% set version = "1.42.0" %}
-{% set name = "CNTools" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 0ec0bc66c851f9c9a3d67f207f53ae0c
+about:
+  description: This package provides tools to convert the output of segmentation analysis
+    using DNAcopy to a matrix structure with overlapping segments as rows and samples
+    as columns so that other computational analyses can be applied to segmented data
+  home: https://bioconductor.org/packages/3.10/bioc/html/CNTools.html
+  license: LGPL
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: Convert segment data into a region by sample matrix to allow for other
+    high level computational analyses.
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-requirements:
-  host:
-    - 'bioconductor-genefilter >=1.68.0,<1.69.0'
-    - r-base
-  run:
-    - 'bioconductor-genefilter >=1.68.0,<1.69.0'
-    - r-base
-  build:
-    - {{ compiler('c') }}
-    - make
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: LGPL
-  summary: 'Convert segment data into a region by sample matrix to allow for other high level computational analyses.'
-  description: 'This package provides tools to convert the output of segmentation analysis using DNAcopy to a matrix structure with overlapping segments as rows and samples as columns so that other computational analyses can be applied to segmented data'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:cntools
-    - doi:10.1038/nmeth.3252
+  - biotools:cntools
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-cntools
     path: recipes/bioconductor-cntools
     version: 1.36.0
-
+package:
+  name: bioconductor-cntools
+  version: 1.42.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-genefilter >=1.68.0,<1.69.0
+  - r-base
+  run:
+  - bioconductor-genefilter >=1.68.0,<1.69.0
+  - r-base
+source:
+  md5: 0ec0bc66c851f9c9a3d67f207f53ae0c
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/CNTools_1.42.0.tar.gz
+  - https://bioarchive.galaxyproject.org/CNTools_1.42.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-cntools/bioconductor-cntools_1.42.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('CNTools')"

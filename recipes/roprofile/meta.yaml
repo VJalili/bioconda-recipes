@@ -1,18 +1,14 @@
-{% set name = "roprofile" %}
-{% set version = "1.4.5" %}
-
-package:
-  name: {{ name|lower }}
-  version: {{ version }}
-
+about:
+  home: https://github.com/cimendes/roProfile
+  license: GPLv3
+  license_file: LICENSE
+  summary: Generation of pan-genome profile files using Roary output.
 build:
   noarch: generic
   number: 1
-
-source:
-  url: https://github.com/cimendes/roProfile/archive/2a8c52fafc5ae47fe0e7f2b29999579352fdfed1.tar.gz
-  md5: 52a4b174d5d862f0f4b0f203bfe3dc16
-
+package:
+  name: roprofile
+  version: 1.4.5
 requirements:
   run:
   - python <3
@@ -20,13 +16,9 @@ requirements:
   - matplotlib >=1.5.2
   - mpld3 >=0.2
   - pandas >=0.15.0
-
+source:
+  md5: 52a4b174d5d862f0f4b0f203bfe3dc16
+  url: https://github.com/cimendes/roProfile/archive/2a8c52fafc5ae47fe0e7f2b29999579352fdfed1.tar.gz
 test:
   commands:
-    - roProfile.py --version
-
-about:
-  home: https://github.com/cimendes/roProfile
-  license: GPLv3
-  license_file: LICENSE
-  summary: 'Generation of pan-genome profile files using Roary output.'
+  - roProfile.py --version

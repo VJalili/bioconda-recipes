@@ -1,36 +1,32 @@
-{% set version = "1.6.0" %}
-{% set name = "blimaTestingData" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 96a9f0d61d3a0fb154f95ca409914298
+about:
+  description: Experiment data package. The set were prepared using microarray images
+    of human mesenchymal cells treated with various supplements. This package is intended
+    to provide example data to test functionality provided by blima.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/blimaTestingData.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Data for testing of the package blima.
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: blima, beadarray, illuminaHumanv4.db, BiocStyle
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-blimatestingdata
+  version: 1.6.0
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
-    - curl
+  - r-base
+  - curl
+source:
+  md5: 96a9f0d61d3a0fb154f95ca409914298
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/blimaTestingData_1.6.0.tar.gz
+  - https://bioarchive.galaxyproject.org/blimaTestingData_1.6.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-blimatestingdata/bioconductor-blimatestingdata_1.6.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: GPL-3
-  summary: 'Data for testing of the package blima.'
-  description: 'Experiment data package. The set were prepared using microarray images of human mesenchymal cells treated with various supplements. This package is intended to provide example data to test functionality provided by blima.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('blimaTestingData')"

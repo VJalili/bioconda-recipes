@@ -1,52 +1,46 @@
-{% set version = "1.22.0" %}
-{% set name = "metaMS" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 4bf788f7ca524b09ff5a44a6adb40843
+about:
+  description: MS-based metabolomics data processing and compound annotation pipeline.
+  home: https://bioconductor.org/packages/3.10/bioc/html/metaMS.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: MS-based metabolomics annotation pipeline
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: metaMSdata, RUnit
-requirements:
-  host:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-camera >=1.42.0,<1.43.0'
-    - 'bioconductor-xcms >=3.8.0,<3.9.0'
-    - r-base
-    - r-matrix
-    - r-robustbase
-  run:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-camera >=1.42.0,<1.43.0'
-    - 'bioconductor-xcms >=3.8.0,<3.9.0'
-    - r-base
-    - r-matrix
-    - r-robustbase
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>= 2)'
-  summary: 'MS-based metabolomics annotation pipeline'
-  description: 'MS-based metabolomics data processing and compound annotation pipeline.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:metams
+  - biotools:metams
   parent_recipe:
     name: bioconductor-metams
     path: recipes/bioconductor-metams
     version: 1.18.0
-
+package:
+  name: bioconductor-metams
+  version: 1.22.0
+requirements:
+  host:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-camera >=1.42.0,<1.43.0
+  - bioconductor-xcms >=3.8.0,<3.9.0
+  - r-base
+  - r-matrix
+  - r-robustbase
+  run:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-camera >=1.42.0,<1.43.0
+  - bioconductor-xcms >=3.8.0,<3.9.0
+  - r-base
+  - r-matrix
+  - r-robustbase
+source:
+  md5: 4bf788f7ca524b09ff5a44a6adb40843
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/metaMS_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/metaMS_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-metams/bioconductor-metams_1.22.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('metaMS')"

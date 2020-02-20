@@ -1,56 +1,52 @@
-{% set version = "1.42.0" %}
-{% set name = "flagme" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 22cd7ddfc09cfb4a585c29f457c66e74
+about:
+  description: Fragment-level analysis of gas chromatography - mass spectrometry metabolomics
+    data
+  home: https://bioconductor.org/packages/3.10/bioc/html/flagme.html
+  license: LGPL (>= 2)
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: Analysis of Metabolomics GC/MS Data
 build:
   number: 1
   rpaths:
-    - lib/R/lib/
-    - lib/
-requirements:
-  host:
-    - 'bioconductor-camera >=1.42.0,<1.43.0'
-    - 'bioconductor-gcspikelite >=1.24.0,<1.25.0'
-    - 'bioconductor-xcms >=3.8.0,<3.9.0'
-    - r-base
-    - r-gplots
-    - r-mass
-    - r-sparsem
-  run:
-    - 'bioconductor-camera >=1.42.0,<1.43.0'
-    - 'bioconductor-gcspikelite >=1.24.0,<1.25.0'
-    - 'bioconductor-xcms >=3.8.0,<3.9.0'
-    - r-base
-    - r-gplots
-    - r-mass
-    - r-sparsem
-  build:
-    - {{ compiler('c') }}
-    - make
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'LGPL (>= 2)'
-  summary: 'Analysis of Metabolomics GC/MS Data'
-  description: 'Fragment-level analysis of gas chromatography - mass spectrometry metabolomics data'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:flagme
-    - doi:10.1038/nmeth.3252
+  - biotools:flagme
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-flagme
     path: recipes/bioconductor-flagme
     version: 1.38.0
-
+package:
+  name: bioconductor-flagme
+  version: 1.42.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-camera >=1.42.0,<1.43.0
+  - bioconductor-gcspikelite >=1.24.0,<1.25.0
+  - bioconductor-xcms >=3.8.0,<3.9.0
+  - r-base
+  - r-gplots
+  - r-mass
+  - r-sparsem
+  run:
+  - bioconductor-camera >=1.42.0,<1.43.0
+  - bioconductor-gcspikelite >=1.24.0,<1.25.0
+  - bioconductor-xcms >=3.8.0,<3.9.0
+  - r-base
+  - r-gplots
+  - r-mass
+  - r-sparsem
+source:
+  md5: 22cd7ddfc09cfb4a585c29f457c66e74
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/flagme_1.42.0.tar.gz
+  - https://bioarchive.galaxyproject.org/flagme_1.42.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-flagme/bioconductor-flagme_1.42.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('flagme')"

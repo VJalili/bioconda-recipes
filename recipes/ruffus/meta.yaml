@@ -1,29 +1,24 @@
-package:
-  name: ruffus
-  version: 2.8.3
-
-source:
-  url: https://files.pythonhosted.org/packages/a1/73/cc66b80cfd495d6ce1e26292776d8f6bb67281bde4f47826b6cb20aa9c87/ruffus-2.8.3.tar.gz
-  sha256: cf12f5ea6648fd60b046416619a26d9d3237cd555b29b92b5efc7a6f69e3e676
-
+about:
+  home: http://www.ruffus.org.uk/
+  license: MIT
+  license_file: LICENSE.TXT
+  summary: Light-weight Python Computational Pipeline Management
 build:
   noarch: python
   number: 0
   script: $PYTHON setup.py install --single-version-externally-managed --record=record.txt
-
+package:
+  name: ruffus
+  version: 2.8.3
 requirements:
   host:
-    - python
-    - setuptools
+  - python
+  - setuptools
   run:
-    - python
-
+  - python
+source:
+  sha256: cf12f5ea6648fd60b046416619a26d9d3237cd555b29b92b5efc7a6f69e3e676
+  url: https://files.pythonhosted.org/packages/a1/73/cc66b80cfd495d6ce1e26292776d8f6bb67281bde4f47826b6cb20aa9c87/ruffus-2.8.3.tar.gz
 test:
   imports:
-    - ruffus
-
-about:
-  home: http://www.ruffus.org.uk/
-  license: MIT
-  summary: "Light-weight Python Computational Pipeline Management"
-  license_file: LICENSE.TXT
+  - ruffus

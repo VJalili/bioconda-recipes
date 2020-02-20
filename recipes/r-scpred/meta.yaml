@@ -1,59 +1,51 @@
-{% set version = '1.0' %}
-
-package:
-  name: r-scpred
-  version: {{ version }}
-
-source:
-    url: https://github.com/IMB-Computational-Genomics-Lab/scPred/archive/{{ version }}.tar.gz
-    sha256: 46782fce98ad65c4f618d04dd279d425e7c17e4e4b293102647037f23671486b
-
-build:
-  number: 0
-  noarch: generic
-  rpaths:
-    - lib/R/lib/
-    - lib/
-
-requirements:
-  host:
-    - r-irlba
-    - r-caret
-    - r-kernlab
-    - r-mlmetrics
-    - r-dplyr
-    - r-tidyr
-    - r-magrittr
-    - r-proc
-    - r-ggplot2
-    - r-tibble
-    - r-pbapply
-    - r-tidyverse 
-    - bioconductor-singlecellexperiment=1.6.0
-    - r-cowplot
-
-  run: 
-    - r-irlba
-    - r-caret
-    - r-kernlab
-    - r-mlmetrics
-    - r-dplyr
-    - r-tidyr
-    - r-magrittr
-    - r-proc
-    - r-ggplot2
-    - r-tibble
-    - r-pbapply
-    - r-tidyverse 
-    - bioconductor-singlecellexperiment=1.6.0
-    - r-cowplot
-
-test:
-  commands:
-    - $R -e "library(scPred)"
-
 about:
-  home: https://github.com/IMB-Computational-Genomics-Lab/scPred
   dev_url: https://github.com/IMB-Computational-Genomics-Lab/scPred/tree/development
+  home: https://github.com/IMB-Computational-Genomics-Lab/scPred
   license: GPL-3
   summary: Bioconda-installable version of scPred cell type classification method.
+build:
+  noarch: generic
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
+package:
+  name: r-scpred
+  version: 1.0
+requirements:
+  host:
+  - r-irlba
+  - r-caret
+  - r-kernlab
+  - r-mlmetrics
+  - r-dplyr
+  - r-tidyr
+  - r-magrittr
+  - r-proc
+  - r-ggplot2
+  - r-tibble
+  - r-pbapply
+  - r-tidyverse
+  - bioconductor-singlecellexperiment=1.6.0
+  - r-cowplot
+  run:
+  - r-irlba
+  - r-caret
+  - r-kernlab
+  - r-mlmetrics
+  - r-dplyr
+  - r-tidyr
+  - r-magrittr
+  - r-proc
+  - r-ggplot2
+  - r-tibble
+  - r-pbapply
+  - r-tidyverse
+  - bioconductor-singlecellexperiment=1.6.0
+  - r-cowplot
+source:
+  sha256: 46782fce98ad65c4f618d04dd279d425e7c17e4e4b293102647037f23671486b
+  url: https://github.com/IMB-Computational-Genomics-Lab/scPred/archive/1.0.tar.gz
+test:
+  commands:
+  - $R -e "library(scPred)"

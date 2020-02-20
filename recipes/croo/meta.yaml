@@ -1,35 +1,27 @@
-{% set name = "croo" %}
-{% set version = "0.3.4" %}
-
-package:
-  name: '{{ name|lower }}'
-  version: '{{ version }}'
-
-source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: e9a5e0168427ae4ae4197c13a9c54da0d0240c4946e89e8319c95d0a813cfddb
-
-build:
-  noarch: python
-  number: 0
-  script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv '
-
-requirements:
-  host:
-    - python >3.4.1
-    - pip
-    - caper >=0.5.0
-  run:
-    - python >3.4.1
-    - caper >=0.5.0
-
-test:
-  imports:
-    - croo
-
 about:
+  description: This program parses metadata JSON file generated from Cromwell and
+    organizes its raw outputs
   home: https://github.com/ENCODE-DCC/croo
   license: MIT
   summary: CRomwell Output Organizer
-  description: This program parses metadata JSON file generated from Cromwell and organizes its raw outputs
-
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
+package:
+  name: croo
+  version: 0.3.4
+requirements:
+  host:
+  - python >3.4.1
+  - pip
+  - caper >=0.5.0
+  run:
+  - python >3.4.1
+  - caper >=0.5.0
+source:
+  sha256: e9a5e0168427ae4ae4197c13a9c54da0d0240c4946e89e8319c95d0a813cfddb
+  url: https://pypi.io/packages/source/c/croo/croo-0.3.4.tar.gz
+test:
+  imports:
+  - croo

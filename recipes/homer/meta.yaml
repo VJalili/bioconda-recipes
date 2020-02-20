@@ -1,50 +1,34 @@
-{% set version = "4.10" %}
-
-# Note that the script to install homer is always the same (configureHomer.pm)
-# but its content changes. Behind the scene a specific version is downloaded
-# For instance for version 4.10, this file is downloaded and installed
-# http://homer.ucsd.edu/homer/data/software/homer.v4.10.zip
-
-package:
-  name: homer
-  version: '{{ version }}'
-
-source:
-  - url: http://homer.ucsd.edu/homer/configureHomer.pl
-    sha256: 71c91cfacc0ea092fad95de6186c8265f5b328415c4755e0c07eee0d5df3c035
-
+about:
+  home: http://homer.ucsd.edu/homer/index.html
+  license: GNU General Public v3 (GPLv3)
+  license_family: GPL3
+  license_file: LICENSE.txt
+  maintainer: BioNinja, cokelaer, simonvh, r78v10a07
+  summary: Software for motif discovery and next generation sequencing analysis
 build:
   number: 0
-
-# dependencies according to README.txt installed by configureHomer.pl
-# are ghostscript, weblogo v2 NOT v2.8 and blat. Note, however, that there
-# is no v2 of weblogo available on weblogo website (nor conda).
+package:
+  name: homer
+  version: '4.10'
 requirements:
   build:
-    - {{ compiler('cxx') }}
+  - None
   host:
-    - python
-    - setuptools
-    - perl
-    - wget
-    - unzip
-    - zip
+  - python
+  - setuptools
+  - perl
+  - wget
+  - unzip
+  - zip
   run:
-    - perl
-
+  - perl
+source:
+- sha256: 71c91cfacc0ea092fad95de6186c8265f5b328415c4755e0c07eee0d5df3c035
+  url: http://homer.ucsd.edu/homer/configureHomer.pl
 test:
   commands:
-    - annotatePeaks.pl -h > /dev/null 2>&1
-    - findMotifs.pl -h > /dev/null 2>&1
-    - homer2 > /dev/null 2>&1
-    - GenomeOntology.pl > /dev/null 2>&1
-    - makeTagDirectory > /dev/null 2>&1
-
-about:
-  home: 'http://homer.ucsd.edu/homer/index.html'
-  license: "GNU General Public v3 (GPLv3)"
-  license_family: "GPL3"
-  license_file: "LICENSE.txt"
-  summary: 'Software for motif discovery and next generation sequencing analysis'
-  maintainer: BioNinja, cokelaer, simonvh, r78v10a07
-
+  - annotatePeaks.pl -h > /dev/null 2>&1
+  - findMotifs.pl -h > /dev/null 2>&1
+  - homer2 > /dev/null 2>&1
+  - GenomeOntology.pl > /dev/null 2>&1
+  - makeTagDirectory > /dev/null 2>&1

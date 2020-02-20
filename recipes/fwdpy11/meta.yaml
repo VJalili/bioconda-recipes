@@ -1,47 +1,40 @@
-package:
-  name: fwdpy11
-  version: "0.5.5"
-
-source:
-  url: https://files.pythonhosted.org/packages/c5/17/79c64e8a4fb258dd2fbfbdd0c09d213597ca61d80b453f837a09b02de96f/fwdpy11-0.5.5.tar.gz
-  sha256: a37f5ee2e14fb2651e54c7ea1acca49fbfe0a64c3d0c0992534f3aa62b98cf9e
-
-build:
-  skip: True # [py27]
-  number: 0
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - cmake
-  host:
-    - pkgconfig
-    - python
-    - pip
-    - numpy >=1.10
-    - pybind11 ==2.3.0
-    - tskit >=0.1.5
-    - gsl
-    - openblas
-  run:
-    - python
-    - numpy >=1.10
-    - tskit >=0.1.5
-    - gsl
-    - openblas
-
-test:
-  # Python imports
-  imports:
-    - fwdpy11
-
 about:
   home: http://pypi.python.org/pypi/fwdpy11
   license: GNU General Public License v3 or later (GPLv3+)
-  summary: 'Forward-time population genetic simulation in Python.'
-
+  summary: Forward-time population genetic simulation in Python.
+build:
+  number: 0
+  skip: true
 extras:
   identifiers:
-    - 10.1534/genetics.114.165019
-    - 10.1371/journal.pcbi.1006581
+  - 10.1534/genetics.114.165019
+  - 10.1371/journal.pcbi.1006581
+package:
+  name: fwdpy11
+  version: 0.5.5
+requirements:
+  build:
+  - None
+  - None
+  - cmake
+  host:
+  - pkgconfig
+  - python
+  - pip
+  - numpy >=1.10
+  - pybind11 ==2.3.0
+  - tskit >=0.1.5
+  - gsl
+  - openblas
+  run:
+  - python
+  - numpy >=1.10
+  - tskit >=0.1.5
+  - gsl
+  - openblas
+source:
+  sha256: a37f5ee2e14fb2651e54c7ea1acca49fbfe0a64c3d0c0992534f3aa62b98cf9e
+  url: https://files.pythonhosted.org/packages/c5/17/79c64e8a4fb258dd2fbfbdd0c09d213597ca61d80b453f837a09b02de96f/fwdpy11-0.5.5.tar.gz
+test:
+  imports:
+  - fwdpy11

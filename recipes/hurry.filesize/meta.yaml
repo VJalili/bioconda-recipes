@@ -1,32 +1,26 @@
-package:
-  name: hurry.filesize
-  version: "0.9"
-
-source:
-  url: https://pypi.python.org/packages/source/h/hurry.filesize/hurry.filesize-0.9.tar.gz
-  md5: 8549ccd09bb31b5ff1e8e8c1eacc7794
-
+about:
+  home: null
+  license: ZPL 2.1
+  summary: A simple Python library for human readable file sizes (or anything sized
+    in bytes).
 build:
   number: 2
-  skip: True # [osx]
-  preserve_egg_dir: True
-
+  preserve_egg_dir: true
+  skip: true
+package:
+  name: hurry.filesize
+  version: '0.9'
 requirements:
   host:
-    - python
-    - setuptools
-
+  - python
+  - setuptools
   run:
-    - python
-    - setuptools
-
+  - python
+  - setuptools
+source:
+  md5: 8549ccd09bb31b5ff1e8e8c1eacc7794
+  url: https://pypi.python.org/packages/source/h/hurry.filesize/hurry.filesize-0.9.tar.gz
 test:
   imports:
-    - hurry
-    - hurry.filesize
-
-about:
-  home:
-  license: ZPL 2.1
-  summary: 'A simple Python library for human readable file sizes (or anything sized in bytes).'
-
+  - hurry
+  - hurry.filesize

@@ -1,28 +1,22 @@
-{% set version="3.10.1" %}
-package:
-  name: rtg-tools
-  version: {{ version }}
-
-source:
-  url: https://github.com/RealTimeGenomics/rtg-tools/releases/download/{{ version }}/rtg-tools-{{ version }}-nojre.zip
-  md5: 1c69a7146c7f8a636e5fcfcccd8e5d21
-
-build:
-  number: 0
-  noarch: generic
-
-requirements:
-  run:
-    - openjdk
-    - zlib
-    - fontconfig
-    - font-ttf-dejavu-sans-mono
-
-test:
-  commands:
-    - rtg vcfeval --help 2>&1 | grep "Usage"
-
 about:
   home: https://github.com/RealTimeGenomics/rtg-tools
   license: BSD
   summary: RealTimeGenomics Tools -- Utilities for accurate VCF comparison and manipulation
+build:
+  noarch: generic
+  number: 0
+package:
+  name: rtg-tools
+  version: 3.10.1
+requirements:
+  run:
+  - openjdk
+  - zlib
+  - fontconfig
+  - font-ttf-dejavu-sans-mono
+source:
+  md5: 1c69a7146c7f8a636e5fcfcccd8e5d21
+  url: https://github.com/RealTimeGenomics/rtg-tools/releases/download/3.10.1/rtg-tools-3.10.1-nojre.zip
+test:
+  commands:
+  - rtg vcfeval --help 2>&1 | grep "Usage"

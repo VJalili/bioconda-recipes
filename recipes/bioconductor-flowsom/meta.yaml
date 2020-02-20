@@ -1,63 +1,59 @@
-{% set version = "1.18.0" %}
-{% set name = "FlowSOM" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: c17c8f99f70842ef78bb50fca491aab1
+about:
+  description: FlowSOM offers visualization options for cytometry data, by using Self-Organizing
+    Map clustering and Minimal Spanning Trees.
+  home: https://bioconductor.org/packages/3.10/bioc/html/FlowSOM.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Using self-organizing maps for visualization and interpretation of cytometry
+    data
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-# Suggests: BiocStyle
-requirements:
-  host:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-consensusclusterplus >=1.50.0,<1.51.0'
-    - 'bioconductor-cytoml >=1.12.0,<1.13.0'
-    - 'bioconductor-flowcore >=1.52.0,<1.53.0'
-    - 'bioconductor-flowworkspace >=3.34.0,<3.35.0'
-    - r-base
-    - r-igraph
-    - r-rcolorbrewer
-    - r-tsne
-    - r-xml
-  run:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-consensusclusterplus >=1.50.0,<1.51.0'
-    - 'bioconductor-cytoml >=1.12.0,<1.13.0'
-    - 'bioconductor-flowcore >=1.52.0,<1.53.0'
-    - 'bioconductor-flowworkspace >=3.34.0,<3.35.0'
-    - r-base
-    - r-igraph
-    - r-rcolorbrewer
-    - r-tsne
-    - r-xml
-  build:
-    - {{ compiler('c') }}
-    - make
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>= 2)'
-  summary: 'Using self-organizing maps for visualization and interpretation of cytometry data'
-  description: 'FlowSOM offers visualization options for cytometry data, by using Self-Organizing Map clustering and Minimal Spanning Trees.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:flowsom
-    - doi:10.1002/cyto.a.22625
+  - biotools:flowsom
+  - doi:10.1002/cyto.a.22625
   parent_recipe:
     name: bioconductor-flowsom
     path: recipes/bioconductor-flowsom
     version: 1.12.0
-
+package:
+  name: bioconductor-flowsom
+  version: 1.18.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-consensusclusterplus >=1.50.0,<1.51.0
+  - bioconductor-cytoml >=1.12.0,<1.13.0
+  - bioconductor-flowcore >=1.52.0,<1.53.0
+  - bioconductor-flowworkspace >=3.34.0,<3.35.0
+  - r-base
+  - r-igraph
+  - r-rcolorbrewer
+  - r-tsne
+  - r-xml
+  run:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-consensusclusterplus >=1.50.0,<1.51.0
+  - bioconductor-cytoml >=1.12.0,<1.13.0
+  - bioconductor-flowcore >=1.52.0,<1.53.0
+  - bioconductor-flowworkspace >=3.34.0,<3.35.0
+  - r-base
+  - r-igraph
+  - r-rcolorbrewer
+  - r-tsne
+  - r-xml
+source:
+  md5: c17c8f99f70842ef78bb50fca491aab1
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/FlowSOM_1.18.0.tar.gz
+  - https://bioarchive.galaxyproject.org/FlowSOM_1.18.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-flowsom/bioconductor-flowsom_1.18.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('FlowSOM')"

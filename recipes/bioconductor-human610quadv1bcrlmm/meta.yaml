@@ -1,34 +1,30 @@
-{% set version = "1.0.3" %}
-{% set name = "human610quadv1bCrlmm" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 609cf09410774e084ee6a3286652bb1a
+about:
+  description: Package with metadata for genotyping Illumina 610kQuad arrays using
+    the 'crlmm' package.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/human610quadv1bCrlmm.html
+  license: Artistic-2.0
+  summary: Metadata for fast genotyping with the 'crlmm' package
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-human610quadv1bcrlmm
+  version: 1.0.3
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
-    - curl
+  - r-base
+  - curl
+source:
+  md5: 609cf09410774e084ee6a3286652bb1a
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/human610quadv1bCrlmm_1.0.3.tar.gz
+  - https://bioarchive.galaxyproject.org/human610quadv1bCrlmm_1.0.3.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-human610quadv1bcrlmm/bioconductor-human610quadv1bcrlmm_1.0.3_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Metadata for fast genotyping with the ''crlmm'' package'
-  description: 'Package with metadata for genotyping Illumina 610kQuad arrays using the ''crlmm'' package.'
-
+  - $R -e "library('human610quadv1bCrlmm')"

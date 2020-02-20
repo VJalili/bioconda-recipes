@@ -1,36 +1,27 @@
-{% set version = "0.3.4" %}
-{% set github = "https://github.com/acidgenomics/acidgenerics" %}
-
-package:
-  name: r-acidgenerics
-  version: "{{ version }}"
-
-source:
-  url: "{{ github }}/archive/v{{ version }}.tar.gz"
-  sha256: 4adb7792f76c4da068599007abd8a4548a57dcdf9b97fa35b87276023377ce41
-
-build:
-  number: 0
-  noarch: generic
-
-requirements:
-  host:
-    - r-base 
-  run:
-    - r-base
-
-test:
-  commands:
-    - $R -e "library('acidgenerics')"
-
 about:
+  dev_url: https://github.com/acidgenomics/acidgenerics
   home: https://acidgenerics.acidgenomics.com/
-  dev_url: "{{ github }}"
   license: GPL-3.0
-  license_file: LICENSE
   license_family: GPL
+  license_file: LICENSE
   summary: S4 generics for Acid Genomics R packages.
-
+build:
+  noarch: generic
+  number: 0
 extra:
   recipe-maintainers:
-    - mjsteinbaugh
+  - mjsteinbaugh
+package:
+  name: r-acidgenerics
+  version: 0.3.4
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+source:
+  sha256: 4adb7792f76c4da068599007abd8a4548a57dcdf9b97fa35b87276023377ce41
+  url: https://github.com/acidgenomics/acidgenerics/archive/v0.3.4.tar.gz
+test:
+  commands:
+  - $R -e "library('acidgenerics')"

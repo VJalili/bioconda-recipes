@@ -1,45 +1,40 @@
-{% set version = "1.52.0" %}
-{% set name = "CORREP" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 4e43238d777525018a95edfc3403b0c5
+about:
+  description: Multivariate correlation estimation and statistical inference. See
+    package vignette.
+  home: https://bioconductor.org/packages/3.10/bioc/html/CORREP.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Multivariate Correlation Estimator and Statistical Inference Procedures.
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: cluster, MASS
-requirements:
-  host:
-    - r-base
-    - r-e1071
-  run:
-    - r-base
-    - r-e1071
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>= 2)'
-  summary: 'Multivariate Correlation Estimator and Statistical Inference Procedures.'
-  description: 'Multivariate correlation estimation and statistical inference. See package vignette.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:correp
-    - doi:10.1038/nmeth.3252
+  - biotools:correp
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-correp
     path: recipes/bioconductor-correp
     version: 1.46.0
-
+package:
+  name: bioconductor-correp
+  version: 1.52.0
+requirements:
+  host:
+  - r-base
+  - r-e1071
+  run:
+  - r-base
+  - r-e1071
+source:
+  md5: 4e43238d777525018a95edfc3403b0c5
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/CORREP_1.52.0.tar.gz
+  - https://bioarchive.galaxyproject.org/CORREP_1.52.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-correp/bioconductor-correp_1.52.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('CORREP')"

@@ -1,36 +1,25 @@
-{% set name = "translate-gard" %}
-{% set version = "1.0.4" %}
-{% set sha256 = "e6636c46633e53f25a9e798a18b5a3eff34abda035ed228c86351e7b7c823263" %}
-{% set node_version = os.environ.get('NODEJS_VERSION') or '6.*' %}
-
-package:
-  name: {{ name }}
-  version: {{ version }}
-
-source:
-  url: https://github.com/veg/translate-gard/archive/{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-
-build:
-  number: 0
-  skip: true # [osx]
-  script: npm install . && npm install -g
-
-requirements:
-  build:
-    - nodejs {{ node_version }}
-  run:
-    - nodejs {{ node_version }}
-
-test:
-  commands:
-     - npm list -g {{ name }}
-
 about:
   home: https://github.com/veg/translate-gard/
   license: MIT
-  summary: 'Converts HyPhy 2.3.2 GARD output to JSON'
-
+  summary: Converts HyPhy 2.3.2 GARD output to JSON
+build:
+  number: 0
+  script: npm install . && npm install -g
+  skip: true
 extra:
   skip-lints:
-    - should_be_noarch_generic
+  - should_be_noarch_generic
+package:
+  name: translate-gard
+  version: 1.0.4
+requirements:
+  build:
+  - nodejs 6.*
+  run:
+  - nodejs 6.*
+source:
+  sha256: e6636c46633e53f25a9e798a18b5a3eff34abda035ed228c86351e7b7c823263
+  url: https://github.com/veg/translate-gard/archive/1.0.4.tar.gz
+test:
+  commands:
+  - npm list -g translate-gard

@@ -1,43 +1,38 @@
-{% set version = "1.52.0" %}
-{% set name = "SLqPCR" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 265accb7e94b68ac774c2cee461d349c
+about:
+  description: Functions for analysis of real-time quantitative PCR data at SIRS-Lab
+    GmbH
+  home: https://bioconductor.org/packages/3.10/bioc/html/SLqPCR.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Functions for analysis of real-time quantitative PCR data at SIRS-Lab GmbH
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: RColorBrewer
-requirements:
-  host:
-    - r-base
-  run:
-    - r-base
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>= 2)'
-  summary: 'Functions for analysis of real-time quantitative PCR data at SIRS-Lab GmbH'
-  description: 'Functions for analysis of real-time quantitative PCR data at SIRS-Lab GmbH'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:slqpcr
-    - doi:10.1038/nmeth.3252
+  - biotools:slqpcr
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-slqpcr
     path: recipes/bioconductor-slqpcr
     version: 1.46.0
-
+package:
+  name: bioconductor-slqpcr
+  version: 1.52.0
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+source:
+  md5: 265accb7e94b68ac774c2cee461d349c
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/SLqPCR_1.52.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SLqPCR_1.52.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-slqpcr/bioconductor-slqpcr_1.52.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('SLqPCR')"

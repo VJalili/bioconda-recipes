@@ -1,48 +1,44 @@
-{% set version = "1.14.0" %}
-{% set name = "EBSEA" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 8c36f9da7a17010bafc9abe9bdbb309a
+about:
+  description: Calculates differential expression of genes based on exon counts of
+    genes obtained from RNA-seq sequencing data.
+  home: https://bioconductor.org/packages/3.10/bioc/html/EBSEA.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Exon Based Strategy for Expression Analysis of genes
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-requirements:
-  host:
-    - 'bioconductor-edger >=3.28.0,<3.29.0'
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - r-base
-    - r-plyr
-  run:
-    - 'bioconductor-edger >=3.28.0,<3.29.0'
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - r-base
-    - r-plyr
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-2
-  summary: 'Exon Based Strategy for Expression Analysis of genes'
-  description: 'Calculates differential expression of genes based on exon counts of genes obtained from RNA-seq sequencing data.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:ebsea
-    - doi:10.1038/nmeth.3252
+  - biotools:ebsea
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-ebsea
     path: recipes/bioconductor-ebsea
     version: 1.8.0
-
+package:
+  name: bioconductor-ebsea
+  version: 1.14.0
+requirements:
+  host:
+  - bioconductor-edger >=3.28.0,<3.29.0
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - r-base
+  - r-plyr
+  run:
+  - bioconductor-edger >=3.28.0,<3.29.0
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - r-base
+  - r-plyr
+source:
+  md5: 8c36f9da7a17010bafc9abe9bdbb309a
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/EBSEA_1.14.0.tar.gz
+  - https://bioarchive.galaxyproject.org/EBSEA_1.14.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-ebsea/bioconductor-ebsea_1.14.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('EBSEA')"

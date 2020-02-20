@@ -1,27 +1,21 @@
-package:
-  name: perl-file-readbackwards
-  version: "1.05"
-
-source:
-  url: http://cpan.metacpan.org/authors/id/U/UR/URI/File-ReadBackwards-1.05.tar.gz
-  md5: 613d9d02de6c1d86d5fa5b8816a6b214
-
-build:
-  noarch: generic
-  number: 1
-
-requirements:
-  host:
-    - perl
-
-  run:
-    - perl
-
-test:
-  imports:
-    - File::ReadBackwards
-
 about:
   home: http://metacpan.org/pod/File::ReadBackwards
   license: unknown
-  summary: 'Read a file backwards by lines.'
+  summary: Read a file backwards by lines.
+build:
+  noarch: generic
+  number: 1
+package:
+  name: perl-file-readbackwards
+  version: '1.05'
+requirements:
+  host:
+  - perl
+  run:
+  - perl
+source:
+  md5: 613d9d02de6c1d86d5fa5b8816a6b214
+  url: http://cpan.metacpan.org/authors/id/U/UR/URI/File-ReadBackwards-1.05.tar.gz
+test:
+  imports:
+  - File::ReadBackwards

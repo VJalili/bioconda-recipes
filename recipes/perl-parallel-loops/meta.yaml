@@ -1,41 +1,29 @@
-{% set name = "perl-parallel-loops" %}
-{% set version = "0.10" %}
-{% set sha256 = "6f967b46e7a363b16871b9991c359e142dc3b2281cfe9b1af39904704c8bd2aa" %}
-
-package:
-  name: {{ name }}
-  version: {{ version }}
-
-source:
-  url: https://cpan.metacpan.org/authors/id/P/PM/PMORCH/Parallel-Loops-{{version}}.tar.gz
-  sha256: {{ sha256 }}
-
-build:
-  noarch: generic
-  number: 0
-
-requirements:
-  build:
-    - make
-  host:
-    - perl
-    - perl-extutils-makemaker
-    - perl-parallel-forkmanager
-
-  run:
-    - perl
-    - perl-parallel-forkmanager
-
-test:
-  imports:
-    - Parallel::Loops
-
 about:
   home: http://metacpan.org/pod/Parallel::Loops
   license: perl_5
-  summary: 'Execute loops using parallel forked subprocesses'
-
+  summary: Execute loops using parallel forked subprocesses
+build:
+  noarch: generic
+  number: 0
 extra:
   recipe-maintainers:
-    - xileF1337
-
+  - xileF1337
+package:
+  name: perl-parallel-loops
+  version: 0.1
+requirements:
+  build:
+  - make
+  host:
+  - perl
+  - perl-extutils-makemaker
+  - perl-parallel-forkmanager
+  run:
+  - perl
+  - perl-parallel-forkmanager
+source:
+  sha256: 6f967b46e7a363b16871b9991c359e142dc3b2281cfe9b1af39904704c8bd2aa
+  url: https://cpan.metacpan.org/authors/id/P/PM/PMORCH/Parallel-Loops-0.10.tar.gz
+test:
+  imports:
+  - Parallel::Loops

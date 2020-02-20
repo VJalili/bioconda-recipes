@@ -1,45 +1,40 @@
-{% set version = "1.64.0" %}
-{% set name = "marray" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 7acb9fa72c03448142298363d068abe5
+about:
+  description: Class definitions for two-color spotted microarray data. Fuctions for
+    data input, diagnostic plots, normalization and quality checking.
+  home: https://bioconductor.org/packages/3.10/bioc/html/marray.html
+  license: LGPL
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: Exploratory analysis for two-color spotted microarray data
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: tkWidgets
-requirements:
-  host:
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - r-base
-  run:
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - r-base
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: LGPL
-  summary: 'Exploratory analysis for two-color spotted microarray data'
-  description: 'Class definitions for two-color spotted microarray data. Fuctions for data input, diagnostic plots, normalization and quality checking.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:marray
-    - doi:10.1007/0-387-21679-0_3
+  - biotools:marray
+  - doi:10.1007/0-387-21679-0_3
   parent_recipe:
     name: bioconductor-marray
     path: recipes/bioconductor-marray
     version: 1.58.0
-
+package:
+  name: bioconductor-marray
+  version: 1.64.0
+requirements:
+  host:
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - r-base
+  run:
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - r-base
+source:
+  md5: 7acb9fa72c03448142298363d068abe5
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/marray_1.64.0.tar.gz
+  - https://bioarchive.galaxyproject.org/marray_1.64.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-marray/bioconductor-marray_1.64.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('marray')"

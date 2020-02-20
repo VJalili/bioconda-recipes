@@ -1,31 +1,28 @@
-package:
-  name: dinopy
-  version: "2.0.3"
-
-source:
-  url: https://files.pythonhosted.org/packages/a6/19/a91e3d4a5d9312a3dfaba0ec9187db90468eb86ae1f22262391f93d19bf7/dinopy-2.0.3.tar.gz
-  sha256: c94fc598610bada8bc405c459ab0cd5751527cf1b03f118b73c503b04dce1501
-
-build:
-  skip: True # [py27]
-  number: 0
-
-requirements:
-  build:
-    - {{ compiler('cxx') }}
-  host:
-    - python
-    - setuptools
-    - numpy >=1.9
-  run:
-    - python
-    - numpy >=1.9
-
-test:
-  imports:
-    - dinopy
-
 about:
   home: https://bitbucket.org/HenningTimm/dinopy
   license: MIT License
-  summary: 'DNA input and output library for Python and Cython. Includes reader and writer for FASTA and FASTQ files, support for samtools faidx files, and generators for solid and gapped q-grams (k-mers).'
+  summary: DNA input and output library for Python and Cython. Includes reader and
+    writer for FASTA and FASTQ files, support for samtools faidx files, and generators
+    for solid and gapped q-grams (k-mers).
+build:
+  number: 0
+  skip: true
+package:
+  name: dinopy
+  version: 2.0.3
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - setuptools
+  - numpy >=1.9
+  run:
+  - python
+  - numpy >=1.9
+source:
+  sha256: c94fc598610bada8bc405c459ab0cd5751527cf1b03f118b73c503b04dce1501
+  url: https://files.pythonhosted.org/packages/a6/19/a91e3d4a5d9312a3dfaba0ec9187db90468eb86ae1f22262391f93d19bf7/dinopy-2.0.3.tar.gz
+test:
+  imports:
+  - dinopy

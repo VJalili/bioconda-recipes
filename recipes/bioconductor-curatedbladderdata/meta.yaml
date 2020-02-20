@@ -1,37 +1,32 @@
-{% set version = "1.22.0" %}
-{% set name = "curatedBladderData" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 09f942437f516a0002875cefe5e11091
+about:
+  description: The curatedBladderData package provides relevant functions and data
+    for gene expression analysis in patients with bladder cancer.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/curatedBladderData.html
+  license: Artistic-2.0
+  summary: Bladder Cancer Gene Expression Analysis
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: BiocStyle, survival, xtable, sva, genefilter, logging
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-curatedbladderdata
+  version: 1.22.0
 requirements:
   host:
-    - 'bioconductor-affy >=1.64.0,<1.65.0'
-    - r-base
+  - bioconductor-affy >=1.64.0,<1.65.0
+  - r-base
   run:
-    - 'bioconductor-affy >=1.64.0,<1.65.0'
-    - r-base
-    - curl
+  - bioconductor-affy >=1.64.0,<1.65.0
+  - r-base
+  - curl
+source:
+  md5: 09f942437f516a0002875cefe5e11091
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/curatedBladderData_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/curatedBladderData_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-curatedbladderdata/bioconductor-curatedbladderdata_1.22.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Bladder Cancer Gene Expression Analysis'
-  description: 'The curatedBladderData package provides relevant functions and data for gene expression analysis in patients with bladder cancer.'
-
+  - $R -e "library('curatedBladderData')"

@@ -1,37 +1,30 @@
-{% set version="2.0.0" %}
-package:
-  name: arvados-cwl-runner
-  version: {{ version }}
-
-source:
-  url: https://pypi.io/packages/source/a/arvados-cwl-runner/arvados-cwl-runner-{{ version }}.tar.gz
-  sha256: e971822b25e5f45c4c4a268733f74c8d5e7aeadaa424e5ebe254a7304470dc99
-
-build:
-  noarch: python
-  number: 0
-
-requirements:
-  host:
-    - python
-    - setuptools
-    - ruamel.yaml >=0.15.54
-    - cwltool >=1.0.20181217162649
-    - schema-salad >=3.0.20181129082112
-    - arvados-python-client >=1.3.1.20190301150258
-
-  run:
-    - python
-    - ruamel.yaml >=0.15.54
-    - cwltool >=1.0.20181217162649
-    - schema-salad >=3.0.20181129082112
-    - arvados-python-client >=1.3.1.20190301150258
-
-test:
-  imports:
-    - arvados_cwl
-
 about:
   home: https://github.com/curoverse/arvados/tree/master/sdk/cwl
   license: Apache 2.0
-  summary: 'Arvados Common Workflow Language runner'
+  summary: Arvados Common Workflow Language runner
+build:
+  noarch: python
+  number: 0
+package:
+  name: arvados-cwl-runner
+  version: 2.0.0
+requirements:
+  host:
+  - python
+  - setuptools
+  - ruamel.yaml >=0.15.54
+  - cwltool >=1.0.20181217162649
+  - schema-salad >=3.0.20181129082112
+  - arvados-python-client >=1.3.1.20190301150258
+  run:
+  - python
+  - ruamel.yaml >=0.15.54
+  - cwltool >=1.0.20181217162649
+  - schema-salad >=3.0.20181129082112
+  - arvados-python-client >=1.3.1.20190301150258
+source:
+  sha256: e971822b25e5f45c4c4a268733f74c8d5e7aeadaa424e5ebe254a7304470dc99
+  url: https://pypi.io/packages/source/a/arvados-cwl-runner/arvados-cwl-runner-2.0.0.tar.gz
+test:
+  imports:
+  - arvados_cwl

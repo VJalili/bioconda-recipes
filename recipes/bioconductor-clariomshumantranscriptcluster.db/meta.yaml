@@ -1,39 +1,34 @@
-{% set version = "8.7.0" %}
-{% set name = "clariomshumantranscriptcluster.db" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 0b92969a4bb4a2d8e972602f68c7ad1b
+about:
+  description: Affymetrix clariomshuman annotation data (chip clariomshumantranscriptcluster)
+    assembled using data from public repositories
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/clariomshumantranscriptcluster.db.html
+  license: Artistic-2.0
+  summary: Affymetrix clariomshuman annotation data (chip clariomshumantranscriptcluster)
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: DBI, annotate, RUnit
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-clariomshumantranscriptcluster.db
+  version: 8.7.0
 requirements:
   host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - 'bioconductor-org.hs.eg.db >=3.10.0,<3.11.0'
-    - r-base
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - bioconductor-org.hs.eg.db >=3.10.0,<3.11.0
+  - r-base
   run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - 'bioconductor-org.hs.eg.db >=3.10.0,<3.11.0'
-    - r-base
-    - curl
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - bioconductor-org.hs.eg.db >=3.10.0,<3.11.0
+  - r-base
+  - curl
+source:
+  md5: 0b92969a4bb4a2d8e972602f68c7ad1b
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/clariomshumantranscriptcluster.db_8.7.0.tar.gz
+  - https://bioarchive.galaxyproject.org/clariomshumantranscriptcluster.db_8.7.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-clariomshumantranscriptcluster.db/bioconductor-clariomshumantranscriptcluster.db_8.7.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Affymetrix clariomshuman annotation data (chip clariomshumantranscriptcluster)'
-  description: 'Affymetrix clariomshuman annotation data (chip clariomshumantranscriptcluster) assembled using data from public repositories'
-
+  - $R -e "library('clariomshumantranscriptcluster.db')"

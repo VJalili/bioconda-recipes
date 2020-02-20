@@ -1,51 +1,49 @@
-{% set version = "1.2.0" %}
-{% set name = "OmicsLonDA" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 8953ab063c900c2456be68e4f3586379
+about:
+  description: Statistical method that provides robust identification of time intervals
+    where omics features (such as proteomics, lipidomics, metabolomics, transcriptomics,
+    microbiome, as well as physiological parameters captured by wearable sensors such
+    as heart rhythm, body temperature, and activity level) are significantly different
+    between groups.
+  home: https://bioconductor.org/packages/3.10/bioc/html/OmicsLonDA.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Omics Longitudinal Differential Analysis
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: knitr, rmarkdown, testthat, devtools, BiocManager
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-omicslonda
+  version: 1.2.0
 requirements:
   host:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-biocparallel >=1.20.0,<1.21.0'
-    - 'bioconductor-summarizedexperiment >=1.16.0,<1.17.0'
-    - r-base
-    - r-ggplot2
-    - r-gss
-    - r-plyr
-    - r-pracma
-    - r-zoo
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-biocparallel >=1.20.0,<1.21.0
+  - bioconductor-summarizedexperiment >=1.16.0,<1.17.0
+  - r-base
+  - r-ggplot2
+  - r-gss
+  - r-plyr
+  - r-pracma
+  - r-zoo
   run:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-biocparallel >=1.20.0,<1.21.0'
-    - 'bioconductor-summarizedexperiment >=1.16.0,<1.17.0'
-    - r-base
-    - r-ggplot2
-    - r-gss
-    - r-plyr
-    - r-pracma
-    - r-zoo
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-biocparallel >=1.20.0,<1.21.0
+  - bioconductor-summarizedexperiment >=1.16.0,<1.17.0
+  - r-base
+  - r-ggplot2
+  - r-gss
+  - r-plyr
+  - r-pracma
+  - r-zoo
+source:
+  md5: 8953ab063c900c2456be68e4f3586379
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/OmicsLonDA_1.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/OmicsLonDA_1.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-omicslonda/bioconductor-omicslonda_1.2.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'MIT + file LICENSE'
-  summary: 'Omics Longitudinal Differential Analysis'
-  description: 'Statistical method that provides robust identification of time intervals where omics features (such as proteomics, lipidomics, metabolomics, transcriptomics, microbiome, as well as physiological parameters captured by wearable sensors such as heart rhythm, body temperature, and activity level) are significantly different between groups.'
-  license_file: LICENSE
-
+  - $R -e "library('OmicsLonDA')"

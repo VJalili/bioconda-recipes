@@ -1,32 +1,25 @@
-{% set version="0.6.1" %}
-
-package:
-  name: genefuse
-  version: {{ version }}
-
-source:
-  url: https://github.com/OpenGene/GeneFuse/archive/v{{ version }}.tar.gz
-  sha256: 213bb59a8176d298e23404c527f0e0c98f8950956144510f262a5b5a5839691f
-  patches:
-    - patch
-
-build:
-  number: 0
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-  host:
-    - zlib
-  run:
-    - zlib
-
-test:
-  commands:
-    - genefuse --help
-
 about:
   home: https://github.com/OpenGene/genefuse
   license: MIT
   summary: Gene fusion detection and visualization
+build:
+  number: 0
+package:
+  name: genefuse
+  version: 0.6.1
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - zlib
+  run:
+  - zlib
+source:
+  patches:
+  - patch
+  sha256: 213bb59a8176d298e23404c527f0e0c98f8950956144510f262a5b5a5839691f
+  url: https://github.com/OpenGene/GeneFuse/archive/v0.6.1.tar.gz
+test:
+  commands:
+  - genefuse --help

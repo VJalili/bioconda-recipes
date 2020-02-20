@@ -1,46 +1,46 @@
-{% set version = "0.24.0" %}
-{% set name = "S4Vectors" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: a19b718ee74cf582c80c23b3400ab426
+about:
+  description: The S4Vectors package defines the Vector and List virtual classes and
+    a set of generic functions that extend the semantic of ordinary vectors and lists
+    in R. Package developers can easily implement vector-like or list-like objects
+    as concrete subclasses of Vector or List. In addition, a few low-level concrete
+    subclasses of general interest (e.g. DataFrame, Rle, and Hits) are implemented
+    in the S4Vectors package itself (many more are implemented in the IRanges package
+    and in other Bioconductor infrastructure packages).
+  home: https://bioconductor.org/packages/3.10/bioc/html/S4Vectors.html
+  license: Artistic-2.0
+  summary: Foundation of vector-like and list-like containers in Bioconductor
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-# Suggests: IRanges, GenomicRanges, SummarizedExperiment, Matrix, DelayedArray, ShortRead, graph, data.table, RUnit, BiocStyle
-requirements:
-  host:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - r-base
-  run:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - r-base
-  build:
-    - {{ compiler('c') }}
-    - make
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Foundation of vector-like and list-like containers in Bioconductor'
-  description: 'The S4Vectors package defines the Vector and List virtual classes and a set of generic functions that extend the semantic of ordinary vectors and lists in R. Package developers can easily implement vector-like or list-like objects as concrete subclasses of Vector or List. In addition, a few low-level concrete subclasses of general interest (e.g. DataFrame, Rle, and Hits) are implemented in the S4Vectors package itself (many more are implemented in the IRanges package and in other Bioconductor infrastructure packages).'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:s4vectors
-    - doi:10.1038/nmeth.3252
+  - biotools:s4vectors
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-s4vectors
     path: recipes/bioconductor-s4vectors
     version: 0.18.3
-
+package:
+  name: bioconductor-s4vectors
+  version: 0.24.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - r-base
+  run:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - r-base
+source:
+  md5: a19b718ee74cf582c80c23b3400ab426
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/S4Vectors_0.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/S4Vectors_0.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-s4vectors/bioconductor-s4vectors_0.24.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('S4Vectors')"

@@ -1,42 +1,36 @@
-{% set version = "1.14.0" %}
-{% set name = "profileScoreDist" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 03a4c190384716ad607f6eb897ec81cd
+about:
+  description: Regularization and score distributions for position count matrices.
+  home: https://bioconductor.org/packages/3.10/bioc/html/profileScoreDist.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Profile score distributions
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-# Suggests: BiocStyle, knitr, MotifDb
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-profilescoredist
+  version: 1.14.0
 requirements:
-  host:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - r-base
-    - r-rcpp
-  run:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - r-base
-    - r-rcpp
   build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - make
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - r-base
+  - r-rcpp
+  run:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - r-base
+  - r-rcpp
+source:
+  md5: 03a4c190384716ad607f6eb897ec81cd
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/profileScoreDist_1.14.0.tar.gz
+  - https://bioarchive.galaxyproject.org/profileScoreDist_1.14.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-profilescoredist/bioconductor-profilescoredist_1.14.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'MIT + file LICENSE'
-  summary: 'Profile score distributions'
-  description: 'Regularization and score distributions for position count matrices.'
-  license_file: LICENSE
-
+  - $R -e "library('profileScoreDist')"

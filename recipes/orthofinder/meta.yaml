@@ -1,40 +1,33 @@
-{% set version = "2.3.11" %}
-{% set sha256 = "24c3ff178ecbbc01c73e2f775a6d85f41f7eb0c714ee502fcc9cf8a753f72853" %}
-
-package:
-  name: orthofinder
-  version: {{ version }}
-
+about:
+  home: https://github.com/davidemms/OrthoFinder
+  license: GPLv3
+  license_file: License.md
+  summary: Accurate inference of orthogroups, orthologues, gene trees and rooted species
+    tree made easy!
 build:
   noarch: generic
   number: 0
-
-source:
-  url: https://github.com/davidemms/OrthoFinder/releases/download/{{ version }}/OrthoFinder_source.tar.gz
-  sha256: {{ sha256 }}
-
+package:
+  name: orthofinder
+  version: 2.3.11
 requirements:
   run:
-    - python >=2.7
-    - scipy
-    - blast
-    - diamond <=0.9.24
-    - mcl
-    - fastme
-    - mafft
-    - fasttree
-    - muscle
-    - raxml
-    - iqtree
-    - bzip2
-    - mmseqs2
-
+  - python >=2.7
+  - scipy
+  - blast
+  - diamond <=0.9.24
+  - mcl
+  - fastme
+  - mafft
+  - fasttree
+  - muscle
+  - raxml
+  - iqtree
+  - bzip2
+  - mmseqs2
+source:
+  sha256: 24c3ff178ecbbc01c73e2f775a6d85f41f7eb0c714ee502fcc9cf8a753f72853
+  url: https://github.com/davidemms/OrthoFinder/releases/download/2.3.11/OrthoFinder_source.tar.gz
 test:
   commands:
-    - orthofinder > /dev/null
-
-about:
-  home: https://github.com/davidemms/OrthoFinder
-  summary: Accurate inference of orthogroups, orthologues, gene trees and rooted species tree made easy!
-  license: GPLv3
-  license_file: License.md
+  - orthofinder > /dev/null

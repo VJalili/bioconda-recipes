@@ -1,47 +1,39 @@
-{% set name = "vcflib" %}
-
-package:
-  name: {{ name }}
-  version: '1.0.0_rc3'
-
-source:
-  git_url: https://github.com/{{ name }}/{{ name }}.git
-  git_rev: 45c68d2df744c0baf3953c10e9220e9d9a1422e3
-
-build:
-  number: 0
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-  host:
-    - python >=3
-    - zlib
-    - bzip2
-    - xz
-  run:
-    - python >=3
-    - zlib
-    - bzip2
-    - xz
-
-test:
-  commands:
-    - vcfallelicprimitives -h
-    - vcffirstheader < /dev/null
-    - vcfsort < /dev/null
-    - vcfrandom | grep 'fileformat=VCF'
-
 about:
-  home: https://github.com/{{ name }}/{{ name }}
+  home: https://github.com/vcflib/vcflib
   license: MIT
   summary: Command-line tools for manipulating VCF files
-
+build:
+  number: 0
 extra:
   identifiers:
-    - biotools:{{ name }}
-    - doi:10.1101/023754
+  - biotools:vcflib
+  - doi:10.1101/023754
   skip-lints:
-    - uses_vcs_url
-    - missing_hash
+  - uses_vcs_url
+  - missing_hash
+package:
+  name: vcflib
+  version: 1.0.0_rc3
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - python >=3
+  - zlib
+  - bzip2
+  - xz
+  run:
+  - python >=3
+  - zlib
+  - bzip2
+  - xz
+source:
+  git_rev: 45c68d2df744c0baf3953c10e9220e9d9a1422e3
+  git_url: https://github.com/vcflib/vcflib.git
+test:
+  commands:
+  - vcfallelicprimitives -h
+  - vcffirstheader < /dev/null
+  - vcfsort < /dev/null
+  - vcfrandom | grep 'fileformat=VCF'

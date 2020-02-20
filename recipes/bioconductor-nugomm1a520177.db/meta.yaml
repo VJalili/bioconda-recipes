@@ -1,39 +1,34 @@
-{% set version = "3.4.0" %}
-{% set name = "nugomm1a520177.db" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 99f69ea2cbb80a79bedee99e3d726e50
+about:
+  description: Affymetrix nugomm1a520177 annotation data (chip nugomm1a520177) assembled
+    using data from public repositories
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/nugomm1a520177.db.html
+  license: Artistic-2.0
+  summary: Affymetrix nugomm1a520177 annotation data (chip nugomm1a520177)
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: annotate, RUnit
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-nugomm1a520177.db
+  version: 3.4.0
 requirements:
   host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - 'bioconductor-org.mm.eg.db >=3.10.0,<3.11.0'
-    - r-base
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - bioconductor-org.mm.eg.db >=3.10.0,<3.11.0
+  - r-base
   run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - 'bioconductor-org.mm.eg.db >=3.10.0,<3.11.0'
-    - r-base
-    - curl
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - bioconductor-org.mm.eg.db >=3.10.0,<3.11.0
+  - r-base
+  - curl
+source:
+  md5: 99f69ea2cbb80a79bedee99e3d726e50
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/nugomm1a520177.db_3.4.0.tar.gz
+  - https://bioarchive.galaxyproject.org/nugomm1a520177.db_3.4.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-nugomm1a520177.db/bioconductor-nugomm1a520177.db_3.4.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Affymetrix nugomm1a520177 annotation data (chip nugomm1a520177)'
-  description: 'Affymetrix nugomm1a520177 annotation data (chip nugomm1a520177) assembled using data from public repositories'
-
+  - $R -e "library('nugomm1a520177.db')"

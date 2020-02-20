@@ -1,46 +1,37 @@
-{% set name = "intemap" %}
-{% set version = "1.0" %}
-
-package:
-  name: {{ name }}
-  version: {{ version }}
-
-source:
-  url: http://cqb.pku.edu.cn/ZhuLab/InteMAP/InteMAP_v{{ version }}.tar.gz
-  md5: 49cc274772b87eb1433b5f2a1d65338c
-
+about:
+  home: http://cqb.pku.edu.cn/ZhuLab/InteMAP/index.html
+  license: ''
+  summary: Integrated metagenomic assembly pipeline for short reads
 build:
   number: 3
-  skip: True # [osx or not py27]
-
+  skip: true
+package:
+  name: intemap
+  version: 1.0
 requirements:
   build:
-    - {{ compiler('c') }}
+  - None
   host:
-    - idba
-    - wgs-assembler
-    - abyss
-    - quake
-    - kmer-jellyfish
-    - mummer
-    - bowtie2
-    - python
-
+  - idba
+  - wgs-assembler
+  - abyss
+  - quake
+  - kmer-jellyfish
+  - mummer
+  - bowtie2
+  - python
   run:
-    - idba
-    - wgs-assembler
-    - abyss
-    - quake
-    - bowtie2
-    - python
-    - kmer-jellyfish
-    - mummer
-
+  - idba
+  - wgs-assembler
+  - abyss
+  - quake
+  - bowtie2
+  - python
+  - kmer-jellyfish
+  - mummer
+source:
+  md5: 49cc274772b87eb1433b5f2a1d65338c
+  url: http://cqb.pku.edu.cn/ZhuLab/InteMAP/InteMAP_v1.0.tar.gz
 test:
   commands:
-    - runInteMAP.py --help
-
-about:
-  home: 'http://cqb.pku.edu.cn/ZhuLab/InteMAP/index.html'
-  license: ""
-  summary: "Integrated metagenomic assembly pipeline for short reads"
+  - runInteMAP.py --help

@@ -1,35 +1,31 @@
-{% set version = "1.4.0" %}
-{% set name = "NeighborNet" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 8fc20e833ed7e61210bc572bcff1fb2d
+about:
+  description: Identify the putative mechanism explaining the active interactions
+    between genes in the investigated phenotype.
+  home: https://bioconductor.org/packages/3.10/bioc/html/NeighborNet.html
+  license: CC BY-NC-ND 4.0
+  summary: Neighbor_net analysis
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-neighbornet
+  version: 1.4.0
 requirements:
   host:
-    - 'bioconductor-graph >=1.64.0,<1.65.0'
-    - r-base
+  - bioconductor-graph >=1.64.0,<1.65.0
+  - r-base
   run:
-    - 'bioconductor-graph >=1.64.0,<1.65.0'
-    - r-base
+  - bioconductor-graph >=1.64.0,<1.65.0
+  - r-base
+source:
+  md5: 8fc20e833ed7e61210bc572bcff1fb2d
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/NeighborNet_1.4.0.tar.gz
+  - https://bioarchive.galaxyproject.org/NeighborNet_1.4.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-neighbornet/bioconductor-neighbornet_1.4.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'CC BY-NC-ND 4.0'
-  summary: 'Neighbor_net analysis'
-  description: 'Identify the putative mechanism explaining the active interactions between genes in the investigated phenotype.'
-
+  - $R -e "library('NeighborNet')"

@@ -1,41 +1,36 @@
-{% set version = "1.8.0" %}
-{% set name = "Rbowtie2" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 1e82e9297588240f4209f471d32612e2
+about:
+  description: This package provides an R wrapper of the popular bowtie2 sequencing
+    reads aligner and AdapterRemoval, a convenient tool for rapid adapter trimming,
+    identification, and read merging.
+  home: https://bioconductor.org/packages/3.10/bioc/html/Rbowtie2.html
+  license: GPL (>= 3)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: An R Wrapper for Bowtie2 and AdapterRemoval
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-# Suggests: knitr
-# SystemRequirements: C++11
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-rbowtie2
+  version: 1.8.0
 requirements:
-  host:
-    - r-base
-    - zlib
-  run:
-    - r-base
-    - zlib
   build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - make
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  - zlib
+  run:
+  - r-base
+  - zlib
+source:
+  md5: 1e82e9297588240f4209f471d32612e2
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/Rbowtie2_1.8.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Rbowtie2_1.8.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rbowtie2/bioconductor-rbowtie2_1.8.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>= 3)'
-  summary: 'An R Wrapper for Bowtie2 and AdapterRemoval'
-  description: 'This package provides an R wrapper of the popular bowtie2 sequencing reads aligner and AdapterRemoval, a convenient tool for rapid adapter trimming, identification, and read merging.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('Rbowtie2')"

@@ -1,37 +1,33 @@
-{% set version = "0.99.1" %}
-{% set name = "hspeccdf" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 89f81adf91094710558ce6aec79fc7fd
+about:
+  description: A package containing an environment representing the HGU133Plus2_Hs_Hspec.cdf
+    file.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/hspeccdf.html
+  license: LGPL
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: hspeccdf
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-hspeccdf
+  version: 0.99.1
 requirements:
   host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
   run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
-    - curl
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
+  - curl
+source:
+  md5: 89f81adf91094710558ce6aec79fc7fd
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/hspeccdf_0.99.1.tar.gz
+  - https://bioarchive.galaxyproject.org/hspeccdf_0.99.1.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hspeccdf/bioconductor-hspeccdf_0.99.1_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: LGPL
-  summary: hspeccdf
-  description: 'A package containing an environment representing the HGU133Plus2_Hs_Hspec.cdf file.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-3'
-
+  - $R -e "library('hspeccdf')"

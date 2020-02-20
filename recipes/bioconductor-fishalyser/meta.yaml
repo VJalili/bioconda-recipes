@@ -1,46 +1,43 @@
-{% set version = "1.20.0" %}
-{% set name = "FISHalyseR" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: ef257f240f02e634deb5f8b95fce500b
+about:
+  description: FISHalyseR provides functionality to process and analyse digital cell
+    culture images, in particular to quantify FISH probes within nuclei. Furthermore,
+    it extract the spatial location of each nucleus as well as each probe enabling
+    spatial co-localisation analysis.
+  home: https://bioconductor.org/packages/3.10/bioc/html/FISHalyseR.html
+  license: Artistic-2.0
+  summary: FISHalyseR a package for automated FISH quantification
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: knitr
-requirements:
-  host:
-    - 'bioconductor-ebimage >=4.28.0,<4.29.0'
-    - r-abind
-    - r-base
-  run:
-    - 'bioconductor-ebimage >=4.28.0,<4.29.0'
-    - r-abind
-    - r-base
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'FISHalyseR a package for automated FISH quantification'
-  description: 'FISHalyseR provides functionality to process and analyse digital cell culture images, in particular to quantify FISH probes within nuclei. Furthermore, it extract the spatial location of each nucleus as well as each probe enabling spatial co-localisation analysis.'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:fishalyser
-    - doi:10.1038/nmeth.3252
+  - biotools:fishalyser
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-fishalyser
     path: recipes/bioconductor-fishalyser
     version: 1.14.0
-
+package:
+  name: bioconductor-fishalyser
+  version: 1.20.0
+requirements:
+  host:
+  - bioconductor-ebimage >=4.28.0,<4.29.0
+  - r-abind
+  - r-base
+  run:
+  - bioconductor-ebimage >=4.28.0,<4.29.0
+  - r-abind
+  - r-base
+source:
+  md5: ef257f240f02e634deb5f8b95fce500b
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/FISHalyseR_1.20.0.tar.gz
+  - https://bioarchive.galaxyproject.org/FISHalyseR_1.20.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-fishalyser/bioconductor-fishalyser_1.20.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('FISHalyseR')"

@@ -1,36 +1,31 @@
-{% set version = "1.18.0" %}
-{% set name = "SCLCBam" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 9aafb61efe3067831319e9863c116ac5
+about:
+  description: Whole-exome sequencing data from a murine small-cell lung tumor; only
+    contains data of chromosome 4.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/SCLCBam.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Sequence data from chromosome 4 of a small-cell lung tumor
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: BiocStyle
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-sclcbam
+  version: 1.18.0
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
-    - curl
+  - r-base
+  - curl
+source:
+  md5: 9aafb61efe3067831319e9863c116ac5
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/SCLCBam_1.18.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SCLCBam_1.18.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-sclcbam/bioconductor-sclcbam_1.18.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: GPL-2
-  summary: 'Sequence data from chromosome 4 of a small-cell lung tumor'
-  description: 'Whole-exome sequencing data from a murine small-cell lung tumor; only contains data of chromosome 4.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
-
+  - $R -e "library('SCLCBam')"

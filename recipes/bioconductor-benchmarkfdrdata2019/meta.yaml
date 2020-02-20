@@ -1,40 +1,36 @@
-{% set version = "1.0.0" %}
-{% set name = "benchmarkfdrData2019" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 38cfc5290949cb25aceb69ccaebc88e3
+about:
+  description: Benchmarking results for experimental and simulated data sets used
+    in Korthauer and Kimes et al. (2019) to compare methods for controlling the false
+    discovery rate.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/benchmarkfdrData2019.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Data and Benchmarking Results from Korthauer and Kimes et al. (2019)
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: knitr, BiocStyle, testthat, SummarizedBenchmark, dplyr, ggplot2, rlang
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-benchmarkfdrdata2019
+  version: 1.0.0
 requirements:
   host:
-    - 'bioconductor-experimenthub >=1.12.0,<1.13.0'
-    - 'bioconductor-summarizedexperiment >=1.16.0,<1.17.0'
-    - r-base
+  - bioconductor-experimenthub >=1.12.0,<1.13.0
+  - bioconductor-summarizedexperiment >=1.16.0,<1.17.0
+  - r-base
   run:
-    - 'bioconductor-experimenthub >=1.12.0,<1.13.0'
-    - 'bioconductor-summarizedexperiment >=1.16.0,<1.17.0'
-    - r-base
-    - curl
+  - bioconductor-experimenthub >=1.12.0,<1.13.0
+  - bioconductor-summarizedexperiment >=1.16.0,<1.17.0
+  - r-base
+  - curl
+source:
+  md5: 38cfc5290949cb25aceb69ccaebc88e3
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/benchmarkfdrData2019_1.0.0.tar.gz
+  - https://bioarchive.galaxyproject.org/benchmarkfdrData2019_1.0.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-benchmarkfdrdata2019/bioconductor-benchmarkfdrdata2019_1.0.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: 'MIT + file LICENSE'
-  summary: 'Data and Benchmarking Results from Korthauer and Kimes et al. (2019)'
-  description: 'Benchmarking results for experimental and simulated data sets used in Korthauer and Kimes et al. (2019) to compare methods for controlling the false discovery rate.'
-  license_file: LICENSE
-
+  - $R -e "library('benchmarkfdrData2019')"

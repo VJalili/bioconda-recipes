@@ -1,37 +1,33 @@
-{% set version = "2.18.0" %}
-{% set name = "mgu74av2cdf" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 35e2abb9fbfd68d90dc32a2faae00c95
+about:
+  description: A package containing an environment representing the MG_U74Av2.CDF
+    file.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/mgu74av2cdf.html
+  license: LGPL
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: mgu74av2cdf
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-mgu74av2cdf
+  version: 2.18.0
 requirements:
   host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
   run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
-    - curl
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
+  - curl
+source:
+  md5: 35e2abb9fbfd68d90dc32a2faae00c95
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/mgu74av2cdf_2.18.0.tar.gz
+  - https://bioarchive.galaxyproject.org/mgu74av2cdf_2.18.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mgu74av2cdf/bioconductor-mgu74av2cdf_2.18.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: LGPL
-  summary: mgu74av2cdf
-  description: 'A package containing an environment representing the MG_U74Av2.CDF file.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-3'
-
+  - $R -e "library('mgu74av2cdf')"

@@ -1,33 +1,25 @@
-{% set version = "3.0.7" %}
-
-package:
-  name: sibelia
-  version: {{ version }}
-
-source:
-  url: https://github.com/bioinf/Sibelia/archive/v{{ version }}.tar.gz
-  sha256: bfc530190967cadd2d1e9779eeb1700f494c115049da878116c4540c5586e813
-
-build:
-  number: 2
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - cmake
-  run:
-
-test:
-  commands:
-    - Sibelia --version
-
 about:
   home: https://github.com/bioinf/Sibelia
   license: GPLv2
   license_file: LICENSE.txt
-  summary: "Genome comparison via de Bruijn graph."
-
+  summary: Genome comparison via de Bruijn graph.
+build:
+  number: 2
 extra:
   recipe-maintainers:
-    - nickp60
+  - nickp60
+package:
+  name: sibelia
+  version: 3.0.7
+requirements:
+  build:
+  - None
+  - None
+  - cmake
+  run: null
+source:
+  sha256: bfc530190967cadd2d1e9779eeb1700f494c115049da878116c4540c5586e813
+  url: https://github.com/bioinf/Sibelia/archive/v3.0.7.tar.gz
+test:
+  commands:
+  - Sibelia --version

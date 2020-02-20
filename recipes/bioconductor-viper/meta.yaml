@@ -1,50 +1,45 @@
-{% set version = "1.20.0" %}
-{% set name = "viper" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 5b3b6b06019560ec48da5c1762ef9928
+about:
+  description: Inference of protein activity from gene expression data, including
+    the VIPER and msVIPER algorithms
+  home: https://bioconductor.org/packages/3.10/bioc/html/viper.html
+  license: file LICENSE
+  license_file: LICENSE
+  summary: Virtual Inference of Protein-activity by Enriched Regulon analysis
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: bcellViper
-requirements:
-  host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - r-base
-    - r-e1071
-    - r-kernsmooth
-    - r-mixtools
-  run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - r-base
-    - r-e1071
-    - r-kernsmooth
-    - r-mixtools
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'file LICENSE'
-  summary: 'Virtual Inference of Protein-activity by Enriched Regulon analysis'
-  description: 'Inference of protein activity from gene expression data, including the VIPER and msVIPER algorithms'
-  license_file: LICENSE
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:viper
+  - biotools:viper
   parent_recipe:
     name: bioconductor-viper
     path: recipes/bioconductor-viper
     version: 1.14.0
-
+package:
+  name: bioconductor-viper
+  version: 1.20.0
+requirements:
+  host:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - r-base
+  - r-e1071
+  - r-kernsmooth
+  - r-mixtools
+  run:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - r-base
+  - r-e1071
+  - r-kernsmooth
+  - r-mixtools
+source:
+  md5: 5b3b6b06019560ec48da5c1762ef9928
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/viper_1.20.0.tar.gz
+  - https://bioarchive.galaxyproject.org/viper_1.20.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-viper/bioconductor-viper_1.20.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('viper')"

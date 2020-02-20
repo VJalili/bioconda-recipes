@@ -1,53 +1,48 @@
-{% set version = "1.2.0" %}
-{% set name = "TPP2D" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: dfef6acaaeb35552a28655f98769e4c8
+about:
+  description: FDR-controlled analysis of 2D-TPP experiments by functional analysis
+    of dose-response curves across temperatures.
+  home: https://bioconductor.org/packages/3.10/bioc/html/TPP2D.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: FDR-controlled analysis of 2D-TPP experiments
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: knitr, testthat
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-tpp2d
+  version: 1.2.0
 requirements:
   host:
-    - r-base
-    - r-doparallel
-    - r-dplyr
-    - r-foreach
-    - r-ggplot2
-    - r-mass
-    - r-openxlsx
-    - r-rcurl
-    - r-stringr
-    - r-tidyr
+  - r-base
+  - r-doparallel
+  - r-dplyr
+  - r-foreach
+  - r-ggplot2
+  - r-mass
+  - r-openxlsx
+  - r-rcurl
+  - r-stringr
+  - r-tidyr
   run:
-    - r-base
-    - r-doparallel
-    - r-dplyr
-    - r-foreach
-    - r-ggplot2
-    - r-mass
-    - r-openxlsx
-    - r-rcurl
-    - r-stringr
-    - r-tidyr
+  - r-base
+  - r-doparallel
+  - r-dplyr
+  - r-foreach
+  - r-ggplot2
+  - r-mass
+  - r-openxlsx
+  - r-rcurl
+  - r-stringr
+  - r-tidyr
+source:
+  md5: dfef6acaaeb35552a28655f98769e4c8
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/TPP2D_1.2.0.tar.gz
+  - https://bioarchive.galaxyproject.org/TPP2D_1.2.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-tpp2d/bioconductor-tpp2d_1.2.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-3
-  summary: 'FDR-controlled analysis of 2D-TPP experiments'
-  description: 'FDR-controlled analysis of 2D-TPP experiments by functional analysis of dose-response curves across temperatures.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('TPP2D')"

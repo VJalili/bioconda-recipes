@@ -1,51 +1,50 @@
-{% set version = "1.0.0" %}
-{% set name = "MMUPHin" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 2f3b3816c123bfceabf431d639ef790f
+about:
+  description: 'MMUPHin is an R package for meta-analysis tasks of microbiome cohorts.
+    It has function interfaces for: a) covariate-controlled batch- and cohort effect
+    adjustment, b) meta-analysis differential abundance testing, c) meta-analysis
+    unsupervised discrete structure (clustering) discovery, and d) meta-analysis unsupervised
+    continuous structure discovery.'
+  home: https://bioconductor.org/packages/3.10/bioc/html/MMUPHin.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Meta-analysis Methods with Uniform Pipeline for Heterogeneity in Microbiome
+    Studies
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: testthat, BiocStyle, knitr, rmarkdown, magrittr, vegan, phyloseq, curatedMetagenomicData, genefilter
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-mmuphin
+  version: 1.0.0
 requirements:
   host:
-    - 'bioconductor-maaslin2 >=1.0.0,<1.1.0'
-    - r-base
-    - r-cowplot
-    - r-dplyr
-    - r-fpc
-    - r-ggplot2
-    - r-igraph
-    - r-metafor
-    - r-tidyr
+  - bioconductor-maaslin2 >=1.0.0,<1.1.0
+  - r-base
+  - r-cowplot
+  - r-dplyr
+  - r-fpc
+  - r-ggplot2
+  - r-igraph
+  - r-metafor
+  - r-tidyr
   run:
-    - 'bioconductor-maaslin2 >=1.0.0,<1.1.0'
-    - r-base
-    - r-cowplot
-    - r-dplyr
-    - r-fpc
-    - r-ggplot2
-    - r-igraph
-    - r-metafor
-    - r-tidyr
+  - bioconductor-maaslin2 >=1.0.0,<1.1.0
+  - r-base
+  - r-cowplot
+  - r-dplyr
+  - r-fpc
+  - r-ggplot2
+  - r-igraph
+  - r-metafor
+  - r-tidyr
+source:
+  md5: 2f3b3816c123bfceabf431d639ef790f
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/MMUPHin_1.0.0.tar.gz
+  - https://bioarchive.galaxyproject.org/MMUPHin_1.0.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mmuphin/bioconductor-mmuphin_1.0.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'MIT + file LICENSE'
-  summary: 'Meta-analysis Methods with Uniform Pipeline for Heterogeneity in Microbiome Studies'
-  description: 'MMUPHin is an R package for meta-analysis tasks of microbiome cohorts. It has function interfaces for: a) covariate-controlled batch- and cohort effect adjustment, b) meta-analysis differential abundance testing, c) meta-analysis unsupervised discrete structure (clustering) discovery, and d) meta-analysis unsupervised continuous structure discovery.'
-  license_file: LICENSE
-
+  - $R -e "library('MMUPHin')"

@@ -1,46 +1,37 @@
-{% set name = "sccaf" %}
-{% set version = "0.0.9" %}
-
-package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
-
-source:
-  url: https://pypi.io/packages/source/S/SCCAF/SCCAF-{{ version }}.tar.gz  
-  sha256: 436e8bb9c4d6505e3eb58287a16ad9a44f76cd0070bfaeea8f6ace32aef86520
-
-build:
-  number: 0
-  noarch: python
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
-
-requirements:
-  host:
-    - pip
-    - python >=3
-  run:
-    - psutil
-    - numpy
-    - louvain
-    - pandas
-    - python >=3
-    - scanpy >=1.4.4
-    - scikit-learn
-    - h5py <2.10
-
-test:
-  imports:
-    - SCCAF
-
 about:
+  dev_url: https://github.com/SCCAF/sccaf
+  doc_url: https://github.com/SCCAF/sccaf
   home: https://github.com/SCCAF/sccaf
   license: MIT
   license_family: MIT
-  license_file: 
+  license_file: null
   summary: Single-Cell Clustering Assessment Framework
-  doc_url: https://github.com/SCCAF/sccaf
-  dev_url: https://github.com/SCCAF/sccaf
-
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed -vv '
 extra:
   recipe-maintainers:
-    - pcm32 
+  - pcm32
+package:
+  name: sccaf
+  version: 0.0.9
+requirements:
+  host:
+  - pip
+  - python >=3
+  run:
+  - psutil
+  - numpy
+  - louvain
+  - pandas
+  - python >=3
+  - scanpy >=1.4.4
+  - scikit-learn
+  - h5py <2.10
+source:
+  sha256: 436e8bb9c4d6505e3eb58287a16ad9a44f76cd0070bfaeea8f6ace32aef86520
+  url: https://pypi.io/packages/source/S/SCCAF/SCCAF-0.0.9.tar.gz
+test:
+  imports:
+  - SCCAF

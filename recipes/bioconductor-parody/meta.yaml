@@ -1,41 +1,37 @@
-{% set version = "1.44.0" %}
-{% set name = "parody" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: ff34c1705004dcb8f448de024ac4bd2b
+about:
+  description: routines for univariate and multivariate outlier detection with a focus
+    on parametric methods, but support for some methods based on resistant statistics
+  home: https://bioconductor.org/packages/3.10/bioc/html/parody.html
+  license: Artistic-2.0
+  summary: Parametric And Resistant Outlier DYtection
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-requirements:
-  host:
-    - r-base
-  run:
-    - r-base
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Parametric And Resistant Outlier DYtection'
-  description: 'routines for univariate and multivariate outlier detection with a focus on parametric methods, but support for some methods based on resistant statistics'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:parody
-    - doi:10.1038/nmeth.3252
+  - biotools:parody
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-parody
     path: recipes/bioconductor-parody
     version: 1.38.0
-
+package:
+  name: bioconductor-parody
+  version: 1.44.0
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+source:
+  md5: ff34c1705004dcb8f448de024ac4bd2b
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/parody_1.44.0.tar.gz
+  - https://bioarchive.galaxyproject.org/parody_1.44.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-parody/bioconductor-parody_1.44.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('parody')"

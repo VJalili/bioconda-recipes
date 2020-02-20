@@ -1,19 +1,15 @@
-{% set version = "0.2.1" %}
-{% set md5 = "7f11ee828ef4eefcaf30fc7fc256281d" %}
-
-package:
-  name: ebfilter
-  version: {{ version }}
-
-source:
-  url: https://github.com/Genomon-Project/EBFilter/archive/v{{ version }}.tar.gz
-  md5: "{{ md5 }}"
-
+about:
+  home: https://github.com/Genomon-Project/EBFilter
+  license: GNU General Public License v3 (GPLv3)
+  license_family: GPL
+  summary: EBFilter (Empirical Bayesian Mutation Filtering)
 build:
   noarch: python
   number: 2
-  script: {{ PYTHON }} -m pip install . --ignore-installed --no-deps -vv
-
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: ebfilter
+  version: 0.2.1
 requirements:
   host:
   - python <3
@@ -27,13 +23,9 @@ requirements:
   - scipy
   - numpy
   - pyvcf
-
+source:
+  md5: 7f11ee828ef4eefcaf30fc7fc256281d
+  url: https://github.com/Genomon-Project/EBFilter/archive/v0.2.1.tar.gz
 test:
   commands:
-  - "EBFilter --help"
-
-about:
-  home: https://github.com/Genomon-Project/EBFilter
-  license: GNU General Public License v3 (GPLv3)
-  summary: 'EBFilter (Empirical Bayesian Mutation Filtering)'
-  license_family: GPL
+  - EBFilter --help

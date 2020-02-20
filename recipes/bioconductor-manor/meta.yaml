@@ -1,38 +1,34 @@
-{% set version = "1.58.0" %}
-{% set name = "MANOR" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 0d1b129b1bcc4833d26a90eb7bd780fb
+about:
+  description: Importation, normalization, visualization, and quality control functions
+    to correct identified sources of variability in array-CGH experiments.
+  home: https://bioconductor.org/packages/3.10/bioc/html/MANOR.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: CGH Micro-Array NORmalization
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-manor
+  version: 1.58.0
 requirements:
-  host:
-    - 'bioconductor-glad >=2.50.0,<2.51.0'
-    - r-base
-  run:
-    - 'bioconductor-glad >=2.50.0,<2.51.0'
-    - r-base
   build:
-    - {{ compiler('c') }}
-    - make
+  - None
+  - make
+  host:
+  - bioconductor-glad >=2.50.0,<2.51.0
+  - r-base
+  run:
+  - bioconductor-glad >=2.50.0,<2.51.0
+  - r-base
+source:
+  md5: 0d1b129b1bcc4833d26a90eb7bd780fb
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/MANOR_1.58.0.tar.gz
+  - https://bioarchive.galaxyproject.org/MANOR_1.58.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-manor/bioconductor-manor_1.58.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-2
-  summary: 'CGH Micro-Array NORmalization'
-  description: 'Importation, normalization, visualization, and quality control functions to correct identified sources of variability in array-CGH experiments.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
-
+  - $R -e "library('MANOR')"

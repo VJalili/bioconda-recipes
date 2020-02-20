@@ -1,46 +1,41 @@
-{% set version = "1.20.0" %}
-{% set name = "seqTools" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: a95db5dd95072e4d568b89ef2fa103f2
+about:
+  description: Analyze read length, phred scores and alphabet frequency and DNA k-mers
+    on uncompressed and compressed fastq files.
+  home: https://bioconductor.org/packages/3.10/bioc/html/seqTools.html
+  license: Artistic-2.0
+  summary: Analysis of nucleotide, sequence and quality content on fastq files
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-# Suggests: RUnit, BiocGenerics
-requirements:
-  host:
-    - 'bioconductor-zlibbioc >=1.32.0,<1.33.0'
-    - r-base
-  run:
-    - 'bioconductor-zlibbioc >=1.32.0,<1.33.0'
-    - r-base
-  build:
-    - {{ compiler('c') }}
-    - make
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Analysis of nucleotide, sequence and quality content on fastq files'
-  description: 'Analyze read length, phred scores and alphabet frequency and DNA k-mers on uncompressed and compressed fastq files.'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:seqtools
-    - doi:10.1038/nmeth.3252
+  - biotools:seqtools
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-seqtools
     path: recipes/bioconductor-seqtools
     version: 1.14.0
-
+package:
+  name: bioconductor-seqtools
+  version: 1.20.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-zlibbioc >=1.32.0,<1.33.0
+  - r-base
+  run:
+  - bioconductor-zlibbioc >=1.32.0,<1.33.0
+  - r-base
+source:
+  md5: a95db5dd95072e4d568b89ef2fa103f2
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/seqTools_1.20.0.tar.gz
+  - https://bioarchive.galaxyproject.org/seqTools_1.20.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-seqtools/bioconductor-seqtools_1.20.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('seqTools')"

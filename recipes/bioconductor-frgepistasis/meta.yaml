@@ -1,38 +1,33 @@
-{% set version = "1.22.0" %}
-{% set name = "FRGEpistasis" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: f7f3df112470b7f1daf02600c438bb43
+about:
+  description: A Tool for Epistasis Analysis Based on Functional Regression Model
+  home: https://bioconductor.org/packages/3.10/bioc/html/FRGEpistasis.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Epistasis Analysis for Quantitative Traits by Functional Regression Model
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-frgepistasis
+  version: 1.22.0
 requirements:
   host:
-    - r-base
-    - r-fda
-    - r-mass
+  - r-base
+  - r-fda
+  - r-mass
   run:
-    - r-base
-    - r-fda
-    - r-mass
+  - r-base
+  - r-fda
+  - r-mass
+source:
+  md5: f7f3df112470b7f1daf02600c438bb43
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/FRGEpistasis_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/FRGEpistasis_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-frgepistasis/bioconductor-frgepistasis_1.22.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-2
-  summary: 'Epistasis Analysis for Quantitative Traits by Functional Regression Model'
-  description: 'A Tool for Epistasis Analysis Based on Functional Regression Model'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
-
+  - $R -e "library('FRGEpistasis')"

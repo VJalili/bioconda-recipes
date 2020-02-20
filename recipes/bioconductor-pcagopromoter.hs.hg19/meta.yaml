@@ -1,35 +1,31 @@
-{% set version = "1.22.0" %}
-{% set name = "pcaGoPromoter.Hs.hg19" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 9971c04780224c7c98926f91f3fb0d6c
+about:
+  description: Contains the data for transciption factors analysis of organism Homo
+    Sapiens with package pcaGoPromoter
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/pcaGoPromoter.Hs.hg19.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: pcaGoPromoter.Hs.hg19 is a data package used by pcaGoPromoter
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-pcagopromoter.hs.hg19
+  version: 1.22.0
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
-    - curl
+  - r-base
+  - curl
+source:
+  md5: 9971c04780224c7c98926f91f3fb0d6c
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/pcaGoPromoter.Hs.hg19_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/pcaGoPromoter.Hs.hg19_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-pcagopromoter.hs.hg19/bioconductor-pcagopromoter.hs.hg19_1.22.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: 'GPL (>= 2)'
-  summary: 'pcaGoPromoter.Hs.hg19 is a data package used by pcaGoPromoter'
-  description: 'Contains the data for transciption factors analysis of organism Homo Sapiens with package pcaGoPromoter'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('pcaGoPromoter.Hs.hg19')"

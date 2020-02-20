@@ -1,36 +1,31 @@
-{% set version = "1.28.0" %}
-{% set name = "SpikeIn" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: ec2d503955727d95d31b3a1175fc9ade
+about:
+  description: Contains the HGU133 and HGU95 spikein experiment data.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/SpikeIn.html
+  license: Artistic-2.0
+  summary: Affymetrix Spike-In Experiment Data
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-spikein
+  version: 1.28.0
 requirements:
   host:
-    - 'bioconductor-affy >=1.64.0,<1.65.0'
-    - r-base
+  - bioconductor-affy >=1.64.0,<1.65.0
+  - r-base
   run:
-    - 'bioconductor-affy >=1.64.0,<1.65.0'
-    - r-base
-    - curl
+  - bioconductor-affy >=1.64.0,<1.65.0
+  - r-base
+  - curl
+source:
+  md5: ec2d503955727d95d31b3a1175fc9ade
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/SpikeIn_1.28.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SpikeIn_1.28.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-spikein/bioconductor-spikein_1.28.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Affymetrix Spike-In Experiment Data'
-  description: 'Contains the HGU133 and HGU95 spikein experiment data.'
-
+  - $R -e "library('SpikeIn')"

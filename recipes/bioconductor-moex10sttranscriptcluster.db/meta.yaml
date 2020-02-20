@@ -1,39 +1,34 @@
-{% set version = "8.7.0" %}
-{% set name = "moex10sttranscriptcluster.db" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 67253f6ab5cb335049139951ca8064bd
+about:
+  description: Affymetrix moex10 annotation data (chip moex10sttranscriptcluster)
+    assembled using data from public repositories
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/moex10sttranscriptcluster.db.html
+  license: Artistic-2.0
+  summary: Affymetrix moex10 annotation data (chip moex10sttranscriptcluster)
 build:
+  noarch: generic
   number: 4
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: DBI, annotate, RUnit
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-moex10sttranscriptcluster.db
+  version: 8.7.0
 requirements:
   host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - 'bioconductor-org.mm.eg.db >=3.10.0,<3.11.0'
-    - r-base
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - bioconductor-org.mm.eg.db >=3.10.0,<3.11.0
+  - r-base
   run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - 'bioconductor-org.mm.eg.db >=3.10.0,<3.11.0'
-    - r-base
-    - curl
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - bioconductor-org.mm.eg.db >=3.10.0,<3.11.0
+  - r-base
+  - curl
+source:
+  md5: 67253f6ab5cb335049139951ca8064bd
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/moex10sttranscriptcluster.db_8.7.0.tar.gz
+  - https://bioarchive.galaxyproject.org/moex10sttranscriptcluster.db_8.7.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-moex10sttranscriptcluster.db/bioconductor-moex10sttranscriptcluster.db_8.7.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Affymetrix moex10 annotation data (chip moex10sttranscriptcluster)'
-  description: 'Affymetrix moex10 annotation data (chip moex10sttranscriptcluster) assembled using data from public repositories'
-
+  - $R -e "library('moex10sttranscriptcluster.db')"

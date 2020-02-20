@@ -1,47 +1,49 @@
-{% set version = "2.42.0" %}
-{% set name = "ACME" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 21d1c3a39668220ba3db33b3425e5af7
+about:
+  description: ACME (Algorithms for Calculating Microarray Enrichment) is a set of
+    tools for analysing tiling array ChIP/chip, DNAse hypersensitivity, or other experiments
+    that result in regions of the genome showing "enrichment".  It does not rely on
+    a specific array technology (although the array should be a "tiling" array), is
+    very general (can be applied in experiments resulting in regions of enrichment),
+    and is very insensitive to array noise or normalization methods.  It is also very
+    fast and can be applied on whole-genome tiling array experiments quite easily
+    with enough memory.
+  home: https://bioconductor.org/packages/3.10/bioc/html/ACME.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Algorithms for Calculating Microarray Enrichment (ACME)
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-requirements:
-  host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - r-base
-  run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - r-base
-  build:
-    - {{ compiler('c') }}
-    - make
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>= 2)'
-  summary: 'Algorithms for Calculating Microarray Enrichment (ACME)'
-  description: 'ACME (Algorithms for Calculating Microarray Enrichment) is a set of tools for analysing tiling array ChIP/chip, DNAse hypersensitivity, or other experiments that result in regions of the genome showing "enrichment".  It does not rely on a specific array technology (although the array should be a "tiling" array), is very general (can be applied in experiments resulting in regions of enrichment), and is very insensitive to array noise or normalization methods.  It is also very fast and can be applied on whole-genome tiling array experiments quite easily with enough memory.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:acme
+  - biotools:acme
   parent_recipe:
     name: bioconductor-acme
     path: recipes/bioconductor-acme
     version: 2.36.0
-
+package:
+  name: bioconductor-acme
+  version: 2.42.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - r-base
+  run:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - r-base
+source:
+  md5: 21d1c3a39668220ba3db33b3425e5af7
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/ACME_2.42.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ACME_2.42.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-acme/bioconductor-acme_2.42.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('ACME')"

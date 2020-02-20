@@ -1,38 +1,30 @@
-{% set name = "iqtree" %}
-{% set version = "1.6.12" %}
-
-package:
-  name: {{ name|lower }}
-  version: {{ version }}
-
+about:
+  home: http://www.iqtree.org/
+  identifiers:
+  - biotools:iq-tree
+  - doi:10.1093/molbev/msu300
+  license: GPL-2.0
+  summary: Efficient phylogenomic software by maximum likelihood.
 build:
   number: 0
-
-source:
-  url: https://github.com/Cibiv/IQ-TREE/archive/v{{ version }}.tar.gz
-  sha256: 9614092de7a157de82c9cc402b19cc8bfa0cb0ffc93b91817875c2b4bb46a284
-
+package:
+  name: iqtree
+  version: 1.6.12
 requirements:
   build:
-    - {{ compiler('cxx') }}
-    - cmake
+  - None
+  - cmake
   host:
-    - eigen
-    - zlib
-    - clangdev  # [osx]
-    - openmp 4.0.*  # [osx]
+  - eigen
+  - zlib
+  - clangdev
+  - openmp 4.0.*
   run:
-    - zlib
-    - openmp >=4.0  # [osx]
-
+  - zlib
+  - openmp >=4.0
+source:
+  sha256: 9614092de7a157de82c9cc402b19cc8bfa0cb0ffc93b91817875c2b4bb46a284
+  url: https://github.com/Cibiv/IQ-TREE/archive/v1.6.12.tar.gz
 test:
   commands:
-    - iqtree
-
-about:
-  home: "http://www.iqtree.org/"
-  license: "GPL-2.0"
-  summary: "Efficient phylogenomic software by maximum likelihood."
-  identifiers:
-    - biotools:iq-tree
-    - doi:10.1093/molbev/msu300
+  - iqtree

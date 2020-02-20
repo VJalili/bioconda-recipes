@@ -1,46 +1,43 @@
-{% set version = "1.40.0" %}
-{% set name = "ABSSeq" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 927d350826d221155051534db24f9419
+about:
+  description: Inferring differential expression genes by absolute counts difference
+    between two groups, utilizing Negative binomial distribution and moderating fold-change
+    according to heterogeneity of dispersion across expression level.
+  home: https://bioconductor.org/packages/3.10/bioc/html/ABSSeq.html
+  license: GPL (>= 3)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: 'ABSSeq: a new RNA-Seq analysis method based on modelling absolute expression
+    differences'
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: edgeR
-requirements:
-  host:
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - r-base
-    - r-locfit
-  run:
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - r-base
-    - r-locfit
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>= 3)'
-  summary: 'ABSSeq: a new RNA-Seq analysis method based on modelling absolute expression differences'
-  description: 'Inferring differential expression genes by absolute counts difference between two groups, utilizing Negative binomial distribution and moderating fold-change according to heterogeneity of dispersion across expression level.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:absseq
+  - biotools:absseq
   parent_recipe:
     name: bioconductor-absseq
     path: recipes/bioconductor-absseq
     version: 1.34.1
-
+package:
+  name: bioconductor-absseq
+  version: 1.40.0
+requirements:
+  host:
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - r-base
+  - r-locfit
+  run:
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - r-base
+  - r-locfit
+source:
+  md5: 927d350826d221155051534db24f9419
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/ABSSeq_1.40.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ABSSeq_1.40.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-absseq/bioconductor-absseq_1.40.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('ABSSeq')"

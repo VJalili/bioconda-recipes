@@ -1,37 +1,32 @@
-{% set version = "1.6.0" %}
-{% set name = "TCGAcrcmRNA" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: f1a4b5290fd2809e83388e42e79a2246
+about:
+  description: colorectal cancer mRNA profile provided by TCGA
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/TCGAcrcmRNA.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: TCGA CRC 450 mRNA dataset
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-tcgacrcmrna
+  version: 1.6.0
 requirements:
   host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - r-base
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - r-base
   run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - r-base
-    - curl
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - r-base
+  - curl
+source:
+  md5: f1a4b5290fd2809e83388e42e79a2246
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/TCGAcrcmRNA_1.6.0.tar.gz
+  - https://bioarchive.galaxyproject.org/TCGAcrcmRNA_1.6.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-tcgacrcmrna/bioconductor-tcgacrcmrna_1.6.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: GPL-2
-  summary: 'TCGA CRC 450 mRNA dataset'
-  description: 'colorectal cancer mRNA profile provided by TCGA'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
-
+  - $R -e "library('TCGAcrcmRNA')"

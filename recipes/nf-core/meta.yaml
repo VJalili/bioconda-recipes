@@ -1,48 +1,36 @@
-{% set name = "nf-core" %}
-{% set version = "1.8" %}
-{% set sha256 = "c1ca2ea3a5163403310a2bf0026a8404f33b61eb40dad7007b10b956ceb3e702" %}
-
-package:
-  name: {{ name|lower }}
-  version: {{ version }}
-
-source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: '{{ sha256 }}'
-
-build:
-  noarch: python
-  number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
-
-requirements:
-  host:
-    - python
-    - pip
-    - twine
-  run:
-    - python
-    - cookiecutter
-    - click
-    - gitpython
-    - pyyaml
-    - requests
-    - requests-cache
-    - tabulate
-    - git
-    - jsonschema 
-    
-test:
-  commands:
-    - nf-core --help
-
 about:
   home: http://nf-co.re/
   license: MIT
-  summary: 'Python package with helper tools for the nf-core community.'
-
+  summary: Python package with helper tools for the nf-core community.
+build:
+  noarch: python
+  number: 0
+  script: ' -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv'
 extra:
   container:
-    # click requires a unicode locale when used with Python 3
-    # extended-base generates en_US.UTF-8 locale and sets LC_ALL, LANG properly
     extended-base: true
+package:
+  name: nf-core
+  version: 1.8
+requirements:
+  host:
+  - python
+  - pip
+  - twine
+  run:
+  - python
+  - cookiecutter
+  - click
+  - gitpython
+  - pyyaml
+  - requests
+  - requests-cache
+  - tabulate
+  - git
+  - jsonschema
+source:
+  sha256: c1ca2ea3a5163403310a2bf0026a8404f33b61eb40dad7007b10b956ceb3e702
+  url: https://pypi.io/packages/source/n/nf-core/nf-core-1.8.tar.gz
+test:
+  commands:
+  - nf-core --help

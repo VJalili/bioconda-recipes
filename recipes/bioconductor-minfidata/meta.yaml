@@ -1,40 +1,35 @@
-{% set version = "0.32.0" %}
-{% set name = "minfiData" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: bb42743df596cde360a53642866f4aa4
+about:
+  description: Data from 6 samples across 2 groups from 450k methylation arrays.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/minfiData.html
+  license: Artistic-2.0
+  summary: Example data for the Illumina Methylation 450k array
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-minfidata
+  version: 0.32.0
 requirements:
   host:
-    - 'bioconductor-illuminahumanmethylation450kanno.ilmn12.hg19 >=0.6.0,<0.7.0'
-    - 'bioconductor-illuminahumanmethylation450kmanifest >=0.4.0,<0.5.0'
-    - 'bioconductor-minfi >=1.32.0,<1.33.0'
-    - r-base
+  - bioconductor-illuminahumanmethylation450kanno.ilmn12.hg19 >=0.6.0,<0.7.0
+  - bioconductor-illuminahumanmethylation450kmanifest >=0.4.0,<0.5.0
+  - bioconductor-minfi >=1.32.0,<1.33.0
+  - r-base
   run:
-    - 'bioconductor-illuminahumanmethylation450kanno.ilmn12.hg19 >=0.6.0,<0.7.0'
-    - 'bioconductor-illuminahumanmethylation450kmanifest >=0.4.0,<0.5.0'
-    - 'bioconductor-minfi >=1.32.0,<1.33.0'
-    - r-base
-    - curl
+  - bioconductor-illuminahumanmethylation450kanno.ilmn12.hg19 >=0.6.0,<0.7.0
+  - bioconductor-illuminahumanmethylation450kmanifest >=0.4.0,<0.5.0
+  - bioconductor-minfi >=1.32.0,<1.33.0
+  - r-base
+  - curl
+source:
+  md5: bb42743df596cde360a53642866f4aa4
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/minfiData_0.32.0.tar.gz
+  - https://bioarchive.galaxyproject.org/minfiData_0.32.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-minfidata/bioconductor-minfidata_0.32.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Example data for the Illumina Methylation 450k array'
-  description: 'Data from 6 samples across 2 groups from 450k methylation arrays.'
-
+  - $R -e "library('minfiData')"

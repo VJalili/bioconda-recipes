@@ -1,49 +1,44 @@
-{% set version = "1.32.0" %}
-{% set name = "cqn" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 12ff9ddc06c4cb3b46dc79b6c2995e5f
+about:
+  description: A normalization tool for RNA-Seq data, implementing the conditional
+    quantile normalization method.
+  home: https://bioconductor.org/packages/3.10/bioc/html/cqn.html
+  license: Artistic-2.0
+  summary: Conditional quantile normalization
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: scales, edgeR
-requirements:
-  host:
-    - 'bioconductor-preprocesscore >=1.48.0,<1.49.0'
-    - r-base
-    - r-mclust
-    - r-nor1mix
-    - r-quantreg
-  run:
-    - 'bioconductor-preprocesscore >=1.48.0,<1.49.0'
-    - r-base
-    - r-mclust
-    - r-nor1mix
-    - r-quantreg
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Conditional quantile normalization'
-  description: 'A normalization tool for RNA-Seq data, implementing the conditional quantile normalization method.'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:cqn
+  - biotools:cqn
   parent_recipe:
     name: bioconductor-cqn
     path: recipes/bioconductor-cqn
     version: 1.26.0
-
+package:
+  name: bioconductor-cqn
+  version: 1.32.0
+requirements:
+  host:
+  - bioconductor-preprocesscore >=1.48.0,<1.49.0
+  - r-base
+  - r-mclust
+  - r-nor1mix
+  - r-quantreg
+  run:
+  - bioconductor-preprocesscore >=1.48.0,<1.49.0
+  - r-base
+  - r-mclust
+  - r-nor1mix
+  - r-quantreg
+source:
+  md5: 12ff9ddc06c4cb3b46dc79b6c2995e5f
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/cqn_1.32.0.tar.gz
+  - https://bioarchive.galaxyproject.org/cqn_1.32.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-cqn/bioconductor-cqn_1.32.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('cqn')"

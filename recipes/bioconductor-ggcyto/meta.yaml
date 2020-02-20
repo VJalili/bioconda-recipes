@@ -1,62 +1,59 @@
-{% set version = "1.14.0" %}
-{% set name = "ggcyto" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 9cc52dc34b4b31dc69be8f58d2561365
+about:
+  description: With the dedicated fortify method implemented for flowSet, ncdfFlowSet
+    and GatingSet classes, both raw and gated flow cytometry data can be plotted directly
+    with ggplot. ggcyto wrapper and some customed layers also make it easy to add
+    gates and population statistics to the plot.
+  home: https://bioconductor.org/packages/3.10/bioc/html/ggcyto.html
+  license: Artistic-2.0
+  summary: Visualize Cytometry data with ggplot
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: testthat, flowWorkspaceData, knitr, rmarkdown, flowStats, openCyto, flowViz, ggridges, vdiffr
-requirements:
-  host:
-    - 'bioconductor-flowcore >=1.52.0,<1.53.0'
-    - 'bioconductor-flowworkspace >=3.34.0,<3.35.0'
-    - 'bioconductor-ncdfflow >=2.32.0,<2.33.0'
-    - r-base
-    - r-data.table
-    - 'r-ggplot2 >=2.2.1.9000'
-    - r-gridextra
-    - r-plyr
-    - r-rcolorbrewer
-    - r-rlang
-    - r-scales
-  run:
-    - 'bioconductor-flowcore >=1.52.0,<1.53.0'
-    - 'bioconductor-flowworkspace >=3.34.0,<3.35.0'
-    - 'bioconductor-ncdfflow >=2.32.0,<2.33.0'
-    - r-base
-    - r-data.table
-    - 'r-ggplot2 >=2.2.1.9000'
-    - r-gridextra
-    - r-plyr
-    - r-rcolorbrewer
-    - r-rlang
-    - r-scales
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Visualize Cytometry data with ggplot'
-  description: 'With the dedicated fortify method implemented for flowSet, ncdfFlowSet and GatingSet classes, both raw and gated flow cytometry data can be plotted directly with ggplot. ggcyto wrapper and some customed layers also make it easy to add gates and population statistics to the plot.'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:ggcyto
-    - doi:10.1038/nmeth.3252
+  - biotools:ggcyto
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-ggcyto
     path: recipes/bioconductor-ggcyto
     version: 1.8.2
-
+package:
+  name: bioconductor-ggcyto
+  version: 1.14.0
+requirements:
+  host:
+  - bioconductor-flowcore >=1.52.0,<1.53.0
+  - bioconductor-flowworkspace >=3.34.0,<3.35.0
+  - bioconductor-ncdfflow >=2.32.0,<2.33.0
+  - r-base
+  - r-data.table
+  - r-ggplot2 >=2.2.1.9000
+  - r-gridextra
+  - r-plyr
+  - r-rcolorbrewer
+  - r-rlang
+  - r-scales
+  run:
+  - bioconductor-flowcore >=1.52.0,<1.53.0
+  - bioconductor-flowworkspace >=3.34.0,<3.35.0
+  - bioconductor-ncdfflow >=2.32.0,<2.33.0
+  - r-base
+  - r-data.table
+  - r-ggplot2 >=2.2.1.9000
+  - r-gridextra
+  - r-plyr
+  - r-rcolorbrewer
+  - r-rlang
+  - r-scales
+source:
+  md5: 9cc52dc34b4b31dc69be8f58d2561365
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/ggcyto_1.14.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ggcyto_1.14.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-ggcyto/bioconductor-ggcyto_1.14.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('ggcyto')"

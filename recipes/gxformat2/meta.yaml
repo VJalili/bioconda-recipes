@@ -1,35 +1,27 @@
-{% set name = "gxformat2" %}
-{% set version = "0.10.1" %}
-
-package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
-
-source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 247ffe5387b2148675e9a7a740e678028eb217942b47894597cc9c10d5b18a0e
-
-build:
-  number: 0
-  noarch: python
-  preserve_egg_dir: True
-  script: python -m pip install --no-deps --ignore-installed .
-
-requirements:
-  host:
-    - python
-    - pip
-  run:
-    - python
-    - pyyaml
-    - bioblend
-
-test:
-  imports:
-    - gxformat2
-
 about:
   home: https://github.com/jmchilton/gxformat2
   license: Academic Free License (AFL)
-  summary: 'Galaxy Workflow Format 2 Descriptions'
   license_family: OTHER
+  summary: Galaxy Workflow Format 2 Descriptions
+build:
+  noarch: python
+  number: 0
+  preserve_egg_dir: true
+  script: python -m pip install --no-deps --ignore-installed .
+package:
+  name: gxformat2
+  version: 0.10.1
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - pyyaml
+  - bioblend
+source:
+  sha256: 247ffe5387b2148675e9a7a740e678028eb217942b47894597cc9c10d5b18a0e
+  url: https://pypi.io/packages/source/g/gxformat2/gxformat2-0.10.1.tar.gz
+test:
+  imports:
+  - gxformat2

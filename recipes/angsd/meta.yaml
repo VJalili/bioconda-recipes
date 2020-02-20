@@ -1,38 +1,29 @@
-{% set version = "0.931" %}
-{% set sha256 = "9f1a7e769ca2b5b3df33c0c27313cba4cb7af9b2c41213b5cc10a88d85635350" %}
-
-package:
-  name: angsd
-  version: {{ version }}
-
-source:
-  url: https://github.com/ANGSD/angsd/archive/{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-
-build:
-  number: 1
-  skip: True # [osx]
-
-requirements:
-  build:
-    - {{ compiler('cxx') }}
-    - {{ compiler('c') }}
-  host:
-    - htslib
-  run:
-    - htslib
-
-test:
-  commands:
-    - angsd 2>&1 | grep "angsd version"
-    - thetaStat 2>&1 | grep "neutrality test"
-
 about:
   home: http://www.popgen.dk/angsd/index.php/ANGSD
   license: GPLv3, MIT
-  summary: "ANGSD: Analysis of next generation Sequencing Data"
-
+  summary: 'ANGSD: Analysis of next generation Sequencing Data'
+build:
+  number: 1
+  skip: true
 extra:
   identifiers:
-    - biotools:angsd
-    - doi:10.1186/s12859-014-0356-4
+  - biotools:angsd
+  - doi:10.1186/s12859-014-0356-4
+package:
+  name: angsd
+  version: 0.931
+requirements:
+  build:
+  - None
+  - None
+  host:
+  - htslib
+  run:
+  - htslib
+source:
+  sha256: 9f1a7e769ca2b5b3df33c0c27313cba4cb7af9b2c41213b5cc10a88d85635350
+  url: https://github.com/ANGSD/angsd/archive/0.931.tar.gz
+test:
+  commands:
+  - angsd 2>&1 | grep "angsd version"
+  - thetaStat 2>&1 | grep "neutrality test"

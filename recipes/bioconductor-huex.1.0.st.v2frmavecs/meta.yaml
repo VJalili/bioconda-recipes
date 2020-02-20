@@ -1,35 +1,30 @@
-{% set version = "1.1.0" %}
-{% set name = "huex.1.0.st.v2frmavecs" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 982935d07b526ff555790e309fe4147e
+about:
+  description: This package was created by frmaTools version 1.9.2.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/huex.1.0.st.v2frmavecs.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Vectors used by frma for microarrays of type huex.1.0.st.v2
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-huex.1.0.st.v2frmavecs
+  version: 1.1.0
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
-    - curl
+  - r-base
+  - curl
+source:
+  md5: 982935d07b526ff555790e309fe4147e
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/huex.1.0.st.v2frmavecs_1.1.0.tar.gz
+  - https://bioarchive.galaxyproject.org/huex.1.0.st.v2frmavecs_1.1.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-huex.1.0.st.v2frmavecs/bioconductor-huex.1.0.st.v2frmavecs_1.1.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: 'GPL (>= 2)'
-  summary: 'Vectors used by frma for microarrays of type huex.1.0.st.v2'
-  description: 'This package was created by frmaTools version 1.9.2.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('huex.1.0.st.v2frmavecs')"

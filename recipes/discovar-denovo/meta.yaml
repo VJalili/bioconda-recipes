@@ -1,25 +1,21 @@
 about:
   home: https://www.broadinstitute.org/software/discovar/
-  license: 'MIT'
-  summary: 'Suitable for de novo assembly of large and small genomes.'
-
+  license: MIT
+  summary: Suitable for de novo assembly of large and small genomes.
 build:
   number: 2
-  skip: True # [osx]
-
+  skip: true
 package:
   name: discovardenovo
   version: '52488'
-
 requirements:
   build:
-    - {{ compiler('c') }}
+  - None
   host:
-    - jemalloc
-    - zlib
+  - jemalloc
+  - zlib
   run:
-    - jemalloc
-    - zlib
-
+  - jemalloc
+  - zlib
 source:
   url: ftp://ftp.broadinstitute.org/pub/crd/DiscovarDeNovo/latest_source_code/discovardenovo-52488.tar.gz

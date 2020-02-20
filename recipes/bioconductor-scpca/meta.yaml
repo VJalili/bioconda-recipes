@@ -1,57 +1,55 @@
-{% set version = "1.0.0" %}
-{% set name = "scPCA" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: da5ad612b6b0ee32ca77b1fd3200f1dd
+about:
+  description: A toolbox for sparse contrastive principal component analysis (scPCA)
+    of high-dimensional biological data. scPCA combines the stability and interpretability
+    of sparse PCA with contrastive PCA's ability to disentangle biological signal
+    from techical noise through the use of control data. Also implements and extends
+    cPCA.
+  home: https://bioconductor.org/packages/3.10/bioc/html/scPCA.html
+  license: MIT + file LICENSE
+  license_file: LICENSE
+  summary: Sparse Contrastive Principal Component Analysis
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: testthat (>= 2.1.0), covr, knitr, rmarkdown, BiocStyle, Matrix, ggplot2, ggpubr, splatter, SingleCellExperiment
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-scpca
+  version: 1.0.0
 requirements:
   host:
-    - 'bioconductor-biocparallel >=1.20.0,<1.21.0'
-    - r-assertthat
-    - r-base
-    - r-cluster
-    - r-dplyr
-    - r-elasticnet
-    - r-kernlab
-    - r-origami
-    - r-purrr
-    - r-rdpack
-    - r-stringr
-    - r-tibble
+  - bioconductor-biocparallel >=1.20.0,<1.21.0
+  - r-assertthat
+  - r-base
+  - r-cluster
+  - r-dplyr
+  - r-elasticnet
+  - r-kernlab
+  - r-origami
+  - r-purrr
+  - r-rdpack
+  - r-stringr
+  - r-tibble
   run:
-    - 'bioconductor-biocparallel >=1.20.0,<1.21.0'
-    - r-assertthat
-    - r-base
-    - r-cluster
-    - r-dplyr
-    - r-elasticnet
-    - r-kernlab
-    - r-origami
-    - r-purrr
-    - r-rdpack
-    - r-stringr
-    - r-tibble
+  - bioconductor-biocparallel >=1.20.0,<1.21.0
+  - r-assertthat
+  - r-base
+  - r-cluster
+  - r-dplyr
+  - r-elasticnet
+  - r-kernlab
+  - r-origami
+  - r-purrr
+  - r-rdpack
+  - r-stringr
+  - r-tibble
+source:
+  md5: da5ad612b6b0ee32ca77b1fd3200f1dd
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/scPCA_1.0.0.tar.gz
+  - https://bioarchive.galaxyproject.org/scPCA_1.0.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-scpca/bioconductor-scpca_1.0.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'MIT + file LICENSE'
-  summary: 'Sparse Contrastive Principal Component Analysis'
-  description: 'A toolbox for sparse contrastive principal component analysis (scPCA) of high-dimensional biological data. scPCA combines the stability and interpretability of sparse PCA with contrastive PCA''s ability to disentangle biological signal from techical noise through the use of control data. Also implements and extends cPCA.'
-  license_file: LICENSE
-
+  - $R -e "library('scPCA')"

@@ -1,38 +1,34 @@
-{% set version = "1.34.0" %}
-{% set name = "ENVISIONQuery" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: a6e78abebf4c16f75cb48ad4d040db89
+about:
+  description: Tools to retrieve data from ENVISION, the Database for Annotation,
+    Visualization and Integrated Discovery portal
+  home: https://bioconductor.org/packages/3.10/bioc/html/ENVISIONQuery.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Retrieval from the ENVISION bioinformatics data portal into R
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-envisionquery
+  version: 1.34.0
 requirements:
   host:
-    - r-base
-    - r-rjava
-    - r-xml
+  - r-base
+  - r-rjava
+  - r-xml
   run:
-    - r-base
-    - r-rjava
-    - r-xml
+  - r-base
+  - r-rjava
+  - r-xml
+source:
+  md5: a6e78abebf4c16f75cb48ad4d040db89
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/ENVISIONQuery_1.34.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ENVISIONQuery_1.34.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-envisionquery/bioconductor-envisionquery_1.34.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-2
-  summary: 'Retrieval from the ENVISION bioinformatics data portal into R'
-  description: 'Tools to retrieve data from ENVISION, the Database for Annotation, Visualization and Integrated Discovery portal'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
-
+  - $R -e "library('ENVISIONQuery')"

@@ -1,41 +1,33 @@
-package:
-  name: fitter
-  version: "1.2.0"
-
-source:
-  url: https://files.pythonhosted.org/packages/c3/9c/d4ffbc1e34a7bea4a8fcb66204060220fe33654c8722baaac0ff546d3c56/fitter-1.2.0.tar.gz
-  sha256: bb811846e877ac548e81a4b26d5e790258ebe4ce97106e2a60b4dc10426da964
-
-build:
-  noarch: python
-  number: 0
-
-requirements:
-  host:
-    - python
-    - setuptools
-    - matplotlib
-    - numpy
-    - scipy
-    - pandas
-
-  run:
-    - python
-    - matplotlib
-    - numpy
-    - scipy
-    - pandas
-
-test:
-  imports:
-    - fitter
-
 about:
   home: http://github.com/cokelaer/fitter
   license: GNU Library or Lesser General Public License (LGPL)
-  summary: 'A tool to fit data to many distributions and best one(s)'
-
+  summary: A tool to fit data to many distributions and best one(s)
+build:
+  noarch: python
+  number: 0
 extra:
   container:
-    # matplotlib depends on libGL.so.1 from the system
     extended-base: true
+package:
+  name: fitter
+  version: 1.2.0
+requirements:
+  host:
+  - python
+  - setuptools
+  - matplotlib
+  - numpy
+  - scipy
+  - pandas
+  run:
+  - python
+  - matplotlib
+  - numpy
+  - scipy
+  - pandas
+source:
+  sha256: bb811846e877ac548e81a4b26d5e790258ebe4ce97106e2a60b4dc10426da964
+  url: https://files.pythonhosted.org/packages/c3/9c/d4ffbc1e34a7bea4a8fcb66204060220fe33654c8722baaac0ff546d3c56/fitter-1.2.0.tar.gz
+test:
+  imports:
+  - fitter

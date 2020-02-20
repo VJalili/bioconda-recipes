@@ -1,44 +1,41 @@
-{% set version = "1.24.0" %}
-{% set name = "ChimpHumanBrainData" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 1898742d9d353f8800a84b6b54b86fb2
+about:
+  description: This data package contains chimp and human brain data extracted from
+    the ArrayExpress accession E-AFMX-2.  Both human and chimp RNAs were run on human
+    hgu95av2 Affymetrix arrays. It is a useful dataset for tutorials.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/ChimpHumanBrainData.html
+  license: MIT
+  summary: Chimp and human brain data package
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-chimphumanbraindata
+  version: 1.24.0
 requirements:
   host:
-    - 'bioconductor-affy >=1.64.0,<1.65.0'
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - 'bioconductor-qvalue >=2.18.0,<2.19.0'
-    - r-base
-    - r-hexbin
-    - r-statmod
+  - bioconductor-affy >=1.64.0,<1.65.0
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - bioconductor-qvalue >=2.18.0,<2.19.0
+  - r-base
+  - r-hexbin
+  - r-statmod
   run:
-    - 'bioconductor-affy >=1.64.0,<1.65.0'
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - 'bioconductor-qvalue >=2.18.0,<2.19.0'
-    - r-base
-    - r-hexbin
-    - r-statmod
-    - curl
+  - bioconductor-affy >=1.64.0,<1.65.0
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - bioconductor-qvalue >=2.18.0,<2.19.0
+  - r-base
+  - r-hexbin
+  - r-statmod
+  - curl
+source:
+  md5: 1898742d9d353f8800a84b6b54b86fb2
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/ChimpHumanBrainData_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ChimpHumanBrainData_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-chimphumanbraindata/bioconductor-chimphumanbraindata_1.24.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: MIT
-  summary: 'Chimp and human brain data package'
-  description: 'This data package contains chimp and human brain data extracted from the ArrayExpress accession E-AFMX-2.  Both human and chimp RNAs were run on human hgu95av2 Affymetrix arrays. It is a useful dataset for tutorials.'
-
+  - $R -e "library('ChimpHumanBrainData')"

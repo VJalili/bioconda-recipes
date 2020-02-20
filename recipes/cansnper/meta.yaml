@@ -1,18 +1,14 @@
-{% set name = "cansnper" %}
-{% set version = "1.0.8" %}
-
-package:
-  name: {{ name|lower }}
-  version: {{ version }}
-
+about:
+  home: https://github.com/adrlar/CanSNPer/
+  license: GPLv3
+  license_file: LICENSE
+  summary: A hierarchical genotype classifier of clonal pathogens.
 build:
   number: 1
-  script: {{ PYTHON }} -m pip install . --ignore-installed --no-deps -vv
-
-source:
-  url: https://github.com/adrlar/CanSNPer/archive/v{{ version }}.tar.gz
-  md5: 3d46bb7caa3d6bdbb9c5d583636cb5e2
-
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: cansnper
+  version: 1.0.8
 requirements:
   host:
   - python <3
@@ -22,13 +18,9 @@ requirements:
   - ete2
   - numpy
   - pyqt 4.*
-
+source:
+  md5: 3d46bb7caa3d6bdbb9c5d583636cb5e2
+  url: https://github.com/adrlar/CanSNPer/archive/v1.0.8.tar.gz
 test:
   commands:
-    - CanSNPer --help
-
-about:
-  home: https://github.com/adrlar/CanSNPer/
-  license: GPLv3
-  license_file: LICENSE
-  summary: 'A hierarchical genotype classifier of clonal pathogens.'
+  - CanSNPer --help

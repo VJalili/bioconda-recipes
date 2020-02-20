@@ -1,34 +1,24 @@
-{% set name = "spoa" %}
-{% set version = "3.0.1" %}
-
-package:
-  name: {{ name }}
-  version: {{ version }}
-
-build:
-  number: 0
-
-source:
-  # This needs the submodules downloaded as well
-  git_url: https://github.com/rvaser/{{ name }}
-  git_tag: {{ version }}
-  sha256: unused
-
-requirements:
-  build:
-    - {{ compiler('cxx') }}
-    - cmake
-
-test:
-  commands:
-    - spoa --help
-
 about:
   home: https://github.com/rvaser/spoa
   license: MIT
   license_file: LICENSE
-  summary: SIMD partial order alignment tool/library 
-
+  summary: SIMD partial order alignment tool/library
+build:
+  number: 0
 extra:
   skip-lints:
-    - uses_vcs_url
+  - uses_vcs_url
+package:
+  name: spoa
+  version: 3.0.1
+requirements:
+  build:
+  - None
+  - cmake
+source:
+  git_tag: 3.0.1
+  git_url: https://github.com/rvaser/spoa
+  sha256: unused
+test:
+  commands:
+  - spoa --help

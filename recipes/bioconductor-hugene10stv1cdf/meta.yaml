@@ -1,37 +1,33 @@
-{% set version = "2.18.0" %}
-{% set name = "hugene10stv1cdf" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: f1fb1c7076ac40b9e709f18e645d6181
+about:
+  description: A package containing an environment representing the HuGene-1_0-st-v1.cdf
+    file.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/hugene10stv1cdf.html
+  license: LGPL
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: hugene10stv1cdf
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-hugene10stv1cdf
+  version: 2.18.0
 requirements:
   host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
   run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
-    - curl
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
+  - curl
+source:
+  md5: f1fb1c7076ac40b9e709f18e645d6181
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/hugene10stv1cdf_2.18.0.tar.gz
+  - https://bioarchive.galaxyproject.org/hugene10stv1cdf_2.18.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hugene10stv1cdf/bioconductor-hugene10stv1cdf_2.18.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: LGPL
-  summary: hugene10stv1cdf
-  description: 'A package containing an environment representing the HuGene-1_0-st-v1.cdf file.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-3'
-
+  - $R -e "library('hugene10stv1cdf')"

@@ -1,36 +1,33 @@
-{% set version = "1.00.0" %}
-{% set name = "silva128.1MgDb" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: f73cc038441a0a166c07582eec9a77b4
+about:
+  description: Metagenome annotation package with for the SILVA SSR rRNA database
+    release 128.1, Bacterial and Archeal sequences. Contains a MgDb-class object,
+    defined in the metagenomeFeatures package.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/silva128.1MgDb.html
+  license: Artistic-2.0
+  summary: SILVA SSR rRNA release 128.1 Annotation Data
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-silva128.1mgdb
+  version: 1.00.0
 requirements:
   host:
-    - 'bioconductor-metagenomefeatures >=2.6.0,<2.7.0'
-    - r-base
+  - bioconductor-metagenomefeatures >=2.6.0,<2.7.0
+  - r-base
   run:
-    - 'bioconductor-metagenomefeatures >=2.6.0,<2.7.0'
-    - r-base
-    - curl
+  - bioconductor-metagenomefeatures >=2.6.0,<2.7.0
+  - r-base
+  - curl
+source:
+  md5: f73cc038441a0a166c07582eec9a77b4
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/silva128.1MgDb_1.00.0.tar.gz
+  - https://bioarchive.galaxyproject.org/silva128.1MgDb_1.00.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-silva128.1mgdb/bioconductor-silva128.1mgdb_1.00.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'SILVA SSR rRNA release 128.1 Annotation Data'
-  description: 'Metagenome annotation package with for the SILVA SSR rRNA database release 128.1, Bacterial and Archeal sequences. Contains a MgDb-class object, defined in the metagenomeFeatures package.'
-
+  - $R -e "library('silva128.1MgDb')"

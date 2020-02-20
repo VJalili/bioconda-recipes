@@ -1,36 +1,32 @@
-{% set version = "3.1.2" %}
-{% set name = "hom.At.inp.db" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 9d96d343202848e129b96e5e234bd269
+about:
+  description: Homology information for Arabidopsis thaliana from Inparanoid assembled
+    using data from public repositories
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/hom.At.inp.db.html
+  license: Artistic-2.0
+  summary: Homology information for Arabidopsis thaliana from Inparanoid
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-hom.at.inp.db
+  version: 3.1.2
 requirements:
   host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
   run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
-    - curl
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
+  - curl
+source:
+  md5: 9d96d343202848e129b96e5e234bd269
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/hom.At.inp.db_3.1.2.tar.gz
+  - https://bioarchive.galaxyproject.org/hom.At.inp.db_3.1.2.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hom.at.inp.db/bioconductor-hom.at.inp.db_3.1.2_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Homology information for Arabidopsis thaliana from Inparanoid'
-  description: 'Homology information for Arabidopsis thaliana from Inparanoid assembled using data from public repositories'
-
+  - $R -e "library('hom.At.inp.db')"

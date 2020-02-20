@@ -1,31 +1,26 @@
-package:
-  name: epydoc
-  version: "3.0.1"
-
-source:
-  url: https://pypi.python.org/packages/source/e/epydoc/epydoc-3.0.1.tar.gz
-  md5: 36407974bd5da2af00bf90ca27feeb44
-
-build:
-  noarch: python
-  number: 1
-  script: {{ PYTHON }} -m pip install . --ignore-installed --no-deps -vv
-
-requirements:
-  host:
-    - python <3
-    - pip
-  run:
-    - python <3
-
-test:
-  imports:
-    - epydoc
-    - epydoc.docwriter
-    - epydoc.markup
-    - epydoc.test
-
 about:
   home: http://epydoc.sourceforge.net
   license: MIT License
-  summary: "Edward Loper's API Documentation Generation Tool"
+  summary: Edward Loper's API Documentation Generation Tool
+build:
+  noarch: python
+  number: 1
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: epydoc
+  version: 3.0.1
+requirements:
+  host:
+  - python <3
+  - pip
+  run:
+  - python <3
+source:
+  md5: 36407974bd5da2af00bf90ca27feeb44
+  url: https://pypi.python.org/packages/source/e/epydoc/epydoc-3.0.1.tar.gz
+test:
+  imports:
+  - epydoc
+  - epydoc.docwriter
+  - epydoc.markup
+  - epydoc.test

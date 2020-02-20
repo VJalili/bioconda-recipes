@@ -1,49 +1,45 @@
-{% set version = "1.4.0" %}
-{% set name = "NBSplice" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: b955adacfd44c949df6b6edbbe1c0a22
+about:
+  description: The package proposes a differential splicing evaluation method based
+    on isoform quantification. It applies generalized linear models with negative
+    binomial distribution to infer changes in isoform relative expression.
+  home: https://bioconductor.org/packages/3.10/bioc/html/NBSplice.html
+  license: GPL (>=2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Negative Binomial Models to detect Differential Splicing
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: knitr, RUnit, BiocGenerics
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-nbsplice
+  version: 1.4.0
 requirements:
   host:
-    - 'bioconductor-biocparallel >=1.20.0,<1.21.0'
-    - 'bioconductor-edger >=3.28.0,<3.29.0'
-    - r-base
-    - r-car
-    - r-ggplot2
-    - r-mass
-    - r-mppa
-    - r-reshape2
+  - bioconductor-biocparallel >=1.20.0,<1.21.0
+  - bioconductor-edger >=3.28.0,<3.29.0
+  - r-base
+  - r-car
+  - r-ggplot2
+  - r-mass
+  - r-mppa
+  - r-reshape2
   run:
-    - 'bioconductor-biocparallel >=1.20.0,<1.21.0'
-    - 'bioconductor-edger >=3.28.0,<3.29.0'
-    - r-base
-    - r-car
-    - r-ggplot2
-    - r-mass
-    - r-mppa
-    - r-reshape2
+  - bioconductor-biocparallel >=1.20.0,<1.21.0
+  - bioconductor-edger >=3.28.0,<3.29.0
+  - r-base
+  - r-car
+  - r-ggplot2
+  - r-mass
+  - r-mppa
+  - r-reshape2
+source:
+  md5: b955adacfd44c949df6b6edbbe1c0a22
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/NBSplice_1.4.0.tar.gz
+  - https://bioarchive.galaxyproject.org/NBSplice_1.4.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-nbsplice/bioconductor-nbsplice_1.4.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>=2)'
-  summary: 'Negative Binomial Models to detect Differential Splicing'
-  description: 'The package proposes a differential splicing evaluation method based on isoform quantification. It applies generalized linear models with negative binomial distribution to infer changes in isoform relative expression.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('NBSplice')"

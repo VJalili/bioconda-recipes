@@ -1,40 +1,35 @@
-{% set version = "1.4.0" %}
-{% set name = "Wrench" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 3f161aa73e7c041cde0995df9a2271b1
+about:
+  description: Wrench is a package for normalization sparse genomic count data, like
+    that arising from 16s metagenomic surveys.
+  home: https://bioconductor.org/packages/3.10/bioc/html/Wrench.html
+  license: Artistic-2.0
+  summary: Wrench normalization for sparse count data
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: knitr, rmarkdown, metagenomeSeq, DESeq2, edgeR
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-wrench
+  version: 1.4.0
 requirements:
   host:
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - r-base
-    - r-locfit
-    - r-matrixstats
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - r-base
+  - r-locfit
+  - r-matrixstats
   run:
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - r-base
-    - r-locfit
-    - r-matrixstats
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - r-base
+  - r-locfit
+  - r-matrixstats
+source:
+  md5: 3f161aa73e7c041cde0995df9a2271b1
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/Wrench_1.4.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Wrench_1.4.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-wrench/bioconductor-wrench_1.4.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Wrench normalization for sparse count data'
-  description: 'Wrench is a package for normalization sparse genomic count data, like that arising from 16s metagenomic surveys.'
-
+  - $R -e "library('Wrench')"

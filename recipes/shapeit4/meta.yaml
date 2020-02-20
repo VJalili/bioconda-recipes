@@ -1,41 +1,33 @@
-{% set version = "4.1" %}
-
-package:
-  name: shapeit4
-  version: {{ version }}
-
-source:
-  url: https://github.com/odelaneau/shapeit4/archive/v{{ version }}.tar.gz
-  sha256: f95c905f26d394f55268b873906370415a56009bddaacddbe1bd9452b0c0bd4a
-  patches:
-    - patch
-
-build:
-  skip: True # [osx]
-  number: 0
-
-requirements:
-  build:
-    - {{ compiler('cxx') }}
-  host:
-    - boost-cpp
-    - bzip2
-    - htslib
-  run:
-    - boost-cpp
-    - bzip2
-    - htslib
-
-test:
-  commands:
-    - shapeit4 --help
-
 about:
   home: https://odelaneau.github.io/shapeit4/
   license: MIT
   license_file: LICENSE
   summary: fast and accurate method for estimation of haplotypes (phasing)
-
+build:
+  number: 0
+  skip: true
 extra:
   identifiers:
-    - doi:10.1101/493403
+  - doi:10.1101/493403
+package:
+  name: shapeit4
+  version: 4.1
+requirements:
+  build:
+  - None
+  host:
+  - boost-cpp
+  - bzip2
+  - htslib
+  run:
+  - boost-cpp
+  - bzip2
+  - htslib
+source:
+  patches:
+  - patch
+  sha256: f95c905f26d394f55268b873906370415a56009bddaacddbe1bd9452b0c0bd4a
+  url: https://github.com/odelaneau/shapeit4/archive/v4.1.tar.gz
+test:
+  commands:
+  - shapeit4 --help

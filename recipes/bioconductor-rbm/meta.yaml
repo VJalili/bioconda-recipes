@@ -1,46 +1,42 @@
-{% set version = "1.18.0" %}
-{% set name = "RBM" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: dffc19e85a866f5bcb9c1dad87c4e789
+about:
+  description: Use A Resampling-Based Empirical Bayes Approach to Assess Differential
+    Expression in Two-Color Microarrays and RNA-Seq data sets.
+  home: https://bioconductor.org/packages/3.10/bioc/html/RBM.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: 'RBM: a R package for microarray and RNA-Seq data analysis'
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-requirements:
-  host:
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - 'bioconductor-marray >=1.64.0,<1.65.0'
-    - r-base
-  run:
-    - 'bioconductor-limma >=3.42.0,<3.43.0'
-    - 'bioconductor-marray >=1.64.0,<1.65.0'
-    - r-base
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>= 2)'
-  summary: 'RBM: a R package for microarray and RNA-Seq data analysis'
-  description: 'Use A Resampling-Based Empirical Bayes Approach to Assess Differential Expression in Two-Color Microarrays and RNA-Seq data sets.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:rbm
-    - doi:10.1038/nmeth.3252
+  - biotools:rbm
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-rbm
     path: recipes/bioconductor-rbm
     version: 1.12.0
-
+package:
+  name: bioconductor-rbm
+  version: 1.18.0
+requirements:
+  host:
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - bioconductor-marray >=1.64.0,<1.65.0
+  - r-base
+  run:
+  - bioconductor-limma >=3.42.0,<3.43.0
+  - bioconductor-marray >=1.64.0,<1.65.0
+  - r-base
+source:
+  md5: dffc19e85a866f5bcb9c1dad87c4e789
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/RBM_1.18.0.tar.gz
+  - https://bioarchive.galaxyproject.org/RBM_1.18.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rbm/bioconductor-rbm_1.18.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('RBM')"

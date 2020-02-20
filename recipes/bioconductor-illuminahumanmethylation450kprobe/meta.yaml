@@ -1,37 +1,32 @@
-{% set version = "2.0.6" %}
-{% set name = "IlluminaHumanMethylation450kprobe" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 84c31861fcbaddbf2a9c500b8d8d767d
+about:
+  description: Probe sequences from Illumina (ftp.illumina.com) for hm450 probes
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/IlluminaHumanMethylation450kprobe.html
+  license: LGPL
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: Probe sequence data for microarrays of type IlluminaHumanMethylation450k
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-illuminahumanmethylation450kprobe
+  version: 2.0.6
 requirements:
   host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
   run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
-    - curl
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
+  - curl
+source:
+  md5: 84c31861fcbaddbf2a9c500b8d8d767d
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/IlluminaHumanMethylation450kprobe_2.0.6.tar.gz
+  - https://bioarchive.galaxyproject.org/IlluminaHumanMethylation450kprobe_2.0.6.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-illuminahumanmethylation450kprobe/bioconductor-illuminahumanmethylation450kprobe_2.0.6_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: LGPL
-  summary: 'Probe sequence data for microarrays of type IlluminaHumanMethylation450k'
-  description: 'Probe sequences from Illumina (ftp.illumina.com) for hm450 probes'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-3'
-
+  - $R -e "library('IlluminaHumanMethylation450kprobe')"

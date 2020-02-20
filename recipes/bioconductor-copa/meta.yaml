@@ -1,38 +1,33 @@
-{% set version = "1.54.0" %}
-{% set name = "copa" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: ddc144b6b7270ce8806a589f893faa3e
+about:
+  description: COPA is a method to find genes that undergo recurrent fusion in a given
+    cancer type by finding pairs of genes that have mutually exclusive outlier profiles.
+  home: https://bioconductor.org/packages/3.10/bioc/html/copa.html
+  license: Artistic-2.0
+  summary: Functions to perform cancer outlier profile analysis.
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-# Suggests: colonCA
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-copa
+  version: 1.54.0
 requirements:
-  host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - r-base
-  run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - r-base
   build:
-    - {{ compiler('c') }}
-    - make
+  - None
+  - make
+  host:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - r-base
+  run:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - r-base
+source:
+  md5: ddc144b6b7270ce8806a589f893faa3e
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/copa_1.54.0.tar.gz
+  - https://bioarchive.galaxyproject.org/copa_1.54.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-copa/bioconductor-copa_1.54.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Functions to perform cancer outlier profile analysis.'
-  description: 'COPA is a method to find genes that undergo recurrent fusion in a given cancer type by finding pairs of genes that have mutually exclusive outlier profiles.'
-
+  - $R -e "library('copa')"

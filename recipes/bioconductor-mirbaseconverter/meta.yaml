@@ -1,35 +1,33 @@
-{% set version = "1.10.0" %}
-{% set name = "miRBaseConverter" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 8a5fdd8174ad6b5450b93a78dd0db28d
+about:
+  description: A comprehensive tool for converting and retrieving the miRNA Name,
+    Accession, Sequence, Version, History and Family information in different miRBase
+    versions. It can process a huge number of miRNAs in a short time without other
+    depends.
+  home: https://bioconductor.org/packages/3.10/bioc/html/miRBaseConverter.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: A comprehensive and high-efficiency tool for converting and retrieving
+    the information of miRNAs in different miRBase versions
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: BiocGenerics, RUnit, knitr, rtracklayer, utils
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-mirbaseconverter
+  version: 1.10.0
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
+  - r-base
+source:
+  md5: 8a5fdd8174ad6b5450b93a78dd0db28d
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/miRBaseConverter_1.10.0.tar.gz
+  - https://bioarchive.galaxyproject.org/miRBaseConverter_1.10.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mirbaseconverter/bioconductor-mirbaseconverter_1.10.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>= 2)'
-  summary: 'A comprehensive and high-efficiency tool for converting and retrieving the information of miRNAs in different miRBase versions'
-  description: 'A comprehensive tool for converting and retrieving the miRNA Name, Accession, Sequence, Version, History and Family information in different miRBase versions. It can process a huge number of miRNAs in a short time without other depends.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('miRBaseConverter')"

@@ -1,43 +1,40 @@
-{% set version = "1.54.0" %}
-{% set name = "vbmp" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: f8dd6ad948a8664020a905fa6fdca905
+about:
+  description: Variational Bayesian Multinomial Probit Regression with Gaussian Process
+    Priors. It estimates class membership posterior probability employing variational
+    and sparse approximation to the full posterior. This software also incorporates
+    feature weighting by means of Automatic Relevance Determination.
+  home: https://bioconductor.org/packages/3.10/bioc/html/vbmp.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Variational Bayesian Multinomial Probit Regression
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: Biobase (>= 2.5.5), statmod
-requirements:
-  host:
-    - r-base
-  run:
-    - r-base
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>= 2)'
-  summary: 'Variational Bayesian Multinomial Probit Regression'
-  description: 'Variational Bayesian Multinomial Probit Regression with Gaussian Process Priors. It estimates class membership posterior probability employing variational and sparse approximation to the full posterior. This software also incorporates feature weighting by means of Automatic Relevance Determination.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:vbmp
-    - doi:10.1093/bioinformatics/btm535
+  - biotools:vbmp
+  - doi:10.1093/bioinformatics/btm535
   parent_recipe:
     name: bioconductor-vbmp
     path: recipes/bioconductor-vbmp
     version: 1.48.0
-
+package:
+  name: bioconductor-vbmp
+  version: 1.54.0
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+source:
+  md5: f8dd6ad948a8664020a905fa6fdca905
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/vbmp_1.54.0.tar.gz
+  - https://bioarchive.galaxyproject.org/vbmp_1.54.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-vbmp/bioconductor-vbmp_1.54.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('vbmp')"

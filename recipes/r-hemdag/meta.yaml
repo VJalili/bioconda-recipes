@@ -1,59 +1,82 @@
-{% set version = '2.6.0' %}
-
-package:
-  name: r-hemdag
-  version: {{ version|replace("-", "_") }}
-
-source:
-  url:
-    - {{ cran_mirror }}/src/contrib/HEMDAG_{{ version }}.tar.gz
-    - {{ cran_mirror }}/src/contrib/Archive/HEMDAG/HEMDAG_{{ version }}.tar.gz
-  sha256: c9ae30a1afe2fd23d31d383af6a2365b28ea4605bd27bf00aaadaba042e53d57
-
-build:
-  number: 0
-  rpaths:
-    - lib/R/lib/
-    - lib/
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - make
-  host:
-    - r-base
-    - r-doparallel
-    - r-foreach
-    - r-plyr
-    - r-precrec
-    - bioconductor-graph
-    - bioconductor-rbgl
-    - bioconductor-preprocesscore
-  run:
-    - r-base
-    - r-doparallel
-    - r-foreach
-    - r-plyr
-    - r-precrec
-    - bioconductor-graph
-    - bioconductor-rbgl
-    - bioconductor-preprocesscore
-
-test:
-  commands:
-    - $R -e "library('HEMDAG')"
-
 about:
+  description: '[![Documentation Status](https://readthedocs.org/projects/hemdag/badge/?version=latest)](https://hemdag.readthedocs.io/en/latest/?badge=latest)
+
+
+    HEMDAG library:
+
+    * implements several Hierarchical Ensemble Methods (HEMs) for Directed Acyclic
+    Graphs (DAGs);
+
+    * reconciles flat predictions with the topology of the ontology;
+
+    * can enhance predictions of virtually any flat learning methods by taking into
+    account the hierarchical relationships between ontology classes;
+
+    * provides biologically meaningful predictions that always obey the true-path-rule,
+    the biological and logical rule that governs the internal coherence of biomedical
+    ontologies;
+
+    * is specifically designed for exploiting the hierarchical relationships of DAG-structured
+    taxonomies, such as the Human Phenotype Ontology (HPO) or the Gene Ontology (GO),
+    but can be safely applied to tree-structured taxonomies as well (e.g. FunCat),
+    since trees are DAGs;
+
+    * scales nicely both in terms of the complexity of the taxonomy and in the cardinality
+    of the examples;
+
+    * provides several utility functions to process and analyze graphs;
+
+    * provides several performance metrics to evaluate HEMs algorithms.
+
+
+    '
+  dev_url: https://github.com/marconotaro/HEMDAG
+  doc_url: https://hemdag.readthedocs.io
   home: https://github.com/marconotaro/HEMDAG
   license: GPL (>= 3)
   license_family: GPL3
-  summary: a collection of Hierarchical Ensemble Methods (HEMs) for Directed Acyclic Graphs (DAGs).
-  description: "[![Documentation Status](https://readthedocs.org/projects/hemdag/badge/?version=latest)](https://hemdag.readthedocs.io/en/latest/?badge=latest)\n\nHEMDAG library:\n* implements several Hierarchical Ensemble Methods (HEMs) for Directed Acyclic Graphs (DAGs);\n* reconciles flat predictions with the topology of the ontology;\n* can enhance predictions of virtually any flat learning methods by taking into account the hierarchical relationships between ontology classes;\n* provides biologically meaningful predictions that always obey the true-path-rule, the biological and logical rule that governs the internal coherence of biomedical ontologies;\n* is specifically designed for exploiting the hierarchical relationships of DAG-structured taxonomies, such as the Human Phenotype Ontology (HPO) or the Gene Ontology (GO), but can be safely applied to tree-structured taxonomies as well (e.g. FunCat), since trees are DAGs;\n* scales nicely both in terms of the complexity of the taxonomy and in the cardinality of the examples;\n* provides several utility functions to process and analyze graphs;\n* provides several performance metrics to evaluate HEMs algorithms.\n\n"
-  doc_url: https://hemdag.readthedocs.io
-  dev_url: https://github.com/marconotaro/HEMDAG
-
+  summary: a collection of Hierarchical Ensemble Methods (HEMs) for Directed Acyclic
+    Graphs (DAGs).
+build:
+  number: 0
+  rpaths:
+  - lib/R/lib/
+  - lib/
 extra:
   recipe-maintainers:
-    - marconotaro
-    - visze
+  - marconotaro
+  - visze
+package:
+  name: r-hemdag
+  version: 2.6.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - r-base
+  - r-doparallel
+  - r-foreach
+  - r-plyr
+  - r-precrec
+  - bioconductor-graph
+  - bioconductor-rbgl
+  - bioconductor-preprocesscore
+  run:
+  - r-base
+  - r-doparallel
+  - r-foreach
+  - r-plyr
+  - r-precrec
+  - bioconductor-graph
+  - bioconductor-rbgl
+  - bioconductor-preprocesscore
+source:
+  sha256: c9ae30a1afe2fd23d31d383af6a2365b28ea4605bd27bf00aaadaba042e53d57
+  url:
+  - /src/contrib/HEMDAG_2.6.0.tar.gz
+  - /src/contrib/Archive/HEMDAG/HEMDAG_2.6.0.tar.gz
+test:
+  commands:
+  - $R -e "library('HEMDAG')"

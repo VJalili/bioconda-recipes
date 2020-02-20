@@ -1,25 +1,23 @@
-{% set version = "2.1.0" %}
-
-package:
-  name: "python-sortedcontainers"
-  version: {{ version }}
-source:
-  url: https://files.pythonhosted.org/packages/29/e0/135df2e733790a3d3bcda970fd080617be8cea3bd98f411e76e6847c17ef/sortedcontainers-2.1.0.tar.gz
-  sha256: 974e9a32f56b17c1bac2aebd9dcf197f3eb9cd30553c5852a3187ad162e1a03a
+about:
+  dev_uri: http://www.grantjenks.com/docs/sortedcontainers/
+  home: https://pypi.org/project/sortedcontainers/#description
+  license: Apache 2.0
+  summary: sorted collections library, written in pure-Python, and fast as C-extensions
 build:
-  number: 0
   noarch: python
+  number: 0
+package:
+  name: python-sortedcontainers
+  version: 2.1.0
 requirements:
   host:
-    - python
-    - setuptools
+  - python
+  - setuptools
   run:
-    - python
+  - python
+source:
+  sha256: 974e9a32f56b17c1bac2aebd9dcf197f3eb9cd30553c5852a3187ad162e1a03a
+  url: https://files.pythonhosted.org/packages/29/e0/135df2e733790a3d3bcda970fd080617be8cea3bd98f411e76e6847c17ef/sortedcontainers-2.1.0.tar.gz
 test:
   imports:
-    - sortedcontainers
-about:
-  home: https://pypi.org/project/sortedcontainers/#description
-  dev_uri: http://www.grantjenks.com/docs/sortedcontainers/
-  license: Apache 2.0
-  summary: "sorted collections library, written in pure-Python, and fast as C-extensions"
+  - sortedcontainers

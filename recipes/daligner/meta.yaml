@@ -1,31 +1,27 @@
-package:
-  name: daligner
-  version: "1.0p2"
-
+about:
+  home: https://github.com/thegenemyers/DALIGNER
+  license: Custom
+  license_file: README.md
+  summary: 'DALIGNER: Find all significant local alignments between reads'
 build:
   number: 1
+package:
+  name: daligner
+  version: 1.0p2
+requirements:
+  build:
+  - None
+  run: null
 source:
   md5: b7678853c1533c7e2df9c03522df84e9
   url: https://github.com/thegenemyers/DALIGNER/archive/381fa920935a6bb469353cfc5c83d301579b5e04.tar.gz
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-  run:
-
 test:
   commands:
-    - daligner 2>&1 | grep Usage
-    - LAsort 2>&1 | grep Usage
-    - LAmerge 2>&1 | grep Usage
-    - LAshow 2>&1 | grep Usage
-    - LAcat 2>&1 | grep Usage
-    - LAsplit 2>&1 | grep Usage
-    - LAcheck 2>&1 | grep Usage
-    - HPC.daligner 2>&1 | grep Usage
-
-about:
-  home: 'https://github.com/thegenemyers/DALIGNER'
-  license: Custom
-  license_file: README.md
-  summary: "DALIGNER: Find all significant local alignments between reads"
+  - daligner 2>&1 | grep Usage
+  - LAsort 2>&1 | grep Usage
+  - LAmerge 2>&1 | grep Usage
+  - LAshow 2>&1 | grep Usage
+  - LAcat 2>&1 | grep Usage
+  - LAsplit 2>&1 | grep Usage
+  - LAcheck 2>&1 | grep Usage
+  - HPC.daligner 2>&1 | grep Usage

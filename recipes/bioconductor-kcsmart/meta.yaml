@@ -1,50 +1,45 @@
-{% set version = "2.44.0" %}
-{% set name = "KCsmart" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 9eb1672f1d888f70d5452e4182175fae
+about:
+  description: Multi sample aCGH analysis package using kernel convolution
+  home: https://bioconductor.org/packages/3.10/bioc/html/KCsmart.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Multi sample aCGH analysis package using kernel convolution
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-requirements:
-  host:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-multtest >=2.42.0,<2.43.0'
-    - 'bioconductor-siggenes >=1.60.0,<1.61.0'
-    - r-base
-    - r-kernsmooth
-  run:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-multtest >=2.42.0,<2.43.0'
-    - 'bioconductor-siggenes >=1.60.0,<1.61.0'
-    - r-base
-    - r-kernsmooth
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-3
-  summary: 'Multi sample aCGH analysis package using kernel convolution'
-  description: 'Multi sample aCGH analysis package using kernel convolution'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:kcsmart
-    - doi:10.1186/1756-0500-3-298
+  - biotools:kcsmart
+  - doi:10.1186/1756-0500-3-298
   parent_recipe:
     name: bioconductor-kcsmart
     path: recipes/bioconductor-kcsmart
     version: 2.38.0
-
+package:
+  name: bioconductor-kcsmart
+  version: 2.44.0
+requirements:
+  host:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-multtest >=2.42.0,<2.43.0
+  - bioconductor-siggenes >=1.60.0,<1.61.0
+  - r-base
+  - r-kernsmooth
+  run:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-multtest >=2.42.0,<2.43.0
+  - bioconductor-siggenes >=1.60.0,<1.61.0
+  - r-base
+  - r-kernsmooth
+source:
+  md5: 9eb1672f1d888f70d5452e4182175fae
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/KCsmart_2.44.0.tar.gz
+  - https://bioarchive.galaxyproject.org/KCsmart_2.44.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-kcsmart/bioconductor-kcsmart_2.44.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('KCsmart')"

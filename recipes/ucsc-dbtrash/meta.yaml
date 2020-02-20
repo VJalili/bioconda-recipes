@@ -1,44 +1,32 @@
-{% set package = "ucsc-dbtrash" %}
-{% set program = "dbTrash" %}
-{% set version = "377" %}
-{% set sha256 = "932f149c19641064a9cd3f2382cbb54b45a9292b8444792872d531346925d676" %}
-
-package:
-  name: "{{ package }}"
-  version: "{{ version }}"
-
-source:
-  url: "http://hgdownload.cse.ucsc.edu/admin/exe/userApps.v{{ version }}.src.tgz"
-  sha256: "{{ sha256 }}"
-  patches:
-    - "include.patch"
-
+about:
+  home: http://hgdownload.cse.ucsc.edu/admin/exe/
+  license: varies; see http://genome.ucsc.edu/license
+  summary: drop tables from a database older than specified N hours
 build:
   number: 0
-
+package:
+  name: ucsc-dbtrash
+  version: '377'
 requirements:
   build:
-    - {{ compiler('c') }}
+  - None
   host:
-    - libpng
-    - libuuid
-    - mysql-connector-c
-    - openssl
-    - zlib
-
+  - libpng
+  - libuuid
+  - mysql-connector-c
+  - openssl
+  - zlib
   run:
-    - libpng
-    - libuuid
-    - mysql-connector-c
-    - openssl
-    - zlib
-
+  - libpng
+  - libuuid
+  - mysql-connector-c
+  - openssl
+  - zlib
+source:
+  patches:
+  - include.patch
+  sha256: 932f149c19641064a9cd3f2382cbb54b45a9292b8444792872d531346925d676
+  url: http://hgdownload.cse.ucsc.edu/admin/exe/userApps.v377.src.tgz
 test:
   commands:
-    # just check for existence, because the individual packages have no unified behavior
-    - which {{ program }}
-
-about:
-  home: "http://hgdownload.cse.ucsc.edu/admin/exe/"
-  license: "varies; see http://genome.ucsc.edu/license"
-  summary: "drop tables from a database older than specified N hours"
+  - which dbTrash

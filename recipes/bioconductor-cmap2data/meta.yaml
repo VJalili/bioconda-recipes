@@ -1,40 +1,37 @@
-{% set version = "1.22.0" %}
-{% set name = "cMap2data" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 34b010efe6d556d6571f7c54f0746117
+about:
+  description: Data package which provides default drug profiles for the DrugVsDisease
+    package as well as associated gene lists and data clusters used by the DrugVsDisease
+    package.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/cMap2data.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Connectivity Map (version 2) Data
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-requirements:
-  host:
-    - r-base
-  run:
-    - r-base
-    - curl
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: GPL-3
-  summary: 'Connectivity Map (version 2) Data'
-  description: 'Data package which provides default drug profiles for the DrugVsDisease package as well as associated gene lists and data clusters used by the DrugVsDisease package.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   parent_recipe:
     name: bioconductor-cmap2data
     path: recipes/bioconductor-cmap2data
     version: 1.16.0
-
+package:
+  name: bioconductor-cmap2data
+  version: 1.22.0
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+  - curl
+source:
+  md5: 34b010efe6d556d6571f7c54f0746117
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/cMap2data_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/cMap2data_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-cmap2data/bioconductor-cmap2data_1.22.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('cMap2data')"

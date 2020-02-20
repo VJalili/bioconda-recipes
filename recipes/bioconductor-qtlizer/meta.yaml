@@ -1,43 +1,40 @@
-{% set version = "1.0.0" %}
-{% set name = "Qtlizer" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 7fd678781a5cb573e4cc50b12ec45f1c
+about:
+  description: This R package provides access to the Qtlizer web server. Qtlizer annotates
+    lists of common small variants (mainly SNPs) and genes in humans with associated
+    changes in gene expression using the most comprehensive database of published
+    quantitative trait loci (QTLs).
+  home: https://bioconductor.org/packages/3.10/bioc/html/Qtlizer.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: 'Qtlizer: comprehensive QTL annotation of GWAS results'
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: BiocStyle, testthat, knitr, rmarkdown
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-qtlizer
+  version: 1.0.0
 requirements:
   host:
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - r-base
-    - r-curl
-    - r-httr
-    - r-stringi
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - r-base
+  - r-curl
+  - r-httr
+  - r-stringi
   run:
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - r-base
-    - r-curl
-    - r-httr
-    - r-stringi
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - r-base
+  - r-curl
+  - r-httr
+  - r-stringi
+source:
+  md5: 7fd678781a5cb573e4cc50b12ec45f1c
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/Qtlizer_1.0.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Qtlizer_1.0.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-qtlizer/bioconductor-qtlizer_1.0.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-3
-  summary: 'Qtlizer: comprehensive QTL annotation of GWAS results'
-  description: 'This R package provides access to the Qtlizer web server. Qtlizer annotates lists of common small variants (mainly SNPs) and genes in humans with associated changes in gene expression using the most comprehensive database of published quantitative trait loci (QTLs).'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('Qtlizer')"

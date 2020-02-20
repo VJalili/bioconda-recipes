@@ -1,31 +1,19 @@
-{% set name = "OpenMS" %}
-{% set version = "2.4.0" %}
-package:
-  name: {{ name|lower  }}
-  version: {{ version  }}
-
-source:
-  url: https://github.com/OpenMS/OpenMS/releases/download/Release{{ version }}/OpenMS-{{ version }}-pyopenmsfixes.tar.gz
-  md5: 79445708ac44bdbae5ef95322e4b39b2
-  patches:
-    - c17.patch
-    - compilerflags.patch
-    - library.patch
-    - setup.py.patch
-    - apple-fixup-pyoms.patch
-
+about:
+  home: https://github.com/OpenMS/OpenMS
+  license: BSD
+  license_file: LICENSE
+  summary: OpenMS is an open-source software C++ library for LC-MS data management
+    and analyses
 build:
   number: 3
-
-requirements:
-  build:
-    - {{ compiler('cxx') }}
-    - cmake
-    - autoconf
-    - automake
-  host:
-    # openms-general
-    - llvm-openmp # [osx]
+extra:
+  identifiers:
+  - biotools:openms
+  - doi:10.1038/nmeth.3959
+outputs:
+- build:
+    run_exports:
+    - llvm-openmp
     - zlib
     - libtool
     - xerces-c
@@ -36,118 +24,117 @@ requirements:
     - bzip2
     - qt >=5.5
     - libsvm
-    - seqan-library ==1.4.2
     - coinmp
     - sqlite
-    # pyopenms
+    - libopenms 2.4.0
+  name: libopenms
+  requirements:
+    build:
+    - None
+    host:
+    - llvm-openmp
+    - zlib
+    - libtool
+    - xerces-c
+    - gsl
+    - boost
+    - eigen
+    - glpk
+    - bzip2
+    - qt >=5.5
+    - libsvm
+    - coinmp
+    - sqlite
+    run:
+    - llvm-openmp
+    - zlib
+    - libtool
+    - xerces-c
+    - gsl
+    - boost
+    - eigen
+    - glpk
+    - bzip2
+    - qt >=5.5
+    - libsvm
+    - coinmp
+    - sqlite
+  script: package_libopenms.sh
+  version: 2.4.0
+- name: openms-tools
+  requirements:
+    build:
+    - None
+    host:
+    - None
+    run:
+    - None
+  script: package_openms-tools.sh
+  test:
+    commands:
+    - OPENMS_DATA_PATH=${PREFIX}/share/OpenMS/ ${PREFIX}/bin/FileMerger --help
+  version: 2.4.0
+- name: pyopenms
+  requirements:
+    build:
+    - None
+    host:
+    - None
     - python
     - cython
     - autowrap ==0.18.1
     - numpy
     - pip
     - nose
-    
+    run:
+    - None
+    - python
+    - numpy
+  script: install_pyopenms.sh
+  test:
+    commands:
+    - python -c "import pyopenms; print(pyopenms.__version__)"
+  version: 2.4.0
+package:
+  name: openms
+  version: 2.4.0
+requirements:
+  build:
+  - None
+  - cmake
+  - autoconf
+  - automake
+  host:
+  - llvm-openmp
+  - zlib
+  - libtool
+  - xerces-c
+  - gsl
+  - boost
+  - eigen
+  - glpk
+  - bzip2
+  - qt >=5.5
+  - libsvm
+  - seqan-library ==1.4.2
+  - coinmp
+  - sqlite
+  - python
+  - cython
+  - autowrap ==0.18.1
+  - numpy
+  - pip
+  - nose
+source:
+  md5: 79445708ac44bdbae5ef95322e4b39b2
+  patches:
+  - c17.patch
+  - compilerflags.patch
+  - library.patch
+  - setup.py.patch
+  - apple-fixup-pyoms.patch
+  url: https://github.com/OpenMS/OpenMS/releases/download/Release2.4.0/OpenMS-2.4.0-pyopenmsfixes.tar.gz
 test:
   commands:
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
-
-outputs:
-  - name: libopenms
-    version: {{ version }}
-    script: package_libopenms.sh
-    requirements:
-        build:
-          - {{ compiler('cxx') }}
-        host:
-          - llvm-openmp # [osx]
-          - zlib
-          - libtool
-          - xerces-c
-          - gsl
-          - boost
-          - eigen
-          - glpk
-          - bzip2
-          - qt >=5.5
-          - libsvm
-          - coinmp
-          - sqlite
-        run:
-          - llvm-openmp # [osx]
-          - zlib
-          - libtool
-          - xerces-c
-          - gsl
-          - boost
-          - eigen
-          - glpk
-          - bzip2
-          - qt >=5.5
-          - libsvm
-          - coinmp
-          - sqlite
-    build:
-      run_exports:
-          - llvm-openmp # [osx]
-          - zlib
-          - libtool
-          - xerces-c
-          - gsl
-          - boost
-          - eigen
-          - glpk
-          - bzip2
-          - qt >=5.5
-          - libsvm
-          - coinmp
-          - sqlite
-          - libopenms {{ version }}
-
-  - name: openms-tools
-    version: {{ version }}
-    script: package_openms-tools.sh
-    requirements:
-      build:
-        - {{ compiler('cxx') }}
-      host:
-        - {{ pin_subpackage('libopenms', exact=True) }}
-      run:
-        - {{ pin_subpackage('libopenms', exact=True) }}
-    test:
-      commands:
-        - OPENMS_DATA_PATH=${PREFIX}/share/OpenMS/ ${PREFIX}/bin/FileMerger --help  
-
-  - name: pyopenms
-    version: {{ version }}
-    script: install_pyopenms.sh
-    requirements:
-      build:
-        - {{ compiler('cxx') }}
-      host:
-        - {{ pin_subpackage('libopenms', exact=True) }}
-        - python
-        - cython
-        - autowrap ==0.18.1
-        - numpy
-        - pip
-        - nose
-      run:
-        - {{ pin_subpackage('libopenms', exact=True) }}
-        - python {{ python }}
-        - numpy
-    test:
-      commands:
-        - python -c "import pyopenms; print(pyopenms.__version__)"
-        # We cant use the PYTHON variable since it does not exist on the biocontainer?!
-
-about:
-  home: https://github.com/OpenMS/OpenMS
-  license: BSD
-  license_file: LICENSE
-  summary: OpenMS is an open-source software C++ library for LC-MS data management and analyses
-
-extra:
-  identifiers:
-    - biotools:openms
-    - doi:10.1038/nmeth.3959
+  - conda inspect linkages -p $PREFIX $PKG_NAME
+  - conda inspect objects -p $PREFIX $PKG_NAME

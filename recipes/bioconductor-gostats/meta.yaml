@@ -1,59 +1,54 @@
-{% set version = "2.52.0" %}
-{% set name = "GOstats" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 3f1afb8eb259aae0d5e27a85350b720b
+about:
+  description: A set of tools for interacting with GO and microarray data. A variety
+    of basic manipulation tools for graphs, hypothesis testing and other simple calculations.
+  home: https://bioconductor.org/packages/3.10/bioc/html/GOstats.html
+  license: Artistic-2.0
+  summary: Tools for manipulating GO and microarrays
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: hgu95av2.db (>= 1.13.0), ALL, multtest, genefilter, RColorBrewer, xtable, SparseM, GSEABase, geneplotter, org.Hs.eg.db, RUnit, BiocGenerics
-requirements:
-  host:
-    - 'bioconductor-annotate >=1.64.0,<1.65.0'
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - 'bioconductor-annotationforge >=1.28.0,<1.29.0'
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-category >=2.52.0,<2.53.0'
-    - 'bioconductor-go.db >=3.10.0,<3.11.0'
-    - 'bioconductor-graph >=1.64.0,<1.65.0'
-    - 'bioconductor-rbgl >=1.62.0,<1.63.0'
-    - 'bioconductor-rgraphviz >=2.30.0,<2.31.0'
-    - r-base
-  run:
-    - 'bioconductor-annotate >=1.64.0,<1.65.0'
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - 'bioconductor-annotationforge >=1.28.0,<1.29.0'
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-category >=2.52.0,<2.53.0'
-    - 'bioconductor-go.db >=3.10.0,<3.11.0'
-    - 'bioconductor-graph >=1.64.0,<1.65.0'
-    - 'bioconductor-rbgl >=1.62.0,<1.63.0'
-    - 'bioconductor-rgraphviz >=2.30.0,<2.31.0'
-    - r-base
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Tools for manipulating GO and microarrays'
-  description: 'A set of tools for interacting with GO and microarray data. A variety of basic manipulation tools for graphs, hypothesis testing and other simple calculations.'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:gostats
+  - biotools:gostats
   parent_recipe:
     name: bioconductor-gostats
     path: recipes/bioconductor-gostats
     version: 2.46.0
-
+package:
+  name: bioconductor-gostats
+  version: 2.52.0
+requirements:
+  host:
+  - bioconductor-annotate >=1.64.0,<1.65.0
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - bioconductor-annotationforge >=1.28.0,<1.29.0
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-category >=2.52.0,<2.53.0
+  - bioconductor-go.db >=3.10.0,<3.11.0
+  - bioconductor-graph >=1.64.0,<1.65.0
+  - bioconductor-rbgl >=1.62.0,<1.63.0
+  - bioconductor-rgraphviz >=2.30.0,<2.31.0
+  - r-base
+  run:
+  - bioconductor-annotate >=1.64.0,<1.65.0
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - bioconductor-annotationforge >=1.28.0,<1.29.0
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-category >=2.52.0,<2.53.0
+  - bioconductor-go.db >=3.10.0,<3.11.0
+  - bioconductor-graph >=1.64.0,<1.65.0
+  - bioconductor-rbgl >=1.62.0,<1.63.0
+  - bioconductor-rgraphviz >=2.30.0,<2.31.0
+  - r-base
+source:
+  md5: 3f1afb8eb259aae0d5e27a85350b720b
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/GOstats_2.52.0.tar.gz
+  - https://bioarchive.galaxyproject.org/GOstats_2.52.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-gostats/bioconductor-gostats_2.52.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('GOstats')"

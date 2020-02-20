@@ -1,46 +1,45 @@
-{% set version = "3.12.0" %}
-{% set name = "RankProd" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: b68cc58b738a455ca4c29c80d5fb405a
+about:
+  description: Non-parametric method for identifying differentially expressed (up-
+    or down- regulated) genes based on the estimated percentage of false predictions
+    (pfp). The method can combine data sets from different origins (meta-analysis)
+    to increase the power of the identification.
+  home: https://bioconductor.org/packages/3.10/bioc/html/RankProd.html
+  license: file LICENSE
+  license_file: LICENSE
+  summary: Rank Product method for identifying differentially expressed genes with
+    application in meta-analysis
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-requirements:
-  host:
-    - r-base
-    - r-gmp
-    - r-rmpfr
-  run:
-    - r-base
-    - r-gmp
-    - r-rmpfr
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'file LICENSE'
-  summary: 'Rank Product method for identifying differentially expressed genes with application in meta-analysis'
-  description: 'Non-parametric method for identifying differentially expressed (up- or down- regulated) genes based on the estimated percentage of false predictions (pfp). The method can combine data sets from different origins (meta-analysis) to increase the power of the identification.'
-  license_file: LICENSE
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:rankprod
-    - doi:10.1093/bioinformatics/btl476
+  - biotools:rankprod
+  - doi:10.1093/bioinformatics/btl476
   parent_recipe:
     name: bioconductor-rankprod
     path: recipes/bioconductor-rankprod
     version: 3.6.0
-
+package:
+  name: bioconductor-rankprod
+  version: 3.12.0
+requirements:
+  host:
+  - r-base
+  - r-gmp
+  - r-rmpfr
+  run:
+  - r-base
+  - r-gmp
+  - r-rmpfr
+source:
+  md5: b68cc58b738a455ca4c29c80d5fb405a
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/RankProd_3.12.0.tar.gz
+  - https://bioarchive.galaxyproject.org/RankProd_3.12.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-rankprod/bioconductor-rankprod_3.12.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('RankProd')"

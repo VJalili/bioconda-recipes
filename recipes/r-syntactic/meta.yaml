@@ -1,47 +1,34 @@
-{% set version = "0.3.7" %}
-{% set github = "https://github.com/acidgenomics/syntactic" %}
-
-package:
-  name: r-syntactic
-  version: "{{ version }}"
-
-source:
-  url: "{{ github }}/archive/v{{ version }}.tar.gz"
-  sha256: b3b844490c87446f96b55ff7b7848fc791d2c7668119463b678b5493e03bc8dc
-
-build:
-  noarch: generic
-  number: 0
-
-requirements:
-  host:
-      # Depends:
-    - r-base
-      # Imports:
-    - r-acidbase >=0.1.4
-    - r-acidgenerics >=0.3.1
-    - r-goalie >=0.4.1
-    - r-stringi >=1.4
-  run:
-      # Depends:
-    - r-base
-      # Imports:
-    - r-acidbase >=0.1.4
-    - r-acidgenerics >=0.3.1
-    - r-goalie >=0.4.1
-    - r-stringi >=1.4
-
-test:
-  commands:
-    - $R -e "library('syntactic')"
-
 about:
+  dev_url: https://github.com/acidgenomics/syntactic
   home: https://syntactic.acidgenomics.com/
-  dev_url: "{{ github }}"
   license: MIT
   license_file: LICENSE
   summary: Make syntactically valid names out of character vectors.
-
+build:
+  noarch: generic
+  number: 0
 extra:
   recipe-maintainers:
-    - mjsteinbaugh
+  - mjsteinbaugh
+package:
+  name: r-syntactic
+  version: 0.3.7
+requirements:
+  host:
+  - r-base
+  - r-acidbase >=0.1.4
+  - r-acidgenerics >=0.3.1
+  - r-goalie >=0.4.1
+  - r-stringi >=1.4
+  run:
+  - r-base
+  - r-acidbase >=0.1.4
+  - r-acidgenerics >=0.3.1
+  - r-goalie >=0.4.1
+  - r-stringi >=1.4
+source:
+  sha256: b3b844490c87446f96b55ff7b7848fc791d2c7668119463b678b5493e03bc8dc
+  url: https://github.com/acidgenomics/syntactic/archive/v0.3.7.tar.gz
+test:
+  commands:
+  - $R -e "library('syntactic')"

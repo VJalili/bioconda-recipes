@@ -1,48 +1,42 @@
-{% set version = "1.24.0" %}
-{% set name = "flowCL" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 21eb32c74b3fb7fb84c94fa86cd09818
+about:
+  description: Semantic labelling of flow cytometric cell populations.
+  home: https://bioconductor.org/packages/3.10/bioc/html/flowCL.html
+  license: Artistic-2.0
+  summary: Semantic labelling of flow cytometric cell populations
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: RUnit, BiocGenerics
-requirements:
-  host:
-    - 'bioconductor-graph >=1.64.0,<1.65.0'
-    - 'bioconductor-rgraphviz >=2.30.0,<2.31.0'
-    - r-base
-    - r-sparql
-  run:
-    - 'bioconductor-graph >=1.64.0,<1.65.0'
-    - 'bioconductor-rgraphviz >=2.30.0,<2.31.0'
-    - r-base
-    - r-sparql
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Semantic labelling of flow cytometric cell populations'
-  description: 'Semantic labelling of flow cytometric cell populations.'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:flowcl
-    - doi:10.1093/bioinformatics/btu807
+  - biotools:flowcl
+  - doi:10.1093/bioinformatics/btu807
   parent_recipe:
     name: bioconductor-flowcl
     path: recipes/bioconductor-flowcl
     version: 1.18.1
-
+package:
+  name: bioconductor-flowcl
+  version: 1.24.0
+requirements:
+  host:
+  - bioconductor-graph >=1.64.0,<1.65.0
+  - bioconductor-rgraphviz >=2.30.0,<2.31.0
+  - r-base
+  - r-sparql
+  run:
+  - bioconductor-graph >=1.64.0,<1.65.0
+  - bioconductor-rgraphviz >=2.30.0,<2.31.0
+  - r-base
+  - r-sparql
+source:
+  md5: 21eb32c74b3fb7fb84c94fa86cd09818
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/flowCL_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/flowCL_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-flowcl/bioconductor-flowcl_1.24.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('flowCL')"

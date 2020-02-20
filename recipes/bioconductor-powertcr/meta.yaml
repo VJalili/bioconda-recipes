@@ -1,54 +1,50 @@
-{% set version = "1.6.0" %}
-{% set name = "powerTCR" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 778b4adc0f5419272d4c31f5cbd8a8b4
+about:
+  description: This package provides a model for the clone size distribution of the
+    TCR repertoire. Further, it permits comparative analysis of TCR repertoire libraries
+    based on theoretical model fits.
+  home: https://bioconductor.org/packages/3.10/bioc/html/powerTCR.html
+  license: Artistic-2.0
+  summary: Model-Based Comparative Analysis of the TCR Repertoire
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: BiocStyle, knitr, rmarkdown, RUnit, BiocGenerics
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-powertcr
+  version: 1.6.0
 requirements:
   host:
-    - r-base
-    - r-cubature
-    - r-doparallel
-    - r-evmix
-    - r-foreach
-    - r-magrittr
-    - r-purrr
-    - r-tcr
-    - r-truncdist
-    - r-vegan
-    - r-vgam
+  - r-base
+  - r-cubature
+  - r-doparallel
+  - r-evmix
+  - r-foreach
+  - r-magrittr
+  - r-purrr
+  - r-tcr
+  - r-truncdist
+  - r-vegan
+  - r-vgam
   run:
-    - r-base
-    - r-cubature
-    - r-doparallel
-    - r-evmix
-    - r-foreach
-    - r-magrittr
-    - r-purrr
-    - r-tcr
-    - r-truncdist
-    - r-vegan
-    - r-vgam
+  - r-base
+  - r-cubature
+  - r-doparallel
+  - r-evmix
+  - r-foreach
+  - r-magrittr
+  - r-purrr
+  - r-tcr
+  - r-truncdist
+  - r-vegan
+  - r-vgam
+source:
+  md5: 778b4adc0f5419272d4c31f5cbd8a8b4
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/powerTCR_1.6.0.tar.gz
+  - https://bioarchive.galaxyproject.org/powerTCR_1.6.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-powertcr/bioconductor-powertcr_1.6.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Model-Based Comparative Analysis of the TCR Repertoire'
-  description: 'This package provides a model for the clone size distribution of the TCR repertoire. Further, it permits comparative analysis of TCR repertoire libraries based on theoretical model fits.'
-
+  - $R -e "library('powerTCR')"

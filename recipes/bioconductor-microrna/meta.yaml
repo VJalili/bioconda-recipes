@@ -1,46 +1,42 @@
-{% set version = "1.44.0" %}
-{% set name = "microRNA" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 64a1cb29fc84c44010c66951a03cbebb
+about:
+  description: Different data resources for microRNAs and some functions for manipulating
+    them.
+  home: https://bioconductor.org/packages/3.10/bioc/html/microRNA.html
+  license: Artistic-2.0
+  summary: Data and functions for dealing with microRNAs
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-requirements:
-  host:
-    - 'bioconductor-biostrings >=2.54.0,<2.55.0'
-    - r-base
-  run:
-    - 'bioconductor-biostrings >=2.54.0,<2.55.0'
-    - r-base
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - make
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Data and functions for dealing with microRNAs'
-  description: 'Different data resources for microRNAs and some functions for manipulating them.'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:microrna
-    - doi:10.1038/nmeth.3252
+  - biotools:microrna
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-microrna
     path: recipes/bioconductor-microrna
     version: 1.38.0
-
+package:
+  name: bioconductor-microrna
+  version: 1.44.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-biostrings >=2.54.0,<2.55.0
+  - r-base
+  run:
+  - bioconductor-biostrings >=2.54.0,<2.55.0
+  - r-base
+source:
+  md5: 64a1cb29fc84c44010c66951a03cbebb
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/microRNA_1.44.0.tar.gz
+  - https://bioarchive.galaxyproject.org/microRNA_1.44.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-microrna/bioconductor-microrna_1.44.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('microRNA')"

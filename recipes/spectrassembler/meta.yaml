@@ -1,19 +1,15 @@
-{% set name = "spectrassembler" %}
-{% set version = "0.0.1a1" %}
-
-package:
-  name: {{ name|lower }}
-  version: {{ version }}
-
+about:
+  home: https://github.com/antrec/spectrassembler
+  license: MIT
+  license_file: LICENSE
+  summary: Tool (experimental) to compute layout from overlaps with spectral algorithm
 build:
   noarch: python
   number: 4
-  script: {{ PYTHON }} -m pip install . --ignore-installed --no-deps -vv
-
-source:
-  url: https://github.com/antrec/spectrassembler/archive/3ef76977896c65af4059d164853295ffecacc687.tar.gz
-  md5: 95ae6018417128d99b622f37f7e6b50a
-
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: spectrassembler
+  version: 0.0.1a1
 requirements:
   host:
   - python <3
@@ -26,14 +22,10 @@ requirements:
   - minimap
   - bwa
   - poa
-
+source:
+  md5: 95ae6018417128d99b622f37f7e6b50a
+  url: https://github.com/antrec/spectrassembler/archive/3ef76977896c65af4059d164853295ffecacc687.tar.gz
 test:
   commands:
-    - spectral_layout_from_minimap.py -h
-    - gen_cons_from_poa.py  -h
-
-about:
-  home: https://github.com/antrec/spectrassembler
-  license: MIT
-  license_file: LICENSE
-  summary: Tool (experimental) to compute layout from overlaps with spectral algorithm
+  - spectral_layout_from_minimap.py -h
+  - gen_cons_from_poa.py  -h

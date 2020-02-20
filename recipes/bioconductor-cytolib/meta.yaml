@@ -1,40 +1,34 @@
-{% set version = "1.8.0" %}
-{% set name = "cytolib" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 13205b79dd96542a3a36f9df61622a66
+about:
+  description: This package provides the core data structure and API to represent
+    and interact with the gated cytometry data.
+  home: https://bioconductor.org/packages/3.10/bioc/html/cytolib.html
+  license: Artistic-2.0
+  summary: C++ infrastructure for representing and interacting with the gated cytometry
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: knitr
-# SystemRequirements: GNU make, C++11
-requirements:
-  host:
-    - r-base
-  run:
-    - r-base
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'C++ infrastructure for representing and interacting with the gated cytometry'
-  description: 'This package provides the core data structure and API to represent and interact with the gated cytometry data.'
+  - lib/R/lib/
+  - lib/
 extra:
   parent_recipe:
     name: bioconductor-cytolib
     path: recipes/bioconductor-cytolib
     version: 1.4.0
-
+package:
+  name: bioconductor-cytolib
+  version: 1.8.0
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+source:
+  md5: 13205b79dd96542a3a36f9df61622a66
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/cytolib_1.8.0.tar.gz
+  - https://bioarchive.galaxyproject.org/cytolib_1.8.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-cytolib/bioconductor-cytolib_1.8.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('cytolib')"

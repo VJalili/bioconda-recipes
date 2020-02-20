@@ -1,62 +1,57 @@
-{% set version = "1.14.0" %}
-{% set name = "InteractionSet" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: dc8f695047667e13337b2acedefbf835
+about:
+  description: Provides the GInteractions, InteractionSet and ContactMatrix objects
+    and associated methods for storing and manipulating genomic interaction data from
+    Hi-C and ChIA-PET experiments.
+  home: https://bioconductor.org/packages/3.10/bioc/html/InteractionSet.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Base Classes for Storing Genomic Interaction Data
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-# Suggests: testthat, knitr, rmarkdown, BiocStyle
-# SystemRequirements: C++11
-requirements:
-  host:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-genomeinfodb >=1.22.0,<1.23.0'
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - 'bioconductor-summarizedexperiment >=1.16.0,<1.17.0'
-    - r-base
-    - r-matrix
-    - r-rcpp
-  run:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-genomeinfodb >=1.22.0,<1.23.0'
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - 'bioconductor-summarizedexperiment >=1.16.0,<1.17.0'
-    - r-base
-    - r-matrix
-    - r-rcpp
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - make
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-3
-  summary: 'Base Classes for Storing Genomic Interaction Data'
-  description: 'Provides the GInteractions, InteractionSet and ContactMatrix objects and associated methods for storing and manipulating genomic interaction data from Hi-C and ChIA-PET experiments.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:interactionset
+  - biotools:interactionset
   parent_recipe:
     name: bioconductor-interactionset
     path: recipes/bioconductor-interactionset
     version: 1.8.0
-
+package:
+  name: bioconductor-interactionset
+  version: 1.14.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-genomeinfodb >=1.22.0,<1.23.0
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - bioconductor-summarizedexperiment >=1.16.0,<1.17.0
+  - r-base
+  - r-matrix
+  - r-rcpp
+  run:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-genomeinfodb >=1.22.0,<1.23.0
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - bioconductor-summarizedexperiment >=1.16.0,<1.17.0
+  - r-base
+  - r-matrix
+  - r-rcpp
+source:
+  md5: dc8f695047667e13337b2acedefbf835
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/InteractionSet_1.14.0.tar.gz
+  - https://bioarchive.galaxyproject.org/InteractionSet_1.14.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-interactionset/bioconductor-interactionset_1.14.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('InteractionSet')"

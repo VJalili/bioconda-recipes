@@ -1,39 +1,33 @@
-{% set version = "1.22.0" %}
-{% set name = "hmyriB36" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 8c999aa9a2c743ffa23abafd841676ac
+about:
+  description: YRI hapmap + expression (GENEVAR), Build 36, r23a genotypes
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/hmyriB36.html
+  license: Artistic-2.0
+  summary: YRI hapmap + expression (GENEVAR), Build 36, r23a genotypes
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: GGtools, illuminaHumanv1.db
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-hmyrib36
+  version: 1.22.0
 requirements:
   host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-ggbase >=3.48.0,<3.49.0'
-    - r-base
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-ggbase >=3.48.0,<3.49.0
+  - r-base
   run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-ggbase >=3.48.0,<3.49.0'
-    - r-base
-    - curl
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-ggbase >=3.48.0,<3.49.0
+  - r-base
+  - curl
+source:
+  md5: 8c999aa9a2c743ffa23abafd841676ac
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/hmyriB36_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/hmyriB36_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hmyrib36/bioconductor-hmyrib36_1.22.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'YRI hapmap + expression (GENEVAR), Build 36, r23a genotypes'
-  description: 'YRI hapmap + expression (GENEVAR), Build 36, r23a genotypes'
-
+  - $R -e "library('hmyriB36')"

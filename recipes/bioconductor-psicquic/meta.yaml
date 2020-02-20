@@ -1,54 +1,49 @@
-{% set version = "1.24.0" %}
-{% set name = "PSICQUIC" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: eb14a0471a3ed4af48cc9007fce72962
+about:
+  description: PSICQUIC is a project within the HUPO Proteomics Standard Initiative
+    (HUPO-PSI).  It standardises programmatic access to molecular interaction databases.
+  home: https://bioconductor.org/packages/3.10/bioc/html/PSICQUIC.html
+  license: Apache License 2.0
+  summary: Proteomics Standard Initiative Common QUery InterfaCe
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: org.Hs.eg.db
-requirements:
-  host:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-biomart >=2.42.0,<2.43.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - r-base
-    - r-httr
-    - r-plyr
-    - r-rcurl
-  run:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-biomart >=2.42.0,<2.43.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - r-base
-    - r-httr
-    - r-plyr
-    - r-rcurl
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'Apache License 2.0'
-  summary: 'Proteomics Standard Initiative Common QUery InterfaCe'
-  description: 'PSICQUIC is a project within the HUPO Proteomics Standard Initiative (HUPO-PSI).  It standardises programmatic access to molecular interaction databases.'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:psicquic
-    - doi:10.1038/nmeth.3252
+  - biotools:psicquic
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-psicquic
     path: recipes/bioconductor-psicquic
     version: 1.18.1
-
+package:
+  name: bioconductor-psicquic
+  version: 1.24.0
+requirements:
+  host:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-biomart >=2.42.0,<2.43.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - r-base
+  - r-httr
+  - r-plyr
+  - r-rcurl
+  run:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-biomart >=2.42.0,<2.43.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - r-base
+  - r-httr
+  - r-plyr
+  - r-rcurl
+source:
+  md5: eb14a0471a3ed4af48cc9007fce72962
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/PSICQUIC_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/PSICQUIC_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-psicquic/bioconductor-psicquic_1.24.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('PSICQUIC')"

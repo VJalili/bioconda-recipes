@@ -1,41 +1,36 @@
-{% set version = "1.18.0" %}
-{% set name = "SELEX" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: ffe0fd9a6d854508b3147396438dedd7
+about:
+  description: Tools for quantifying DNA binding specificities based on SELEX-seq
+    data
+  home: https://bioconductor.org/packages/3.10/bioc/html/SELEX.html
+  license: GPL (>=2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Functions for analyzing SELEX-seq data
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# SystemRequirements: Java (>= 1.5)
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-selex
+  version: 1.18.0
 requirements:
   host:
-    - 'bioconductor-biostrings >=2.54.0,<2.55.0'
-    - r-base
-    - 'r-rjava >=0.5-0'
-    - openjdk
+  - bioconductor-biostrings >=2.54.0,<2.55.0
+  - r-base
+  - r-rjava >=0.5-0
+  - openjdk
   run:
-    - 'bioconductor-biostrings >=2.54.0,<2.55.0'
-    - r-base
-    - 'r-rjava >=0.5-0'
-    - openjdk
+  - bioconductor-biostrings >=2.54.0,<2.55.0
+  - r-base
+  - r-rjava >=0.5-0
+  - openjdk
+source:
+  md5: ffe0fd9a6d854508b3147396438dedd7
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/SELEX_1.18.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SELEX_1.18.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-selex/bioconductor-selex_1.18.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>=2)'
-  summary: 'Functions for analyzing SELEX-seq data'
-  description: 'Tools for quantifying DNA binding specificities based on SELEX-seq data'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('SELEX')"

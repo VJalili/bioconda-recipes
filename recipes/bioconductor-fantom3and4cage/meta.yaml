@@ -1,35 +1,31 @@
-{% set version = "1.22.0" %}
-{% set name = "FANTOM3and4CAGE" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 670b7700077b06731f545f56895a8d19
+about:
+  description: CAGE (Cap Analysis Gene Expression) data from FANTOM3 and FANTOM4 projects
+    produced by RIKEN Omics Science Center.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/FANTOM3and4CAGE.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: CAGE data from FANTOM3 and FANTOM4 projects
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-fantom3and4cage
+  version: 1.22.0
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
-    - curl
+  - r-base
+  - curl
+source:
+  md5: 670b7700077b06731f545f56895a8d19
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/FANTOM3and4CAGE_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/FANTOM3and4CAGE_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-fantom3and4cage/bioconductor-fantom3and4cage_1.22.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: GPL-3
-  summary: 'CAGE data from FANTOM3 and FANTOM4 projects'
-  description: 'CAGE (Cap Analysis Gene Expression) data from FANTOM3 and FANTOM4 projects produced by RIKEN Omics Science Center.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('FANTOM3and4CAGE')"

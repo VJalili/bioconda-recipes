@@ -1,42 +1,31 @@
-{% set name = "sequencetools" %}
-{% set version = "1.2.2" %}
-{% set md5 = "35bafae8813a7510cadf87057bd42df4" %}
-
-package:
-  name: {{ name }}
-  version: {{ version }}
-
-source:
-  url: https://github.com/stschiff/sequenceTools/archive/v{{ version }}.tar.gz
-  md5: {{ md5 }}
-
-build:
-  number: 1
-  skip: True  #  [osx]
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-  host:
-    - stack >=1.7.1
-    - zlib
-    - wget
-    - gmp
-    - perl 
-    - xz
-  run:
-    - zlib
-    - xz
-    - gmp
-    - samtools
-
-
-
-test:
-  commands:
-    - pileupCaller --version
-
 about:
   home: https://github.com/stschiff/sequenceTools
   license: MIT
   summary: Tools for population genetics on sequencing datas
+build:
+  number: 1
+  skip: true
+package:
+  name: sequencetools
+  version: 1.2.2
+requirements:
+  build:
+  - None
+  host:
+  - stack >=1.7.1
+  - zlib
+  - wget
+  - gmp
+  - perl
+  - xz
+  run:
+  - zlib
+  - xz
+  - gmp
+  - samtools
+source:
+  md5: 35bafae8813a7510cadf87057bd42df4
+  url: https://github.com/stschiff/sequenceTools/archive/v1.2.2.tar.gz
+test:
+  commands:
+  - pileupCaller --version

@@ -1,79 +1,79 @@
-{% set version = "2.32.0" %}
-{% set name = "methylumi" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 57d9b0e72e0145434c3f90c4dd2fd680
+about:
+  description: This package provides classes for holding and manipulating Illumina
+    methylation data.  Based on eSet, it can contain MIAME information, sample information,
+    feature information, and multiple matrices of data.  An "intelligent" import function,
+    methylumiR can read the Illumina text files and create a MethyLumiSet. methylumIDAT
+    can directly read raw IDAT files from HumanMethylation27 and HumanMethylation450
+    microarrays. Normalization, background correction, and quality control features
+    for GoldenGate, Infinium, and Infinium HD arrays are also included.
+  home: https://bioconductor.org/packages/3.10/bioc/html/methylumi.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Handle Illumina methylation data
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: lumi, lattice, limma, xtable, SQN, MASS, matrixStats, parallel, rtracklayer, Biostrings, methyAnalysis, TCGAMethylation450k, IlluminaHumanMethylation450kanno.ilmn12.hg19, FDb.InfiniumMethylation.hg18 (>= 2.2.0), Homo.sapiens, knitr
-requirements:
-  host:
-    - 'bioconductor-annotate >=1.64.0,<1.65.0'
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-fdb.infiniummethylation.hg19 >=2.2.0,<2.3.0'
-    - 'bioconductor-genefilter >=1.68.0,<1.69.0'
-    - 'bioconductor-genomeinfodb >=1.22.0,<1.23.0'
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - 'bioconductor-illuminaio >=0.28.0,<0.29.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - 'bioconductor-minfi >=1.32.0,<1.33.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - 'bioconductor-summarizedexperiment >=1.16.0,<1.17.0'
-    - r-base
-    - r-ggplot2
-    - r-lattice
-    - r-matrixstats
-    - r-reshape2
-    - r-scales
-  run:
-    - 'bioconductor-annotate >=1.64.0,<1.65.0'
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-fdb.infiniummethylation.hg19 >=2.2.0,<2.3.0'
-    - 'bioconductor-genefilter >=1.68.0,<1.69.0'
-    - 'bioconductor-genomeinfodb >=1.22.0,<1.23.0'
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - 'bioconductor-illuminaio >=0.28.0,<0.29.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - 'bioconductor-minfi >=1.32.0,<1.33.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - 'bioconductor-summarizedexperiment >=1.16.0,<1.17.0'
-    - r-base
-    - r-ggplot2
-    - r-lattice
-    - r-matrixstats
-    - r-reshape2
-    - r-scales
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-2
-  summary: 'Handle Illumina methylation data'
-  description: 'This package provides classes for holding and manipulating Illumina methylation data.  Based on eSet, it can contain MIAME information, sample information, feature information, and multiple matrices of data.  An "intelligent" import function, methylumiR can read the Illumina text files and create a MethyLumiSet. methylumIDAT can directly read raw IDAT files from HumanMethylation27 and HumanMethylation450 microarrays. Normalization, background correction, and quality control features for GoldenGate, Infinium, and Infinium HD arrays are also included.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:methylumi
-    - doi:10.1186/1471-2164-14-293
+  - biotools:methylumi
+  - doi:10.1186/1471-2164-14-293
   parent_recipe:
     name: bioconductor-methylumi
     path: recipes/bioconductor-methylumi
     version: 2.26.0
-
+package:
+  name: bioconductor-methylumi
+  version: 2.32.0
+requirements:
+  host:
+  - bioconductor-annotate >=1.64.0,<1.65.0
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-fdb.infiniummethylation.hg19 >=2.2.0,<2.3.0
+  - bioconductor-genefilter >=1.68.0,<1.69.0
+  - bioconductor-genomeinfodb >=1.22.0,<1.23.0
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - bioconductor-illuminaio >=0.28.0,<0.29.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - bioconductor-minfi >=1.32.0,<1.33.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - bioconductor-summarizedexperiment >=1.16.0,<1.17.0
+  - r-base
+  - r-ggplot2
+  - r-lattice
+  - r-matrixstats
+  - r-reshape2
+  - r-scales
+  run:
+  - bioconductor-annotate >=1.64.0,<1.65.0
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-fdb.infiniummethylation.hg19 >=2.2.0,<2.3.0
+  - bioconductor-genefilter >=1.68.0,<1.69.0
+  - bioconductor-genomeinfodb >=1.22.0,<1.23.0
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - bioconductor-illuminaio >=0.28.0,<0.29.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - bioconductor-minfi >=1.32.0,<1.33.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - bioconductor-summarizedexperiment >=1.16.0,<1.17.0
+  - r-base
+  - r-ggplot2
+  - r-lattice
+  - r-matrixstats
+  - r-reshape2
+  - r-scales
+source:
+  md5: 57d9b0e72e0145434c3f90c4dd2fd680
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/methylumi_2.32.0.tar.gz
+  - https://bioarchive.galaxyproject.org/methylumi_2.32.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-methylumi/bioconductor-methylumi_2.32.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('methylumi')"

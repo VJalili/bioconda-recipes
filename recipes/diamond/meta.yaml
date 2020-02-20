@@ -1,41 +1,32 @@
-{% set version = "0.9.30" %}
-{% set sha256 = "cdef756d11d1dfba9f08008973b6de5d2d270d7fd3d159d14763165b34e4f4a7" %}
-
-package:
-  name: diamond
-  version: {{ version }}
-
-source:
-  url: https://github.com/bbuchfink/diamond/archive/v{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-
-build:
-  number: 0
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - cmake
-  host:
-    - boost-cpp
-    - zlib
-  run:
-    - boost-cpp
-    - zlib
-
-test:
-  commands:
-    - diamond --help 2>&1 > /dev/null
-
 about:
   home: https://github.com/bbuchfink/diamond
   license: AGPL-3.0
   license_family: AGPL
   license_file: LICENSE
   summary: Accelerated BLAST compatible local sequence aligner
-
+build:
+  number: 0
 extra:
   identifiers:
-    - biotools:Diamond
-    - doi:10.1038/nmeth.3176
+  - biotools:Diamond
+  - doi:10.1038/nmeth.3176
+package:
+  name: diamond
+  version: 0.9.30
+requirements:
+  build:
+  - None
+  - None
+  - cmake
+  host:
+  - boost-cpp
+  - zlib
+  run:
+  - boost-cpp
+  - zlib
+source:
+  sha256: cdef756d11d1dfba9f08008973b6de5d2d270d7fd3d159d14763165b34e4f4a7
+  url: https://github.com/bbuchfink/diamond/archive/v0.9.30.tar.gz
+test:
+  commands:
+  - diamond --help 2>&1 > /dev/null

@@ -1,36 +1,35 @@
-{% set version = "1.14.0" %}
-{% set name = "HarmanData" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 267bc6ecc7afc215382e39c0675bb532
+about:
+  description: 'Datasets of accompany Harman, a PCA and constrained optimisation based
+    technique. Contains three datasets: IMR90, Human lung fibroblast cells exposed
+    to nitric oxide; NPM, an experiment to test skin penetration of metal oxide nanoparticles
+    following topical application of sunscreens in non-pregnant mice; OLF; an experiment
+    to gauge the response of human olfactory neurosphere-derived (hONS) cells to ZnO
+    nanoparticles.'
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/HarmanData.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Data for the Harman package
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: BiocGenerics, BiocStyle, knitr, rmarkdown
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-harmandata
+  version: 1.14.0
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
-    - curl
+  - r-base
+  - curl
+source:
+  md5: 267bc6ecc7afc215382e39c0675bb532
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/HarmanData_1.14.0.tar.gz
+  - https://bioarchive.galaxyproject.org/HarmanData_1.14.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-harmandata/bioconductor-harmandata_1.14.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: GPL-3
-  summary: 'Data for the Harman package'
-  description: 'Datasets of accompany Harman, a PCA and constrained optimisation based technique. Contains three datasets: IMR90, Human lung fibroblast cells exposed to nitric oxide; NPM, an experiment to test skin penetration of metal oxide nanoparticles following topical application of sunscreens in non-pregnant mice; OLF; an experiment to gauge the response of human olfactory neurosphere-derived (hONS) cells to ZnO nanoparticles.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('HarmanData')"

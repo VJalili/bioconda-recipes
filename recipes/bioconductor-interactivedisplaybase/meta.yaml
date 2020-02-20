@@ -1,46 +1,41 @@
-{% set version = "1.24.0" %}
-{% set name = "interactiveDisplayBase" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: c0c12ee30f198c1db5a24955efda2f5d
+about:
+  description: The interactiveDisplayBase package contains the the basic methods needed
+    to generate interactive Shiny based display methods for Bioconductor objects.
+  home: https://bioconductor.org/packages/3.10/bioc/html/interactiveDisplayBase.html
+  license: Artistic-2.0
+  summary: Base package for enabling powerful shiny web displays of Bioconductor objects
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: knitr
-requirements:
-  host:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - r-base
-    - r-shiny
-  run:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - r-base
-    - r-shiny
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Base package for enabling powerful shiny web displays of Bioconductor objects'
-  description: 'The interactiveDisplayBase package contains the the basic methods needed to generate interactive Shiny based display methods for Bioconductor objects.'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:interactivedisplaybase
-    - doi:10.1038/nmeth.3252
+  - biotools:interactivedisplaybase
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-interactivedisplaybase
     path: recipes/bioconductor-interactivedisplaybase
     version: 1.18.0
-
+package:
+  name: bioconductor-interactivedisplaybase
+  version: 1.24.0
+requirements:
+  host:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - r-base
+  - r-shiny
+  run:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - r-base
+  - r-shiny
+source:
+  md5: c0c12ee30f198c1db5a24955efda2f5d
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/interactiveDisplayBase_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/interactiveDisplayBase_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-interactivedisplaybase/bioconductor-interactivedisplaybase_1.24.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('interactiveDisplayBase')"

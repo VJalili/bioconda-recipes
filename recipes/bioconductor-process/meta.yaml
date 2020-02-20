@@ -1,43 +1,38 @@
-{% set version = "1.62.0" %}
-{% set name = "PROcess" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 48541bdc59f082e72cd10b343587b231
+about:
+  description: A package for processing protein mass spectrometry data.
+  home: https://bioconductor.org/packages/3.10/bioc/html/PROcess.html
+  license: Artistic-2.0
+  summary: Ciphergen SELDI-TOF Processing
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-requirements:
-  host:
-    - 'bioconductor-icens >=1.58.0,<1.59.0'
-    - r-base
-  run:
-    - 'bioconductor-icens >=1.58.0,<1.59.0'
-    - r-base
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Ciphergen SELDI-TOF Processing'
-  description: 'A package for processing protein mass spectrometry data.'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:process
-    - doi:10.1038/nmeth.3252
+  - biotools:process
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-process
     path: recipes/bioconductor-process
     version: 1.58.0
-
+package:
+  name: bioconductor-process
+  version: 1.62.0
+requirements:
+  host:
+  - bioconductor-icens >=1.58.0,<1.59.0
+  - r-base
+  run:
+  - bioconductor-icens >=1.58.0,<1.59.0
+  - r-base
+source:
+  md5: 48541bdc59f082e72cd10b343587b231
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/PROcess_1.62.0.tar.gz
+  - https://bioarchive.galaxyproject.org/PROcess_1.62.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-process/bioconductor-process_1.62.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('PROcess')"

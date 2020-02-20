@@ -1,35 +1,27 @@
-{% set name = "graphlan" %}
-{% set version = "1.1.3" %}
-{% set sha256 = "c8efadc7e7a54e3284d8ef6bc23fa2c697281bfdda516144c8fae6e58095abbc" %}
-
-package:
-  name: {{ name|lower }}
-  version: {{ version }}
-
-build:
-  number: 1
-  noarch: python
-
-source:
-  url: https://bitbucket.org/nsegata/{{ name|lower }}/get/{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-  patches:
-    - path_lib.patch
-
-requirements:
-  run:
-    - python <3
-    - matplotlib >=1.1
-    - biopython >=1.6
-      
-test:
-  commands:
-    - graphlan.py -h
-    - graphlan_annotate.py -h
-
 about:
   home: https://bitbucket.org/nsegata/graphlan/wiki/Home
   license: MIT License
   license_family: MIT
   license_file: license.txt
-  summary: "GraPhlAn is a software tool for producing high-quality circular representations of taxonomic and phylogenetic trees."
+  summary: GraPhlAn is a software tool for producing high-quality circular representations
+    of taxonomic and phylogenetic trees.
+build:
+  noarch: python
+  number: 1
+package:
+  name: graphlan
+  version: 1.1.3
+requirements:
+  run:
+  - python <3
+  - matplotlib >=1.1
+  - biopython >=1.6
+source:
+  patches:
+  - path_lib.patch
+  sha256: c8efadc7e7a54e3284d8ef6bc23fa2c697281bfdda516144c8fae6e58095abbc
+  url: https://bitbucket.org/nsegata/graphlan/get/1.1.3.tar.gz
+test:
+  commands:
+  - graphlan.py -h
+  - graphlan_annotate.py -h

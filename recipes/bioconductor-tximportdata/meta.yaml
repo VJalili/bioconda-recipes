@@ -1,36 +1,33 @@
-{% set version = "1.14.0" %}
-{% set name = "tximportData" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 479392bb93a7334601e795f554055fc5
+about:
+  description: This package provides the output of running various transcript abundance
+    quantifiers on a set of 6 RNA-seq samples from the GEUVADIS project. The quantifiers
+    were Cufflinks, RSEM, kallisto, Salmon and Sailfish. For details on version numbers,
+    sample information, and details on calls, see the package vignette.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/tximportData.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: tximportData
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: knitr
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-tximportdata
+  version: 1.14.0
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
-    - curl
+  - r-base
+  - curl
+source:
+  md5: 479392bb93a7334601e795f554055fc5
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/tximportData_1.14.0.tar.gz
+  - https://bioarchive.galaxyproject.org/tximportData_1.14.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-tximportdata/bioconductor-tximportdata_1.14.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: 'GPL (>= 2)'
-  summary: tximportData
-  description: 'This package provides the output of running various transcript abundance quantifiers on a set of 6 RNA-seq samples from the GEUVADIS project. The quantifiers were Cufflinks, RSEM, kallisto, Salmon and Sailfish. For details on version numbers, sample information, and details on calls, see the package vignette.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('tximportData')"

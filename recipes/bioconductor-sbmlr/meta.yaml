@@ -1,39 +1,34 @@
-{% set version = "1.82.0" %}
-{% set name = "SBMLR" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 458168fad2501ad9d9671c40fc74ad6a
+about:
+  description: This package contains a systems biology markup language (SBML) interface
+    to R.
+  home: https://bioconductor.org/packages/3.10/bioc/html/SBMLR.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: SBML-R Interface and Analysis Tools
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: rsbml
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-sbmlr
+  version: 1.82.0
 requirements:
   host:
-    - r-base
-    - r-desolve
-    - r-xml
+  - r-base
+  - r-desolve
+  - r-xml
   run:
-    - r-base
-    - r-desolve
-    - r-xml
+  - r-base
+  - r-desolve
+  - r-xml
+source:
+  md5: 458168fad2501ad9d9671c40fc74ad6a
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/SBMLR_1.82.0.tar.gz
+  - https://bioarchive.galaxyproject.org/SBMLR_1.82.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-sbmlr/bioconductor-sbmlr_1.82.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-2
-  summary: 'SBML-R Interface and Analysis Tools'
-  description: 'This package contains a systems biology markup language (SBML) interface to R.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
-
+  - $R -e "library('SBMLR')"

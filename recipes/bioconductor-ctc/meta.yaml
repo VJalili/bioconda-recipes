@@ -1,44 +1,40 @@
-{% set version = "1.60.0" %}
-{% set name = "ctc" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: db25344cdb4dd5deb5c60f7c619b603b
+about:
+  description: Tools for export and import classification trees and clusters to other
+    programs
+  home: https://bioconductor.org/packages/3.10/bioc/html/ctc.html
+  license: GPL-2
+  license_file: /lib/R/share/licenses/GPL-2
+  summary: Cluster and Tree Conversion.
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-requirements:
-  host:
-    - r-amap
-    - r-base
-  run:
-    - r-amap
-    - r-base
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: GPL-2
-  summary: 'Cluster and Tree Conversion.'
-  description: 'Tools for export and import classification trees and clusters to other programs'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:ctc
-    - doi:10.1038/nmeth.3252
+  - biotools:ctc
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-ctc
     path: recipes/bioconductor-ctc
     version: 1.54.0
-
+package:
+  name: bioconductor-ctc
+  version: 1.60.0
+requirements:
+  host:
+  - r-amap
+  - r-base
+  run:
+  - r-amap
+  - r-base
+source:
+  md5: db25344cdb4dd5deb5c60f7c619b603b
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/ctc_1.60.0.tar.gz
+  - https://bioarchive.galaxyproject.org/ctc_1.60.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-ctc/bioconductor-ctc_1.60.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('ctc')"

@@ -1,36 +1,27 @@
-{% set name="illumina-cleanup" %}
-{% set version = "1.0.0" %}
-{% set sha256 = "7835de2339772446fba2f607f72d98252c2de9397953a451f7602a13ffaff848" %}
-
-package:
-  name: {{ name }}
-  version: {{ version }}
-
-source:
-  url: https://github.com/rpetit3/illumina-cleanup/archive/v{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-
-build:
-  noarch: generic
-  number: 1
-
-requirements:
-  run:
-    - bbmap
-    - fastq-scan
-    - fastqc
-    - lighter
-    - nextflow
-    - pigz
-
-test:
-  commands:
-    - illumina-cleanup
-    - illumina-cleanup --help
-    - illumina-cleanup --version
-
 about:
   home: https://github.com/rpetit3/illumina-cleanup
   license: MIT
   license_file: LICENSE
   summary: Nextflow pipeline for pre-processing Illumina FASTQ files
+build:
+  noarch: generic
+  number: 1
+package:
+  name: illumina-cleanup
+  version: 1.0.0
+requirements:
+  run:
+  - bbmap
+  - fastq-scan
+  - fastqc
+  - lighter
+  - nextflow
+  - pigz
+source:
+  sha256: 7835de2339772446fba2f607f72d98252c2de9397953a451f7602a13ffaff848
+  url: https://github.com/rpetit3/illumina-cleanup/archive/v1.0.0.tar.gz
+test:
+  commands:
+  - illumina-cleanup
+  - illumina-cleanup --help
+  - illumina-cleanup --version

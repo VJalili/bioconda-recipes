@@ -1,36 +1,32 @@
-{% set version = "0.99.1" %}
-{% set name = "BSgenome.Hsapiens.1000genomes.hs37d5" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 164e1692d38fefa499c2c8ac5fc22793
+about:
+  description: 1000genomes Phase2 Reference Genome Sequence (hs37d5), based on NCBI
+    GRCh37.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/BSgenome.Hsapiens.1000genomes.hs37d5.html
+  license: Artistic-2.0
+  summary: 1000genomes Reference Genome Sequence (hs37d5)
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-bsgenome.hsapiens.1000genomes.hs37d5
+  version: 0.99.1
 requirements:
   host:
-    - 'bioconductor-bsgenome >=1.54.0,<1.55.0'
-    - r-base
+  - bioconductor-bsgenome >=1.54.0,<1.55.0
+  - r-base
   run:
-    - 'bioconductor-bsgenome >=1.54.0,<1.55.0'
-    - r-base
-    - curl
+  - bioconductor-bsgenome >=1.54.0,<1.55.0
+  - r-base
+  - curl
+source:
+  md5: 164e1692d38fefa499c2c8ac5fc22793
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/BSgenome.Hsapiens.1000genomes.hs37d5_0.99.1.tar.gz
+  - https://bioarchive.galaxyproject.org/BSgenome.Hsapiens.1000genomes.hs37d5_0.99.1.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-bsgenome.hsapiens.1000genomes.hs37d5/bioconductor-bsgenome.hsapiens.1000genomes.hs37d5_0.99.1_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: '1000genomes Reference Genome Sequence (hs37d5)'
-  description: '1000genomes Phase2 Reference Genome Sequence (hs37d5), based on NCBI GRCh37.'
-
+  - $R -e "library('BSgenome.Hsapiens.1000genomes.hs37d5')"

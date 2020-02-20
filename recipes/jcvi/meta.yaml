@@ -1,55 +1,48 @@
-{% set name = "jcvi" %}
-{% set version = "1.0.3" %}
-
-package:
-  name: '{{ name|lower }}'
-  version: '{{ version }}'
-
-source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 6115882020338d53058b2d35ccbc451f737cbe0205320742fc63c8c41b46d7df
-
-build:
-  number: 0
-  skip: True  # [not py27]
-  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv
-
-requirements:
-  build:
-    - {{ compiler('c') }}
-  host:
-    - python
-    - pip
-    - numpy 
-    - cython
-  run:
-    - python
-    - biopython
-    - deap
-    - matplotlib-base
-    - networkx
-    - {{ pin_compatible('numpy') }}
-    - r-ggplot2 >=3.0.0
-    - gffutils
-
-test:
-  imports:
-    - jcvi
-    - jcvi.algorithms
-    - jcvi.annotation
-    - jcvi.apps
-    - jcvi.assembly
-    - jcvi.compara
-    - jcvi.formats
-    - jcvi.graphics
-    - jcvi.projects
-    - jcvi.utils
-    - jcvi.utils.data
-    - jcvi.variation
-
 about:
+  description: JCVI utility libraries
   home: http://github.com/tanghaibao/jcvi
   license: BSD License
   license_family: BSD
-  summary: Python utility libraries on genome assembly, annotation and comparative genomics
-  description: "JCVI utility libraries"
+  summary: Python utility libraries on genome assembly, annotation and comparative
+    genomics
+build:
+  number: 0
+  script: -m pip install . --no-deps --ignore-installed -vv
+  skip: true
+package:
+  name: jcvi
+  version: 1.0.3
+requirements:
+  build:
+  - None
+  host:
+  - python
+  - pip
+  - numpy
+  - cython
+  run:
+  - python
+  - biopython
+  - deap
+  - matplotlib-base
+  - networkx
+  - None
+  - r-ggplot2 >=3.0.0
+  - gffutils
+source:
+  sha256: 6115882020338d53058b2d35ccbc451f737cbe0205320742fc63c8c41b46d7df
+  url: https://pypi.io/packages/source/j/jcvi/jcvi-1.0.3.tar.gz
+test:
+  imports:
+  - jcvi
+  - jcvi.algorithms
+  - jcvi.annotation
+  - jcvi.apps
+  - jcvi.assembly
+  - jcvi.compara
+  - jcvi.formats
+  - jcvi.graphics
+  - jcvi.projects
+  - jcvi.utils
+  - jcvi.utils.data
+  - jcvi.variation

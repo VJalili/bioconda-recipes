@@ -1,49 +1,44 @@
-{% set version = "1.24.0" %}
-{% set name = "cleaver" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: 0ed8d1c82721bd64a54d017f80714b33
+about:
+  description: 'In-silico cleavage of polypeptide sequences. The cleavage rules are
+    taken from: http://web.expasy.org/peptide_cutter/peptidecutter_enzymes.html'
+  home: https://bioconductor.org/packages/3.10/bioc/html/cleaver.html
+  license: GPL (>= 3)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Cleavage of Polypeptide Sequences
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: testthat (>= 0.8), knitr, BiocStyle (>= 0.0.14), rmarkdown, BRAIN, UniProt.ws (>= 2.1.4)
-requirements:
-  host:
-    - 'bioconductor-biostrings >=2.54.0,<2.55.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - r-base
-  run:
-    - 'bioconductor-biostrings >=2.54.0,<2.55.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - r-base
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'GPL (>= 3)'
-  summary: 'Cleavage of Polypeptide Sequences'
-  description: 'In-silico cleavage of polypeptide sequences. The cleavage rules are taken from: http://web.expasy.org/peptide_cutter/peptidecutter_enzymes.html'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:cleaver
-    - doi:10.1038/nmeth.3252
+  - biotools:cleaver
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-cleaver
     path: recipes/bioconductor-cleaver
     version: 1.18.0
-
+package:
+  name: bioconductor-cleaver
+  version: 1.24.0
+requirements:
+  host:
+  - bioconductor-biostrings >=2.54.0,<2.55.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - r-base
+  run:
+  - bioconductor-biostrings >=2.54.0,<2.55.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - r-base
+source:
+  md5: 0ed8d1c82721bd64a54d017f80714b33
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/cleaver_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/cleaver_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-cleaver/bioconductor-cleaver_1.24.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('cleaver')"

@@ -1,37 +1,32 @@
-{% set version = "1.24.0" %}
-{% set name = "miRNATarget" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 7f4245f1e4fabffd376afd4306e77492
+about:
+  description: gene target tabale of miRNA for human/mouse used for MiRaGE package
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/miRNATarget.html
+  license: GPL
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: gene target tabale of miRNA for human/mouse used for MiRaGE package
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-mirnatarget
+  version: 1.24.0
 requirements:
   host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - r-base
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - r-base
   run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - r-base
-    - curl
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - r-base
+  - curl
+source:
+  md5: 7f4245f1e4fabffd376afd4306e77492
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/miRNATarget_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/miRNATarget_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mirnatarget/bioconductor-mirnatarget_1.24.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: GPL
-  summary: 'gene target tabale of miRNA for human/mouse used for MiRaGE package'
-  description: 'gene target tabale of miRNA for human/mouse used for MiRaGE package'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('miRNATarget')"

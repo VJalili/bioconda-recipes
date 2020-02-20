@@ -1,62 +1,58 @@
-{% set version = "1.12.0" %}
-{% set name = "fgsea" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: c0e376202483856e91e1a32ea90f65d5
+about:
+  description: The package implements an algorithm for fast gene set enrichment analysis.
+    Using the fast algorithm allows to make more permutations and get more fine grained
+    p-values, which allows to use accurate stantard approaches to multiple hypothesis
+    correction.
+  home: https://bioconductor.org/packages/3.10/bioc/html/fgsea.html
+  license: MIT + file LICENCE
+  summary: Fast Gene Set Enrichment Analysis
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-# Suggests: testthat, knitr, rmarkdown, reactome.db, AnnotationDbi, parallel, org.Mm.eg.db, limma, GEOquery
-# SystemRequirements: C++11
-requirements:
-  host:
-    - 'bioconductor-biocparallel >=1.20.0,<1.21.0'
-    - r-base
-    - r-bh
-    - r-data.table
-    - r-fastmatch
-    - 'r-ggplot2 >=2.2.0'
-    - r-gridextra
-    - r-matrix
-    - r-rcpp
-  run:
-    - 'bioconductor-biocparallel >=1.20.0,<1.21.0'
-    - r-base
-    - r-bh
-    - r-data.table
-    - r-fastmatch
-    - 'r-ggplot2 >=2.2.0'
-    - r-gridextra
-    - r-matrix
-    - r-rcpp
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - make
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'MIT + file LICENCE'
-  summary: 'Fast Gene Set Enrichment Analysis'
-  description: 'The package implements an algorithm for fast gene set enrichment analysis. Using the fast algorithm allows to make more permutations and get more fine grained p-values, which allows to use accurate stantard approaches to multiple hypothesis correction.'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:fgsea
-    - doi:10.1101/060012
+  - biotools:fgsea
+  - doi:10.1101/060012
   parent_recipe:
     name: bioconductor-fgsea
     path: recipes/bioconductor-fgsea
     version: 1.6.0
-
+package:
+  name: bioconductor-fgsea
+  version: 1.12.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-biocparallel >=1.20.0,<1.21.0
+  - r-base
+  - r-bh
+  - r-data.table
+  - r-fastmatch
+  - r-ggplot2 >=2.2.0
+  - r-gridextra
+  - r-matrix
+  - r-rcpp
+  run:
+  - bioconductor-biocparallel >=1.20.0,<1.21.0
+  - r-base
+  - r-bh
+  - r-data.table
+  - r-fastmatch
+  - r-ggplot2 >=2.2.0
+  - r-gridextra
+  - r-matrix
+  - r-rcpp
+source:
+  md5: c0e376202483856e91e1a32ea90f65d5
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/fgsea_1.12.0.tar.gz
+  - https://bioarchive.galaxyproject.org/fgsea_1.12.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-fgsea/bioconductor-fgsea_1.12.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('fgsea')"

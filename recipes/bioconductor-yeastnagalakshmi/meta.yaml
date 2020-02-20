@@ -1,34 +1,30 @@
-{% set version = "1.22.0" %}
-{% set name = "yeastNagalakshmi" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 5ac882fc2c671e7edc9712787f0e5359
+about:
+  description: The yeast genome data was retrieved from the sequence read archive,
+    aligned with bwa, and converted to BAM format with samtools.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/yeastNagalakshmi.html
+  license: Artistic-2.0
+  summary: Yeast genome RNA sequencing data based on Nagalakshmi et. al.
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-yeastnagalakshmi
+  version: 1.22.0
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
-    - curl
+  - r-base
+  - curl
+source:
+  md5: 5ac882fc2c671e7edc9712787f0e5359
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/yeastNagalakshmi_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/yeastNagalakshmi_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-yeastnagalakshmi/bioconductor-yeastnagalakshmi_1.22.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Yeast genome RNA sequencing data based on Nagalakshmi et. al.'
-  description: 'The yeast genome data was retrieved from the sequence read archive, aligned with bwa, and converted to BAM format with samtools.'
-
+  - $R -e "library('yeastNagalakshmi')"

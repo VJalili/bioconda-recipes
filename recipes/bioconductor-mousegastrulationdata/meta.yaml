@@ -1,44 +1,39 @@
-{% set version = "1.0.0" %}
-{% set name = "MouseGastrulationData" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 3a83452ef33b8d8c57dc973a9bf8d654
+about:
+  description: Provides processed and raw count matrices for single-cell RNA sequencing
+    data from a timecourse of mouse gastrulation and early organogenesis.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/MouseGastrulationData.html
+  license: GPL-3
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: Single-Cell Transcriptomics Data across Mouse Gastrulation and Early Organogenesis
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: BiocStyle, knitr, rmarkdown
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-mousegastrulationdata
+  version: 1.0.0
 requirements:
   host:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-experimenthub >=1.12.0,<1.13.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - 'bioconductor-singlecellexperiment >=1.8.0,<1.9.0'
-    - r-base
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-experimenthub >=1.12.0,<1.13.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - bioconductor-singlecellexperiment >=1.8.0,<1.9.0
+  - r-base
   run:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-experimenthub >=1.12.0,<1.13.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - 'bioconductor-singlecellexperiment >=1.8.0,<1.9.0'
-    - r-base
-    - curl
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-experimenthub >=1.12.0,<1.13.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - bioconductor-singlecellexperiment >=1.8.0,<1.9.0
+  - r-base
+  - curl
+source:
+  md5: 3a83452ef33b8d8c57dc973a9bf8d654
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/MouseGastrulationData_1.0.0.tar.gz
+  - https://bioarchive.galaxyproject.org/MouseGastrulationData_1.0.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mousegastrulationdata/bioconductor-mousegastrulationdata_1.0.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: GPL-3
-  summary: 'Single-Cell Transcriptomics Data across Mouse Gastrulation and Early Organogenesis'
-  description: 'Provides processed and raw count matrices for single-cell RNA sequencing data from a timecourse of mouse gastrulation and early organogenesis.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('MouseGastrulationData')"

@@ -1,37 +1,31 @@
-{% set version = "0.24.0" %}
-{% set name = "dressCheck" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: b8cd180330ebf04fe8f911bb09b99201
+about:
+  description: data and software for checking Dressman JCO 25(5) 2007
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/dressCheck.html
+  license: Artistic-2.0
+  summary: data and software for checking Dressman JCO 25(5) 2007
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: survival, chron
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-dresscheck
+  version: 0.24.0
 requirements:
   host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - r-base
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - r-base
   run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - r-base
-    - curl
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - r-base
+  - curl
+source:
+  md5: b8cd180330ebf04fe8f911bb09b99201
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/dressCheck_0.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/dressCheck_0.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-dresscheck/bioconductor-dresscheck_0.24.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'data and software for checking Dressman JCO 25(5) 2007'
-  description: 'data and software for checking Dressman JCO 25(5) 2007'
-
+  - $R -e "library('dressCheck')"

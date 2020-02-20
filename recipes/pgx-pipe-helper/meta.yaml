@@ -1,38 +1,30 @@
-{% set name = "pgx-pipe-helper" %}
-{% set version = "0.0.4" %}
-
-package:
-  name: '{{ name|lower }}'
-  version: '{{ version }}'
-
-source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: "8a7d3ae00e38ac9ff2bd92afffe6c7dd687c317cbb7cc3ef5629152b122e08b1"
-
-build:
-  number: 0
-  script: {{ PYTHON }} -m pip install . --ignore-installed --no-deps -vv 
-  noarch: python 
-
-requirements:
-  host:
-    - python
-    - pip
-  run:
-    - python
-    - pyyaml
-    - locus_processing
-    - snakemake
-
-test:
-  imports:
-    - pipe_helper
-
 about:
   home: https://github.com/lumc/pgx-pipe-helper
   license: MIT
   license_family: MIT
-  summary: A helper module for wrapping functionality which is common to all pipeline stages.
-
+  summary: A helper module for wrapping functionality which is common to all pipeline
+    stages.
+build:
+  noarch: python
+  number: 0
+  script: -m pip install . --ignore-installed --no-deps -vv
 extra:
-  recipe-maintainers: 'marksantcroos'
+  recipe-maintainers: marksantcroos
+package:
+  name: pgx-pipe-helper
+  version: 0.0.4
+requirements:
+  host:
+  - python
+  - pip
+  run:
+  - python
+  - pyyaml
+  - locus_processing
+  - snakemake
+source:
+  sha256: 8a7d3ae00e38ac9ff2bd92afffe6c7dd687c317cbb7cc3ef5629152b122e08b1
+  url: https://pypi.io/packages/source/p/pgx-pipe-helper/pgx-pipe-helper-0.0.4.tar.gz
+test:
+  imports:
+  - pipe_helper

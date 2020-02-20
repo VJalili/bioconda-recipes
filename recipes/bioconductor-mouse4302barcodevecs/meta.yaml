@@ -1,35 +1,30 @@
-{% set version = "1.24.0" %}
-{% set name = "mouse4302barcodevecs" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: d40a0ee15b9a2d36d0c3a0739219b4e0
+about:
+  description: Data used by the barcode package for microarrays of type mouse4302.
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/mouse4302barcodevecs.html
+  license: GPL (>= 2)
+  license_file: /lib/R/share/licenses/GPL-3
+  summary: mouse4302 data for barcode
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-mouse4302barcodevecs
+  version: 1.24.0
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
-    - curl
+  - r-base
+  - curl
+source:
+  md5: d40a0ee15b9a2d36d0c3a0739219b4e0
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/mouse4302barcodevecs_1.24.0.tar.gz
+  - https://bioarchive.galaxyproject.org/mouse4302barcodevecs_1.24.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mouse4302barcodevecs/bioconductor-mouse4302barcodevecs_1.24.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: 'GPL (>= 2)'
-  summary: 'mouse4302 data for barcode'
-  description: 'Data used by the barcode package for microarrays of type mouse4302.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
-
+  - $R -e "library('mouse4302barcodevecs')"

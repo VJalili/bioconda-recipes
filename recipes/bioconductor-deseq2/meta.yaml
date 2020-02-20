@@ -1,74 +1,70 @@
-{% set version = "1.26.0" %}
-{% set name = "DESeq2" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 0b9fa4be191aba1c74d010e5865e2d38
+about:
+  description: Estimate variance-mean dependence in count data from high-throughput
+    sequencing assays and test for differential expression based on a model using
+    the negative binomial distribution.
+  home: https://bioconductor.org/packages/3.10/bioc/html/DESeq2.html
+  license: LGPL (>= 3)
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: Differential gene expression analysis based on the negative binomial distribution
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-# Suggests: testthat, knitr, rmarkdown, vsn, pheatmap, RColorBrewer, IHW, apeglm, ashr, tximport, tximeta, tximportData, readr, pbapply, airway, pasilla (>= 0.2.10)
-requirements:
-  host:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-biocparallel >=1.20.0,<1.21.0'
-    - 'bioconductor-genefilter >=1.68.0,<1.69.0'
-    - 'bioconductor-geneplotter >=1.64.0,<1.65.0'
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - 'bioconductor-summarizedexperiment >=1.16.0,<1.17.0'
-    - r-base
-    - r-ggplot2
-    - r-hmisc
-    - r-locfit
-    - 'r-rcpp >=0.11.0'
-    - r-rcpparmadillo
-  run:
-    - 'bioconductor-biobase >=2.46.0,<2.47.0'
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - 'bioconductor-biocparallel >=1.20.0,<1.21.0'
-    - 'bioconductor-genefilter >=1.68.0,<1.69.0'
-    - 'bioconductor-geneplotter >=1.64.0,<1.65.0'
-    - 'bioconductor-genomicranges >=1.38.0,<1.39.0'
-    - 'bioconductor-iranges >=2.20.0,<2.21.0'
-    - 'bioconductor-s4vectors >=0.24.0,<0.25.0'
-    - 'bioconductor-summarizedexperiment >=1.16.0,<1.17.0'
-    - r-base
-    - r-ggplot2
-    - r-hmisc
-    - r-locfit
-    - 'r-rcpp >=0.11.0'
-    - r-rcpparmadillo
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - make
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: 'LGPL (>= 3)'
-  summary: 'Differential gene expression analysis based on the negative binomial distribution'
-  description: 'Estimate variance-mean dependence in count data from high-throughput sequencing assays and test for differential expression based on a model using the negative binomial distribution.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:deseq2
-    - doi:10.1186/s13059-014-0550-8
+  - biotools:deseq2
+  - doi:10.1186/s13059-014-0550-8
   parent_recipe:
     name: bioconductor-deseq2
     path: recipes/bioconductor-deseq2
     version: 1.20.0
-
+package:
+  name: bioconductor-deseq2
+  version: 1.26.0
+requirements:
+  build:
+  - None
+  - None
+  - make
+  host:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-biocparallel >=1.20.0,<1.21.0
+  - bioconductor-genefilter >=1.68.0,<1.69.0
+  - bioconductor-geneplotter >=1.64.0,<1.65.0
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - bioconductor-summarizedexperiment >=1.16.0,<1.17.0
+  - r-base
+  - r-ggplot2
+  - r-hmisc
+  - r-locfit
+  - r-rcpp >=0.11.0
+  - r-rcpparmadillo
+  run:
+  - bioconductor-biobase >=2.46.0,<2.47.0
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - bioconductor-biocparallel >=1.20.0,<1.21.0
+  - bioconductor-genefilter >=1.68.0,<1.69.0
+  - bioconductor-geneplotter >=1.64.0,<1.65.0
+  - bioconductor-genomicranges >=1.38.0,<1.39.0
+  - bioconductor-iranges >=2.20.0,<2.21.0
+  - bioconductor-s4vectors >=0.24.0,<0.25.0
+  - bioconductor-summarizedexperiment >=1.16.0,<1.17.0
+  - r-base
+  - r-ggplot2
+  - r-hmisc
+  - r-locfit
+  - r-rcpp >=0.11.0
+  - r-rcpparmadillo
+source:
+  md5: 0b9fa4be191aba1c74d010e5865e2d38
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/DESeq2_1.26.0.tar.gz
+  - https://bioarchive.galaxyproject.org/DESeq2_1.26.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-deseq2/bioconductor-deseq2_1.26.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('DESeq2')"

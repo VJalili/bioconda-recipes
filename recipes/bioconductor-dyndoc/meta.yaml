@@ -1,41 +1,37 @@
-{% set version = "1.64.0" %}
-{% set name = "DynDoc" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 86124cbf609486759269b3e794b22379
+about:
+  description: A set of functions to create and interact with dynamic documents and
+    vignettes.
+  home: https://bioconductor.org/packages/3.10/bioc/html/DynDoc.html
+  license: Artistic-2.0
+  summary: Dynamic document tools
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-requirements:
-  host:
-    - r-base
-  run:
-    - r-base
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Dynamic document tools'
-  description: 'A set of functions to create and interact with dynamic documents and vignettes.'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:dyndoc
-    - doi:10.1038/nmeth.3252
+  - biotools:dyndoc
+  - doi:10.1038/nmeth.3252
   parent_recipe:
     name: bioconductor-dyndoc
     path: recipes/bioconductor-dyndoc
     version: 1.58.0
-
+package:
+  name: bioconductor-dyndoc
+  version: 1.64.0
+requirements:
+  host:
+  - r-base
+  run:
+  - r-base
+source:
+  md5: 86124cbf609486759269b3e794b22379
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/DynDoc_1.64.0.tar.gz
+  - https://bioarchive.galaxyproject.org/DynDoc_1.64.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-dyndoc/bioconductor-dyndoc_1.64.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('DynDoc')"

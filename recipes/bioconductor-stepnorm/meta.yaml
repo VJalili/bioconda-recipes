@@ -1,46 +1,41 @@
-{% set version = "1.58.0" %}
-{% set name = "stepNorm" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: a0d03941c56f36b72dd4545282c23ce5
+about:
+  description: Stepwise normalization functions for cDNA microarray data.
+  home: https://bioconductor.org/packages/3.10/bioc/html/stepNorm.html
+  license: LGPL
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: Stepwise normalization functions for cDNA microarrays
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-requirements:
-  host:
-    - 'bioconductor-marray >=1.64.0,<1.65.0'
-    - r-base
-    - r-mass
-  run:
-    - 'bioconductor-marray >=1.64.0,<1.65.0'
-    - r-base
-    - r-mass
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: LGPL
-  summary: 'Stepwise normalization functions for cDNA microarrays'
-  description: 'Stepwise normalization functions for cDNA microarray data.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-3'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:stepnorm
-    - doi:10.1109/IEMBS.2004.1403830
+  - biotools:stepnorm
+  - doi:10.1109/IEMBS.2004.1403830
   parent_recipe:
     name: bioconductor-stepnorm
     path: recipes/bioconductor-stepnorm
     version: 1.52.0
-
+package:
+  name: bioconductor-stepnorm
+  version: 1.58.0
+requirements:
+  host:
+  - bioconductor-marray >=1.64.0,<1.65.0
+  - r-base
+  - r-mass
+  run:
+  - bioconductor-marray >=1.64.0,<1.65.0
+  - r-base
+  - r-mass
+source:
+  md5: a0d03941c56f36b72dd4545282c23ce5
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/stepNorm_1.58.0.tar.gz
+  - https://bioarchive.galaxyproject.org/stepNorm_1.58.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-stepnorm/bioconductor-stepnorm_1.58.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('stepNorm')"

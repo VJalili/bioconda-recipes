@@ -1,36 +1,30 @@
-{% set version = "0.13.0" %}
-{% set sha256 = "972e4dd99a9bedd3023e5ae9cbf98594c1608e43f6c10e44a6ab63fed4fdecbc" %}
-
-package:
-  name: fastq-screen
-  version: {{ version }}
-
-source:
-  url: http://www.bioinformatics.babraham.ac.uk/projects/fastq_screen/fastq_screen_v{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-
+about:
+  home: http://www.bioinformatics.babraham.ac.uk/projects/fastq_screen/
+  license: GPLv3
+  summary: FastQ Screen allows you to screen a library of sequences in FastQ format
+    against a set of sequence databases so you can see if the composition of the library
+    matches with what you expect
 build:
   noarch: generic
   number: 1
-
+package:
+  name: fastq-screen
+  version: 0.13.0
 requirements:
   build:
-    - bowtie
-    - bowtie2
-    - perl
-    - perl-gdgraph
+  - bowtie
+  - bowtie2
+  - perl
+  - perl-gdgraph
   run:
-    - bowtie
-    - bowtie2
-    - perl
-    - perl-gdgraph
-
+  - bowtie
+  - bowtie2
+  - perl
+  - perl-gdgraph
+source:
+  sha256: 972e4dd99a9bedd3023e5ae9cbf98594c1608e43f6c10e44a6ab63fed4fdecbc
+  url: http://www.bioinformatics.babraham.ac.uk/projects/fastq_screen/fastq_screen_v0.13.0.tar.gz
 test:
   commands:
-    - fastq_screen -h >/dev/null
-    - fastq_screen --version
-
-about:
-  home: 'http://www.bioinformatics.babraham.ac.uk/projects/fastq_screen/'
-  license: GPLv3
-  summary: 'FastQ Screen allows you to screen a library of sequences in FastQ format against a set of sequence databases so you can see if the composition of the library matches with what you expect'
+  - fastq_screen -h >/dev/null
+  - fastq_screen --version

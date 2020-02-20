@@ -1,37 +1,31 @@
-{% set version = "1.13.0" %}
-{% set name = "MeSH.Hsa.eg.db" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 32a89087c730f0542d2f9e441a1cdb98
+about:
+  description: Entrez Gene ID to MeSH ID table.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/MeSH.Hsa.eg.db.html
+  license: Artistic-2.0
+  summary: Mapping table for Homo sapiens Gene ID to MeSH
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: RUnit, BiocGenerics
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-mesh.hsa.eg.db
+  version: 1.13.0
 requirements:
   host:
-    - 'bioconductor-meshdbi >=1.22.0,<1.23.0'
-    - r-base
+  - bioconductor-meshdbi >=1.22.0,<1.23.0
+  - r-base
   run:
-    - 'bioconductor-meshdbi >=1.22.0,<1.23.0'
-    - r-base
-    - curl
+  - bioconductor-meshdbi >=1.22.0,<1.23.0
+  - r-base
+  - curl
+source:
+  md5: 32a89087c730f0542d2f9e441a1cdb98
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/MeSH.Hsa.eg.db_1.13.0.tar.gz
+  - https://bioarchive.galaxyproject.org/MeSH.Hsa.eg.db_1.13.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-mesh.hsa.eg.db/bioconductor-mesh.hsa.eg.db_1.13.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Mapping table for Homo sapiens Gene ID to MeSH'
-  description: 'Entrez Gene ID to MeSH ID table.'
-
+  - $R -e "library('MeSH.Hsa.eg.db')"

@@ -1,37 +1,32 @@
-{% set version = "2.18.0" %}
-{% set name = "hgu95acdf" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name }}/bioconductor-{{ name }}_{{ version }}_src_all.tar.gz'
-  md5: afc999d77b1532154d45911ad15a5897
+about:
+  description: A package containing an environment representing the HG U95A.CDF file.
+  home: https://bioconductor.org/packages/3.10/data/annotation/html/hgu95acdf.html
+  license: LGPL
+  license_file: /lib/R/share/licenses/LGPL-3
+  summary: hgu95acdf
 build:
+  noarch: generic
   number: 3
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-hgu95acdf
+  version: 2.18.0
 requirements:
   host:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
   run:
-    - 'bioconductor-annotationdbi >=1.48.0,<1.49.0'
-    - r-base
-    - curl
+  - bioconductor-annotationdbi >=1.48.0,<1.49.0
+  - r-base
+  - curl
+source:
+  md5: afc999d77b1532154d45911ad15a5897
+  url:
+  - https://bioconductor.org/packages/3.10/data/annotation/src/contrib/hgu95acdf_2.18.0.tar.gz
+  - https://bioarchive.galaxyproject.org/hgu95acdf_2.18.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-hgu95acdf/bioconductor-hgu95acdf_2.18.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/annotation/html/{{ name }}.html'
-  license: LGPL
-  summary: hgu95acdf
-  description: 'A package containing an environment representing the HG U95A.CDF file.'
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-3'
-
+  - $R -e "library('hgu95acdf')"

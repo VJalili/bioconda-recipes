@@ -1,56 +1,47 @@
-{% set name = "antiSMASH" %}
-{% set version = "5.1.1" %}
-{% set sha256 = "4abd4e315efca49918a0a2c7e98c6cb20bbb8e62af69cb74d2f535f20b3d52b8" %}
-
-package:
-  name: {{ name|lower }}
-  version: {{ version }}
-
-build:
-  number: 0
-  noarch: python
-
-source:
-  url: https://dl.secondarymetabolites.org/releases/{{ version }}/antismash-{{ version }}.tar.gz 
-  sha256: {{ sha256 }}
-
-requirements:
-  host:
-    - python >=3
-    - pip
-  run:
-    - python >=3
-    - numpy
-    - biopython >=1.71
-    - helperlibs
-    - jinja2
-    - pysvg-py3
-    - bcbio-gff
-    - pyscss
-    - matplotlib
-    - scipy
-    - scikit-learn >=0.19
-    - diamond ==0.9.*
-    - fasttree ==2.1.*
-    - glimmerhmm ==3.0.*
-    - hmmer2
-    - hmmer ==3.1b2
-    - meme <=4.11.2
-    - muscle ==3.8.*
-    - blast ==2.2.*
-    - prodigal
-
-test:
-  commands:
-    - antismash -h
-
 about:
   home: http://antismash.secondarymetabolites.org/
   license: AGPL-3.0
   license_family: AGPL
   license_file: LICENSE.txt
-  summary: "antiSMASH allows the rapid genome-wide identification, annotation and analysis of secondary metabolite biosynthesis gene clusters."
-
+  summary: antiSMASH allows the rapid genome-wide identification, annotation and analysis
+    of secondary metabolite biosynthesis gene clusters.
+build:
+  noarch: python
+  number: 0
 extra:
   identifiers:
-    - biotools:antismash
+  - biotools:antismash
+package:
+  name: antismash
+  version: 5.1.1
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - numpy
+  - biopython >=1.71
+  - helperlibs
+  - jinja2
+  - pysvg-py3
+  - bcbio-gff
+  - pyscss
+  - matplotlib
+  - scipy
+  - scikit-learn >=0.19
+  - diamond ==0.9.*
+  - fasttree ==2.1.*
+  - glimmerhmm ==3.0.*
+  - hmmer2
+  - hmmer ==3.1b2
+  - meme <=4.11.2
+  - muscle ==3.8.*
+  - blast ==2.2.*
+  - prodigal
+source:
+  sha256: 4abd4e315efca49918a0a2c7e98c6cb20bbb8e62af69cb74d2f535f20b3d52b8
+  url: https://dl.secondarymetabolites.org/releases/5.1.1/antismash-5.1.1.tar.gz
+test:
+  commands:
+  - antismash -h

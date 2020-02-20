@@ -1,40 +1,36 @@
-{% set version = "2.46.0" %}
-{% set name = "Biobase" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/bioc/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 961d26c6399e94de8c7c816b4f6967e9
+about:
+  description: Functions that are needed by many other packages or which replace R
+    functions.
+  home: https://bioconductor.org/packages/3.10/bioc/html/Biobase.html
+  license: Artistic-2.0
+  summary: 'Biobase: Base functions for Bioconductor'
 build:
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-# Suggests: tools, tkWidgets, ALL, RUnit, golubEsets
-requirements:
-  host:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - r-base
-  run:
-    - 'bioconductor-biocgenerics >=0.32.0,<0.33.0'
-    - r-base
-  build:
-    - {{ compiler('c') }}
-    - make
-test:
-  commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'Biobase: Base functions for Bioconductor'
-  description: 'Functions that are needed by many other packages or which replace R functions.'
+  - lib/R/lib/
+  - lib/
 extra:
   identifiers:
-    - biotools:biobase
+  - biotools:biobase
+package:
+  name: bioconductor-biobase
+  version: 2.46.0
+requirements:
+  build:
+  - None
+  - make
+  host:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - r-base
+  run:
+  - bioconductor-biocgenerics >=0.32.0,<0.33.0
+  - r-base
+source:
+  md5: 961d26c6399e94de8c7c816b4f6967e9
+  url:
+  - https://bioconductor.org/packages/3.10/bioc/src/contrib/Biobase_2.46.0.tar.gz
+  - https://bioarchive.galaxyproject.org/Biobase_2.46.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-biobase/bioconductor-biobase_2.46.0_src_all.tar.gz
+test:
+  commands:
+  - $R -e "library('Biobase')"

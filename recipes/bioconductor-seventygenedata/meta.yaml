@@ -1,35 +1,30 @@
-{% set version = "1.22.0" %}
-{% set name = "seventyGeneData" %}
-{% set bioc = "3.10" %}
-
-package:
-  name: 'bioconductor-{{ name|lower }}'
-  version: '{{ version }}'
-source:
-  url:
-    - 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/src/contrib/{{ name }}_{{ version }}.tar.gz'
-    - 'https://bioarchive.galaxyproject.org/{{ name }}_{{ version }}.tar.gz'
-    - 'https://depot.galaxyproject.org/software/bioconductor-{{ name|lower }}/bioconductor-{{ name|lower }}_{{ version }}_src_all.tar.gz'
-  md5: 9fabda3e66217012a490764e055ccc25
+about:
+  description: Gene expression data for the two breast cancer cohorts published by
+    van't Veer and Van de Vijver in 2002
+  home: https://bioconductor.org/packages/3.10/data/experiment/html/seventyGeneData.html
+  license: Artistic-2.0
+  summary: ExpressionSets from the van't Veer and Van de Vijver breast cancer studies
 build:
+  noarch: generic
   number: 0
   rpaths:
-    - lib/R/lib/
-    - lib/
-  noarch: generic
-# Suggests: Biobase, gdata, limma, breastCancerNKI
+  - lib/R/lib/
+  - lib/
+package:
+  name: bioconductor-seventygenedata
+  version: 1.22.0
 requirements:
   host:
-    - r-base
+  - r-base
   run:
-    - r-base
-    - curl
+  - r-base
+  - curl
+source:
+  md5: 9fabda3e66217012a490764e055ccc25
+  url:
+  - https://bioconductor.org/packages/3.10/data/experiment/src/contrib/seventyGeneData_1.22.0.tar.gz
+  - https://bioarchive.galaxyproject.org/seventyGeneData_1.22.0.tar.gz
+  - https://depot.galaxyproject.org/software/bioconductor-seventygenedata/bioconductor-seventygenedata_1.22.0_src_all.tar.gz
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
-about:
-  home: 'https://bioconductor.org/packages/{{ bioc }}/data/experiment/html/{{ name }}.html'
-  license: Artistic-2.0
-  summary: 'ExpressionSets from the van''t Veer and Van de Vijver breast cancer studies'
-  description: 'Gene expression data for the two breast cancer cohorts published by van''t Veer and Van de Vijver in 2002'
-
+  - $R -e "library('seventyGeneData')"

@@ -1,33 +1,26 @@
-{% set version = "0.23.1" %}
-
-package:
-  name: nanomath
-  version: {{ version }}
-
-source:
-  url: https://pypi.io/packages/source/n/nanomath/nanomath-{{ version }}.tar.gz
-  sha256: 54a7edb3b458194014a35122968a7bc70cf9076de2f65f4a8b00638f71b06011
-
-build:
-  noarch: python
-  number: 1
-  script: {{ PYTHON }} -m pip install . --ignore-installed --no-deps -vv
-
-requirements:
-  host:
-    - python >=3
-    - pip
-  run:
-    - python >=3
-    - pandas
-    - numpy >1.8
-
-test:
-  imports:
-    - nanomath
-
 about:
   home: https://github.com/wdecoster/nanomath
   license: MIT License
-  summary: 'A few simple math function for other Oxford Nanopore processing scripts'
   license_family: MIT
+  summary: A few simple math function for other Oxford Nanopore processing scripts
+build:
+  noarch: python
+  number: 1
+  script: -m pip install . --ignore-installed --no-deps -vv
+package:
+  name: nanomath
+  version: 0.23.1
+requirements:
+  host:
+  - python >=3
+  - pip
+  run:
+  - python >=3
+  - pandas
+  - numpy >1.8
+source:
+  sha256: 54a7edb3b458194014a35122968a7bc70cf9076de2f65f4a8b00638f71b06011
+  url: https://pypi.io/packages/source/n/nanomath/nanomath-0.23.1.tar.gz
+test:
+  imports:
+  - nanomath
